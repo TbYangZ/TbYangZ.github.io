@@ -72,10 +72,19 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/">「NOI2018」 归程 - 最短路+Kruskal重构树+倍增</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 「NOI2018」 归程 - 最短路+Kruskal重构树+倍增</span><br><span class="line">data: 2019.03.16</span><br><span class="line">tag: Kruskal重构树,倍增,最短路</span><br></pre></td></tr></table></figure>
-<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p><a href="https://www.luogu.org/problemnew/show/P4768" target="_blank" rel="noopener">LuoguP4768</a></p>
+        <h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p><a href="https://www.luogu.org/problemnew/show/P4768" target="_blank" rel="noopener">LuoguP4768</a></p>
 <p>题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>对于每次询问给定的$v,p$，若点$x,y$之间最大边的最小值大于$p$，则$x,y$可以互相到达。于是可以想到构建Kruskal重构树，边权从大到小排序建树。由于这样建树后，对于$v$能到达的节点，肯定在以$v$的一个权值大于$p$且层数最低的祖先的子树中。于是我们可以先跑一遍从$1$开始的最短路，计算每个点到$1$的最短路径，然后对于Kruskal重构树进行一次Dfs，求出每个点的子树中叶子节点的距离最小值。至于找这个祖先，可以用倍增去找。因为这棵树呈一棵小根堆，满足儿子节点的点权一定大于等于父节点的点权（叶子节点除外），故可以用倍增。这样可以做到在线回答。</p>
 <p>对于离线的子问题，可以将边按$a$值排序，询问按照$p$值排序，两个指针扫过去，用并查集维护连通以及连通块内到$1$的距离最小值。基于这种思想，就有人想到用可持久化并查集代替普通的并查集做到在线回答。</p>
@@ -86,9 +95,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://TbYangZ.github.io/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/" data-id="cjtbj7e1z0001rstyy4vv0um8" class="article-share-link">Share</a>
+      <a data-url="https://TbYangZ.github.io/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/" data-id="cjtbj9ojo0001jwtyrarw8p65" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kruskal重构树-倍增-最短路/">Kruskal重构树,倍增,最短路</a></li></ul>
+
     </footer>
   </div>
   
@@ -131,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://TbYangZ.github.io/2019/03/16/hello-world/" data-id="cjtbj7e1s0000rstyjgvxahzu" class="article-share-link">Share</a>
+      <a data-url="https://TbYangZ.github.io/2019/03/16/hello-world/" data-id="cjtbj9oji0000jwtyb33f22nv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -151,9 +162,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kruskal重构树-倍增-最短路/">Kruskal重构树,倍增,最短路</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Kruskal重构树-倍增-最短路/" style="font-size: 10px;">Kruskal重构树,倍增,最短路</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -172,7 +197,7 @@
       <ul>
         
           <li>
-            <a href="/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/">(no title)</a>
+            <a href="/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/">「NOI2018」 归程 - 最短路+Kruskal重构树+倍增</a>
           </li>
         
           <li>
