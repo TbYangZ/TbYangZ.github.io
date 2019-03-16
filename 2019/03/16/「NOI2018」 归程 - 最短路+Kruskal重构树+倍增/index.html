@@ -7,18 +7,18 @@
   
   <title>「NOI2018」 归程 - 最短路+Kruskal重构树+倍增 | TbYangZ&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题面LuoguP4768 题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&amp;gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。 分析对于每次询问给定的$v,p$，若点$x,y$之间最大边的最小值大于$p$，则$x,y$可以互相到达。于是可以想到构建K">
+  <meta name="description" content="题面LuoguP4768 题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&amp;gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。">
 <meta name="keywords" content="Kruskal重构树,倍增,最短路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「NOI2018」 归程 - 最短路+Kruskal重构树+倍增">
 <meta property="og:url" content="https://TbYangZ.github.io/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/index.html">
 <meta property="og:site_name" content="TbYangZ&#39;s blog">
-<meta property="og:description" content="题面LuoguP4768 题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&amp;gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。 分析对于每次询问给定的$v,p$，若点$x,y$之间最大边的最小值大于$p$，则$x,y$可以互相到达。于是可以想到构建K">
+<meta property="og:description" content="题面LuoguP4768 题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&amp;gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-16T13:34:32.510Z">
+<meta property="og:updated_time" content="2019-03-16T13:38:38.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「NOI2018」 归程 - 最短路+Kruskal重构树+倍增">
-<meta name="twitter:description" content="题面LuoguP4768 题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&amp;gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。 分析对于每次询问给定的$v,p$，若点$x,y$之间最大边的最小值大于$p$，则$x,y$可以互相到达。于是可以想到构建K">
+<meta name="twitter:description" content="题面LuoguP4768 题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&amp;gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。">
   
     <link rel="alternate" href="/atom.xml" title="TbYangZ&#39;s blog" type="application/atom+xml">
   
@@ -89,6 +89,7 @@
       
         <h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p><a href="https://www.luogu.org/problemnew/show/P4768" target="_blank" rel="noopener">LuoguP4768</a></p>
 <p>题目大意：给定一张$n$个点$m$条边的无向连通图，每条边带两个权值$l,a$，每次询问给出$v,p$，要求从$v$点开始，可以走边$a&gt;p$的边，路程为0，不能走后，走其他边，路程为$l$，求从$v$开始到$1$的最短路程。部分数据强制在线。</p>
+<a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>对于每次询问给定的$v,p$，若点$x,y$之间最大边的最小值大于$p$，则$x,y$可以互相到达。于是可以想到构建Kruskal重构树，边权从大到小排序建树。由于这样建树后，对于$v$能到达的节点，肯定在以$v$的一个权值大于$p$且层数最低的祖先的子树中。于是我们可以先跑一遍从$1$开始的最短路，计算每个点到$1$的最短路径，然后对于Kruskal重构树进行一次Dfs，求出每个点的子树中叶子节点的距离最小值。至于找这个祖先，可以用倍增去找。因为这棵树呈一棵小根堆，满足儿子节点的点权一定大于等于父节点的点权（叶子节点除外），故可以用倍增。这样可以做到在线回答。</p>
 <p>对于离线的子问题，可以将边按$a$值排序，询问按照$p$值排序，两个指针扫过去，用并查集维护连通以及连通块内到$1$的距离最小值。基于这种思想，就有人想到用可持久化并查集代替普通的并查集做到在线回答。</p>
 <p>还有这道题卡SPFA，只能用Djikstra。</p>
@@ -98,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://TbYangZ.github.io/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/" data-id="cjtbj9ojo0001jwtyrarw8p65" class="article-share-link">Share</a>
+      <a data-url="https://TbYangZ.github.io/2019/03/16/「NOI2018」 归程 - 最短路+Kruskal重构树+倍增/" data-id="cjtbjempi0001awtyzqbiix4k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kruskal重构树-倍增-最短路/">Kruskal重构树,倍增,最短路</a></li></ul>
