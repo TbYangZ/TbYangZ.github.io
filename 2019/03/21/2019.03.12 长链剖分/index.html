@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="树链剖分的两种形式重链剖分依照每个子树的$size$值寻找重儿子，即子树节点数最多的那个作为重儿子。用$top$记录下每条链深度最小的顶点。具体就不在赘述。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="长链剖分">
+<meta property="og:url" content="https://TbYangZ.github.io/2019/03/21/2019.03.12 长链剖分/index.html">
+<meta property="og:site_name" content="TbYangZ&#39;s blog">
+<meta property="og:description" content="树链剖分的两种形式重链剖分依照每个子树的$size$值寻找重儿子，即子树节点数最多的那个作为重儿子。用$top$记录下每条链深度最小的顶点。具体就不在赘述。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-20T16:27:45.664Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="长链剖分">
+<meta name="twitter:description" content="树链剖分的两种形式重链剖分依照每个子树的$size$值寻找重儿子，即子树节点数最多的那个作为重儿子。用$top$记录下每条链深度最小的顶点。具体就不在赘述。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://TbYangZ.github.io/2019/03/21/2019.03.12 长链剖分/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>长链剖分 | TbYangZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TbYangZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Nothing is impossible!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://TbYangZ.github.io/2019/03/21/2019.03.12 长链剖分/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TbYangZ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TbYangZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">长链剖分
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-21 00:09:47 / 修改时间：00:27:45" itemprop="dateCreated datePublished" datetime="2019-03-21T00:09:47+08:00">2019-03-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="树链剖分的两种形式"><a href="#树链剖分的两种形式" class="headerlink" title="树链剖分的两种形式"></a>树链剖分的两种形式</h2><h3 id="重链剖分"><a href="#重链剖分" class="headerlink" title="重链剖分"></a>重链剖分</h3><p>依照每个子树的$size$值寻找重儿子，即子树节点数最多的那个作为重儿子。用$top$记录下每条链深度最小的顶点。具体就不在赘述。</p>
+<a id="more"></a>
+<h3 id="长链剖分"><a href="#长链剖分" class="headerlink" title="长链剖分"></a>长链剖分</h3><p>依照每个子树的$mx$值寻找重儿子，即子树中深度最深的那个作为重儿子。同重链剖分，用一下几个数组刻画剖得的链。同样称$x$到其重儿子$y$的边为长边，其余称为短边。由若干长边组成的连续路径称为长链。</p>
+<ul>
+<li>$mx[x]:$$x$的子树中深度最深的那个节点的深度</li>
+<li>$son[x]:$$x$的子树中深度最深的那个节点所在$x$的那个儿子的子树中</li>
+<li>$top[x]:$$x$所在长链中深度最小的节点</li>
+</ul>
+<p>同重链剖分一样，用两次$Dfs$求出以上信息。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dep[N],top[N];</span><br><span class="line"><span class="keyword">int</span> son[N],len[N];</span><br><span class="line"><span class="keyword">int</span> mxd[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dfs1</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">	dep[x]=mxd[x]=dep[fa]+<span class="number">1</span>;</span><br><span class="line">	f[x][<span class="number">0</span>]=fa;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt) &#123;</span><br><span class="line">		<span class="keyword">int</span> y=e[i].to;</span><br><span class="line">		<span class="keyword">if</span> (y==fa) <span class="keyword">continue</span>;</span><br><span class="line">		Dfs1(y,x);</span><br><span class="line">		<span class="keyword">if</span> (mxd[y]&gt;mxd[x]) &#123;</span><br><span class="line">			son[x]=y;</span><br><span class="line">			mxd[x]=mxd[y];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dfs2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> tp)</span> </span>&#123;</span><br><span class="line">	top[x]=tp;</span><br><span class="line">	<span class="keyword">if</span> (son[x]) Dfs2(son[x],tp);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt)</span><br><span class="line">		<span class="keyword">if</span> (!top[e[i].to]) Dfs2(e[i].to,e[i].to);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="长链剖分的性质"><a href="#长链剖分的性质" class="headerlink" title="长链剖分的性质"></a>长链剖分的性质</h2><ol>
+<li>所有长链长度之和为$O(n)$</li>
+<li>任意点的$k$级祖先所在长链长度一定大于等于$k$</li>
+<li>一个点到根节点的路径上经过的短边最多有$\sqrt{n}$</li>
+</ol>
+<p>以上性质都容易证明，就不在这讲述了。</p>
+<h2 id="长链剖分的应用"><a href="#长链剖分的应用" class="headerlink" title="长链剖分的应用"></a>长链剖分的应用</h2><h3 id="求k级祖先"><a href="#求k级祖先" class="headerlink" title="求k级祖先"></a>求k级祖先</h3><p>给定一棵$n$个节点的树，多次询问一个点的$k$级祖先。</p>
+<p>可以用倍增做，预处理复杂度$O(n\log n)$，单次时间复杂度$O(\log n)$。尽管已经很优秀了，但对于$n$很大，询问组数很多也不行了。</p>
+<p>于是用长链剖分求$k$级祖先。同样用$O(n\log n)$的复杂度预处理出一个点的$2^k$级祖先，和$k$的二进制下最高位的1所在位置-1，即为$highbit(k)$，容易知道$highbit(k)=\lfloor\log_2n\rfloor$，所以直接$O(n)$递推就行了。对于每个节点长链的端点$x$，即满足$top[x]=x$的节点，预处理出它的长链上的所有节点以及它的长链长度个祖先。根据性质1，时间复杂度为$O(n)$。</p>
+<p>对于每次询问$x$的$k$级祖先，首先利用倍增数组跳到$x$的$2^{highbit(k)}$级祖先$y$处，然后令$k=k-2^{highbit(k)}-(dep[y]-dep[top[y]])$，若$k&lt;0$，则答案在$top[y]$所在长链的第$-k$个节点，否则答案在$top[y]$的第$k$个祖先，而此时$k\le len[top[y]]$，$len[top[y]]$为$top[y]$的长链长度，所以通过预处理的表直接输出即可。</p>
+<p>时间复杂度：$O(n\log n)-O(1)$。</p>
+<p>题目：<a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=5276" target="_blank" rel="noopener">[BSOJ5276]询问</a></p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100005</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,nxt;</span><br><span class="line">&#125;e[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> h[N],cnt;</span><br><span class="line"><span class="keyword">int</span> n,m,lastans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	e[++cnt]=(Edge)&#123;y,h[x]&#125;;</span><br><span class="line">	h[x]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dep[N],top[N];</span><br><span class="line"><span class="keyword">int</span> son[N],len[N];</span><br><span class="line"><span class="keyword">int</span> mxd[N],highbit[N];</span><br><span class="line"><span class="keyword">int</span> f[N][<span class="number">25</span>],idx[N],val[N*<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dfs1</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">	dep[x]=mxd[x]=dep[fa]+<span class="number">1</span>;f[x][<span class="number">0</span>]=fa;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt) &#123;</span><br><span class="line">		<span class="keyword">int</span> y=e[i].to;</span><br><span class="line">		<span class="keyword">if</span> (y==fa) <span class="keyword">continue</span>;</span><br><span class="line">		Dfs1(y,x);</span><br><span class="line">		<span class="keyword">if</span> (mxd[y]&gt;mxd[x]) &#123;</span><br><span class="line">			son[x]=y;</span><br><span class="line">			mxd[x]=mxd[y];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dfs2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> tp)</span> </span>&#123;</span><br><span class="line">	top[x]=tp;len[tp]++;</span><br><span class="line">	<span class="keyword">if</span> (son[x]) Dfs2(son[x],tp);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt)</span><br><span class="line">		<span class="keyword">if</span> (!top[e[i].to]) Dfs2(e[i].to,e[i].to);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;j)&lt;=n;j++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			f[i][j]=f[f[i][j<span class="number">-1</span>]][j<span class="number">-1</span>];</span><br><span class="line">	highbit[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		highbit[i]=highbit[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (top[i]!=i) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">int</span> x,y=len[i];now=now+y<span class="number">-1</span>;</span><br><span class="line">		idx[i]=now;val[now]=i;x=i;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;y;j++)</span><br><span class="line">			x=f[x][<span class="number">0</span>],val[now-j]=x;</span><br><span class="line">		x=i;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;y;j++)</span><br><span class="line">			x=son[x],val[now+j]=x;</span><br><span class="line">		now=now+y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Ask</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (k&gt;=dep[x]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (!k) <span class="keyword">return</span> x;</span><br><span class="line">	x=f[x][highbit[k]];</span><br><span class="line">	<span class="keyword">int</span> lft=k-(<span class="number">1</span>&lt;&lt;highbit[k])-(dep[x]-dep[top[x]]);</span><br><span class="line">	<span class="keyword">return</span> val[idx[top[x]]-lft];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">		Add_Edge(u,v);</span><br><span class="line">		Add_Edge(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	Dfs1(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	Dfs2(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	Prepare();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x,k;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;k);</span><br><span class="line">		x^=lastans,k^=lastans;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,lastans=Ask(x,k));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优化以深度为下标的可合并信息"><a href="#优化以深度为下标的可合并信息" class="headerlink" title="优化以深度为下标的可合并信息"></a>优化以深度为下标的可合并信息</h3><p>思想如<code>dsu on tree</code>，先直接继承重儿子的信息，再暴力合并轻儿子的信息。时间复杂度$O(n)$。</p>
+<p>由于是合并深度相关的信息，只需要数组位移即可。这里用指针实现。具体来说，先定义一个指针<code>int *p</code>，先让<code>p=new int[N]</code>，申请$N$个连续的内存空间，其实就是数组啦；然后先让其预留出第一个节点所需空间<code>f[1]=p</code>，再让<code>p</code>移到下一次的起始位置，这里由于是由深度为下标，所以直接令<code>p=p+len[1]</code>。每次递归一个子树的时候，先预留处子树最多需要的空间，即它的长链长度，再进行合并。</p>
+<p>因为位移的缘故，所以空间复杂度也是$O(n)$的。</p>
+<p>注意：一般来说，长链剖分优化的$Dp$是及时统计的，就是事后不能查找。</p>
+<p>例题：<a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1981" target="_blank" rel="noopener">1981 [CF1009F]Dominant Indices</a></p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1000005</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,nxt;</span><br><span class="line">&#125;e[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> h[N],cnt;</span><br><span class="line"><span class="keyword">int</span> n,top[N];</span><br><span class="line"><span class="keyword">int</span> dep[N],son[N];</span><br><span class="line"><span class="keyword">int</span> mxd[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    e[++cnt]=(Edge)&#123;y,h[x]&#125;;</span><br><span class="line">    h[x]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dfs1</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    dep[x]=mxd[x]=dep[fa]+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt) &#123;</span><br><span class="line">        <span class="keyword">int</span> y=e[i].to;</span><br><span class="line">        <span class="keyword">if</span> (y==fa) <span class="keyword">continue</span>;</span><br><span class="line">        Dfs1(y,x);</span><br><span class="line">        <span class="keyword">if</span> (mxd[y]&gt;mxd[x]) &#123;</span><br><span class="line">            mxd[x]=mxd[y];</span><br><span class="line">            son[x]=y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dfs2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> tp)</span> </span>&#123;</span><br><span class="line">    top[x]=tp;</span><br><span class="line">    <span class="keyword">if</span> (son[x]) Dfs2(son[x],tp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt)</span><br><span class="line">        <span class="keyword">if</span> (!top[e[i].to]) Dfs2(e[i].to,e[i].to);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> *id,*f[N],ans[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    f[x][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (son[x]) &#123;</span><br><span class="line">        f[son[x]]=f[x]+<span class="number">1</span>;</span><br><span class="line">        Solve(son[x],x);</span><br><span class="line">        ans[x]=ans[son[x]]+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt) &#123;</span><br><span class="line">        <span class="keyword">int</span> y=e[i].to;</span><br><span class="line">        <span class="keyword">if</span> (y==fa||y==son[x]) <span class="keyword">continue</span>;</span><br><span class="line">        f[y]=id;</span><br><span class="line">        id+=mxd[y]-dep[y]+<span class="number">1</span>;</span><br><span class="line">        Solve(y,x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=mxd[y]-dep[y];j++) &#123;</span><br><span class="line">            f[x][j+<span class="number">1</span>]+=f[y][j];</span><br><span class="line">            <span class="keyword">if</span> (f[x][j+<span class="number">1</span>]&gt;f[x][ans[x]]||(f[x][j+<span class="number">1</span>]==f[x][ans[x]]&amp;&amp;j+<span class="number">1</span>&lt;ans[x]))</span><br><span class="line">                ans[x]=j+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (f[x][ans[x]]==<span class="number">1</span>) ans[x]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> u,v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">        Add_Edge(u,v);</span><br><span class="line">        Add_Edge(v,u);</span><br><span class="line">    &#125;</span><br><span class="line">    Dfs1(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    Dfs2(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    id=<span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">    f[<span class="number">1</span>]=id;</span><br><span class="line">    id+=mxd[<span class="number">1</span>];</span><br><span class="line">    Solve(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>相关题目：</p>
+<p><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1273" target="_blank" rel="noopener">1273 [BZOJ3653]谈笑风生</a></p>
+<p><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1959" target="_blank" rel="noopener">1959 [BZOJ4543]旅馆Hotel加强版</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/2019.03.15 博弈论/" rel="next" title="博弈论">
+                <i class="fa fa-chevron-left"></i> 博弈论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/21/2019.03.19 中国剩余定理与Lucas定理/" rel="prev" title="中国剩余定理与Lucas定理">
+                中国剩余定理与Lucas定理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="TbYangZ">
+            
+              <p class="site-author-name" itemprop="name">TbYangZ</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#树链剖分的两种形式"><span class="nav-number">1.</span> <span class="nav-text">树链剖分的两种形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重链剖分"><span class="nav-number">1.1.</span> <span class="nav-text">重链剖分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长链剖分"><span class="nav-number">1.2.</span> <span class="nav-text">长链剖分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长链剖分的性质"><span class="nav-number">2.</span> <span class="nav-text">长链剖分的性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长链剖分的应用"><span class="nav-number">3.</span> <span class="nav-text">长链剖分的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#求k级祖先"><span class="nav-number">3.1.</span> <span class="nav-text">求k级祖先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化以深度为下标的可合并信息"><span class="nav-number">3.2.</span> <span class="nav-text">优化以深度为下标的可合并信息</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TbYangZ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
