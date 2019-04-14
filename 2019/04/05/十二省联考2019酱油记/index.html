@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="TbYangZ&#39;s blog">
 <meta property="og:description" content="在中考前去省选玩一趟。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-07T12:51:59.621Z">
+<meta property="og:updated_time" content="2019-04-09T15:47:30.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="十二省联考2019酱油记">
 <meta name="twitter:description" content="在中考前去省选玩一趟。">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-07 20:51:59" itemprop="dateModified" datetime="2019-04-07T20:51:59+08:00">2019-04-07</time>
+                <time title="修改时间：2019-04-09 23:47:30" itemprop="dateModified" datetime="2019-04-09T23:47:30+08:00">2019-04-09</time>
               
             
           </span>
@@ -470,14 +470,14 @@
 </blockquote>
 <p>以后对于多组数据，数组一定全清空！就这样原本的暴力分40分就这样没了。。。</p>
 <p>T3，骗分过样例（消失的题面数论专题）。之前看过消失的题面，一样的是看数据猜题意。</p>
-<p>第一种数据<code>1_998244353</code>，看输入数据，第一行改组数据的类型，这就不说了。第二行空行，第三行<code>100000</code>，一看就是数据组数。接下来才是重头戏，输入<code>0</code>时输出<code>1</code>，输入<code>1</code>时输出<code>19</code>，输入<code>2</code>时输出<code>361</code>…初步猜想是$19^x$，用计算器算了以下，接下来几个都符合这个规律。然后找模数，<code>1_998244353</code>，嗯…<code>998244353</code>，这就是个素数，模数难道就是这个？写完后来测了测，发现就是这个完全没问题。好的，看第2组数据，快速幂还能应对。第3组数据，这是什么鬼？！输入<code>long long</code>都存不下。有一想<code>998244353</code>不是素数吗？可以用欧拉定理的推论：</p>
+<p>第一种数据<code>1_998244353</code>，看输入数据，第一行该组数据的类型，这就不说了。第二行空行，第三行<code>100000</code>，一看就是数据组数。接下来才是重头戏，输入<code>0</code>时输出<code>1</code>，输入<code>1</code>时输出<code>19</code>，输入<code>2</code>时输出<code>361</code>…初步猜想是$19^x$，用计算器算了以下，接下来几个都符合这个规律。然后找模数，<code>1_998244353</code>，嗯…<code>998244353</code>，这就是个素数，模数难道就是这个？写完后来测了测，发现就是这个完全没问题。好的，看第2组数据，快速幂还能应对。第3组数据，这是什么鬼？！输入<code>long long</code>都存不下。有一想<code>998244353</code>不是素数吗？可以用欧拉定理的推论：</p>
 <script type="math/tex; mode=display">
 a^b\equiv a^{b\,\text{mod}\,\varphi(p)}\,\text{mod}\,p</script><p>可以对输入数据边读入边取模，这样就不会炸了。好的，12分到手。</p>
 <p>第二种数据<code>1?</code>，结合前面的经验，<code>?</code>应该是模数，但是不确定。虽然可以暴力去找，但觉得太麻烦，包括下一种数据都没有去找。</p>
 <p>第三种数据<code>1?+</code>，同样也是模数不确定，但是数据范围大了，就不能暴力去找。</p>
 <p>第四种数据<code>1wa_998244353</code>，同样结合前面，模数确定但是<code>wa</code>了。再结合数据和提示（对<code>int</code>的算术溢出）可以联想到应该是用了<code>int</code>做乘法，然后就溢出得到的结果。但是没想到的是竟然是只能用朴素的乘法。下一个数据范围大了，据下午的讲题，好像是去找循环节，然后由于生日悖论保证时间复杂度…记不清了，反正是一种玄学方法。到此为止，<code>1</code>开头的数据种类就结束了。</p>
 <p>第五种数据<code>2p</code>，看不懂。看数据<code>2 10</code>，输出<code>pp.p.p...</code>，于是盲猜应该判断自然数区间<code>[2,10]</code>的数是否具有某种特征。数了数，发现<code>2,3,4,5,6,7,8,9,10</code>中只有<code>2,3,5,7</code>有一个<code>p</code>的标记。共同性质？只有都是质数了吧。顺着这个思路往下想，发现下面几组数据都是一样的，再加之<code>p</code>是质数英文<code>prime</code>的开头字母，基本就确定了结论。于是开始着手打线性筛。看下面几组数据，又是那么大的范围（其实没有那么大，只是数字大了点而已$r-l$比较小，但还是没看出来），果断放弃接下来的数据点。</p>
-<p>第六种数据<code>2u</code>，结合前面的质数和输出的<code>+-0</code>，马上就想到了莫比乌斯函数$\mu(x)$，因为只有它有<code>+-0</code>三种取值。写完线筛后直接放弃后面几个大的数据点。</p>
+<p>第六种数据<code>2u</code>，结合前面的质数和输出的<code>+-0</code>，马上就想到了莫比乌斯函数$\mu(x)$，因为只有它有<code>1 -1 0</code>三种取值。写完线筛后直接放弃后面几个大的数据点。</p>
 <p>第七种数据<code>2g</code>，第八种数据<code>2g?</code>，根据前面的经验，加之输入的三个数<code>l r p</code>，可以确定是判断自然数<code>[l,r]</code>是否有模<code>p</code>的原根，但是不会啊！果断放弃。</p>
 <p><del>想知道以后省选会不会有交互题。</del></p>
 <p>据说T3出题人写了300+的代码，应该Day2码量会比较小吧（flag）。</p>
