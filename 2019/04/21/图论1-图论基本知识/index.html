@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="0x01 图的存储方式一般来说,图都是用直观的图像来表示的,但计算机里就不能这样表示与存储.一般的有以下3中存储方式. 邻接矩阵 设图$G=$,$V=\{v_1,v_2,\dots,v_n\}$,则图$G$的邻接矩阵$ A[i][j] $,若边 $ (v_i,v_j)\in E$,即$v_i$与$v_j$之间有边相连,则$ A[i][j]=1 $ ,否则  $ A [ i ] [ j ] = 0">
+  <meta name="description" content="对于图来说有很多相关的知识.本文就讲解一些比较散乱的知识,有图的存储方式,二分图判定与拓扑排序和关键路径三个部分.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论1-图论基本知识">
 <meta property="og:url" content="https://TbYangZ.github.io/2019/04/21/图论1-图论基本知识/index.html">
 <meta property="og:site_name" content="TbYangZ&#39;s blog">
-<meta property="og:description" content="0x01 图的存储方式一般来说,图都是用直观的图像来表示的,但计算机里就不能这样表示与存储.一般的有以下3中存储方式. 邻接矩阵 设图$G=$,$V=\{v_1,v_2,\dots,v_n\}$,则图$G$的邻接矩阵$ A[i][j] $,若边 $ (v_i,v_j)\in E$,即$v_i$与$v_j$之间有边相连,则$ A[i][j]=1 $ ,否则  $ A [ i ] [ j ] = 0">
+<meta property="og:description" content="对于图来说有很多相关的知识.本文就讲解一些比较散乱的知识,有图的存储方式,二分图判定与拓扑排序和关键路径三个部分.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论1-图论基本知识/邻接表.png">
-<meta property="og:updated_time" content="2019-04-21T08:38:12.208Z">
+<meta property="og:updated_time" content="2019-04-21T15:03:28.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论1-图论基本知识">
-<meta name="twitter:description" content="0x01 图的存储方式一般来说,图都是用直观的图像来表示的,但计算机里就不能这样表示与存储.一般的有以下3中存储方式. 邻接矩阵 设图$G=$,$V=\{v_1,v_2,\dots,v_n\}$,则图$G$的邻接矩阵$ A[i][j] $,若边 $ (v_i,v_j)\in E$,即$v_i$与$v_j$之间有边相连,则$ A[i][j]=1 $ ,否则  $ A [ i ] [ j ] = 0">
+<meta name="twitter:description" content="对于图来说有很多相关的知识.本文就讲解一些比较散乱的知识,有图的存储方式,二分图判定与拓扑排序和关键路径三个部分.">
 <meta name="twitter:image" content="https://tbyangz.github.io/2019/04/21/图论1-图论基本知识/邻接表.png">
 
 
@@ -388,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2019-04-21 12:04:41 / 修改时间：16:38:12" itemprop="dateCreated datePublished" datetime="2019-04-21T12:04:41+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-21 12:04:41 / 修改时间：23:03:28" itemprop="dateCreated datePublished" datetime="2019-04-21T12:04:41+08:00">2019-04-21</time>
             
 
             
@@ -444,26 +444,22 @@
       
 
       
-        <h2 id="0x01-图的存储方式"><a href="#0x01-图的存储方式" class="headerlink" title="0x01 图的存储方式"></a>0x01 图的存储方式</h2><p>一般来说,图都是用直观的图像来表示的,但计算机里就不能这样表示与存储.一般的有以下3中存储方式.</p>
-<p><strong>邻接矩阵</strong></p>
-<p>设图$G=<v,e>$,$V=\{v_1,v_2,\dots,v_n\}$,则图$G$的邻接矩阵$ A[i][j] $,若边 $ (v_i,v_j)\in E$,即$v_i$与$v_j$之间有边相连,则$ A[i][j]=1 $ ,否则  $ A [ i ] [ j ] = 0 $.在带权图中通常用该边的权值作为矩阵的值,若不存在连边,则用正无穷代替.</v,e></p>
+        <p>对于图来说有很多相关的知识.本文就讲解一些比较散乱的知识,有图的存储方式,二分图判定与拓扑排序和关键路径三个部分.</p>
+<a id="more"></a>
+<h2 id="0x01-图的存储方式"><a href="#0x01-图的存储方式" class="headerlink" title="0x01 图的存储方式"></a>0x01 图的存储方式</h2><p>一般来说,图都是用直观的图像来表示的,但计算机里就不能这样表示与存储.一般的有以下3中存储方式.</p>
+<h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>设图$G= &lt; V,E &gt;,V=\{v_1,v_2,\dots,v_n\}$,则图$G$的邻接矩阵$A[i][j]$,若边$(v_i,v_j)\in E$,即$v_i$与$v_j$之间有边相连,则$A[i][j]=1$ ,否则$A[i][j]=0$.在带权图中通常用该边的权值作为矩阵的值,若不存在连边,则用正无穷代替.</p>
 <p>这种做法空间复杂度是$O(n^2)$.在C++中,可以用<strong>STL vector</strong>来优化空间.一个很简单的想法就是对于每个点,开一个数组记录它能到达的点.直接这样做,空间复杂度并没有优化,但如果动态开空间的话,就会有极大的改进.</p>
 <p>具体做法就是对每个点开一个<strong>vector</strong>,将该点能到达的点<code>push_back</code>进该点所代表的<strong>vector</strong>.遍历时就直接从0开始到<code>v[x].size()-1</code>就行了,其中每个点就是<code>v[x][i]</code>.</p>
 <p>在带权图中,<strong>vector</strong>中所存的就不是一个数,而是一个结构体,存储到这个点的这条边的信息.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	v[x].push_back(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(<span class="keyword">int</span>)v[x].size();i++) &#123;</span><br><span class="line">	<span class="keyword">int</span> y=v[x][i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>邻接表</li>
-</ul>
-<p>邻接表就是<strong>vector</strong>存图的指针实现.对于每个点,记录一个<code>head</code>数组,表示从该点引出去的点所代表的节点.具体图像如下：</p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>邻接表就是<strong>vector</strong>存图的指针实现.对于每个点,记录一个<code>head</code>数组,表示从该点引出去的点所代表的节点.具体图像如下：</p>
 <p><img src="邻接表.png" alt="邻接表"></p>
 <p>指针对萌新不太友好,所以不太推荐这种写法.</p>
-<p><strong>前向星</strong></p>
-<blockquote>
+<h3 id="前向星"><a href="#前向星" class="headerlink" title="前向星"></a>前向星</h3><blockquote>
 <p>读入每条边的信息,将边存放在数组中,把数组中的边按照起点顺序排序,前向星就构造完了.通常用在点的数目太多,或两点之间有多条弧的时候.一般在别的数据结构不能使用的时候才考虑用前向星.除了不能直接用起点终点定位以外,前向星几乎是完美的.———摘自百度百科</p>
 </blockquote>
 <p>一般来说不会用.最常用的是下面这种存图方式.</p>
-<p><strong>链式前向星</strong></p>
-<p>邻接表用指针,但是实际上可以不用指针,用数组模拟链表不就万事大吉了吗?所以就有人发明了链式前向星.</p>
+<h3 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h3><p>邻接表用指针,但是实际上可以不用指针,用数组模拟链表不就万事大吉了吗?所以就有人发明了链式前向星.</p>
 <p>实际上任然是把边存在一个数组里,这一次不排序,而是在每个节点上增加了一个<code>next</code>域.这个<code>next</code>域是指向下一条所遍历的边的编号(其实就是上一次所加的边),建好之后直接跳<code>next</code>就可以遍历的该点所连接的点了.然后与邻接表一样,有一个<code>head</code>数组,记录每一个点的最后一条边的编号,需要遍历的时候,直接从<code>head</code>开始,往回一步一步跳<code>next</code>,最终遍历到所有的点.</p>
 <p>说了那么多,来看看具体的实现吧.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add_Edge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">     cnt++;             <span class="comment">//1</span></span><br><span class="line">     e[cnt].to=y;       <span class="comment">//2</span></span><br><span class="line">     e[cnt].next=head[x]<span class="comment">//3</span></span><br><span class="line">     head[x]=cnt;       <span class="comment">//4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=head[x];i;i=e[i].next) &#123;</span><br><span class="line">     <span class="keyword">int</span> y=e[i].to;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -474,8 +470,7 @@
 <li>这条边的<code>next</code>为上一次的<code>head[x]</code>,由于<code>head[x]</code>记录的是最后所加的边的编号,有因为<code>next</code>所记录的是上一条所加的边的编号,所以直接让<code>next=head[x]</code>就可以了</li>
 <li>更新<code>head[x]</code>,因为从<code>x</code>引出的最后一条边已经不是原来的<code>head[x]</code>了,有一条新的边加进来,而这条新边的编号就是<code>cnt</code>,所以直接让<code>head[x]=cnt</code>就可以完成更新</li>
 </ol>
-<p><strong>线段树优化建图</strong></p>
-<p>对于这样一种建图方式：将区间$[a,b]$内的每个点向区间$[c,d]$内的每个点都连一条边,如果用朴素的方式,建完图肯定会超时.所以我们需要用在处理区间问题上的神器——线段树.</p>
+<h3 id="线段树优化建图"><a href="#线段树优化建图" class="headerlink" title="线段树优化建图"></a>线段树优化建图</h3><p>对于这样一种建图方式：将区间$[a,b]$内的每个点向区间$[c,d]$内的每个点都连一条边,如果用朴素的方式,建完图肯定会超时.所以我们需要用在处理区间问题上的神器——线段树.</p>
 <p>我们需要两棵线段树.一棵线段树上每个节点管它所代表的区间的入点,记作<code>A</code>树,另一棵表示该区间的出点,记作<code>B</code>树.</p>
 <ol>
 <li>我们需要将两个平行节点(代表的区间相同的节点)之间连0边</li>
@@ -488,8 +483,7 @@
 <p>根据二分图的性质,一个图是二分图的充要条件是不存在奇环.因此就有一个初步的算法,就是利用染色法,一开始随便选择一个点,随意确定一种颜色,对于其相邻的点染不同的颜色,若遇到已经染过色的点,如果它的染色与它将要染的颜色一致,则跳过,否则可以判定这张图不是二分图.</p>
 <p>由于搜索过程用<code>Dfs</code>容易爆栈,所以通常用<code>Bfs</code>实现.因为图可能不连通,所以对于每一个联通块都要搜索.时间复杂度为$O(n)$.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Bfs</span><span class="params">(<span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	q.push(s);</span><br><span class="line">	col[s]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();</span><br><span class="line">		q.pop();vis[x]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt) &#123;</span><br><span class="line">			<span class="keyword">int</span> y=e[i].to;</span><br><span class="line">			<span class="keyword">if</span> (!col[y]||col[y]==<span class="number">1</span>-col[x]) col[y]=<span class="number">1</span>-col[x];</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Judge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(col,<span class="number">0</span>,<span class="keyword">sizeof</span>(col));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!vis[i])</span><br><span class="line">			<span class="keyword">if</span> (!Bfs(i)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="0x03-拓扑排序与关键路径"><a href="#0x03-拓扑排序与关键路径" class="headerlink" title="0x03 拓扑排序与关键路径"></a>0x03 拓扑排序与关键路径</h2><p><strong>拓扑排序</strong></p>
-<p>一个有向无环图(Directed acyclic graph,DAG)定义为一个有向图且不存在一个点通过其他点能够到达自己的路径.</p>
+<h2 id="0x03-拓扑排序与关键路径"><a href="#0x03-拓扑排序与关键路径" class="headerlink" title="0x03 拓扑排序与关键路径"></a>0x03 拓扑排序与关键路径</h2><h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p>一个有向无环图(Directed acyclic graph,DAG)定义为一个有向图且不存在一个点通过其他点能够到达自己的路径.</p>
 <p>通常一个有向无环图可以描述一个工程.对于一个项目,只有完成了它的前置项目才能开始做这个项目,对于没有前置项目的项目可以直接开始做.而这样的一种可能的完成所有项目的顺序,称之为拓扑序.所谓对DAG图的拓扑排序就是求它的一种拓扑序.</p>
 <p>具体方法就是先统计每个点的入度(指向该点的边的数量),然后每次扫描$n$个点.找出其中入度为0的点,记录答案,并将其指向的边的节点的入度减1.这样的时间复杂度是$O(n^2)$的,每次对$n$个点扫描,执行$n$次.这样显然是不优秀的.</p>
 <p>我们考虑将所有的候选节点(入度为0的点)放进一个数据结构里面,通常用栈(Stack)或者队列(Queue),每次取出栈顶或队头的节点,记录答案,并将其周围的点的入度减1,满足入度为0,则可以加入到候选节点里面去.如此循环往复,直到栈或队列为空.</p>
@@ -497,8 +491,7 @@
 <p>但是可能有人就会有疑问,若题目要求最小字典序呢?第一种是可以做到最小字典序的,但第二种可不可以呢?也是可以的,只不过不是用普通的数据结构去维护了,而是用一个优先队列去维护,最小字典序就是最小优先队列,最大字典序就是最大优先队列,键值就是每个点的编号.每次取出队头作为扩展的点,就能保证最小字典序.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Toposort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	priority_queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">if</span> (!du[i]) q.push(i);</span><br><span class="line">	tot=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.top();q.pop();</span><br><span class="line">		ans[++tot]=x;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt) &#123;</span><br><span class="line">			<span class="keyword">int</span> y=e[i].to;du[y]--;</span><br><span class="line">			<span class="keyword">if</span> (!du[y]) q.push(y);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>时间复杂度为$O(n\log n)$.</p>
-<p><strong>关键路径</strong></p>
-<p>在一个工程中,总共花费的时间就是其中最长的一条工序的时间.映射到图论中就是关键路径问题.定义一个带权DAG的关键路径为其中最长的一条链.</p>
+<h3 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h3><p>在一个工程中,总共花费的时间就是其中最长的一条工序的时间.映射到图论中就是关键路径问题.定义一个带权DAG的关键路径为其中最长的一条链.</p>
 <p>具体做法就是在拓扑序上<code>Dp</code>.设<code>f[x]</code>为以<code>x</code>为终点的最长路径,则<code>f[x]=max(f[y]+e[w])</code>,其中<code>w</code>为<code>y-&gt;x</code>的边.在拓扑排序时更新能做到时间复杂度为$O(n)$.如果将拓扑序求出来,再做<code>Dp</code>,时间复杂度为$O(n^2)$.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">if</span> (!du[i]) q.push(i);</span><br><span class="line">	<span class="keyword">int</span> ans=-INF;</span><br><span class="line">	<span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> x=q.front();q.pop();</span><br><span class="line">		ans=max(ans,f[x]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x];i;i=e[i].nxt) &#123;</span><br><span class="line">			<span class="keyword">int</span> y=e[i].to;</span><br><span class="line">			f[y]=max(f[y],f[x]+e[i].weight);</span><br><span class="line">			du[y]--;<span class="keyword">if</span>(!du[y])q.push(y);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -706,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-图的存储方式"><span class="nav-text">0x01 图的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-二分图判定"><span class="nav-text">0x02 二分图判定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-拓扑排序与关键路径"><span class="nav-text">0x03 拓扑排序与关键路径</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-图的存储方式"><span class="nav-text">0x01 图的存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#邻接矩阵"><span class="nav-text">邻接矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邻接表"><span class="nav-text">邻接表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前向星"><span class="nav-text">前向星</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式前向星"><span class="nav-text">链式前向星</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树优化建图"><span class="nav-text">线段树优化建图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-二分图判定"><span class="nav-text">0x02 二分图判定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-拓扑排序与关键路径"><span class="nav-text">0x03 拓扑排序与关键路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拓扑排序"><span class="nav-text">拓扑排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键路径"><span class="nav-text">关键路径</span></a></li></ol></li></ol></div>
             
 
           </div>
