@@ -103,14 +103,14 @@
 <meta property="og:site_name" content="TbYangZ&#39;s blog">
 <meta property="og:description" content="0x11  树与二叉树的存储方法树作为一种特殊的图,同样也可以用图的存储方式进行存储.但是由于树的不存在环的特殊性,对于树由更特殊的方式可以存储它. 对于任意树,可以记录每个节点的儿子的编号,也可以记录父亲节点的编号(默认为有根树,无根树可以转化为有根树). 对于二叉树,可以记录每个节点的左右儿子的编号. 即使树有其特殊的存储方式,但在一般的问题中,直接用图的存储方式,在Dfs过程中记录一个父亲,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/图论2-树的相关算法/TarjanLca.png">
-<meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/图论2-树的相关算法/欧拉序.png">
-<meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/图论2-树的相关算法/同构图.png">
-<meta property="og:updated_time" content="2019-04-21T04:19:33.823Z">
+<meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/TarjanLca.png">
+<meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/欧拉序.png">
+<meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/同构图.png">
+<meta property="og:updated_time" content="2019-04-21T08:37:49.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论2-树的相关算法">
 <meta name="twitter:description" content="0x11  树与二叉树的存储方法树作为一种特殊的图,同样也可以用图的存储方式进行存储.但是由于树的不存在环的特殊性,对于树由更特殊的方式可以存储它. 对于任意树,可以记录每个节点的儿子的编号,也可以记录父亲节点的编号(默认为有根树,无根树可以转化为有根树). 对于二叉树,可以记录每个节点的左右儿子的编号. 即使树有其特殊的存储方式,但在一般的问题中,直接用图的存储方式,在Dfs过程中记录一个父亲,">
-<meta name="twitter:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/图论2-树的相关算法/TarjanLca.png">
+<meta name="twitter:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/TarjanLca.png">
 
 
 
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2019-04-21 12:07:49 / 修改时间：12:19:33" itemprop="dateCreated datePublished" datetime="2019-04-21T12:07:49+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-21 12:07:49 / 修改时间：16:37:49" itemprop="dateCreated datePublished" datetime="2019-04-21T12:07:49+08:00">2019-04-21</time>
             
 
             
@@ -505,14 +505,14 @@ f[i][j]=f[f[i][j-1]][j-1]</script><p>即将$2^j$拆分为两个$2^{j-1}$计算,�
 <p><strong>Tarjan LCA</strong></p>
 <p>有时候询问次数很多,点数也很多,用倍增法时间复杂度上就吃不消了.这时候如果题目没有要求强制在线,那么可以用<code>Tarjan LCA</code>.它的时间复杂度为$O(n+m)$,其中$n$为点数,$m$为询问数.唯一的缺点就是要离线处理.</p>
 <p>如果我们将所有的询问离线下来,将其用类似链式前向星的方式,对于每次询问的点都加入这个询问.由于两个点一定是它们的LCA的两子树的节点,所以可以对整棵树进行一次<code>Dfs</code>,对于每个节点,它的子树遍历完后,将这棵子树与当前节点合并为一个节点,退出的时候标记这个点已经被访问过.在退出之前,扫描与这个点有关的节点,若它的询问点也被遍历到,那么答案就是询问点当前所在集合的根节点.</p>
-<p><img src="图论2-树的相关算法/TarjanLca.png" alt="TarjanLCA"></p>
+<p><img src="TarjanLca.png" alt="TarjanLCA"></p>
 <p>如图,设当前访问的点为<code>C</code>,已经将<code>G</code>子树合并到<code>C</code>上了,<code>E</code>子树合并到<code>A</code>上,并未访问<code>F</code>子树,那么递归<code>D</code>时,若<code>D</code>有一个询问在<code>G</code>子树中,那么此时答案显然就是<code>C</code>,也就是那个询问点合并到的根节点；若有询问在<code>E</code>中,那么答案也就是<code>A</code>,同样是询问点合并到的根节点；若有个询问在<code>F</code>子树中,由于并未遍历到<code>F</code>子树中的节点,所以并不会更新答案.至于正确性,可以感性理解一下.</p>
 <p>对于如何合并,可以使用并查集去维护.每次递归完一棵子树后将其向其父亲合并,查询时直接找根就行了.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>欧拉序LCA</strong></p>
 <p>所谓欧拉序LCA是随手取的名字,实际上是LCA向RMQ转化的一个过程.利用欧拉序,将LCA问题转化为RMQ问题.再利用RMQ进行$O(!)$查询.</p>
 <p>所谓欧拉序,就是再<code>Dfs</code>过程中,到达一个点,就将这个点记录下来,每次都记录.就比如说下图的一种可能的欧拉序就是<code>1 2 3 2 4 2 5 2 1 9 6 9 7 9 1 8 1</code>.</p>
-<p><img src="图论2-树的相关算法/欧拉序.png" alt="欧拉序"></p>
+<p><img src="欧拉序.png" alt="欧拉序"></p>
 <p>容易知道,欧拉序的长度为$2n-1$.</p>
 <p>定义每个节点的位置为其第一次出现的位置,那么通过观察可以知道,两个节点的LCA为这两个节点的位置作为左右端点组成的区间中,深度最小的节点.比如说<code>3</code>与<code>5</code>的LCA,它们第一次出现的位置分别为$3$与$7$,而区间$[3,7]$中深度最小的节点就是$2$,而通过观察图可以发现,它们的LCA的确是$2$.因此可以通过遍历这棵树求得其欧拉序,再用解决RMQ问题的常用方式<code>ST</code>表进行处理.这样的时间复杂度为$O(n\log n)-O(1)$.</p>
 <p>对于RMQ问题,由于在树上的特殊性,所以相邻节点的深度差的绝对值是不超过1的,这就可以用$\pm$RMQ的解决方式,时间复杂度为$O(n)-O(1)$.</p>
@@ -520,7 +520,7 @@ f[i][j]=f[f[i][j-1]][j-1]</script><p>即将$2^j$拆分为两个$2^{j-1}$计算,�
 <h2 id="0x15-树哈希与树的同构"><a href="#0x15-树哈希与树的同构" class="headerlink" title="0x15 树哈希与树的同构"></a>0x15 树哈希与树的同构</h2><p><strong>树的同构</strong></p>
 <p>对于两个整数值可以是相同的,也可以是不同的.与之对应的是,两张图怎么定义相同？在这里,我们不称两张图相同,而称之为两张图同构.具体来说就是对于第一张图的每个节点$u_i$,能够找到一个两张图的一一映射的关系,使得第二张图的每个节点$v_j$有$v_j=f(u_i)$,且原来图中的边$(u_i,u_j)$在映射后到另一张图上存在边$(f(u_i),f(u_j))$,原来图中没有的边$(u_i,u_j)$映射到另一张图后没有边$(f(u_i),f(u_j))$,那么就称这两张图同构.</p>
 <p>比如下面两张图就是同构的,可以找到一个映射关系$(1,3)(2,5)(3,4)(4,2)(5,1)$,使得每一条在前一张图中出现的边在后一张图中任然存在,前一张图不存在的边后一张图任然不存在.</p>
-<p><img src="图论2-树的相关算法/同构图.png" alt="同构图"></p>
+<p><img src="同构图.png" alt="同构图"></p>
 <p>但是很不幸的是,两个图的同构目前还没有多项式算法.但是由于树的良好性质,树的同构有较好时间复杂度的算法.</p>
 <blockquote>
 <p>树的最小表示法</p>
@@ -757,7 +757,7 @@ Hsum_i=(Hsum_i\times q\,\text{xor}\,H_{i-1})\,\text{mod}\,p\,\,\,i=1,2,\cdots,k
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11-树与二叉树的存储方法"><span class="nav-number">1.</span> <span class="nav-text">0x11  树与二叉树的存储方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12-树与二叉树的遍历"><span class="nav-number">2.</span> <span class="nav-text">0x12  树与二叉树的遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13-树的直径与重心"><span class="nav-number">3.</span> <span class="nav-text">0x13 树的直径与重心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14-最近公共祖先LCA"><span class="nav-number">4.</span> <span class="nav-text">0x14 最近公共祖先LCA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15-树哈希与树的同构"><span class="nav-number">5.</span> <span class="nav-text">0x15 树哈希与树的同构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16-虚树"><span class="nav-number">6.</span> <span class="nav-text">0x16 虚树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17-笛卡尔树"><span class="nav-number">7.</span> <span class="nav-text">0x17 笛卡尔树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x11-树与二叉树的存储方法"><span class="nav-text">0x11  树与二叉树的存储方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x12-树与二叉树的遍历"><span class="nav-text">0x12  树与二叉树的遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x13-树的直径与重心"><span class="nav-text">0x13 树的直径与重心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x14-最近公共祖先LCA"><span class="nav-text">0x14 最近公共祖先LCA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x15-树哈希与树的同构"><span class="nav-text">0x15 树哈希与树的同构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x16-虚树"><span class="nav-text">0x16 虚树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x17-笛卡尔树"><span class="nav-text">0x17 笛卡尔树</span></a></li></ol></div>
             
 
           </div>
