@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/TarjanLca.png">
 <meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/欧拉序.png">
 <meta property="og:image" content="https://tbyangz.github.io/2019/04/21/图论2-树的相关算法/同构图.png">
-<meta property="og:updated_time" content="2019-04-21T15:45:16.509Z">
+<meta property="og:updated_time" content="2019-04-21T16:16:17.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论2-树的相关算法">
 <meta name="twitter:description" content="树是一种特殊的图,有着许多优美的性质,在OI中也有许多的应用.本文主要讲解树与二叉树的存储方式与遍历,树的直径与重心,最近公共祖先,最后简单介绍虚树与笛卡尔树.">
@@ -390,12 +390,24 @@
                 
               
 
-              <time title="创建时间：2019-04-21 12:07:49 / 修改时间：23:45:16" itemprop="dateCreated datePublished" datetime="2019-04-21T12:07:49+08:00">2019-04-21</time>
+              <time title="创建时间：2019-04-21 12:07:49" itemprop="dateCreated datePublished" datetime="2019-04-21T12:07:49+08:00">2019-04-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-22 00:16:17" itemprop="dateModified" datetime="2019-04-22T00:16:17+08:00">2019-04-22</time>
               
             
           </span>
@@ -535,8 +547,15 @@ f[i][j]=f[f[i][j-1]][j-1]</script><p>即将$2^j$拆分为两个$2^{j-1}$计算,�
 <p>具体过程就是跳链,跳剖分好的链,若它们不在同一条链上,就跳所属链的链头深度大的那个节点,将其跳的链头的父亲,重复这个过程,直到它们在同一条重链上.此时深度小的节点就是原来两个点的LCA.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>动态树LCT求LCA</strong></p>
-<p>用LCT求LCA,时间复杂度是$O(n\log n)-O(\log n)$.具体思路就是将其中一个点,设为<code>x</code>,打通到根(<code>Accsee(x)</code>),再将另一个节点,设为<code>y</code>,在打通到根的过程中记录最后一个转换的节点,那么这个点就是<code>Lca(x,y)</code>.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>用LCT求LCA,时间复杂度是$O(n\log n)-O(\log n)$(由于一开始需要$O(n)$次<code>Link</code>操作).具体思路就是将其中一个点,设为<code>x</code>,打通到根(<code>Accsee(x)</code>),再将另一个节点,设为<code>y</code>,在打通到根的过程中记录最后一个转换的节点,那么这个点就是<code>Lca(x,y)</code>.</p>
+<p>因此,在<code>Access()</code>函数中需要做一些改动,记录最后一个转换节点,并返回这个节点.需要注意的是,在一开始需要将根<code>Makert</code>一下.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Access</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;x;x=f[y=x]) &#123;</span><br><span class="line">		Splay(x);</span><br><span class="line">		c[x][<span class="number">1</span>]=y;</span><br><span class="line">		res=x;<span class="comment">//1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Makert</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	Access(x);</span><br><span class="line">	Splay(x);</span><br><span class="line">	makerv(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Link</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	Makert(x);</span><br><span class="line">	f[x]=y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Lca</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	Access(x);</span><br><span class="line">	<span class="keyword">return</span> Access(y);<span class="comment">//2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解释一下.</p>
+<ol>
+<li>这里记录最后一个变换虚实边的节点,并返回这个节点</li>
+<li>这样的话LCA的过程只有两行,先把一个节点打通到根,再返回另一个节点<code>Access</code>后的值</li>
+</ol>
+<p>感觉用LCT可以做到动态LCA,每次询问指定一个点为根,询问另外两个点的LCA.每次<code>Makert</code>一下根节点就可以了,求法依旧如此.</p>
 <p>通常的题目是不会卡LCA算法的,所以只需掌握前两种即可.</p>
 <h2 id="0x15-树哈希与树的同构"><a href="#0x15-树哈希与树的同构" class="headerlink" title="0x15 树哈希与树的同构"></a>0x15 树哈希与树的同构</h2><h3 id="树的同构"><a href="#树的同构" class="headerlink" title="树的同构"></a>树的同构</h3><p>对于两个整数值可以是相同的,也可以是不同的.与之对应的是,两张图怎么定义相同？在这里,我们不称两张图相同,而称之为两张图同构.具体来说就是对于第一张图的每个节点$u_i$,能够找到一个两张图的一一映射的关系,使得第二张图的每个节点$v_j$有$v_j=f(u_i)$,且原来图中的边$(u_i,u_j)$在映射后到另一张图上存在边$(f(u_i),f(u_j))$,原来图中没有的边$(u_i,u_j)$映射到另一张图后没有边$(f(u_i),f(u_j))$,那么就称这两张图同构.</p>
 <p>比如下面两张图就是同构的,可以找到一个映射关系$(1,3)(2,5)(3,4)(4,2)(5,1)$,使得每一条在前一张图中出现的边在后一张图中任然存在,前一张图不存在的边后一张图任然不存在.</p>
@@ -557,7 +576,7 @@ f[i][j]=f[f[i][j-1]][j-1]</script><p>即将$2^j$拆分为两个$2^{j-1}$计算,�
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="树哈希"><a href="#树哈希" class="headerlink" title="树哈希"></a>树哈希</h3><p>与字符串哈希类似,树哈希也是将一棵树通过某种运算转换为一个整数值.我们可以用类似树上递推的做法求出哈希值.首先肯定如上面一样要对子树的哈希值排序,因为子树顺序并不影响同构.设节点$u$的子树的哈希值排序后分别为$H_1,H_2,\cdots,H_k$,然后就有一个这样的公式：</p>
 <script type="math/tex; mode=display">
-Hash(u)=((((a\times q\,\text{xor}\,H_1\,\text{mod}\,p)\times q\,\text{xor}\,H_2)\,\text{mod}\,p)...</script><p>设$Hsum_i$为$u$的前$i$个节点的哈希值,则可以写成递推形式：</p>
+Hash(u)=((((a\times q\,\text{xor}\,H_1\,\text{mod}\,p)\times q\,\text{xor}\,H_2)\,\text{mod}\,p)...</script><p>设$Hsum_i$为$u$的前$i$个儿子的哈希值,则可以写成递推形式：</p>
 <script type="math/tex; mode=display">
 \begin{cases}
 Hsum_0=a\\
