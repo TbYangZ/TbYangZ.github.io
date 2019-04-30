@@ -1879,7 +1879,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4fc716;
+  background: #eb58ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3017,7 +3017,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 body {
-  background-image: url("http://img.xjh.me/desktop/bg/acg/58102922_p0.jpg");
+  background-image: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
