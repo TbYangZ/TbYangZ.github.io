@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="基本定义必败态与必胜态  无法进行任何移动的局面就是必败态； 可以移动到必败态的局面为必胜态； 所有移动都导致必胜态的局面为必败态">
+  <meta name="description" content="博弈论主要研究公式化了的激励结构间的相互作用,是研究具有斗争或竞争性质现象的数学理论和方法.博弈论考虑游戏中的个体的预测行为和实际行为,并研究它们的优化策略.———百度百科  OI中的博弈论主要讨论各种情况下的必胜必败条件.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习笔记-博弈论">
 <meta property="og:url" content="https://TbYangZ.github.io/2019/03/21/学习笔记-博弈论/index.html">
 <meta property="og:site_name" content="TbYangZ&#39;s blog">
-<meta property="og:description" content="基本定义必败态与必胜态  无法进行任何移动的局面就是必败态； 可以移动到必败态的局面为必胜态； 所有移动都导致必胜态的局面为必败态">
+<meta property="og:description" content="博弈论主要研究公式化了的激励结构间的相互作用,是研究具有斗争或竞争性质现象的数学理论和方法.博弈论考虑游戏中的个体的预测行为和实际行为,并研究它们的优化策略.———百度百科  OI中的博弈论主要讨论各种情况下的必胜必败条件.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-30T16:40:32.847Z">
+<meta property="og:updated_time" content="2019-06-30T04:36:19.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习笔记-博弈论">
-<meta name="twitter:description" content="基本定义必败态与必胜态  无法进行任何移动的局面就是必败态； 可以移动到必败态的局面为必胜态； 所有移动都导致必胜态的局面为必败态">
+<meta name="twitter:description" content="博弈论主要研究公式化了的激励结构间的相互作用,是研究具有斗争或竞争性质现象的数学理论和方法.博弈论考虑游戏中的个体的预测行为和实际行为,并研究它们的优化策略.———百度百科  OI中的博弈论主要讨论各种情况下的必胜必败条件.">
 
 
 
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-01 00:40:32" itemprop="dateModified" datetime="2019-05-01T00:40:32+08:00">2019-05-01</time>
+                <time title="修改时间：2019-06-30 12:36:19" itemprop="dateModified" datetime="2019-06-30T12:36:19+08:00">2019-06-30</time>
               
             
           </span>
@@ -454,58 +454,62 @@
       
 
       
-        <h2 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h2><p><strong>必败态与必胜态</strong></p>
-<ol>
-<li>无法进行任何移动的局面就是必败态；</li>
-<li>可以移动到必败态的局面为必胜态；</li>
-<li>所有移动都导致必胜态的局面为必败态</li>
-</ol>
+        <blockquote>
+<p>博弈论主要研究公式化了的激励结构间的相互作用,是研究具有斗争或竞争性质现象的数学理论和方法.博弈论考虑游戏中的个体的预测行为和实际行为,并研究它们的优化策略.———百度百科</p>
+</blockquote>
+<p>OI中的博弈论主要讨论各种情况下的必胜必败条件.</p>
 <a id="more"></a>
+<h2 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h2><p><strong>必败态与必胜态</strong></p>
+<ol>
+<li>无法进行任何移动的局面就是必败态;</li>
+<li>可以移动到必败态的局面为必胜态;</li>
+<li>所有移动都导致必胜态的局面为必败态.</li>
+</ol>
 <h2 id="基本博弈问题"><a href="#基本博弈问题" class="headerlink" title="基本博弈问题"></a>基本博弈问题</h2><h3 id="巴什博弈"><a href="#巴什博弈" class="headerlink" title="巴什博弈"></a>巴什博弈</h3><p><strong>问题</strong></p>
-<p>有一堆$n$个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取$m$个。取走最后一个物品的人获得胜利。问先手是否必胜。</p>
+<p>有一堆$n$个物品,两个人轮流从这堆物品中取物,规定每次至少取一个,最多取$m$个.取走最后一个物品的人获得胜利.问先手是否必胜.</p>
 <p><strong>分析</strong></p>
-<p>首先最简单的必败态为$n=m+1$，此时不论先手的人取多少个，对方都能取走剩下的个数。若$m+1 | n$，无论先手取多少个，后手都可以把局面变为$m+1 | n$的情况，最终会到$n=m+1$，所以若$n \text{mod} (m+1)=0$，此时一定为必败态。再由必胜态的性质，“可以移动到必败态的局面为必胜态”，可以得到若$n \text{mod} (m+1)\neq 0$，则先手可以将其转化为等于0的情况，即转为必败态，所以这种情况下先手的必胜，否则先手必败。</p>
+<p>首先最简单的必败态为$n=m+1$,此时不论先手的人取多少个,对方都能取走剩下的个数.若$m+1 | n$,无论先手取多少个,后手都可以把局面变为$m+1 | n$的情况,最终会到$n=m+1$,所以若$n \text{mod} (m+1)=0$,此时一定为必败态.再由必胜态的性质,“可以移动到必败态的局面为必胜态”,可以得到若$n \text{mod} (m+1)\neq 0$,则先手可以将其转化为等于0的情况,即转为必败态,所以这种情况下先手的必胜,否则先手必败.</p>
 <h3 id="威佐夫博弈"><a href="#威佐夫博弈" class="headerlink" title="威佐夫博弈"></a>威佐夫博弈</h3><p><strong>问题</strong></p>
-<p>有两堆各若干个物品，两个人轮流从某一堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，取走最后一颗石子的人获得胜利。问先手是否必胜。</p>
+<p>有两堆各若干个物品,两个人轮流从某一堆或同时从两堆中取同样多的物品,规定每次至少取一个,多者不限,取走最后一颗石子的人获得胜利.问先手是否必胜.</p>
 <p><strong>分析</strong></p>
-<p>有结论：第$n$的必败态一定是$(\dfrac{1+\sqrt{5}}{2}n,\dfrac{1+\sqrt{5}}{2}n+n)$，所以判断当前状态$(a,b)(a\le b)$必败只需判断$a$是否等于$\dfrac{(b-a)(1+\sqrt{5})}{2}$。</p>
-<h3 id="Nim博弈"><a href="#Nim博弈" class="headerlink" title="Nim博弈"></a>Nim博弈</h3><p><strong>问题 </strong>有若干堆石子，两个人轮流从中取石子。每堆石子的数量都是有限的，合法的取石子操作是“选择一堆石子并拿走若干颗（不能不拿）”。拿走最后一颗石子的人获得胜利。问先手是否必胜。</p>
+<p>有结论：第$n$的必败态一定是$(\dfrac{1+\sqrt{5}}{2}n,\dfrac{1+\sqrt{5}}{2}n+n)$,所以判断当前状态$(a,b)(a\le b)$必败只需判断$a$是否等于$\dfrac{(b-a)(1+\sqrt{5})}{2}$.</p>
+<h3 id="Nim博弈"><a href="#Nim博弈" class="headerlink" title="Nim博弈"></a>Nim博弈</h3><p><strong>问题 </strong>有若干堆石子,两个人轮流从中取石子.每堆石子的数量都是有限的,合法的取石子操作是“选择一堆石子并拿走若干颗（不能不拿）”.拿走最后一颗石子的人获得胜利.问先手是否必胜.</p>
 <p><strong>分析</strong></p>
-<p>对于一个Nim博弈的局面$(a_1,a_2,\cdots,a_n)$，它是必败态当且仅当$a_1 \text{xor} a_2 \text{xor}\cdots\text{xor} a_n=0$。</p>
+<p>对于一个Nim博弈的局面$(a_1,a_2,\cdots,a_n)$,它是必败态当且仅当$a_1 \text{xor} a_2 \text{xor}\cdots\text{xor} a_n=0$.</p>
 <h3 id="反Nim博弈"><a href="#反Nim博弈" class="headerlink" title="反Nim博弈"></a>反Nim博弈</h3><p><strong>问题</strong></p>
-<p>有若干堆石子，两个人轮流从中取石子。每堆石子的数量都是有限的。合法的取石子操作是“选择一堆石子并拿走若干颗（不能不拿）”。拿走最后一颗石子的人失败。问先手是否必胜。</p>
+<p>有若干堆石子,两个人轮流从中取石子.每堆石子的数量都是有限的.合法的取石子操作是“选择一堆石子并拿走若干颗（不能不拿）”.拿走最后一颗石子的人失败.问先手是否必胜.</p>
 <p><strong>分析</strong></p>
 <p>先手必胜当且仅当一下条件之一满足：</p>
 <ol>
-<li>各堆石子数目异或结果不等于0，且存在有石子数目大于1的石子堆。</li>
-<li>各堆石子数目异或结果等于0，且所有石子堆数目全部为1。</li>
+<li>各堆石子数目异或结果不等于0,且存在有石子数目大于1的石子堆.</li>
+<li>各堆石子数目异或结果等于0,且所有石子堆数目全部为1.</li>
 </ol>
 <h3 id="阶梯博弈"><a href="#阶梯博弈" class="headerlink" title="阶梯博弈"></a>阶梯博弈</h3><p><strong>问题</strong></p>
-<p>有一个阶梯从左至右依次标号为$0$到$n$，$1$到$n$号阶梯上放有一些石子。每次都可以将一个阶梯上的石子向其左侧移动任意个石子，没有可以移动的空间时（及所有石子都位于0时）输。</p>
+<p>有一个阶梯从左至右依次标号为$0$到$n$,$1$到$n$号阶梯上放有一些石子.每次都可以将一个阶梯上的石子向其左侧移动任意个石子,没有可以移动的空间时（及所有石子都位于0时）输.</p>
 <p><strong>分析</strong></p>
 <p>阶梯博弈等价于奇数号位置上的Nim博弈</p>
 <h2 id="有向图游戏"><a href="#有向图游戏" class="headerlink" title="有向图游戏"></a>有向图游戏</h2><p><strong>公平组合游戏ICG</strong></p>
 <p>若一个游戏满足如下条件：</p>
 <ol>
-<li>两名玩家交替行动。</li>
-<li>在游戏进程的任意时刻，可以执行的合法行动与轮到那名玩家无关。</li>
-<li>不能行动者判负。</li>
+<li>两名玩家交替行动.</li>
+<li>在游戏进程的任意时刻,可以执行的合法行动与轮到那名玩家无关.</li>
+<li>不能行动者判负.</li>
 </ol>
-<p>则称该游戏为一个公平组合游戏。</p>
+<p>则称该游戏为一个公平组合游戏.</p>
 <p><strong>有向图游戏</strong></p>
-<p>给定一个有向无环图，图中有唯一的起点，起点上有一个棋子，两名选手交替将这枚棋子沿着有向边的方向移动，无法移动者判负。这样的游戏称为有向图游戏。</p>
-<p>容易知道，所有的ICG都可以转化为有向图游戏。具体来说，将游戏的每个局面看成一个顶点，将其向它能子局面连一条有向边，这样就转化为有向图了。</p>
+<p>给定一个有向无环图,图中有唯一的起点,起点上有一个棋子,两名选手交替将这枚棋子沿着有向边的方向移动,无法移动者判负.这样的游戏称为有向图游戏.</p>
+<p>容易知道,所有的ICG都可以转化为有向图游戏.具体来说,将游戏的每个局面看成一个顶点,将其向它能子局面连一条有向边,这样就转化为有向图了.</p>
 <p><strong>MEX运算</strong></p>
-<p>$\text{MEX} A$表示不属于集合$A$中的最小自然数。如$\text{MEX}\{1,2,3\}=0,\text{MEX}\{0,4,5\}=1,\text{MEX} \emptyset=0$。</p>
+<p>$\text{MEX} A$表示不属于集合$A$中的最小自然数.如$\text{MEX}\{1,2,3\}=0,\text{MEX}\{0,4,5\}=1,\text{MEX} \emptyset=0$.</p>
 <p><strong>SG函数</strong></p>
-<p>对于一个给定的$DAG$图，设$x$连出去的边的顶点为$y_1,y_2,y_3,\cdots,y_k$，定义顶点$x$的$\text{SG}$函数为</p>
+<p>对于一个给定的$DAG$图,设$x$连出去的边的顶点为$y_1,y_2,y_3,\cdots,y_k$,定义顶点$x$的$\text{SG}$函数为</p>
 <script type="math/tex; mode=display">
-\text{SG}(x)=\text{MEX}\{\text{SG}(y_1),\text{SG}(y_2),\text{SG}(y_3),\cdots,\text{SG}(y_k)\}</script><p>特别的，整个图$G$的$\text{SG}$值为起点$s$的$\text{SG}$值，即$\text{SG}(G)=\text{SG}(s)$。</p>
+\text{SG}(x)=\text{MEX}\{\text{SG}(y_1),\text{SG}(y_2),\text{SG}(y_3),\cdots,\text{SG}(y_k)\}</script><p>特别的,整个图$G$的$\text{SG}$值为起点$s$的$\text{SG}$值,即$\text{SG}(G)=\text{SG}(s)$.</p>
 <p><strong>有向图游戏的和</strong></p>
-<p>设有$m$个有向图游戏$G_1,G_2,\cdots,G_m$，定义有向图游戏$G$的每一步为选一个有向图游戏$G_i$，然后行动，则$G$称为有向图游戏$G_1,G_2,\cdots,G_m$的和。</p>
-<p>有向图游戏的和的$\text{SG}$函数值是它的所有子游戏的$\text{SG}$函数值的异或和。</p>
+<p>设有$m$个有向图游戏$G_1,G_2,\cdots,G_m$,定义有向图游戏$G$的每一步为选一个有向图游戏$G_i$,然后行动,则$G$称为有向图游戏$G_1,G_2,\cdots,G_m$的和.</p>
+<p>有向图游戏的和的$\text{SG}$函数值是它的所有子游戏的$\text{SG}$函数值的异或和.</p>
 <script type="math/tex; mode=display">
-\text{SG}(G)=\text{SG}(G_1)\ \text{xor}\ \text{SG}(G_2)\ \text{xor}\cdots\text{xor}\ \text{SG}(G_m)</script><p>容易知道，一个有向图游戏的当前局面必胜当且仅当当前局面的$\text{SG}$值不为$0$；当前局面必败当且仅当当前局面的$\text{SG}$值为$0$。</p>
+\text{SG}(G)=\text{SG}(G_1)\ \text{xor}\ \text{SG}(G_2)\ \text{xor}\cdots\text{xor}\ \text{SG}(G_m)</script><p>容易知道,一个有向图游戏的当前局面必胜当且仅当当前局面的$\text{SG}$值不为$0$；当前局面必败当且仅当当前局面的$\text{SG}$值为$0$.</p>
 
       
     </div>

@@ -105,7 +105,9 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://tbyangz.github.io/2019/04/28/学习笔记-基环树&&圆方树/外向树.png">
 <meta property="og:image" content="https://tbyangz.github.io/2019/04/28/学习笔记-基环树&&圆方树/内向树.png">
-<meta property="og:updated_time" content="2019-04-30T16:40:18.258Z">
+<meta property="og:image" content="https://oj.bashu.com.cn/images/5301-1.png">
+<meta property="og:image" content="https://tbyangz.github.io/2019/04/28/学习笔记-基环树&&圆方树/圆方树.png">
+<meta property="og:updated_time" content="2019-05-04T07:10:09.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习笔记-基环树&amp;&amp;圆方树">
 <meta name="twitter:description" content="基环树是一种特殊的图,在一棵树上加一条边使之有且仅有一个环.故称之为基环树. 圆方树,顾名思义,是由圆点与方点组成的树,是处理仙人掌图与任意无向图的有利工具.">
@@ -406,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-01 00:40:18" itemprop="dateModified" datetime="2019-05-01T00:40:18+08:00">2019-05-01</time>
+                <time title="修改时间：2019-05-04 15:10:09" itemprop="dateModified" datetime="2019-05-04T15:10:09+08:00">2019-05-04</time>
               
             
           </span>
@@ -487,15 +489,45 @@
 \max\{f[i]+f[j]+sum[j]-sum[i]\,|\,sum[j]-sum[i]<Len\&\&i\le j\}</script><p>这里是把环断开并且复制一倍后的式子,这里就利用上面所说的性质.然后我们发现,这东西可以用单调队列去解决,只需要维护$sum[i]-f[i]$的最大值即可,时间复杂度$O(n)$.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1141" target="_blank" rel="noopener">1141 — 【IOI 2008】Islands 岛屿</a></p>
-<h4 id="基环树上两点距离"><a href="#基环树上两点距离" class="headerlink" title="基环树上两点距离"></a>基环树上两点距离</h4><h4 id="基环树Dp"><a href="#基环树Dp" class="headerlink" title="基环树Dp"></a>基环树Dp</h4><p>基环树上的<code>Dp</code>一般是考虑先处理环外节点,得出环上每个点的子树的贡献,再枚举第一个点的状态,在环上进行一遍<code>Dp</code>,得出最后的答案.</p>
+<h4 id="基环树上两点距离"><a href="#基环树上两点距离" class="headerlink" title="基环树上两点距离"></a>基环树上两点距离</h4><p>基环树上两点距离定义为两点之间的最短的简单路径.对于一棵树,显然可以预处理它的倍增数组,再进行倍增跳.而对于基环树,容易直到,若两个点在同一个环上节点的子树中的话,直接倍增查找即可.但是,若两个点在不同的子树中,此时跳到环根节点后有两种选择,通过两种环上路径相遇,此时查找这两种的最短路径即可.</p>
+<p>故整个算法流程如下:</p>
+<ol>
+<li>预处理处所有环上节点的子树的倍增数组</li>
+<li>对于两个点,按照树的方法向上跳</li>
+<li>若最后为同一个点,就说明这两个点在同一个子树中,直接返回距离值即可</li>
+<li>否则查找两种方向的最小值,返回最小值加上两个点到对应的环上节点的距离</li>
+</ol>
+<h4 id="基环树Dp"><a href="#基环树Dp" class="headerlink" title="基环树Dp"></a>基环树Dp</h4><p>基环树上的<code>Dp</code>一般是考虑先处理环外节点,得出环上每个点的子树的贡献,再枚举第一个点的状态,在环上进行一遍<code>Dp</code>,得出最后的答案.</p>
 <p>现在有这样一道题:要求基环树上的最大独立集.</p>
 <p>如上所述,这种题就需要先用朴素的<code>Dp</code>跑出环上每个的子树的最大独立集,再枚举环上第一个点选,不选的状态,最终就是找出最大值,就是答案了.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这道题还有另一种做法.</p>
 <p>先找出环上的一条边,将其断掉,再分别以改边的两边节点为根,跑两次普通的树的最大独立集,那么答案就是分别以这两个点为根时,这两个点不选的情况下的最大值.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1140" target="_blank" rel="noopener">1140 — 【练习题目】城市环路</a><br><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1140" target="_blank" rel="noopener">1140 — 【练习题目】城市环路</a><br><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=2218" target="_blank" rel="noopener">2218 — 【ZJOI2008】骑士</a></p>
-<h2 id="圆方树"><a href="#圆方树" class="headerlink" title="圆方树"></a>圆方树</h2>
+<p><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1140" target="_blank" rel="noopener">1140 — 【练习题目】城市环路</a><br><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1142" target="_blank" rel="noopener">1142 — 【练习题目】创世纪</a><br><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=2218" target="_blank" rel="noopener">2218 — 【ZJOI2008】骑士</a></p>
+<h2 id="圆方树"><a href="#圆方树" class="headerlink" title="圆方树"></a>圆方树</h2><p>顾名思义,是由圆点和方点所组成的树.是处理仙人掌图的有力工具.所以先说明一下什么是仙人掌图.</p>
+<h3 id="仙人掌图与一般圆方树"><a href="#仙人掌图与一般圆方树" class="headerlink" title="仙人掌图与一般圆方树"></a>仙人掌图与一般圆方树</h3><h4 id="仙人掌"><a href="#仙人掌" class="headerlink" title="仙人掌"></a>仙人掌</h4><p>若一个连通图中每个点至多属于一个环,那么这个图叫做点-仙人掌图.若一个连通图中每条边至多属于一个环,那么这个图叫做边-仙人掌图.一个很显然的事实就是任何一个点仙人掌图一定是边仙人掌图.故我们只考虑边-仙人掌图.</p>
+<p>下面放出基本上与仙人掌有关的题都会有的图.</p>
+<p><img src="https://oj.bashu.com.cn/images/5301-1.png" alt="仙人掌"></p>
+<h4 id="圆方树-1"><a href="#圆方树-1" class="headerlink" title="圆方树"></a>圆方树</h4><p>一般意义下的圆方树都是在仙人掌中定义的.对于一个仙人掌,我们将原图中存在的点看作圆点,而对于每个一个环,我们对这个环新建一个方点,将环上所有圆点都连向这个方点,将存在于环上的边断掉,对于连接两个圆点的边不变.显然,这个新图是一棵树,而这棵树就叫做圆方树.比如上面的仙人掌转化的所对应的圆方树如下.</p>
+<p><img src="圆方树.png" alt="圆方树"></p>
+<p>为了接下来讲述方便,我们就以其中一个点为根,叫做仙人掌根,将每个方点的父亲称作这个方点所代表的环的环根节点.</p>
+<p>对于有边权的仙人掌,那么为了方便,我们就会让圆点与圆点连边的边权不变,让圆点与方点的连边的边权为这个点的到对应的环根节点的最短简单路的长度.这样求仙人掌两点之间的距离就比较方便.</p>
+<h5 id="圆方树的性质"><a href="#圆方树的性质" class="headerlink" title="圆方树的性质"></a>圆方树的性质</h5><p>根据以上的讲述,容易得到圆方树的一下性质:</p>
+<ol>
+<li>任选一个点圆点作为圆方树的根不影响处理的结果(边权信息除外)</li>
+<li>圆方树的一个子树与原仙人掌的子仙人掌一一对应</li>
+<li>方点与方点不会相邻</li>
+<li>圆方树上每一个节点到根的距离为该点在原仙人掌中到仙人掌根的距离</li>
+</ol>
+<h5 id="构建圆方树"><a href="#构建圆方树" class="headerlink" title="构建圆方树"></a>构建圆方树</h5><p>如何建立圆方树?这里采用<code>Tarjan</code>算法(不是求LCA的).由于同一个环里的短边一定是属于同一个点双连通分量,所以我们采用<code>Tarjan</code>算法找出所有的点双连通分量.</p>
+<h5 id="圆方树的应用"><a href="#圆方树的应用" class="headerlink" title="圆方树的应用"></a>圆方树的应用</h5><blockquote>
+<p>圆方树上两点之间距离</p>
+<p>圆方树的直径</p>
+<p>圆方树上Dp(仙人掌Dp)</p>
+</blockquote>
+<h3 id="广义圆方树"><a href="#广义圆方树" class="headerlink" title="广义圆方树"></a>广义圆方树</h3><p>广义圆方树是处理任意无向图的有利工具.同样是借用一般圆方树的思想,将无向图转化为树去处理.不过区别就是任意一个点双联通分量都要新建点,对于两个点相连的情况也是如此.所以在广义圆方树中是不会有两个方点相邻,也不会有两个圆点相邻.</p>
+<h4 id="广义圆方树的构建"><a href="#广义圆方树的构建" class="headerlink" title="广义圆方树的构建"></a>广义圆方树的构建</h4><h4 id="广义圆方树的应用"><a href="#广义圆方树的应用" class="headerlink" title="广义圆方树的应用"></a>广义圆方树的应用</h4>
       
     </div>
 
@@ -697,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基环树"><span class="nav-text">基环树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基环树的直径"><span class="nav-text">基环树的直径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基环树上两点距离"><span class="nav-text">基环树上两点距离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基环树Dp"><span class="nav-text">基环树Dp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆方树"><span class="nav-text">圆方树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基环树"><span class="nav-text">基环树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基环树的直径"><span class="nav-text">基环树的直径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基环树上两点距离"><span class="nav-text">基环树上两点距离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基环树Dp"><span class="nav-text">基环树Dp</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆方树"><span class="nav-text">圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#仙人掌图与一般圆方树"><span class="nav-text">仙人掌图与一般圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仙人掌"><span class="nav-text">仙人掌</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#圆方树-1"><span class="nav-text">圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#圆方树的性质"><span class="nav-text">圆方树的性质</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#构建圆方树"><span class="nav-text">构建圆方树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#圆方树的应用"><span class="nav-text">圆方树的应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广义圆方树"><span class="nav-text">广义圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#广义圆方树的构建"><span class="nav-text">广义圆方树的构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广义圆方树的应用"><span class="nav-text">广义圆方树的应用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
