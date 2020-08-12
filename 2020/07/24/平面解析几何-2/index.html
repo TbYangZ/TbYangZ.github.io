@@ -96,23 +96,24 @@
 
 
 
-  <meta name="description" content="平面解析几何的学习笔记-2">
-<meta name="keywords" content="解析几何">
+  <meta name="description" content="平面解析几何的学习笔记——圆与圆锥曲线">
+<meta name="keywords" content="解析几何,圆,椭圆,双曲线,抛物线,圆锥曲线">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「数学」平面解析几何-2">
+<meta property="og:title" content="「平面解析几何」圆与圆锥曲线">
 <meta property="og:url" content="https://TbYangZ.github.io/2020/07/24/平面解析几何-2/index.html">
 <meta property="og:site_name" content="TbYangZ&#39;s blog">
-<meta property="og:description" content="平面解析几何的学习笔记-2">
+<meta property="og:description" content="平面解析几何的学习笔记——圆与圆锥曲线">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/6.png">
-<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/7.png">
-<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/8.png">
-<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/9.png">
-<meta property="og:updated_time" content="2020-07-29T03:20:04.112Z">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/1.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/2.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/3.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/4.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/5.png">
+<meta property="og:updated_time" content="2020-08-12T15:40:47.760Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「数学」平面解析几何-2">
-<meta name="twitter:description" content="平面解析几何的学习笔记-2">
-<meta name="twitter:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/6.png">
+<meta name="twitter:title" content="「平面解析几何」圆与圆锥曲线">
+<meta name="twitter:description" content="平面解析几何的学习笔记——圆与圆锥曲线">
+<meta name="twitter:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/1.png">
 
 
 
@@ -129,7 +130,7 @@
   };
 </script>
 
-  <title>「数学」平面解析几何-2 | TbYangZ's blog</title>
+  <title>「平面解析几何」圆与圆锥曲线 | TbYangZ's blog</title>
   
 
 
@@ -366,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">「数学」平面解析几何-2
+          <h1 class="post-title" itemprop="name headline">「平面解析几何」圆与圆锥曲线
 
               
             
@@ -410,7 +411,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-29 11:20:04" itemprop="dateModified" datetime="2020-07-29T11:20:04+08:00">2020-07-29</time>
+                <time title="修改时间：2020-08-12 23:40:47" itemprop="dateModified" datetime="2020-08-12T23:40:47+08:00">2020-08-12</time>
               
             
           </span>
@@ -468,90 +469,109 @@
       
 
       
-        <p>平面解析几何的学习笔记-2</p>
+        <p>平面解析几何的学习笔记——圆与圆锥曲线</p>
 <a id="more"></a>
-<h3 id="直线的平行关系"><a href="#直线的平行关系" class="headerlink" title="直线的平行关系"></a>直线的平行关系</h3><h4 id="平行线的判定"><a href="#平行线的判定" class="headerlink" title="平行线的判定"></a>平行线的判定</h4><p>若两条直线斜率都不存在，显然是平行的。若斜率存在，设两条直线分别为</p>
+<h1 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h1><h2 id="圆的方程"><a href="#圆的方程" class="headerlink" title="圆的方程"></a>圆的方程</h2><h3 id="圆的标准方程"><a href="#圆的标准方程" class="headerlink" title="圆的标准方程"></a>圆的标准方程</h3><p>首先考察圆的定义：圆就是到定点的距离等于定长的点的集合。定点称之为圆心，定长称之为圆的半径。在平面直角坐标系中，设定点的坐标为 $(a,b)$，则平面上任意一点 $(x,y)$ 到该点的距离为</p>
 <script type="math/tex; mode=display">
-l_1:y=k_1x+b_1\\
-l_2:y=k_2x+b_2</script><p>又因为 $l_1//l_2$，所以 $x$ 轴的夹角相等，故斜率相等；又 $l_1,l_2$ 不为同一条直线，所以 $b_1\neq b_2$。</p>
-<p>对于一般式，设两条直线分别为</p>
+d=\sqrt{(x-a)^2+(y-b)^2}</script><p>而以该点为圆心，半径为 $r$ 的圆可以用集合</p>
 <script type="math/tex; mode=display">
-l_1:A_1x+B_1y+C_1=0\\
-l_2:A_2x+B_2y+C_2=0</script><p>将其变成斜截式，得到</p>
+\left\{(x,y)|\sqrt{(x-a)^2+(y-b)^2}=r  \right\}</script><p>所以，可以用后面的方程表示这个圆，满足这个方程的点构成这个圆。然而有根号，不完美，平方可得</p>
 <script type="math/tex; mode=display">
-l_1:y=-\dfrac{A_1}{B_1}x-\dfrac{C_1}{B_1}\\
-l_2:y=-\dfrac{A_2}{B_2}x-\dfrac{C_2}{B_2}</script><p>再根据上述，得到</p>
+(x-a)^2+(y-b)^2=r^2</script><p>这就是圆的标准方程。其中 $(a,b)$ 表示该圆的圆心，$r$ 表示圆的半径。</p>
+<p><img src="./1.png" alt="circle"></p>
+<p>若令</p>
 <script type="math/tex; mode=display">
-\begin{cases}
--\dfrac{A_1}{B_1}=-\dfrac{A_2}{B_2}\\
--\dfrac{C_1}{B_1}\neq-\dfrac{C_2}{B_2}
-\end{cases}</script><p>整理得到</p>
+f(x,y)=\sqrt{(x-a)^2+(x-b)^2}</script><p>则对于点 $(x,y)$，</p>
+<ul>
+<li>若 $f(x,y)=r^2$，则该点在圆上；</li>
+<li>若 $f(x,y)&lt;r^2$，则该点在圆内；</li>
+<li>若 $f(x,y)&gt;r^2$，则该点在圆外。</li>
+</ul>
+<p>本质上就是比较到圆心的距离与半径的大小关系。</p>
+<h3 id="圆的一般方程"><a href="#圆的一般方程" class="headerlink" title="圆的一般方程"></a>圆的一般方程</h3><p>对于标准方程 $(x-a)^2+(y-b)^2=r^2$，将其展开后</p>
 <script type="math/tex; mode=display">
-\begin{cases}
-A_1B_2-A_2B_1=0\\
-C_1B_2-C_2B_1\neq 0
-\end{cases}</script><p>若 $A_1,A_2,B_1,B_2,C_1,C_2$ 都不为 $0$，可以写成更好看的形式</p>
+x^2+y^2-2ax-2by+a^2+b^2-r^2=0</script><p>可以发现，一定没有交叉项 $xy$，$x^2$ 与 $y^2$ 前的系数为 $1$ （其实不为 $1$ 也可以，可同时除掉），故可以设该方程为</p>
 <script type="math/tex; mode=display">
-\dfrac{A_1}{A_2}=\dfrac{B_1}{B_2}\not=\dfrac{C_1}{C_2}</script><h4 id="平行线的距离"><a href="#平行线的距离" class="headerlink" title="平行线的距离"></a>平行线的距离</h4><p>若两条直线平行，则一定可以将其一般式的 $A,B$ 变成一样。故设两条平行线分别为</p>
-<script type="math/tex; mode=display">
-l_1:Ax+By+C_1=0\\
-l_2:Ax+By+C_2=0</script><p>$l_1$ 与 $l_2$ 的距离可以求得</p>
-<script type="math/tex; mode=display">
-d=\dfrac{|C_1-C_2|}{\sqrt{A^2+B^2}}</script><p>证明的话，分两种种情况讨论。</p>
-<p>1.$B\neq0$</p>
-<p><img src="6.png" alt="proof" style="zoom: 75%;"></p>
-<p>如图，过 $P_1$ 作 $l_2$ 的垂线，交于 $H$。则</p>
-<script type="math/tex; mode=display">
-d=|P_1P_2|\cos \alpha</script><p>而</p>
+x^2+y^2+Dx+Ey+F=0</script><p>另外，该方程配方后的常数项肯定不能为正数，否则移过去后为负数，又因为两个平方之和大于 $0$，这样的方程就没有点。</p>
 <script type="math/tex; mode=display">
 \begin{split}
-&|P_1P_2|=\left|\dfrac{C_1}{B}-\dfrac{C_2}{B}\right|=\dfrac{1}{|B|}\left|C_1-C_2\right|\\
-&\cos \alpha=\sqrt{\dfrac{1}{1+\tan^2\alpha}}=\dfrac{|B|}{\sqrt{A^2+B^2}}
-\end{split}</script><p>故</p>
+&x^2+y^2+Dx+Ey+F=0\\
+=&\left(x^2+Dx+\left(\dfrac{D}{2}\right)^2\right)+\left(y^2+Ex+\left(\dfrac{E}{2}\right)^2\right)+F-\left(\dfrac{D}{2}\right)^2-\left(\dfrac{E}{2}\right)^2\\
+=&\left(x+\dfrac{D}{2}\right)^2+\left(y+\dfrac{E}{2}\right)^2+\dfrac{4F-D^2-E^2}{4}
+\end{split}</script><p>故有</p>
 <script type="math/tex; mode=display">
-d=\dfrac{|C_1-C_2|}{\sqrt{A^2+B^2}}</script><p>2.$B=0$，则 $A\neq 0$</p>
-<p>此时从 $x$ 轴考虑，与上面类似。</p>
-<h3 id="直线的垂直关系"><a href="#直线的垂直关系" class="headerlink" title="直线的垂直关系"></a>直线的垂直关系</h3><p>两条直线垂直，要么一条直线斜率存在，另一条直线斜率为 $0$，要么 $k_1k_2=-1$。</p>
-<p>前者显然，一条垂直 $x$ 轴，一条垂直 $y$ 轴。</p>
-<p>后者，如图，垂直时满足 $\beta=\alpha+\pi/2$，所以有</p>
+4F-D^2-E^2\le 0</script><p>即 </p>
 <script type="math/tex; mode=display">
-\tan\beta=\tan(\alpha+\pi/2)=-\cot \alpha=-\dfrac{1}{\tan\alpha}</script><p>整理可得</p>
+D^2+E^2-4F\ge0</script><p>所以，完整的来说，方程</p>
 <script type="math/tex; mode=display">
-\tan\alpha\tan\beta=-1\Rightarrow k_1k_2=-1</script><p><img src="7.png" alt="proof"></p>
-<p>对于一般式，同样是斜率互为「负倒数」，即</p>
-<script type="math/tex; mode=display">
--\dfrac{A_1}{B_1}\cdot\left(-\dfrac{A_2}{B_2}\right)=-1\Rightarrow A_1A_2+B_1B_2=0</script><h3 id="点到直线的距离公式"><a href="#点到直线的距离公式" class="headerlink" title="点到直线的距离公式"></a>点到直线的距离公式</h3><p>给定一个点 $M(x_0,y_0)$，则 $M$ 点到直线 $l:Ax+By+C=0$ 的距离为</p>
-<script type="math/tex; mode=display">
-d=\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}</script><p><img src="8.png" alt="proof"></p>
-<p>如图，过点 $M$ 作 $MP⊥l$ 交于 $P$ 点。显然，若 $l$ 的斜率不存在，即 $B=0$，则</p>
-<script type="math/tex; mode=display">
-d=\left|-\dfrac{C}{A}-x_0\right|=\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}</script><p>若 $l$ 斜率存在但为 $0$，即 $A=0$，则</p>
-<script type="math/tex; mode=display">
-d=\left|-\dfrac{C}{B}-y_0\right|=\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}</script><p>若 $l$ 斜率存在且不为 $0$，则 $MP$ 的斜率</p>
-<script type="math/tex; mode=display">
-k_{MP}=\dfrac{B}{A}</script><p>所以直线 $MP$ 的方程为</p>
+x^2+y^2+Dx+Ey+F=0\quad(D^2+E^2-4F>0)</script><p>为圆的一般方程。</p>
+<h2 id="圆与直线的位置关系"><a href="#圆与直线的位置关系" class="headerlink" title="圆与直线的位置关系"></a>圆与直线的位置关系</h2><p>众所周之，圆与直线有三种位置关系：相交、相切、相离。</p>
+<p>从直线与圆心的距离考虑：</p>
+<ul>
+<li>圆心到直线距离小于半径（ $d&lt;r$ ）相交</li>
+</ul>
+<p><img src="./2.png" alt="相交"></p>
+<ul>
+<li>圆心到直线距离等于半径（ $d=r$ ）相切</li>
+</ul>
+<p><img src="./3.png" alt="相切"></p>
+<ul>
+<li>圆心到直线距离大于半径（ $d&gt;r$ ）相离</li>
+</ul>
+<p><img src="./4.png" alt="相离"></p>
+<p>也可从直线方程与圆方程联立的解的个数考虑：</p>
+<ul>
+<li>若有两个解，则为相交</li>
+<li>若有且仅有一个解，则为相切</li>
+<li>若无解，则为相离</li>
+</ul>
+<h2 id="圆的切线方程与切点弦方程"><a href="#圆的切线方程与切点弦方程" class="headerlink" title="圆的切线方程与切点弦方程"></a>圆的切线方程与切点弦方程</h2><p>众所周之，一个函数的切线的斜率是该点的导数，而圆可以看作是个隐函数，故考虑用隐函数求导的方法，再用点斜式写出方程。</p>
+<p>若圆为 $x^2+y^2=r^2$，两边同时对 $x$ 求导，注意到 $y=y(x)$，可得</p>
 <script type="math/tex; mode=display">
 \begin{split}
-&y-y_0=\dfrac{B}{A}(x-x_0)\\
-\Rightarrow&y=\dfrac{B}{A}x+y_0-\dfrac{B}{A}x_0
-\end{split}</script><p>与 $l$ 联立求解，可解得</p>
+&\dfrac{\mathrm{d}}{\mathrm{d}x}(x^2+y^2)=(r^2)'\\
+\Rightarrow&\dfrac{\mathrm{d}}{\mathrm{d}x}(x^2)+\dfrac{\mathrm{d}}{\mathrm{d}x}(y^2)=0\\
+\Rightarrow&2x+2yy'=0\\
+\Rightarrow&y'=-\dfrac{x}{y}
+\end{split}</script><p>设圆上点为 $(x_0,y_0)$，则过该点的圆的切线方程为</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&y-y_0=-\dfrac{x_0}{y_0}(x-x_0)\\
+\Rightarrow&x_0x+y_0y=r^2
+\end{split}</script><p>同理，对于圆心不是圆点的圆 $(x-a)^2+(y-b)^2=r^2$，两边对 $x$ 求导，可得</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&\dfrac{\mathrm{d}}{\mathrm{d}x}\left((x-a)^2+(y-b)^2\right)=(r^2)'\\
+\Rightarrow&\dfrac{\mathrm{d}}{\mathrm{d}x}\left((x-a)^2\right)+\dfrac{\mathrm{d}}{\mathrm{d}x}\left((y-b)^2\right)=0\\
+\Rightarrow&2(x-a)+2(y-b)y'=0\\
+\Rightarrow&y'=-\dfrac{x-a}{y-b}
+\end{split}</script><p>代入可得</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&y-y_0=-\dfrac{x_0-a}{y_0-b}(x-x_0)\\
+\Rightarrow&(x_0-a)x+(y_0-b)y=x_0^2+y_0^2-2x_0a-2y_0b+x_0a+y_0b+a^2+b^2-a^2-b^2\\
+\Rightarrow&(x_0-a)x+(y_0-b)y=(x_0-a)^2+(y_0-b)^2+(x_0-a)a+(y_0-b)b\\
+\Rightarrow&(x_0-a)(x-a)+(y_0-b)(y-b)=r^2
+\end{split}</script><p>可以简单记作「代一半」。</p>
+<p>若该点是圆外的一点，则用「代一半」的方法求得的方程就是该点到直线的两条切线的切点连线的方程，简称切点弦方程。</p>
+<p>如图</p>
+<p><img src="./5.png" alt="切点弦方程"></p>
+<p>设圆心在圆点（任意位置同理），则 $l_1,l_2$ 两条直线的方程为</p>
+<script type="math/tex; mode=display">
+l_1:ax+by=r^2\\
+l_r:cx+dy=r^2</script><p>又同时经过 $(x_0,y_0)$，代入有</p>
 <script type="math/tex; mode=display">
 \begin{cases}
-x_p=\dfrac{B^2x_0-ABy_0-AC}{A^2+B^2}\\
-y_p=\dfrac{-ABx_0+A^2y_0-BC}{A^2+B^2}
-\end{cases}</script><p>所以</p>
+ax_0+by_0=r^2  \quad (1)  \\
+cx_0+dy_0=r^2\quad(2)
+\end{cases}</script><p>由 $(1)$ 式可知 $(a,b)$ 在方程 $x_0x+y_0y=r^2$ 上；由 $(2)$ 式可知 $(c,d)$ 也在方程 $x_0x+y_0y=r^2$ 上；又因为两点确定一条直线，所以 $(a,b)$，$(c,d)$ 连线的直线的方程为 </p>
 <script type="math/tex; mode=display">
-\begin{split}
-d&=d_{MP}=\sqrt{(x_0-x_p)^2+(y_0-y_p)^2}\\
-&=\sqrt{\left( x_0-\dfrac{B^2x_0-ABy_0-AC}{A^2+B^2}  \right)^2+\left(y_0-\dfrac{-ABx_0+A^2y_0-BC}{A^2+B^2}   \right)^2}\\
-&=\sqrt{\left( \dfrac{A^2x_0+B^2x_0-B^2x_0+ABy_0+AC}{A^2+B^2}  \right)^2+\left(y_0-\dfrac{-ABx_0+A^2y_0-BC}{A^2+B^2}   \right)^2}\\
-&=\sqrt{\dfrac{A^2(Ax_0+By_0+C)^2}{(A^2+B^2)^2}+\left(\dfrac{A^2y_0+B^2y_0+ABx_0-A^2y_0+BC}{A^2+B^2}\right)^2}\\
-&=\sqrt{\dfrac{A^2(Ax_0+By_0+C)^2}{(A^2+B^2)^2}+\dfrac{B^2(Ax_0+By_0+C)^2}{(A^2+B^2)^2}}\\
-&=\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}
-\end{split}</script><h3 id="直线的对称相关"><a href="#直线的对称相关" class="headerlink" title="直线的对称相关"></a>直线的对称相关</h3><h4 id="点关于直线对称"><a href="#点关于直线对称" class="headerlink" title="点关于直线对称"></a>点关于直线对称</h4><p>如图，求点 $M$ 关于 $l$ 的对称点 $M’$。</p>
-<p><img src="9.png" alt="对称"></p>
-<p>把 $M’$ 点设出来。首先可以根据 $MM’$ 与 $l$ 垂直关系，斜率 「负倒数」，得到一个方程。再者，利用中点在 $l$ 上，可列出第二个方程，联立求解即可。</p>
-<h4 id="直线关于直线对称"><a href="#直线关于直线对称" class="headerlink" title="直线关于直线对称"></a>直线关于直线对称</h4><p>由于两点确定一条直线，故在一条直线上找两个点，把这两个关于直线对称，得到的点再连成一条直线，则该直线就是原直线的对称直线。</p>
+x_0x+y_0y=r^2</script><p>而这正是「代一半」得到的结果。</p>
+<p>综上，可知对于圆 $(x-a)^2+(y-b)^2=r^2$ 和点 $(x_0,y_0)$，若</p>
+<ul>
+<li>$(x_0,y_0)$ 在圆上，则 $(x_0-a)(x-a)+(y_0-a)(y-a)=r^2$ 为该点圆的切线方程；</li>
+<li>$(x_0,y_0)$ 在圆外，则 $(x_0-a)(x-a)+(y_0-a)(y-a)=r^2$ 为该点对应的圆的切点弦方程。</li>
+</ul>
 
       
     </div>
@@ -576,6 +596,16 @@ d&=d_{MP}=\sqrt{(x_0-x_p)^2+(y_0-y_p)^2}\\
         <div class="post-tags">
           
             <a href="/tags/解析几何/" rel="tag"># 解析几何</a>
+          
+            <a href="/tags/圆/" rel="tag"># 圆</a>
+          
+            <a href="/tags/椭圆/" rel="tag"># 椭圆</a>
+          
+            <a href="/tags/双曲线/" rel="tag"># 双曲线</a>
+          
+            <a href="/tags/抛物线/" rel="tag"># 抛物线</a>
+          
+            <a href="/tags/圆锥曲线/" rel="tag"># 圆锥曲线</a>
           
         </div>
       
@@ -772,7 +802,21 @@ d&=d_{MP}=\sqrt{(x_0-x_p)^2+(y_0-y_p)^2}\\
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -808,7 +852,7 @@ d&=d_{MP}=\sqrt{(x_0-x_p)^2+(y_0-y_p)^2}\\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#直线的平行关系"><span class="nav-text">直线的平行关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#平行线的判定"><span class="nav-text">平行线的判定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平行线的距离"><span class="nav-text">平行线的距离</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直线的垂直关系"><span class="nav-text">直线的垂直关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点到直线的距离公式"><span class="nav-text">点到直线的距离公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直线的对称相关"><span class="nav-text">直线的对称相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#点关于直线对称"><span class="nav-text">点关于直线对称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直线关于直线对称"><span class="nav-text">直线关于直线对称</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#圆"><span class="nav-text">圆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#圆的方程"><span class="nav-text">圆的方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆的标准方程"><span class="nav-text">圆的标准方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆的一般方程"><span class="nav-text">圆的一般方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆与直线的位置关系"><span class="nav-text">圆与直线的位置关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆的切线方程与切点弦方程"><span class="nav-text">圆的切线方程与切点弦方程</span></a></li></ol></li></ol></div>
             
 
           </div>
