@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="cdq分治与线段树分治是一种非常优秀的离线分治思想，可以处理许多数据结构问题和优化一些Dp。把它们放在一起是因为它们实在是太像了！ 另：cdq就是陈丹琦，没错，就是那个提出插头Dp这个毒瘤的人。">
+  <meta name="description" content="cdq分治与线段树分治是一种非常优秀的离线分治思想，可以处理许多数据结构问题和优化一些Dp。把它们放在一起是因为它们实在是太像了！ 另外，cdq就是陈丹琦，没错，就是那个提出插头Dp这个毒瘤的人。">
 <meta name="keywords" content="cdq,线段树,分治">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cdq分治&amp;线段树分治（未完成）">
 <meta property="og:url" content="https://TbYangZ.github.io/2020/07/22/学习笔记-cdq分治与线段树分治/index.html">
 <meta property="og:site_name" content="TbYangZ&#39;s blog">
-<meta property="og:description" content="cdq分治与线段树分治是一种非常优秀的离线分治思想，可以处理许多数据结构问题和优化一些Dp。把它们放在一起是因为它们实在是太像了！ 另：cdq就是陈丹琦，没错，就是那个提出插头Dp这个毒瘤的人。">
+<meta property="og:description" content="cdq分治与线段树分治是一种非常优秀的离线分治思想，可以处理许多数据结构问题和优化一些Dp。把它们放在一起是因为它们实在是太像了！ 另外，cdq就是陈丹琦，没错，就是那个提出插头Dp这个毒瘤的人。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-22T09:10:43.749Z">
+<meta property="og:updated_time" content="2020-08-17T14:09:15.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cdq分治&amp;线段树分治（未完成）">
-<meta name="twitter:description" content="cdq分治与线段树分治是一种非常优秀的离线分治思想，可以处理许多数据结构问题和优化一些Dp。把它们放在一起是因为它们实在是太像了！ 另：cdq就是陈丹琦，没错，就是那个提出插头Dp这个毒瘤的人。">
+<meta name="twitter:description" content="cdq分治与线段树分治是一种非常优秀的离线分治思想，可以处理许多数据结构问题和优化一些Dp。把它们放在一起是因为它们实在是太像了！ 另外，cdq就是陈丹琦，没错，就是那个提出插头Dp这个毒瘤的人。">
 
 
 
@@ -388,12 +388,24 @@
                 
               
 
-              <time title="创建时间：2020-07-22 16:10:31 / 修改时间：17:10:43" itemprop="dateCreated datePublished" datetime="2020-07-22T16:10:31+08:00">2020-07-22</time>
+              <time title="创建时间：2020-07-22 16:10:31" itemprop="dateCreated datePublished" datetime="2020-07-22T16:10:31+08:00">2020-07-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-17 22:09:15" itemprop="dateModified" datetime="2020-08-17T22:09:15+08:00">2020-08-17</time>
               
             
           </span>
@@ -452,10 +464,68 @@
 
       
         <p>cdq分治与线段树分治是一种非常优秀的离线分治思想，可以处理许多数据结构问题和优化一些Dp。把它们放在一起是因为它们实在是太像了！</p>
-<p>另：cdq就是<a href="https://en.wikipedia.org/wiki/Danqi_Chen" target="_blank" rel="noopener">陈丹琦</a>，没错，就是那个提出插头Dp这个毒瘤的人。</p>
+<p>另外，cdq就是<a href="https://en.wikipedia.org/wiki/Danqi_Chen" target="_blank" rel="noopener">陈丹琦</a>，没错，就是那个提出插头Dp这个毒瘤的人。</p>
 <a id="more"></a>
 <h2 id="基本思想——按时间分治"><a href="#基本思想——按时间分治" class="headerlink" title="基本思想——按时间分治"></a>基本思想——按时间分治</h2><p>两者的基本思想都是基于时间的分治。具体来说，普通分治就是直接一分为二，再合起来；然而按时间还需要考虑处于前面时间的操作对后面时间的操作的影响，就这一点，使整个算法理解难度与实现难度加大。cdq分治便是如此，而线段树分治则更像是cdq分治加入撤销操作，并且实现非常像线段树，就如此命名。</p>
-<h2 id="以二维偏序问题为例"><a href="#以二维偏序问题为例" class="headerlink" title="以二维偏序问题为例"></a>以二维偏序问题为例</h2><p>偏序问题是这样一类问题：</p>
+<h2 id="cdq分治"><a href="#cdq分治" class="headerlink" title="cdq分治"></a>cdq分治</h2><h3 id="以二维偏序问题为例"><a href="#以二维偏序问题为例" class="headerlink" title="以二维偏序问题为例"></a>以二维偏序问题为例</h3><p>所谓偏序问题，即使每个元素有 $k$ 个属性，与这 $k$ 个属性有关的顺序问题，或计数，或最优，即为偏序问题，或者称之为 $k$ 维偏序。那么二维偏序就是有每个元素有两个属性，最常见的就是逆序对问题。</p>
+<p>给定一组有 $n$ 个数的数组 $\{a_i\}$ ，求它的逆序对数。可以将每个元素看成数值、下标的数对，即 $(i,a_i)$ 这样的数对，那么逆序对问题就是求满足</p>
+<ul>
+<li>$i&lt;j$</li>
+<li>$a_i&gt;a_j$</li>
+</ul>
+<p>这样的有序数对 $(i,j)$ 的个数。这种处理方法通常是按照第一维下标先排序，然后再进行分治。</p>
+<p>具体而言，就是先分治处理前半部分和后半部分，然后在考虑排序在前面的元素对后面元素这样形成的配对中所产生的贡献。由于一开始就满足第二维的顺序，所以只需要求前半部分中比后半部分大的对数。这可以用值域树状数组完成，但更巧妙的方法还是考虑分治：</p>
+<p>若左右两部分都是有序的，那么直接用指针扫描，设左边总长度 $len_l$，扫描到第 $p_l$ 个，右边总共有 $len_r$ 个，扫描到第 $p_r$ 个，并且左边对应的数值大于右边，那么对于左边以后的所有数，都会对当前右边的数产生贡献，总增加的贡献就是 $len_l-p_l+1$，而此时右边当前数的贡献已经算完了，则将其记录后扫描后一个数，左小于右同理，至于等于，显然不能产生贡献，随意加哪一个都行，这样最终记录的数列又是一个有序数列，所以这是可以分治的。</p>
+<p>然后就有了惊奇的发现，这不就是归并嘛。</p>
+<p>是的，二维偏序的问题，归并可以解决，而且可以很漂亮的解决（雾）。</p>
+<h3 id="三维偏序"><a href="#三维偏序" class="headerlink" title="三维偏序"></a>三维偏序</h3><p>同二维偏序，三维偏序就是每个元素有三个属性，对于这种元素的相关问题。</p>
+<p>给定 $n$ 个元素，每个元素是形如 $(a_i,b_i,c_i)$ 的数对，求满足</p>
+<ul>
+<li>$a_i\le a_j$</li>
+<li>$b_i\le b_j$</li>
+<li>$c_i\le c_j$</li>
+</ul>
+<p>这样有序数对 $(i,j)$ 的个数。</p>
+<p>传统的做法是树套树，码量巨大，不好调试，此时可以用cdq分治。</p>
+<p>同二维偏序，首先对第一维进行排序，满足第一维的限制，然后分治考虑二、三维。</p>
+<p>假设左右两边是按照第二维在内部排好序了的。</p>
+<p>由于左右两边的区间内部对总答案的贡献都是算好了的，所以额外的贡献就只能是左右两个区间相互配对产生的。现在考虑如何计算这部分贡献。</p>
+<p>可以利用归并的思想，两个指针 $p_l$ 与 $p_r$ 分别去扫描左右两个区间。注意到一开始将原序列按照第一维排好序，所以现在左区间所有第一维的一定小于等于右区间的第一维，故此时不需要考虑第一维的影响。又左右内部按照第二维排好序，所以对于第二维的处理只需利用归并。第三维就比较难处理了，只一些技巧很难解决。此时需要请出数据结构来帮忙，至于什么数据结构，先做一通分析再说。</p>
+<p>若 $b_{p_l}\le b_{p_r}$，此时并不清楚 $c$ 的大小关系，不能直接统计，先暂时放一放；若 $b_{p_l}&gt;b_{p_r}$，那么之后左区间所有的元素都不能和 $p_r$ 产生贡献，再者，若这是第一个大于 $b_{p_r}$ 的 $p_l$，那么 $p_l$ 前面的所有元素都满足前两维的限制关系。如果将这之前的所有元素的 $c$ 用桶记录下来，那么此时只需要求一个前缀和即可。所以满足前者关系时，需要将其对应的 $c$ 的位置的个数加一，如同一个桶。再仔细思考，这不就是需要一个可以单点修改，前缀查询的数据结构吗？显然树状数组可以胜任。</p>
+<p>设树状数组 $T$ 有如下操作：</p>
+<ul>
+<li>$T.add(x,v)$：在 $x$ 位置加数值 $v$</li>
+<li>$T.ask(x)$：查询 $x$ 的前缀和</li>
+</ul>
+<p>那么，若 $b_{p_l}\le b_{p_r}$，就执行 $T.add(c_{p_l},1)$，并且 $p_l$ 指向下一个；若 $b_{p_l}&gt;b_{p_r}$，就查询 $T.ask(c_{p_r})$，这是新增加的贡献，在整个区间内，关于 $p_r$ 的贡献就统计完了，此时让 $p_r$ 指向下一个。当然，边界问题不可忽略。</p>
+<p>如果在两个指针移动前将其添加到一个数组后面，那么最后这个数组就是整个区间按照第二维排序，对于叶子节点，第二维显然有序，所以排序这部分是可以分治处理。</p>
+<p>若 $c$ 范围过大，离散化。</p>
+<p>至于时间复杂度，通过递归式 $T(n)=2T(n/2)+O(n\log n)$ 可以解得 $T(n)=O(n\log^2 n)$。</p>
+<p>当然，还要注意树状数组的清零。如果每次全部清零，复杂度就不对了，递归式就变成 $T(n)=2T(n/2)+O(N+n\log n)$，最终结果就是 $O(n\log n)$ 个节点，每个节点都有 $O(N)$ 的清零，总复杂度就是 $O(nN\log n)$，或者 $O(n^2\log n)$，显然不能够令人满意。所以每次操作完树状数组后，再依次撤销即可。</p>
+<p>这就是三维偏序问题cdq分治的大致解法。</p>
+<h3 id="cdq分治处理数据结构问题"><a href="#cdq分治处理数据结构问题" class="headerlink" title="cdq分治处理数据结构问题"></a>cdq分治处理数据结构问题</h3><p>前面其实都看不出来是按时间分治，因为原论文并不是以三维偏序作为例题。接下来这个是货真价实的数据结构题。</p>
+<p>给定一个 $n\times n$ 的空白网格，和 $m$ 次操作，操作如下：</p>
+<ul>
+<li>单个格子加值</li>
+<li>子矩形查询和</li>
+</ul>
+<p>显然是二维树状数组板子题，不过仅限于 $n\le 5000$，对于大数据，虽然时间上吃得消（单次 $O(\log ^2n)$），但空间上吃不消（$O(n^2)$）。对于 $n$ 在 $10^4$~$10^5$ 级别，有在线 $O(n\sqrt{n})$ 的K-D树，和离线 $O(n\log^2n)$ 的cdq分治。cdq分治是重头戏。</p>
+<p>将每个操作离线，并加上时间标记，查询区域 $(x_1,y_1,x_2,y_2)$ 利用容斥看成 $4$ 个分开的操作（$x_1\le x_2,y_1\le y_2$）：</p>
+<ul>
+<li>$(t,x_2,y_2,+1)$</li>
+<li>$(t,x_1-1,y_1-1,+1)$</li>
+<li>$(t,x_1-1,y_2,-1)$</li>
+<li>$(t,x_2,y_1-1,-1)$</li>
+</ul>
+<p>$(t,x,y,w)$ 表示时间是 $t$，查询 $(x,y)$ 的前缀和，对该询问的贡献是加还是减。对于修改操作直接记录时间，位置和加的值，即 $(t,x,y,v)$。</p>
+<p>此时，对于一个拆开后的查询操作 $(t_0,x_0,y_0,w)$，就等价于求满足</p>
+<ul>
+<li>$t&lt;t_0$</li>
+<li>$x\le x_0$</li>
+<li>$y\le y_0$</li>
+</ul>
+<p>这些条件的修改操作的影响。这不就是三维偏序吗？由于时间默认有序，所以可以直接在时间上分治，按照 $x$ 归并，$y$ 上用树状数组修改查询。不同的是，若左区间当前扫描到的操作为查询，或者右区间当前扫描到的操作为修改，直接跳过，因为此时考虑的是左右之间，左对右的贡献。</p>
+<p>这就是所谓按照时间分治的处理数据结构问题是算法。</p>
 
       
     </div>
@@ -734,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想——按时间分治"><span class="nav-text">基本思想——按时间分治</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以二维偏序问题为例"><span class="nav-text">以二维偏序问题为例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想——按时间分治"><span class="nav-text">基本思想——按时间分治</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cdq分治"><span class="nav-text">cdq分治</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以二维偏序问题为例"><span class="nav-text">以二维偏序问题为例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三维偏序"><span class="nav-text">三维偏序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cdq分治处理数据结构问题"><span class="nav-text">cdq分治处理数据结构问题</span></a></li></ol></li></ol></div>
             
 
           </div>
