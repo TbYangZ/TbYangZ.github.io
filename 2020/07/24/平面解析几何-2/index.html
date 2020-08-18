@@ -109,8 +109,15 @@
 <meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/3.png">
 <meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/4.png">
 <meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/5.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/7.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/8.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/9.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/10.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/11.png">
 <meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/6.png">
-<meta property="og:updated_time" content="2020-08-17T15:44:55.209Z">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/12.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/07/24/平面解析几何-2/13.png">
+<meta property="og:updated_time" content="2020-08-18T13:34:09.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「平面解析几何」圆与圆锥曲线">
 <meta name="twitter:description" content="平面解析几何的学习笔记——圆与圆锥曲线">
@@ -412,7 +419,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-17 23:44:55" itemprop="dateModified" datetime="2020-08-17T23:44:55+08:00">2020-08-17</time>
+                <time title="修改时间：2020-08-18 21:34:09" itemprop="dateModified" datetime="2020-08-18T21:34:09+08:00">2020-08-18</time>
               
             
           </span>
@@ -472,7 +479,9 @@
       
         <p>平面解析几何的学习笔记——圆与圆锥曲线</p>
 <a id="more"></a>
-<h1 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h1><h2 id="圆的方程"><a href="#圆的方程" class="headerlink" title="圆的方程"></a>圆的方程</h2><h3 id="圆的标准方程"><a href="#圆的标准方程" class="headerlink" title="圆的标准方程"></a>圆的标准方程</h3><p>首先考察圆的定义：圆就是到定点的距离等于定长的点的集合。定点称之为圆心，定长称之为圆的半径。在平面直角坐标系中，设定点的坐标为 $(a,b)$，则平面上任意一点 $(x,y)$ 到该点的距离为</p>
+<h1 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h1><h2 id="曲线与方程"><a href="#曲线与方程" class="headerlink" title="曲线与方程"></a>曲线与方程</h2><p>设二元函数 $F(x,y)$，对于平面直角坐标系中的曲线 $C$，若方程 $F(x,y)=0$ 的解对应的点都在曲线上，并且曲线上的点都满足方程 $F(x,y)=0$，那么就说 $F(x,y)=0$ 是曲线 $C$ 的方程，曲线 $C$ 是方程 $F(x,y)=0$ 的曲线。</p>
+<p>这里需要注意的是方程的解集与曲线的点是一一对应的，与函数不同，同一个横坐标，函数只能有一个纵坐标，而曲线是可以有任意个。</p>
+<h2 id="圆的方程"><a href="#圆的方程" class="headerlink" title="圆的方程"></a>圆的方程</h2><h3 id="圆的标准方程"><a href="#圆的标准方程" class="headerlink" title="圆的标准方程"></a>圆的标准方程</h3><p>首先考察圆的定义：圆就是到定点的距离等于定长的点的集合。定点称之为圆心，定长称之为圆的半径。在平面直角坐标系中，设定点的坐标为 $(a,b)$，则平面上任意一点 $(x,y)$ 到该点的距离为</p>
 <script type="math/tex; mode=display">
 d=\sqrt{(x-a)^2+(y-b)^2}</script><p>而以该点为圆心，半径为 $r$ 的圆可以用集合</p>
 <script type="math/tex; mode=display">
@@ -575,6 +584,79 @@ x_0x+y_0y=r^2</script><p>而这正是「代一半」得到的结果。</p>
 <li>$(x_0,y_0)$ 在圆上，则 $(x_0-a)(x-a)+(y_0-a)(y-a)=r^2$ 为该点圆的切线方程；</li>
 <li>$(x_0,y_0)$ 在圆外，则 $(x_0-a)(x-a)+(y_0-a)(y-a)=r^2$ 为该点对应的圆的切点弦方程。</li>
 </ul>
+<h2 id="圆与圆的位置关系"><a href="#圆与圆的位置关系" class="headerlink" title="圆与圆的位置关系"></a>圆与圆的位置关系</h2><p>与两个圆都相切的直线叫做这两个圆的公切线。</p>
+<p>设大圆半径为 $R$，小圆半径为 $r$，圆心距离为 $d$，圆与圆的位置关系有五种：</p>
+<ul>
+<li>外离</li>
+</ul>
+<p><img src="7.png" alt="外离"></p>
+<p>当 $d&gt;R+r$ 时，为外离。总共有四条公切线，注意两条蓝色的公切线。</p>
+<ul>
+<li>外切</li>
+</ul>
+<p><img src="8.png" alt="外切"></p>
+<p>当 $d=R+r$ 时，为外切。总共有三条公切线。</p>
+<ul>
+<li>相交</li>
+</ul>
+<p><img src="9.png" alt="相交"></p>
+<p>当 $R-r&lt;d&lt;R+r$ 时，为相交，此时有两个交点，两条公切线。</p>
+<ul>
+<li>内切</li>
+</ul>
+<p><img src="10.png" alt="内切"></p>
+<p>当 $d=R-r$ 时，为内切，此时有且仅有一条公切线。</p>
+<ul>
+<li>内含</li>
+</ul>
+<p><img src="11.png" alt="内含"></p>
+<p>当 $d&lt;R-r$ 时，为内含，此时没有公切线。</p>
+<hr>
+<p>总结一下，如表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>位置关系</th>
+<th>对应的数量关系</th>
+<th>公切线</th>
+<th>两圆的交点个数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>外离</td>
+<td>$d&gt;R+r$</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>外切</td>
+<td>$d=R+r$</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>相交</td>
+<td>$R-r&lt;d&lt;R+r$</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>内切</td>
+<td>$d=R-r$</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>内含</td>
+<td>$d&lt;R-r$</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="圆系方程"><a href="#圆系方程" class="headerlink" title="圆系方程"></a>圆系方程</h2><p>何为圆系方程？可以理解为有公共特点的若干个圆方程。类比直线系方程，所有斜率为 $2$ 的方程，其表示为 $y=2x+b$，而 $b\in \mathbb{R}$，这个方程表示若干个直线，这些直线都有一个共同点就是斜率为 $2$。圆系方程亦是如此。</p>
 <p>最简单的圆系方程就是圆心为 $(a,b)$ 的所有圆：$(x-a)^2+(y-b)^2=r^2$，$r&gt;0$。</p>
 <p>最多应用的圆系方程便是过两圆交点的圆系方程。</p>
@@ -608,6 +690,30 @@ f_3(x,y)&=f_1(x,y)-f_2(x,y)\\
 &=(D_1-D_2)x+(E_1-E_2)y+(F_1-F_2)
 \end{split}</script><p>这显然是直线的形式，而将 $A,B$ 两点代入，显然为 $0$，所以 $f_3(x,y)=0$ 就是过这两个点的直线。</p>
 <hr>
+<p>一条直线 $Ax+By+C=0$ 与圆 $x^2+y^2+Dx+Ey+F=0$ 交于两个点，过这两个点的圆系方程为</p>
+<script type="math/tex; mode=display">
+C:x^2+y^2+Dx+Ey+F+k\left(Ax+By+C\right)=0</script><p>理解同上。</p>
+<h1 id="椭圆"><a href="#椭圆" class="headerlink" title="椭圆"></a>椭圆</h1><h2 id="椭圆的第一定义与标准方程"><a href="#椭圆的第一定义与标准方程" class="headerlink" title="椭圆的第一定义与标准方程"></a>椭圆的第一定义与标准方程</h2><p>椭圆的一种定义是到两个顶点的距离和为定值的点的集合。这两个顶点叫做焦点，通常用 $F_1,F_2$ 表示，焦点之间的距离，即 $|F_1F_2|$ 为椭圆的焦距，如图。</p>
+<p><img src="12.png" alt="椭圆"></p>
+<p>尝试求一求它的方程。</p>
+<p>设椭圆上的点 $M(x,y)$，$F_1(-c,0)$，$F_2(c,0)$，并设定长为 $2a$。根据定义，有</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&\sqrt{(x-c)^2+y^2}+\sqrt{(x+c)^2+y^2}=2a\\
+\Rightarrow&\sqrt{(x-c)^2+y^2}=2a-\sqrt{(x+c)^2+y^2}\\
+\Rightarrow&(x-c)^2+y^2=4a^2+(x+c)^2+y^2-4a\sqrt{(x+c)^2+y^2}\\
+\Rightarrow&a\sqrt{(x+c)^2+y^2}=a^2+xc\\
+\Rightarrow&a^2\left(x^2+c^2+y^2\right)=a^4+x^2c^2\\
+\Rightarrow&\left(a^2-c^2\right)x^2+a^2y^2=a^2\left(a^2-c^2\right)\\
+\Rightarrow&\dfrac{x^2}{a^2}+\dfrac{y^2}{a^2-c^2}=1\\
+\end{split}</script><p>由 $2a&gt;2c$，可知 $a^2-c^2&gt;0$。如图，连结 $C$ 与 $F_2$。</p>
+<p><img src="13.png" alt="x"></p>
+<p>由于 $CF_1=CF_2=a$，$OF_2=c$，所以 $a^2-c^2=b^2$，所以原方程为</p>
+<script type="math/tex; mode=display">
+\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1\quad(a>b>0)</script><p>这是椭圆标准方程。</p>
+<p>需要注意的是这是「躺」的椭圆，「竖」的椭圆 $a,b$ 大小相反，或者说为</p>
+<script type="math/tex; mode=display">
+\dfrac{y^2}{a^2}+\dfrac{x^2}{b^2}=1\quad(a>b>0)</script><p>另外，椭圆中 $AB$ 较之于 $CD$ 长，故称为长轴，同理 $CD$ 称之为短轴。长轴两端的点的坐标为 $(-a,0),(a,0)$ 或者 $(0,-a),(0,a)$；短轴两端的点的坐标为 $(0,-b),(0,b)$ 或者 $(-b,0),(b,0)$。</p>
 
       
     </div>
@@ -888,7 +994,7 @@ f_3(x,y)&=f_1(x,y)-f_2(x,y)\\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#圆"><span class="nav-text">圆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#圆的方程"><span class="nav-text">圆的方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆的标准方程"><span class="nav-text">圆的标准方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆的一般方程"><span class="nav-text">圆的一般方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆与直线的位置关系"><span class="nav-text">圆与直线的位置关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆的切线方程与切点弦方程"><span class="nav-text">圆的切线方程与切点弦方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆系方程"><span class="nav-text">圆系方程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#圆"><span class="nav-text">圆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#曲线与方程"><span class="nav-text">曲线与方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆的方程"><span class="nav-text">圆的方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圆的标准方程"><span class="nav-text">圆的标准方程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆的一般方程"><span class="nav-text">圆的一般方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆与直线的位置关系"><span class="nav-text">圆与直线的位置关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆的切线方程与切点弦方程"><span class="nav-text">圆的切线方程与切点弦方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆与圆的位置关系"><span class="nav-text">圆与圆的位置关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆系方程"><span class="nav-text">圆系方程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#椭圆"><span class="nav-text">椭圆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#椭圆的第一定义与标准方程"><span class="nav-text">椭圆的第一定义与标准方程</span></a></li></ol></li></ol></div>
             
 
           </div>
