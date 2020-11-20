@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="基础排列组合，绝大多数只涉及高中内容。">
+<meta name="keywords" content="数学&#x2F;数论,组合数学,计数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础排列组合">
+<meta property="og:url" content="https://TbYangZ.github.io/2020/11/21/基础排列组合/index.html">
+<meta property="og:site_name" content="TbYangZ&#39;s blog">
+<meta property="og:description" content="基础排列组合，绝大多数只涉及高中内容。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-20T17:44:39.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础排列组合">
+<meta name="twitter:description" content="基础排列组合，绝大多数只涉及高中内容。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://TbYangZ.github.io/2020/11/21/基础排列组合/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>基础排列组合 | TbYangZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TbYangZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Think twice, code once.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://TbYangZ.github.io/2020/11/21/基础排列组合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TbYangZ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TbYangZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基础排列组合
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-11-21 00:34:20 / 修改时间：01:44:39" itemprop="dateCreated datePublished" datetime="2020-11-21T00:34:20+08:00">2020-11-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>基础排列组合，绝大多数只涉及高中内容。</p>
+<a id="more"></a>
+<h2 id="计数原理"><a href="#计数原理" class="headerlink" title="计数原理"></a>计数原理</h2><h3 id="加法原理"><a href="#加法原理" class="headerlink" title="加法原理"></a>加法原理</h3><p><strong>分类计数</strong> 完成一件事有 $n$ 种方法,每一种方法有 $a_i$ 种不同的方法,则总共的方案数为</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^na_i</script><h3 id="乘法原理"><a href="#乘法原理" class="headerlink" title="乘法原理"></a>乘法原理</h3><p><strong>分步计数</strong> 完成一件事有 $n$ 步,每一步有 $a_i$ 种不同的方法,则总共的方案数为</p>
+<script type="math/tex; mode=display">
+\prod_{i=1}^na_i</script><h2 id="排列与组合"><a href="#排列与组合" class="headerlink" title="排列与组合"></a>排列与组合</h2><h3 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h3><p>定义$A_n^m$为从 $n$ 个不同的物品里选出 $m$ 个拿来排列的方案数.有时记为 $P_n^m$.有</p>
+<script type="math/tex; mode=display">
+A_n^m=\frac{n!}{(n-m)!}=n\times(n-1)\times(n-2)\times\cdots\times(n-m+1)</script><p>简单证明:第一个位置有 $n$ 种选择,第二个位置由于已经选择了一个,所以有 $n-1$ 种选择,以此类推,第 $m$ 个位置有 $n-m+1$ 种选择,根据乘法原理,方案数为 $n\times(n-1)\times\cdots\times(n-m+1)$.</p>
+<h3 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h3><p>定义 $C_n^m$ 为从 $n$ 个不同的物品里选出 $m$ 个的方案数,有时记为 $C(n,m),{n\choose m}$.有</p>
+<script type="math/tex; mode=display">
+{n\choose m}=\frac{A_n^m}{m!}=\frac{n!}{m!(n-m)!}=\frac{n\times(n-1)\times\cdots\times(n-m+1)}{m!}</script><p>简单证明:从 $n$ 个数里面选 $m$ 个数出来排列可以看成两步完成,1.选 $m$ 个数;2.将 $m$ 个数拿来排列.根据乘法原理,有$A_n^m=C_n^m\times A_m^m$,所以 $C_n^m=\frac{A_n^m}{A_m^m}=\frac{A_n^m}{m!}$.</p>
+<p>举个例子,$\{1,2,3\}$ 种选 $2$ 个数的组合方案为</p>
+<script type="math/tex; mode=display">
+\{1,2\}\\
+\{1,3\}\\
+\{2,3\}</script><p>$\therefore C_3^2=3$.</p>
+<p>排列与组合唯一的区别就是排列是有顺序的,$\{1,2,3\}$ 与 $\{3,2,1\}$ 是不同的排列,组合就无顺序可言.</p>
+<h3 id="组合数性质"><a href="#组合数性质" class="headerlink" title="组合数性质"></a>组合数性质</h3><ul>
+<li>对称恒等式</li>
+</ul>
+<script type="math/tex; mode=display">
+{n\choose m}={n\choose n-m}</script><p>感觉上显然,可以展开证明,也可以从组合意义理解: $n$ 个数里面选 $m$ 个的同时,剩下 $n-m$ 个数同样构成一个集合,它们是互补的.</p>
+<ul>
+<li>(杨辉三角/帕斯卡定律)加法公式</li>
+</ul>
+<script type="math/tex; mode=display">
+{n\choose m}={n-1\choose m}+{n-1\choose m-1}</script><p>同样可以直接展开证明.组合理解: $n$ 个数里面选 $m$ 个,考虑第 $n$ 个数选不选,1.选等价于从前 $n-1$ 个数选 $m-1$ 个,2.不选,则在前面 $n$ 个里面选 $m$ 个.</p>
+<ul>
+<li>(杨辉三角一行的值)</li>
+</ul>
+<script type="math/tex; mode=display">
+\sum_{i=0}^n{n\choose i}=2^n</script><p>组合理解:考虑一个集合内子集的个数.</p>
+<p>对于构成子集,每个元素有两种可能,选/不选,故根据乘法原理,子集数为$2^n$;</p>
+<p>而考虑分步计数,选0个元素的方案数+选1个元素的方案数+…=$\sum_{i=0}^nC_n^i$;</p>
+<p>由于是同一个问题的两种不同解答形式,所以$2^n=\sum_{i=0}^nC_n^i$.</p>
+<ul>
+<li>(组合数的数论性质)</li>
+</ul>
+<p>若 $p$ 为素数,则对于 $n\in [1,p-1]$,有</p>
+<script type="math/tex; mode=display">
+p\mid{p\choose n}</script><p><strong>证明</strong>:由于</p>
+<script type="math/tex; mode=display">
+{p\choose n}=\frac{p(p-1)\cdots(p-n+1)}{n!}\in \mathbb{Z}</script><p>所以可知</p>
+<script type="math/tex; mode=display">
+n!\mid p(p-1)\cdots(p-n+1)</script><p>由于 $(n,p)=1$,所以可知</p>
+<script type="math/tex; mode=display">
+n!\mid(p-1)(p-2)\cdots(p-n+1)</script><p>所以有</p>
+<script type="math/tex; mode=display">
+p\mid{p\choose n}</script><h3 id="排列组合基本方法"><a href="#排列组合基本方法" class="headerlink" title="排列组合基本方法"></a>排列组合基本方法</h3><h4 id="捆绑法"><a href="#捆绑法" class="headerlink" title="捆绑法"></a>捆绑法</h4><p>(解相邻问题)强制某些元素必须相邻的时候,可以把那些元素看成一个整体,利用乘法原理,先计算内部排列顺序方案数 $X$ ,再计算将它们看成一个整体的排列方案数 $Y$ ,则答案为 $X\times Y$.</p>
+<h4 id="插空法"><a href="#插空法" class="headerlink" title="插空法"></a>插空法</h4><p>(解不相邻问题)强制某些元素两两不相邻,可以先算出除去这些元素的方案数,再将每两个看成有空(包括两端),则再在这些空中插入要求不相邻元素,相乘即为答案.</p>
+<h4 id="隔板法"><a href="#隔板法" class="headerlink" title="隔板法"></a>隔板法</h4><p>(解分组问题)将一些相同物品分成若干组,每组至少有一个物品,可以将每两个之间插入挡板,然后通过选择挡板,解决分组问题.</p>
+<p>例:不定方程相关问题</p>
+<ul>
+<li>不定方程正整数解的数量</li>
+</ul>
+<script type="math/tex; mode=display">
+x_1+x_2+\cdots+x_m=n</script><p>等价于将 $n$ 个物品分成 $m$ 组,要求每组至少有一个物品的方案数.</p>
+<script type="math/tex; mode=display">
+a|a|a|a|a|a</script><p>在 $n-1$ 个挡板里随意选 $m-1$ 个的方案数,即为 ${n-1\choose m-1}$.</p>
+<ul>
+<li>不定方程非负整数解的数量</li>
+</ul>
+<script type="math/tex; mode=display">
+x_1+x_2+\cdots +x_m=n</script><p>可以令 $y_i=1+x_i$ ,则</p>
+<script type="math/tex; mode=display">
+y_1+y_2+\cdots+y_m=n+m</script><p>所以原问题等价于由 $y_i$ 组成的不定方程的正整数解问题,答案为${n+m-1\choose m-1}$.</p>
+<p>故原问题答案为 ${n+m-1\choose m-1}$.</p>
+<ul>
+<li>下界限制</li>
+</ul>
+<p>求不定方程$x_1+x_2+\cdots +x_m=n$的非负整数解个数,满足$x_i\ge a_i$.</p>
+<p>两边同时减去 $\sum a_i$,问题变为求$x_1+x_2+\cdots+x_m=n-\sum a_i$的非负整数解问题</p>
+<p>故答案为 ${n-\sum a_i+m-1\choose m-1}$.</p>
+<ul>
+<li>上界限制</li>
+</ul>
+<p>需要容斥</p>
+<h3 id="相关定理与扩展"><a href="#相关定理与扩展" class="headerlink" title="相关定理与扩展"></a>相关定理与扩展</h3><h4 id="阶乘幂"><a href="#阶乘幂" class="headerlink" title="阶乘幂"></a>阶乘幂</h4><ul>
+<li><strong>上升阶乘幂</strong></li>
+</ul>
+<p>定义为</p>
+<script type="math/tex; mode=display">
+x^{\underline{n}}=x(x-1)\cdots(x-n+1)=\frac{x!}{(x-n)!}</script><ul>
+<li><strong>下降阶乘幂</strong></li>
+</ul>
+<p>定义为</p>
+<script type="math/tex; mode=display">
+x^{\overline{n}}=x(x+1)\cdots(x+n-1)=\frac{(x+n-1)!}{(x-1)!}</script><p>取算数定义则可将阶乘幂扩展为 $x\in \mathbb{R}$ . </p>
+<p>由组合数的计算式,可知</p>
+<script type="math/tex; mode=display">
+{n\choose m}=\frac{n!}{m!(n-m)!}=\frac{n^{\underline{m}}}{m!}</script><p>可以将组合数的上指数扩展为实数.</p>
+<h4 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h4><script type="math/tex; mode=display">
+(a+b)^n=\sum_{k=0}^n {n\choose k}a^kb^{n-k}</script><p><strong>证明</strong>:</p>
+<p>考虑数学归纳法.当 $n=1$ 时显然成立.</p>
+<p>假设当 $n=k$ 时成立,则 $n=k+1$ 时,</p>
+<script type="math/tex; mode=display">
+\begin{align}
+(a+b)^{k+1}&=a(a+b)^k+b(a+b)^k\\
+&=a\sum_{i=0}^k{k\choose i}a^ib^{k-i}+b\sum_{i=0}^k{k\choose i}a^ib^{k-i}\\
+&=\sum_{i=0}^k{k\choose i}a^{i+1}b^{k-i}+\sum_{i=0}^k{k\choose i}a^ib^{k-i+1}\\
+&=a^{k+1}+\sum_{i=0}^{k-1}{k\choose i}a^{i+1}b^{k-i}+b^{k+1}+\sum_{i=1}^k{k\choose i}a^ib^{k-i+1}\\
+&=a^{k+1}+\sum_{i=1}^k{k\choose i-1}a^ib^{k-i+1}+\sum_{i=1}^k{k\choose i}a^ib^{k-i+1}+b^{k+1}\\
+&=a^{k+1}+\sum_{i=1}^k\left({k\choose i-1}+{k\choose i}\right)a^ib^{k+1-i}+b^{k+1}\\
+&=\sum_{i=0}^{k+1}{k+1\choose i}a^ib^{k+1-i}
+\end{align}</script><p>故原命题成立.</p>
+<p>当然,也可以用组合意义去理解.</p>
+<ul>
+<li>阶乘幂的扩展</li>
+</ul>
+<script type="math/tex; mode=display">
+(a+b)^{\underline{n}}=\sum_{k=0}^n{n\choose k}a^{\underline{k}}b^{\underline{n-k}}\\(a+b)^{\overline{n}}=\sum_{k=0}^n{n\choose k}a^{\overline{k}}b^{\overline{n-k}}\\</script><p>二项式定理同样对阶乘幂适用.</p>
+<ul>
+<li>多元变量二项式定理(多项式定理)</li>
+</ul>
+<p>记</p>
+<script type="math/tex; mode=display">
+\begin{align}
+{n\choose n_1,n_2,\cdots,n_k}&=\frac{n!}{n_1!n_2!\cdots n_k!}
+\end{align}</script><p>满足</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^kn_i=n</script><p>意义为有 $n$ 个不同物品,将其放入 $k$ 个盒子中,满足第 $i$ 个盒子有 $n_i$ 个物品的方案数.</p>
+<p>类比帕斯卡法则,有</p>
+<script type="math/tex; mode=display">
+{n\choose n_1,n_2,\cdots,n_k}={n-1\choose n_1-1,n_2,\cdots,n_k}+{n\choose n_1,n_2-1,\cdots,n_k}+\cdots+{n\choose n_1,n_2,\cdots,n_k-1}</script><p>可以得出多项式定理</p>
+<script type="math/tex; mode=display">
+(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+n_2+\cdots+n_k=n}{n\choose n_1,n_2,\cdots,n_k}x_1^{n_1}x_2^{n_2}\cdots x_{k}^{n_k}</script><p>可以用组合意义去理解.</p>
+<p>令 $k=2$ 即得到二项式定理.</p>
+<ul>
+<li>广义二项式定理</li>
+</ul>
+<p>组合数的上指标可以被推广到实数,那么二项式的指数同样可以推广到实数.</p>
+<script type="math/tex; mode=display">
+(a+b)^r=\sum_{i=0}^{\infty}{r\choose i}a^ib^{r-i}</script><p>称为牛顿二项式定理.</p>
+<h3 id="组合恒等式"><a href="#组合恒等式" class="headerlink" title="组合恒等式"></a>组合恒等式</h3><ul>
+<li>吸收恒等式</li>
+</ul>
+<script type="math/tex; mode=display">
+{r\choose k}=\frac{r}{k}{r-1\choose k-1}</script><ul>
+<li>相伴恒等式</li>
+</ul>
+<script type="math/tex; mode=display">
+(r-k){r\choose k}=r{r-1\choose k}</script><ul>
+<li>上指标求和</li>
+</ul>
+<script type="math/tex; mode=display">
+\sum_{i=m}^n{i\choose m}={n+1\choose m+1}</script><ul>
+<li>平行恒等式</li>
+</ul>
+<script type="math/tex; mode=display">
+\sum_{i=0}^n{m+i\choose i}={m+n+1\choose n}</script><ul>
+<li>上指标反转</li>
+</ul>
+<script type="math/tex; mode=display">
+{r\choose k}=(-1)^k{r-k-1\choose k}</script><ul>
+<li>三项式系数恒等式</li>
+</ul>
+<script type="math/tex; mode=display">
+{r\choose m}{m\choose k}={r-k\choose m-k}{r\choose k}</script><ul>
+<li>范德蒙德卷积</li>
+</ul>
+<script type="math/tex; mode=display">
+\sum_{k=0}^n{r\choose k}{r\choose n-k}={r+k\choose n}</script><h2 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>满足以下递推关系的数列 $\{c_n\}$ 为卡特兰数.</p>
+<script type="math/tex; mode=display">
+c_n=\sum_{i=0}^{n-1}c_{i}\cdot c_{n-i-1}\\
+c_0=c_1=1</script><p>可以通过这个递推式得到更为简洁的递推式</p>
+<script type="math/tex; mode=display">
+c_n=\frac{c_{n-1}(4n-2)}{n+1}</script><p>同样可以证明它的通项公式</p>
+<script type="math/tex; mode=display">
+c_n=\frac{1}{n+1}{2n\choose n}={2n\choose n}-{2n\choose n-1}</script><h3 id="通项公式证明"><a href="#通项公式证明" class="headerlink" title="通项公式证明"></a>通项公式证明</h3><p>卡特兰数通项公式:</p>
+<script type="math/tex; mode=display">
+c_n=\frac{1}{n+1}{2n\choose n}</script><p><strong>证明</strong> 记卡特兰数的生成函数为 $C(x)$.即 $C(x)=\sum_{i\ge0}c_ix^i$.</p>
+<p>根据第一个递推公式,可以得到</p>
+<script type="math/tex; mode=display">
+C(x)=xC^2(x)+1</script><p>解得</p>
+<script type="math/tex; mode=display">
+C(x)=\frac{1\pm\sqrt{1-4x}}{2x}</script><p>当取正根时,$x\rightarrow 0^{+}$ 时,$C(x)\rightarrow +\infty$,显然不对,所以取负根,即</p>
+<script type="math/tex; mode=display">
+C(x)=\frac{1-\sqrt{1-4x}}{2x}=\frac{1-(1-4x)^{\frac{1}{2}}}{2x}</script><p>根据牛顿二项式定理,得到</p>
+<script type="math/tex; mode=display">
+(1-4x)^{\frac{1}{2}}=\sum_{k\ge0}{\frac{1}{2}\choose k}(-1)^k4^kx^k</script><p>所以原式等于</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+C(x)&=\frac{1-(1-4x)^{\frac{1}{2}}}{2x}\\
+&=\frac{1-\sum_{k\ge0}{\frac{1}{2}\choose k}(-1)^k4^kx^k}{2x}\\
+&=\frac{1-\left(1+\sum_{k\ge1}{\frac{1}{2}\choose k}(-4)^kx^k \right)}{2x}\\
+&=-\frac{\sum_{k\ge1}{\frac{1}{2}\choose k}(-4)^kx^k}{2x}\\
+&=-{1\over 2}\sum_{k\ge 1}{\frac{1}{2}\choose k}(-4)^kx^{k-1}\\
+&=2\sum_{k\ge 1}{\frac{1}{2}\choose k}(-4)^{k-1}x^{k-1}\\
+&=\sum_{k\ge 0}2{\frac{1}{2}\choose k+1}(-4)^kx^k
+\end{align*}</script><p>所以(对应项系数相等)</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+c_n&=2{\frac{1}{2}\choose n+1}(-4)^k\\
+\end{align*}</script><p>又由于</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+{{1\over2}\choose k}&=\frac{\prod_{i=1}^k({1\over2}-i+1)}{k!}\\
+&=\frac{\prod_{i=1}^k({3\over 2}-i)}{k!}\\
+&=\frac{1}{2k!}\prod_{i=2}^{k}\left({3\over2}-i\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\prod_{i=2}^{k}\left(i-{3\over2}\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\prod_{i=1}^{k-1}\left(i-{3\over2}+1\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\prod_{i=1}^{k-1}\left(i-{1\over2}\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\cdot\frac{1}{2^{k-1}}\prod_{i=1}^{k-1}\left(2i-1\right)\\
+\end{align*}</script><p>所以</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+c_n&=\frac{2\prod_{k=1}^{n+1}({3\over 2}-i)}{(n+1)!}(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\prod_{i=1}^n(2i-1)(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\cdot\frac{(2n)!}{\prod_{i=1}^n(2i)}(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\cdot\frac{(2n)!}{2^nn!}(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\cdot\frac{(2n)!}{2^nn!}(-4)^n\\
+&=\frac{1}{n+1}\cdot\frac{(2n)!}{n!\cdot n!}\\
+&=\frac{1}{n+1}{2n\choose n}\\
+\end{align*}</script><p>得证.</p>
+<h3 id="卡特兰数模型"><a href="#卡特兰数模型" class="headerlink" title="卡特兰数模型"></a>卡特兰数模型</h3><ul>
+<li>$n$ 个点无标号儿子不同的二叉树个数为 $c_n$</li>
+</ul>
+<p><strong>证明</strong> 设 $g_n$ 为 $n$ 个点的二叉树个数,则可以通过分配左右儿子的个数得到递推式</p>
+<script type="math/tex; mode=display">
+g_n=\sum_{k=0}^{n-1}g_kg_{n-k-1}</script><p>总共 $n$ 个点,左儿子 $k$ 个点,方案数为 $g_k$,则右儿子为 $n-k-1$ 个点,方案数为 $g_{n-k-1}$.通过乘法原理相乘即是总方案数,与卡特兰数递推一样,所以,可以得到 $g_n=c_n$.</p>
+<ul>
+<li>$n$ 个元素不同元素的出栈序列种数为 $c_n$</li>
+</ul>
+<p><strong>证明</strong> 设 $f_n$ 为 $n$ 个不同元素的出栈序列种数.可以枚举每一个元素作为最后的出栈元素,设第 $k$ 个元素最后出栈,则在它入栈之前,小于它的必须全部出栈完,才能到它入栈,方案数 $f_{k-1}$;之后又必须等大于它的所有元素都出栈完,只剩下它一个元素,才可以出栈,方案数 $f_{n-k}$,所以该情况对 $f_n$ 的贡献为 $f_{k-1}\times f_{n-k}$,可以枚举每一个元素作为最后出栈元素,所以</p>
+<script type="math/tex; mode=display">
+f_n=\sum_{k=1}^nf_{k-1}f_{n-k}=\sum_{k=0}^{n-1}f_{k}f_{n-k-1}</script><p>与卡特兰数递推式一样,所以 $f_n=c_n$.</p>
+<ul>
+<li>$n$ 对括号组成的合法括号序列的数目为 $c_n$</li>
+</ul>
+<p><strong>证明</strong> 设 $f_n$ 为 $n$ 对括号组成的合法括号序列的数量,考虑最后一个右括号,可以知道它有唯一对应的左括号,所以括号序列都是形如 $A(B)$ ,其中 $A,B$ 是合法的括号序列.已经用了一对,还剩下 $n-1$ 对括号可以分配,枚举 $A$ 中的括号数目 $k$ ,则 $B$ 中有 $n-k-1$ 对括号,总方案为 $f_{k}f_{n-k-1}$ .所以</p>
+<script type="math/tex; mode=display">
+f_n=\sum_{k=0}^{n-1}f_kf_{n-k-1}</script><p>所以 $f_n=c_n$.</p>
+<ul>
+<li>$n+2$ 个点的凸多边形三角剖分的方案数为 $c_n$</li>
+</ul>
+<p><strong>证明</strong> 记 $f_n$ 为 $n+2$ 个点的凸多边形三角剖分的方案数.同样考虑划分子问题,第 $n$ 个点与第 $1$ 个点之间的边所对应的三角形的顶点,设其为 $k$ ,则 $k\in [2,n+1]$.在 $1$ 到 $k$ 这一边,有 $k$ 个点,方案数为 $f_{k-2}$;另一边有 $(n+2-k+1=)n-k+3$ 个点,方案数为 $f_{n-k+3-2}=f_{n-k+1}$,可知</p>
+<script type="math/tex; mode=display">
+f_n=\sum_{k=2}^{n+1}f_{k-2}f_{n-k+1}=\sum_{k=0}^{n-1}f_{k}f_{n-k-1}</script><p>所以 $f_n=c_n$.可以知道,有 $n$ 个点的凸多边形三角剖分的方案数为 $c_{n-2}(n\ge 2)$.</p>
+<p>综上,可知卡特兰数模型的运用主要是基于递推式</p>
+<script type="math/tex; mode=display">
+c_n=\sum_{k=0}^{n-1}c_kc_{n-k-1}</script><p>在实际问题中,可以划分子问题,如果最后的结果是上式,则该递推式不出意外就是卡特兰数.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学-数论/" rel="tag"># 数学/数论</a>
+          
+            <a href="/tags/组合数学/" rel="tag"># 组合数学</a>
+          
+            <a href="/tags/计数/" rel="tag"># 计数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/21/二分图/" rel="next" title="二分图复习笔记">
+                <i class="fa fa-chevron-left"></i> 二分图复习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/21/类欧几里得算法/" rel="prev" title="类欧几里得算法">
+                类欧几里得算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="TbYangZ">
+            
+              <p class="site-author-name" itemprop="name">TbYangZ</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计数原理"><span class="nav-text">计数原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加法原理"><span class="nav-text">加法原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乘法原理"><span class="nav-text">乘法原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排列与组合"><span class="nav-text">排列与组合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排列"><span class="nav-text">排列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合"><span class="nav-text">组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合数性质"><span class="nav-text">组合数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排列组合基本方法"><span class="nav-text">排列组合基本方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#捆绑法"><span class="nav-text">捆绑法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插空法"><span class="nav-text">插空法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隔板法"><span class="nav-text">隔板法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关定理与扩展"><span class="nav-text">相关定理与扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阶乘幂"><span class="nav-text">阶乘幂</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项式定理"><span class="nav-text">二项式定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合恒等式"><span class="nav-text">组合恒等式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卡特兰数"><span class="nav-text">卡特兰数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通项公式证明"><span class="nav-text">通项公式证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卡特兰数模型"><span class="nav-text">卡特兰数模型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TbYangZ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

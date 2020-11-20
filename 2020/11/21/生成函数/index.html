@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="生成函数相关（未完成）。">
+<meta name="keywords" content="多项式,数学&#x2F;数论,生成函数,高等数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成函数学习笔记">
+<meta property="og:url" content="https://TbYangZ.github.io/2020/11/21/生成函数/index.html">
+<meta property="og:site_name" content="TbYangZ&#39;s blog">
+<meta property="og:description" content="生成函数相关（未完成）。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tbyangz.github.io/2020/11/21/生成函数/复平面.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/11/21/生成函数/蝶形变换.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/11/21/生成函数/二进制逆序倒置.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/11/21/生成函数/牛顿迭代.png">
+<meta property="og:updated_time" content="2020-11-20T17:30:42.703Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="生成函数学习笔记">
+<meta name="twitter:description" content="生成函数相关（未完成）。">
+<meta name="twitter:image" content="https://tbyangz.github.io/2020/11/21/生成函数/复平面.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://TbYangZ.github.io/2020/11/21/生成函数/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>生成函数学习笔记 | TbYangZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TbYangZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Think twice, code once.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://TbYangZ.github.io/2020/11/21/生成函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TbYangZ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TbYangZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">生成函数学习笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-11-21 01:09:35 / 修改时间：01:30:42" itemprop="dateCreated datePublished" datetime="2020-11-21T01:09:35+08:00">2020-11-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>生成函数相关（未完成）。</p>
+<a id="more"></a>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="导数与积分"><a href="#导数与积分" class="headerlink" title="导数与积分"></a>导数与积分</h3><h4 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h4><p>函数 $f(x)$ 的 <strong>导数</strong> $f’(x)=\lim_{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$.一阶导数记作 $f’(x)$ ,二阶导数就是对一阶导数再求导,记作 $f’’(x)$ ,同理, $n$ 阶导数就是对 $n-1$ 阶导数求导,记作 $f^{(n)}(x)$ .在区间 $(a,b)$ 内,若一阶导恒大于 $0$ ,则原函数在区间内单调递增,恒小于 $0$ ,则单调递减.</p>
+<p>需要掌握以下求导公式与求导法则:</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&(x^\mu)'=\mu x^{\mu-1}\qquad &(a^x)'=a^x \ln a\\
+&(e^x)'=e^x\qquad &(\log_ax)'=\frac{1}{x\ln a}\\
+&(\ln x)'=\frac{1}{x}\qquad &(\sin x)'=\cos x\\
+&(\cos x)'=\sin x\qquad &(\tan x)'=\sec^2x\\
+&(C)'=0 &(\cot x)'=-\csc^2x\\
+&(\sec x)'=\sec x\tan x \qquad &(\csc x)'=-\csc x\cot x
+\end{split}</script><p>函数的和差积商的求导法则</p>
+<p>设 $u=u(x),v=v(x)$ 都可导</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&(u\pm v)'=u'\pm v'\qquad &(Cu)'=Cu'\\
+&(uv)'=u'v+uv'\qquad &\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}(v\ne 0)
+\end{split}</script><p>复合函数的求导法则</p>
+<p>设 $y=f(u)$ 而 $u=g(x)$ 且 $f(u)$ 与 $g(x)$ 都可导,则复合函数 $y=f\left[g(x)\right]$ 的导数为</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}y}{\mathrm{d}u}\cdot\frac{\mathrm{d}u}{\mathrm{d}x},y'(x)=f'(u)\cdot g'(x)</script><h4 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h4><p>函数 $f(x)$ 的 <strong>不定积分</strong> 为函数 $F(x)$ ,满足 $F’(x)=f(x)$ .容易知道这样的函数有无穷多个,若 $F’(x)=f(x)$ ,则 $[F(x)+C]’=f(x)$ ( $C$ 为常数).记作</p>
+<script type="math/tex; mode=display">
+\int f(x)\mathrm{d}x=F(x)+C</script><p>不定积分的基本性质</p>
+<ol>
+<li>设函数 $f(x)$ 以及 $g(x)$ 的原函数存在,则</li>
+</ol>
+<script type="math/tex; mode=display">
+\int [f(x)+g(x)]\mathrm{d}x=\int f(x)\mathrm{d}x+\int g(x)\mathrm{d}x</script><ol>
+<li>设函数 $f(x)$ 的原函数存在,且 $k$ 为非 $0$ 常数,则</li>
+</ol>
+<script type="math/tex; mode=display">
+\int kf(x)\mathrm{d}x=k\int f(x)\mathrm{d}x</script><p>基本积分表</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&\int k\mathrm{d}x=kx+C\\
+&\int x^\mu=\frac{x^{\mu+1}}{\mu+1}+C\quad(\mu\ne -1)\\
+&\int \frac{\mathrm{d}x}{x}=\ln |x|+C\\
+&\int \frac{\mathrm{d}x}{1+x^2}=\arctan x+C\\
+&\int \frac{\mathrm{d}x}{\sqrt{1-x^2}}=\arcsin x+C\\
+&\int \cos x\mathrm{d}x=\sin x+C\\
+&\int \sin x\mathrm{d}x=-\cos x+C\\
+&\int \frac{\mathrm{d}x}{\cos^2x}=\int \sec^2x\mathrm{d}x=\tan x+C\\
+&\int \frac{\mathrm{d}x}{\sin^2x}=\int \csc^2x\mathrm{d}x=-\cot x+C\\
+&\int \sec x\tan x\mathrm{d}x=\sec x+C\\
+&\int \csc x\cot x\mathrm{d}x=-\csc x+C\\
+&\int e^x\mathrm{d}x=e^x+C\\
+&\int a^x\mathrm{d}x=\frac{a^x}{\ln a}+C
+\end{split}</script><p>一个函数的 <strong>定积分</strong> 可以形象地理解为函数 $f(x)$ 图像与 $x$ 轴在 $a,b $两端围成的有符号的面积.</p>
+<p>有牛顿-莱布尼茨公式:</p>
+<p>若函数 $F(x)$ 是连续函数 $f(x)$ 在区间 $[a,b]$ 上的一个原函数,则</p>
+<script type="math/tex; mode=display">
+\int_a^bf(x)\mathrm{d}x=F(b)-F(a)=F(x){\Large|}_a^b</script><h3 id="泰勒展开与麦克劳林公式"><a href="#泰勒展开与麦克劳林公式" class="headerlink" title="泰勒展开与麦克劳林公式"></a>泰勒展开与麦克劳林公式</h3><p>对于一个非多项式函数,我们可以用一个多项式函数去近似它.</p>
+<p>设需要近似的函数为 $f(x)$ ,多项式 $g(x)=a_0+a_1x+a_2x^2+\cdots$ .当我们代入 $x=0$ 的值时 $g(0)=a_0$ ,为了能够得到近似,我们此时令 $a_0=f(0)$ .而对 $g(x)$ 求导,则得 $g’(x)=a_1+2a_2x+3a_3x^2+\cdots$ ,同时对 $f(x)$ 求导得到 $f’(x)$ ,此时再代入 $x=0$ 可得到 $a_1=f’(x)$ .同理,可以知道 $f’’(0)=2\cdot 3\cdot a_3,f’’’(0)=2\cdot 3\cdot 4\cdot a_4,\cdots$.</p>
+<p>所以,我们可以得到麦克劳林公式</p>
+<script type="math/tex; mode=display">
+f(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+\frac{f'''(0)}{3!}x^3+\cdots=\sum_{i=0}^{\infty}\frac{f^{(i)}(0)}{i!}x^i</script><p>即泰勒公式在$x=0$处的展开.</p>
+<p>由于 $(e^x)’=e^x$ ,所以可以得到</p>
+<script type="math/tex; mode=display">
+e^x=1+\frac{x}{1!}+\frac{x}{2!}+\frac{x^2}{3!}+\cdots=\sum_{i=0}^{\infty}\frac{x^i}{i!}</script><p>由于 $(\sin x)’=\cos x,(\cos x)’=-\sin x,(-\sin x)’=-\cos x,(-\cos x)’=\sin x$ ,而代入 $x=0$ 进去得到 $0,1,0,-1$ 的循环,于是可以得到</p>
+<script type="math/tex; mode=display">
+\sin x=\frac{x}{1!}-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots</script><p>同理可知</p>
+<script type="math/tex; mode=display">
+\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\cdots</script><p>对于 $e^x$ 的展开,若只保留奇数次项或偶数次项,可以用双曲函数实现.</p>
+<script type="math/tex; mode=display">
+\operatorname{sh}x=\frac{e^x-e^{-x}}{2}=\frac{x}{1!}+\frac{x^3}{3!}+\cdots\\
+\operatorname{ch}x=\frac{e^x+e^{-x}}{2}=1+\frac{x^2}{2!}+\frac{x^4}{4!}\cdots\\</script><p>下面有几个常用的泰勒展开.</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&-\ln(1-x)=\ln{\frac{1}{1-x}}=\sum_{i=1}^\infty \frac{x^i}{i}\\
+&xe^x=\sum_{i=0}^\infty \frac{ix^i}{i!}
+\end{split}</script><h3 id="牛顿二项式定理"><a href="#牛顿二项式定理" class="headerlink" title="牛顿二项式定理"></a>牛顿二项式定理</h3><p>二项式 ${n \choose m}$ 表示在 $n$ 个物品中选 $m$ 个的方案数.可以知道,有</p>
+<script type="math/tex; mode=display">
+{n\choose m}=\frac{n!}{m!(n-m)!}</script><p>在这个意义下, $n,m$ 只能取非负整数.如果我们令 $n$ 为实数, $m$ 为整数,此时定义二项式系数 ${n\choose m}$ 为</p>
+<script type="math/tex; mode=display">
+{n\choose m}=
+\begin{split}
+\begin{cases}
+\dfrac{n(n-1)(n-2)\cdots(n-m+1)}{m!}\qquad&m\ge1\\
+1&m=0\\
+0&m\le-1
+\end{cases}
+\end{split}</script><p>牛顿依照这个,推广了二项式定理,称为牛顿二项式定理</p>
+<script type="math/tex; mode=display">
+(x+y)^\alpha=\sum_{k=0}^\infty{\alpha \choose k}x^ky^{\alpha-k}</script><p>其中 $\alpha\in R,0 \le |x| &lt; |y|$ .由于 $(x+y)^\alpha=y^\alpha(z+1)^\alpha,z=x/y$ ,则定理可以转化为 $|z|&lt;1$ 时,有</p>
+<script type="math/tex; mode=display">
+(1+z)^\alpha=\sum_{k=0}^\infty{\alpha \choose k}z^k</script><p>根据定义,我们可以得出一个上指标反转公式</p>
+<script type="math/tex; mode=display">
+\begin{split}
+{n\choose k}&=(-1)^k{k-n-1\choose k}\\
+{-n\choose k}&=(-1)^k{n+k-1\choose k}\\
+\end{split}\\</script><h3 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h3><p>在自然中,最常见的数那就是自然数 $\mathbb{N}$ .自然数 $\mathbb{N}$ 对加法,乘法封闭,对减法不封闭,由此扩展出整数 $\mathbb{Z}$ .但是整数对除法并不封闭,由此又引申出有理数 $\mathbb{Q}$ .同样,有理数对开方不封闭,由此扩展出无理数.有理数与无理数统称为实数 $\mathbb{R}$ .</p>
+<p>虽然实数是比较完备的了,但是对于这样的方程 $x^2+1=0$ 在实数域里面没有解.于是数学家就想着能否定义一个数,让它的平方等于 $-1$ ?于是就有虚数的出现.</p>
+<p>定义 <strong>虚数单位</strong>  $i$ 满足 $i^2=-1$ ,则数 $a+bi$ 叫做 <strong>复数</strong>,其中 $a,b\in \mathbb{R}$,记作 $a+bi \in \mathbb{C}$.对于所有的代数方程,在该数域下都有解.</p>
+<h4 id="复数的几何意义"><a href="#复数的几何意义" class="headerlink" title="复数的几何意义"></a>复数的几何意义</h4><p>复数 $a+bi$ 可以简单的理解为在复平面下的一个向量.</p>
+<p><img src=".\复平面.png" alt="复平面"></p>
+<p>在复平面上,复数所代表的向量与实轴正方向的夹角为该复数的辐角,其到原点的距离称之为模长.</p>
+<p>对于复数 $z=a+bi$ ,模长 $|z|$ 的代数意义就是 $\sqrt{a^2+b^2}$ ,即 $|z|=|a+bi|=\sqrt{a^2+b^2}$ .</p>
+<p>当复数在一个极坐标下,有 $z=r(\cos \theta+i\sin \theta)$ ,其中 $r$ 为极径, $\theta$ 为极角.</p>
+<h4 id="复数的运算"><a href="#复数的运算" class="headerlink" title="复数的运算"></a>复数的运算</h4><p><strong>复数的加减乘除</strong></p>
+<p>复数的加减乘除与实数运算没有什么差异,只需要注意 $i^2=-1$ 即可.</p>
+<script type="math/tex; mode=display">
+(a+bi)+(c+di)=(a+c)+(b+d)i\\
+(a+bi)\times (c+di)=(ac-bd)+(ad+bc)i\\
+\dfrac{a+bi}{c+di}=\dfrac{ac+bd}{c^2+d^2}+\dfrac{bc-ad}{c^2+d^2}i</script><p>复数的乘法在几何上表示为幅角相加,模长相乘.</p>
+<p><strong>复数的对数运算</strong></p>
+<p>有欧拉公式:</p>
+<script type="math/tex; mode=display">
+e^{i\theta}=\cos\theta+i\sin\theta</script><p>可以通过两边进行泰勒展开证明.因此任意一个复数 $z$ ,都可以表示成 $re^{i\theta}$ .</p>
+<p>故 $\ln z=\ln \left(re^{i\theta}\right)=\ln r+i\theta$ ,而以其他数为底数的话可以用换底公式得到.</p>
+<p><strong>复数的指数运算</strong></p>
+<p>对于复底数,实指数的运算 $(r,\theta)^x=(re^{i\theta})^x=r^xe^{i\theta x}=(r^x,e^{\theta x})$ .</p>
+<p>对于复底数,复指数的运算 $(a+bi)^{c+di}=e^{\ln\left(a+bi\right)^{c+di}}=e^{(c+di)\ln (a+bi)}$ .</p>
+<p>复数 $z=a+bi$ 的<strong>共轭复数</strong> $\bar{z}=a-bi$ ,可以知道 $z\cdot\bar{z}=a^2+b^2=|z|^2$ .</p>
+<h4 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h4><p>如果复数 $\omega$ 满足 $\omega^n=1$ 则称 $\omega$ 为 $n$ 次单位根.显然这样的数可以有 $n$ 个.注意到 $\exp({ix})=\cos x+i\sin x$ ,令 $x=2\pi$ 可得 $\exp(2\pi i)=\cos 2\pi +i\sin 2\pi=1$ ,所以 $\exp(\frac{2\pi k}{n}i),k=0,1,\cdots,n$ 为单位根.$k=1$ 时,令 $\omega _n = \exp( \frac{2\pi}{n}i)=\cos \frac{2\pi}{n}+i\sin\frac{2\pi}{n}$,则所有 $n$ 次单位根可以表示为 $\omega_n^k,k=0,1,\cdots,n$.</p>
+<p>称 $\omega_n$ 为本源单位根或主 $n$ 次单位根.</p>
+<blockquote>
+<p>单位根的一些性质</p>
+</blockquote>
+<ul>
+<li>消去引理</li>
+</ul>
+<script type="math/tex; mode=display">
+\omega_{tn}^{tk}=\omega_n^k</script><p><strong>证明</strong> </p>
+<script type="math/tex; mode=display">
+\omega_{tn}^{tk}=\exp\left(\frac{2\pi tk}{tn}i\right)=\exp\left(\frac{2\pi k}{n}i\right)=\omega_n^k</script><ul>
+<li>折半引理</li>
+</ul>
+<script type="math/tex; mode=display">
+\omega_{n}^{n/2+k}=-\omega_{n}^k</script><p><strong>证明</strong></p>
+<script type="math/tex; mode=display">
+\begin{align}
+\omega_n^{n/2+k}&=\exp\left(\frac{2\pi (n/2+k)}{n}\right)=\exp\left(\pi i+\frac{2\pi k}{n}i\right)\\
+&=\cos\left(\pi+\frac{2\pi k}{n}\right)+i\sin\left(\pi+\frac{2\pi k}{n}\right)\\
+&=-\cos\frac{2\pi k}{n}-i\sin\frac{2\pi k}{n}\\
+&=-\omega _n^k
+\end{align}</script><ul>
+<li>求和引理</li>
+</ul>
+<script type="math/tex; mode=display">
+[n\mid x]={1\over n}\sum_{i=0}^{n-1}\omega_n^{ix}</script><p>其中 $[P]$ 为艾弗森括号, $P$ 为真其值为 $1$ 否则为 $0$.</p>
+<p><strong>证明</strong> 当 $n\mid x$ 时,左边为 $1$ ;注意到 $\omega_n^x=1$ 右边$=$</p>
+<script type="math/tex; mode=display">
+\frac{1}{n}\sum_{i=0}^{n-1}\omega_n^{ix}=\frac{1}{n}\times n=1</script><p>而当 $n\nmid x$ 时,左边为 $0$,右边 $=$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{1}{n}\sum_{i=0}^{n-1}\omega_n^{ix}&=\frac{1}{n}\sum_{i=0}^{n-1}\left(\omega_n^{x}\right)^i\\
+&=\frac{1}{n}\times \frac{(\omega_n^x)^n-1}{\omega_n^x-1}\\
+&=\frac{1}{n}\times \frac{1-1}{\omega_n^x-1}\\
+&=0
+\end{align}</script><h3 id="阶与原根"><a href="#阶与原根" class="headerlink" title="阶与原根"></a>阶与原根</h3><p>当 $(a,p)=1$ 时, $a$ 模 $p$ 的 <strong>阶</strong> (或 <strong>指数</strong> )定义为使式 $a^d\equiv 1\pmod{p}$ 成立的最小正整数 $d$ ,可以理解为 $a$ 最少自乘几次变成 $1$ .记作 $d=\delta_p(a)$ .</p>
+<p>有欧拉公式</p>
+<script type="math/tex; mode=display">
+a^{\varphi(p)}\equiv 1\pmod p</script><p>所以可知 $\forall a$,$\delta_p(a)\le\varphi(p)$ .由此有推论</p>
+<script type="math/tex; mode=display">
+\forall a,\delta_p(a)\mid \varphi(p)</script><p>可以说明一个数的模$p$的阶只可能时 $\varphi(p)$ 的约数.因此可以枚举 $\varphi(p)$ 的约数并判断.</p>
+<p>阶也可以说明这样一个事</p>
+<script type="math/tex; mode=display">
+a^x\equiv a^y\pmod p\Longleftrightarrow x\equiv y\pmod {\delta_p(a)}</script><p>称一个数 $p$ 的原根为 $g$ ,当且仅当 $\delta_p(g)=\varphi(p)$ .可以知道, $m$ 有原根的充分必要条件是</p>
+<script type="math/tex; mode=display">
+m=1,2,4,p^k,2p^k</script><p>其中 $p$ 为 <strong>奇素数</strong> , $k\ge 1$ .下面只讨论 $p$ 为素数的时候.</p>
+<p>当 $p$ 为素数的时候, $g^x$ 的循环节为 $p-1$ ,也就是说 $g^x$ 取遍了 $1$ 到 $p-1$ 的所有数,这是一一对应的.</p>
+<p>一个数 $p$ 的原根有 $\varphi\left(\varphi(p)\right)$ 个.</p>
+<h4 id="求原根"><a href="#求原根" class="headerlink" title="求原根"></a>求原根</h4><p>求 $m$ 的原根,最简单粗暴的方法:枚举</p>
+<p>枚举 $g$ 原根,检验 $\forall i\in[2,\varphi(m)-1]$ 的所有数,判断是否有 $g^i\equiv 1\pmod{m}$ ,如果有则不是原根;且检验 $g^{\varphi(m)}\equiv 1\pmod{m}$.</p>
+<p>优化:只枚举 $\varphi(m)$ 的约数.</p>
+<h4 id="原根作为单位根"><a href="#原根作为单位根" class="headerlink" title="原根作为单位根"></a>原根作为单位根</h4><p>令 $d=\delta_p(a)$ 则可以得到 $a^d\equiv 1\pmod p$,即 $a$ 为 $\bmod p$ 意义下的阶次单位根.由于 $g$ 原根具有最大的阶,所以用原根构造模意义下的单位根是最好的.</p>
+<p>由于 $g^{\varphi(p)}\equiv 1\pmod p$ 故</p>
+<script type="math/tex; mode=display">
+\omega_n=g^{\frac{\varphi(p)}{n}}\bmod p</script><p>其中 $n\mid \varphi(p)$.</p>
+<p>模意义下的单位根同样具有复数域下单位根的三大特性:</p>
+<ol>
+<li>消去引理</li>
+<li>折半引理</li>
+<li>求和引理</li>
+</ol>
+<p>也可以用来干一些事情,所以这是有意义的.</p>
+<h2 id="多项式系列"><a href="#多项式系列" class="headerlink" title="多项式系列"></a>多项式系列</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>多项式是处理生成函数的有力工具,所以需要牢牢记住其相关算法.一般的生成函数是基于这些多项式的相关算法(准确说是形式幂级数的相关算法).</p>
+<h3 id="多项式与形式幂级数"><a href="#多项式与形式幂级数" class="headerlink" title="多项式与形式幂级数"></a>多项式与形式幂级数</h3><p><strong>多项式</strong>$A(x)$定义为</p>
+<script type="math/tex; mode=display">
+A(x)=\sum_{i=0}^{n-1}a_ix^i</script><p>$a_i$为对应项系数. <strong>形式幂级数</strong> 则将多项式的上界去掉</p>
+<script type="math/tex; mode=display">
+A(x)=\sum_{i\ge 0}a_ix^i</script><p>其中的$x$只是占位符,没有实际意义.用$[x^n]A(x)$表示形式幂级数或多项式$A(x)$的$x^n$项系数.用$\deg A(x)$表示多项式$A(x)$的次数,即最高次项的次数.</p>
+<p>形式幂级数的运算与多项式的运算一一对应.</p>
+<h3 id="多项式卷积"><a href="#多项式卷积" class="headerlink" title="多项式卷积"></a>多项式卷积</h3><p>所谓<strong>卷积</strong>的定义就是</p>
+<script type="math/tex; mode=display">
+c_k=\sum_{i\circ j=k} a_ib_j</script><p>其中 $\circ$ 为一种二元运算符,可以为 $+,-,\times,/,\oplus,\&amp;,|$等,后面三个分别为按位异或,按位与,按位或.</p>
+<p>当为 $+$ 时,是最简单的卷积.我们可以用 <strong>多项式乘法</strong> 解决.</p>
+<script type="math/tex; mode=display">
+c_kx^k=\sum_{i+j=k}a_ib_jx^{i+j}</script><p>所以多项式乘法可以在 $O(n\log n)$ 的时间内求得.</p>
+<p>当为减法时,可以对其中一个序列翻转,然后就化减为加.</p>
+<p>当为乘法时,为狄利克雷卷积.</p>
+<p>当为除法时,除法与乘法等价.</p>
+<p>当为<strong>与</strong>与<strong>或</strong>时,需要用到快速莫比乌斯变换(Fast Mobius Transform,FMT).</p>
+<p>当为<strong>异或</strong>时,需要用到快速沃尔什变换(Fast Walsh-Hadamard Transfor,FWT).</p>
+<h4 id="多项式乘法"><a href="#多项式乘法" class="headerlink" title="多项式乘法"></a>多项式乘法</h4><p>设 $A(x)=\sum_{k\ge 0}a_kx^k$,$B(x)=\sum_{k\ge 0}b_kx^k$,则</p>
+<script type="math/tex; mode=display">
+A(x)\times B(x)=\sum_{k\ge 0}\sum_{i=0}^ka_ib_{k-i}x^k</script><p>多项式乘法的基本思路是将多项式转化为点值,用 $O(n)$ 计算点值乘法,再转化为系数.</p>
+<h4 id="快速傅里叶变换FFT"><a href="#快速傅里叶变换FFT" class="headerlink" title="快速傅里叶变换FFT"></a>快速傅里叶变换FFT</h4><p>对一个多项式的系数向量变为代入 $\omega_n^k$ 后的点值,这个过程叫做离散傅里叶变换(Discrete Fourier Transform,DFT),而存在一种算法,可以在 $O(n\log n)$ 的时间内解决这一问题.</p>
+<p>可以知道有以下的性质.</p>
+<ul>
+<li>消去引理</li>
+</ul>
+<script type="math/tex; mode=display">
+\omega_{tn}^{tk}=\omega_n^k</script><ul>
+<li>折半引理</li>
+</ul>
+<script type="math/tex; mode=display">
+\omega_{n}^{n/2+k}=-\omega_{n}^k</script><p>推论:$\omega_n^k$只有$n$个不同的值.</p>
+<ul>
+<li>求和引理</li>
+</ul>
+<script type="math/tex; mode=display">
+[n|x]={1\over n}\sum_{i=0}^{n-1}\omega_n^{ix}</script><p>根据这三个引理,我们可以用分治的方法在 $O(n\log n)$ 的时间内完成点值与系数的转换.</p>
+<p>设 $n$ 为 $2$ 的整数次幂(不是可以扩充多项式的大小),原多项式为 $A(x)=a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}$ ,根据下标的奇偶性构建两个新的多项式 $A_0(x)$ 与 $A_1(x)$ :</p>
+<script type="math/tex; mode=display">
+A_0(x)=a_0+a_2x+a_4x^2+\cdots +a_{n-2}x^{n/2-1}\\
+A_1(x)=a_1+a_3x+a_5x^2+\cdots +a_{n-1}x^{n/2-1}</script><p>则可知 $A(x)=A_0(x^2)+xA_1(x^2)$ .所以,将 $n$ 次单位复数根 $\omega_n^0,\omega_n^1,\omega_n^2,\cdots,\omega_n^{n-1}$ 代入 $A(x)$ ,相当于是将 $\left(\omega_n^0\right)^2,\left(\omega_n^1\right)^2,\cdots,\left(\omega_n^{n-1}\right)^2$ 分别代入 $A_0(x)$ 与 $A_1(x)$ .由于消去引理,</p>
+<script type="math/tex; mode=display">
+\omega_n^{2i}=\omega_{n/2}^i</script><p>与折半引理,</p>
+<script type="math/tex; mode=display">
+\left(\omega_n^{i+n/2}\right)^2=\left(-\omega_n^i\right)^2=\omega_n^{2i}=\omega_{n/2}^i</script><p>可以将这看似 $n$ 个不同的值转化为 $n/2$ 个不同的值.于是可以 <strong>递归子问题</strong> 处理,这就是著名的 <strong>快速傅里叶变换</strong> (Fast Fourier Transformation,FFT).</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Recursive-FFT(a):</span><br><span class="line">    n=a.length</span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    wn=e^&#123;<span class="number">2</span>*pi*i/n&#125;</span><br><span class="line">    w=<span class="number">1</span></span><br><span class="line">    a_0=(a[<span class="number">0</span>],a[<span class="number">2</span>],a[<span class="number">4</span>],...,a[n/<span class="number">2</span><span class="number">-2</span>])</span><br><span class="line">    a_1=(a[<span class="number">1</span>],a[<span class="number">3</span>],a[<span class="number">5</span>],...,a[n/<span class="number">2</span><span class="number">-1</span>])</span><br><span class="line">    y_0=Recursive-FFT(a_0)</span><br><span class="line">    y_1=Recursive-FFT(a_1)</span><br><span class="line">    <span class="keyword">for</span> k=<span class="number">0</span> to n/<span class="number">2</span><span class="number">-1</span></span><br><span class="line">        y[k]=y_0[k]+w*y_1[k]</span><br><span class="line">        y[k+n/<span class="number">2</span>]=y_0[k]-w*y_1[k]</span><br><span class="line">        w=w*wn</span><br><span class="line">    <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
+<p>这是一个递归版的FFT的伪代码.第7,8行定义 $A_0(x)$ 与 $A_1(x)$ 的系数向量.第9,10行递归求解 $A_0(x)$ 与 $A_1(x)$ 的点值</p>
+<p>对于 $y_0,\cdots,y_{n/2-1}$ ,在第12行:</p>
+<script type="math/tex; mode=display">
+\begin{split}
+y_{k}&=y^{[0]}_k+\omega_n^ky^{[1]}_k\\
+&=A_0(\omega_n^{2k})+\omega_n^{2k}A_1(\omega_n^{2k})\\
+&=A(\omega_n^k)
+\end{split}</script><p>对于 $y_{n/2+1},\cdots,y_{n-1}$ ,设 $0\le k &lt; n / 2$ ,在第13行:</p>
+<script type="math/tex; mode=display">
+\begin{split}
+y_{k+n/2}&=y^{[0]}_k-\omega_n^ky^{[1]}_k\\
+&=A_0(\omega_n^{2k})+\omega_n^{k+n/2}A_1(\omega_n^{2k})\qquad&(\because -\omega_n^{k}=\omega_n^{k+n/2})\\
+&=A_0(\omega_n^{2k+n})+\omega_n^{k+n/2}A_1(\omega_n^{2k+n})\qquad&(\because \omega_n^{2k+n}=\omega_n^{2k})\\
+&=A(\omega_n^{k+n/2})
+\end{split}</script><p>由此可见,返回的向量的确是原向量的DFT.</p>
+<p>现在,我们想要在 $O(n \log n)$ 的时间内将点值转系数.我们将所有的信息写成矩阵形式 $Y=V_nA$ :</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+y_0\\
+y_1\\
+y_2\\
+y_3\\
+\vdots\\
+y_{n-1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&1&1&1&\cdots&1\\
+1&\omega_n^1&\omega_n^2&\omega_n^3&\cdots&\omega_n^{n-1}\\
+1&\omega_n^2&\omega_n^4&\omega_n^6&\cdots&\omega_n^{2(n-1)}\\
+1&\omega_n^3&\omega_n^6&\omega_n^9&\cdots&\omega_n^{3(n-1)}\\
+\vdots&\vdots&\vdots&\vdots&\ddots&\vdots\\
+1&\omega_n^{n-1}&\omega_n^{2(n-1)}&\omega_n^{3(n-1)}&\cdots&\omega_n^{(n-1)(n-1)}\\
+\end{bmatrix}
+\begin{bmatrix}
+a_0\\
+a_1\\
+a_2\\
+a_3\\
+\vdots\\
+a_{n-1}
+\end{bmatrix}</script><p>令 $j,k=0,1,\cdots,n-1$ 则 $V_n$ 中 $(j,k)$ 处的元素为 $\omega_n^{jk}$ .所以对于 $\mathrm{DFT}$ 的逆变换 $\mathrm{DFT}^{-1}$ 就对应矩阵 $A=V_n^{-1}Y$ .所以我们就需要求 $V_n$ 的逆矩阵 $V_n^{-1}$ .</p>
+<p>给出结论, 对于 $j,k=0,1,\cdots,n-1$ ,$V_n^{-1}$ 在 $(j,k)$ 处的值为 $\omega_n^{-jk}/n$ .</p>
+<p>证明其实很简单,因为 $V_nV_n^{-1}=I_n$ ,其中 $I_n$ 为大小为 $n\times n$ 的单位矩阵.所以对于乘积处于 $(j,j’)$ 的值为</p>
+<script type="math/tex; mode=display">
+[V_nV_n^{-1}]_{j,j'}=\sum_{k=0}^{n-1}{1\over n}\omega_n^{-kj'}\omega_n^{kj}={1\over n}\sum_{k=0}^{n-1}\omega_n^{k(j-j')}</script><p>当 $j=j’$ 时,该式等于 1 ,否则,由于求和引理,该式等于0.</p>
+<p>所以对于原来的算法,将 $a,y$ 交换,单位根取反,求得结果除以 $n$ ,即可做到在 $O(n\log n)$ 的时间内将点值转系数.</p>
+<p>由于递归版常数巨大,于是考虑用 <strong>迭代</strong> 优化.</p>
+<p>考虑原系数向量 $[a_0,a_1,a_2,\dots,a_{n-1}]$ ,经过一系列奇偶分组后的结果.</p>
+<p><img src=".\蝶形变换.png" alt="蝶形变换"></p>
+<p>观察下标,将其二进制展开,</p>
+<p><img src=".\二进制逆序倒置.png" alt="二进制逆序倒置"></p>
+<p>发现最后的结果竟然是二进制位的倒置.于是我们可以先将一开始的系数按照最终的结果排列好,然后再依次向上合并两边的结果,就可以做到迭代实现而非递归.</p>
+<p>由于 $\mathrm{DFT}^{-1}$ 与 $\mathrm{DFT}$ 过程类似,也可用这种方法优化.</p>
+<p>而一个数的二进制位倒置可以通过递推的方法得到.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Makerv</span><span class="params">(<span class="keyword">int</span> N,<span class="keyword">int</span> Len)</span> </span>&#123;<span class="comment">//数的大小(边界),二进制的位数</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">		rev[i]=(rev[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(Len<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>真正的FFT:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(vec &amp;A,<span class="keyword">int</span> n,<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		<span class="keyword">if</span> (i&gt;rev[i]) swap(A[i],A[rev[i]]);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i&lt;&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="function">cp <span class="title">wn</span><span class="params">(<span class="built_in">cos</span>(pi/i),f*<span class="built_in">sin</span>(pi/i))</span></span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j+=(i&lt;&lt;<span class="number">1</span>)) &#123;</span><br><span class="line">			cp w=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;i;k++,w=w*wn) &#123;</span><br><span class="line">				cp x=A[j+k],y=w*A[j+i+k];</span><br><span class="line">				A[j+k]=x+y;</span><br><span class="line">				A[j+i+k]=x-y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (f==<span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) A[i]=A[i]/cp(n,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="快速数论变换NTT"><a href="#快速数论变换NTT" class="headerlink" title="快速数论变换NTT"></a>快速数论变换NTT</h4><p>利用模意义下的单位根.由于其也具有单位根的三大特性,所以直接使用即可,只不过要取模和乘逆元.</p>
+<p>还要注意的是模数的选择,由于需要 $2^k$ 的单位根,所以模数一般是形如 $k\cdot 2^t+1$ 的,如 $998244353=119*2^{23}+1$.</p>
+<p>对于任意模数,则需要其他诸如三模数 $NTT$ 等的方法.</p>
+<h4 id="快速莫比乌斯变换FMT"><a href="#快速莫比乌斯变换FMT" class="headerlink" title="快速莫比乌斯变换FMT"></a>快速莫比乌斯变换FMT</h4><p>现在需要解决这样一个卷积式</p>
+<script type="math/tex; mode=display">
+h_k=\sum_{i|j=k}f_ig_j</script><p>可以将 $|\rightarrow \cup$ ,将每个数看成一个二进制所表示的集合,比如 $3_{(10)}=11_{(2)}$ 可以看成 $\{0,1\}$ 这一个集合,这样就将形式幂级数转化成集合幂级数</p>
+<script type="math/tex; mode=display">
+H(x)=\sum_{S\in 2^{U}} h_Sx^{S}</script><p>其中 $U$ 为全集,$2^U$ 表示 $U$ 的幂集,即 $U$ 的所有子集构成的集合,$x$ 为占位符,只是为了可以合并同类项,并无实际意义.这样原来的卷积式就可以变成</p>
+<script type="math/tex; mode=display">
+h_k=\sum_{i\cup j=k}f_ig_j=\sum_{i\subseteq k}\sum_{j\subseteq k}[i\cup j=k]f_ig_j</script><p>定义序列 $f$ 的莫比乌斯变换为 $\hat{f}_S=\sum_{T\subseteq S}f_T$.对上式两边同时做莫比乌斯变换,可以得到</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\hat{h}_k=\sum_{S\subseteq k}h_S&=\sum_{i\subseteq k}\sum_{j\subseteq k}[i\cup j\subseteq k]f_ig_j\\
+&=\sum_{i\subseteq k}\sum_{j\subseteq k}[i\subseteq k][j\subseteq k]f_ig_j\\
+&=\left(\sum_{i\subseteq k}[i\subseteq k]f_i\right)\left(\sum_{j\subseteq k}[j\subseteq k]g_j\right)\\
+&=\left(\sum_{i\subseteq k}f_i\right)\left(\sum_{j\subseteq k}g_j\right)\\
+&=\hat{f}_k\hat{g}_k
+\end{align*}</script><p>所以做 $\mathrm{FMT}$ 之后之间点值相乘即可.所以,现在的问题是如何快速求莫比乌斯变换.</p>
+<p>考虑FMT的定义</p>
+<script type="math/tex; mode=display">
+\hat{f}_S=\sum_{T\subseteq S}f_T</script><p>实质上是子集和,可以用一些技巧做到 $O(3^n)$,但是还是不够快.</p>
+<p>探讨一下 $\mathrm{FMT}$ 的本质.</p>
+<p>如果将每个集合看成一个 $n$ 维空间的坐标,每维属于 $\{0,1\}$,那么可以将其看成是一个高维的前缀和.即</p>
+<script type="math/tex; mode=display">
+\hat{f}_{x_1,x_2,\cdots,x_n}=\sum_{y_1\le x_1,y_2\le x_2,\cdots,y_n\le x_n}f_{y_1,y_2,\cdots,y_n}</script><p>处理前缀和除了用容斥的方法之外,还可以对每个维度分别求前缀和.</p>
+<p>例如二维前缀和</p>
+<script type="math/tex; mode=display">
+\begin{align}
+{s_1}_{i,j}&=\sum_{k\le j}a_{i,k}\\
+
+s_{i,j}&=\sum_{k\le i}{s_1}_{k,j}
+\end{align}</script><p>三维前缀和</p>
+<script type="math/tex; mode=display">
+\begin{align}
+{s_1}_{i,j,k}&=\sum_{x\le i}a_{x,j,k}\\
+{s_2}_{i,j,k}&=\sum_{y\le j}{s_1}_{i,y,k}\\
+{s}_{i,j,k}&=\sum_{z\le k}{s_2}_{i,j,z}
+\end{align}</script><p>这启发我们可以枚举每一个维度,做前缀和.</p>
+<p>对应当FMT上来就是枚举每一个维度 $i$,再枚举每一个状态 $j$ ,若 $j$ 中的第 $i$ 维为 $1$ ,则让 <code>f[j]+=f[j-i]</code>,做第 $i$ 维的前缀和.所以代码非常短.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FMT</span><span class="params">(<span class="keyword">int</span> *f,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;(<span class="number">1</span>&lt;&lt;n);j++)</span><br><span class="line">            <span class="keyword">if</span>(i&amp;j)f[j]+=f[j^i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>考虑将点值转化成系数.称之为子集反演,记作 $\mathrm{FMT}^{-1}$.由容斥原理可知</p>
+<script type="math/tex; mode=display">
+f_S=\sum_{T\subseteq S}(-1)^{|S|-|T|}\hat{f}_T</script><p>(虽然没什么用)可以分离变量做子集和</p>
+<script type="math/tex; mode=display">
+f_S=(-1)^{|S|}\sum_{T\subseteq S}(-1)^{|T|}\hat{f}_T</script><p>将后面看成整体做子集和,之后再乘上 $(-1)^{|S|}$ .</p>
+<p>然而可以利用前缀和的逆运算,差分.将前缀和的过程改成差分即可,所以就是符号变一下的事.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">IFMT</span><span class="params">(<span class="keyword">int</span> *f,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;(<span class="number">1</span>&lt;&lt;n);j++)</span><br><span class="line">            <span class="keyword">if</span>(i&amp;j)f[j]-=f[j^i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>于是可以写在一起</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FMT</span><span class="params">(<span class="keyword">int</span> *f,<span class="keyword">int</span> n,<span class="keyword">int</span> tp)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;(<span class="number">1</span>&lt;&lt;n);j++)</span><br><span class="line">            <span class="keyword">if</span>(i&amp;j)f[j]+=tp*f[j^i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>tp=-1</code>表示做$\mathrm{FMT}^{-1}$.</p>
+<p>这样就可以在 $O(n2^n)$ 的时间内完成集合并卷积(或卷积).</p>
+<p>对于集合交卷积,可以利用德$\cdot$摩根律转化</p>
+<script type="math/tex; mode=display">
+S\cap T=\overline{\overline{S}\cup \overline{T}}</script><p>所以将集合取个补集,做 $\mathrm{FMT}$ 后再补回来.也可以仿照 $\mathrm{FMT}$ 的思路,构造后缀和和后缀差分求解,过程就是 $\mathrm{FMT}$ 过程反一下.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FMT</span><span class="params">(<span class="keyword">int</span> *f,<span class="keyword">int</span> n,<span class="keyword">int</span> tp)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;(<span class="number">1</span>&lt;&lt;n);j++)</span><br><span class="line">            <span class="keyword">if</span>(i&amp;j)f[i^j]+=tp*f[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="快速沃尔什变换FWT"><a href="#快速沃尔什变换FWT" class="headerlink" title="快速沃尔什变换FWT"></a>快速沃尔什变换FWT</h4><h3 id="多项式求导与积分"><a href="#多项式求导与积分" class="headerlink" title="多项式求导与积分"></a>多项式求导与积分</h3><p>有 <strong>求导</strong> 公式</p>
+<script type="math/tex; mode=display">
+\left[A(x)\right]^\prime=\left(\sum_{i=0}^{n-1}a_ix^i\right)^\prime=\sum_{i=0}^{n-1}a_i\left(x^i\right)^\prime=\sum_{i=1}^{n-1} ia_ix^{i-1}=\sum_{i=0}^{n-2}(i+1)a_{i+1}x^i</script><p>所以直接 $O(n)$ 计算即可.</p>
+<p>有 <strong>积分</strong> 公式</p>
+<script type="math/tex; mode=display">
+\int_0^xA(t)\mathrm{d}t=\int_0^x \sum_{i=0}^{n-1}a_it^i\mathrm{d}t=\sum_{i=0}^{n-1}a_i\int_0^xt^i\mathrm{d}t=\sum_{i=0}^{n-1}a_i\frac{t^{i+1}}{i+1}=\sum_{i=1}^n{a_{i-1}\over i}x^i</script><p>同样直接 $O(n)$ 计算即可.</p>
+<p>用定积分的原因就是防止出现不定的常数项.</p>
+<h3 id="多项式求逆"><a href="#多项式求逆" class="headerlink" title="多项式求逆"></a>多项式求逆</h3><p>若一个多项式 $A(x)$ ,存在另一个多项式 $A^{-1}(x)$ 满足</p>
+<script type="math/tex; mode=display">
+A(x)A^{-1}(x)\equiv 1\pmod {x^n}</script><p>就称 $A^{-1}(x)$ 为多项式 $A(x)$ 的逆多项式.其中 $\pmod{x^n}$ 指前 $n$ 项,可以简单理解,对于 $\forall i&gt;n,a_ix^i\equiv a_ix^nx^{i-n}\equiv 0\pmod{x^n}$ .</p>
+<p>我们考虑使用迭代的方法求解逆多项式.</p>
+<p>假设当前已经求得 $A(x)B(x)\equiv 1\pmod{x^n}$ ,现在求 $A(x)B’(x)\equiv 1\pmod{x^{2n}}$ .</p>
+<p>由于</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&A(x)B(x)\equiv 1\pmod{x^n}\\
+\Longleftrightarrow&\left[A(x)B(x)-1\right]^2\equiv 0\pmod{x^{2n}}\\
+\Longleftrightarrow&A^2(x)B^2(x)-2A(x)B(x)+1\equiv 0\pmod{x^{2n}}\\
+\Longleftrightarrow&1\equiv 2A(x)B(x)-A^2(x)B^2(x) \pmod{x^{2n}}\\
+\Longleftrightarrow&A(x)\left[2B(x)-A(x)B^2(x)\right]\equiv 1\pmod{x^{2n}}
+\end{split}</script><p>所以, $2B(x)-A(x)B^2(x)$ 就是当前新的 $B(x)$ ,如此往复进行迭代,即可求出最终解.</p>
+<h3 id="多项式求ln"><a href="#多项式求ln" class="headerlink" title="多项式求ln"></a>多项式求ln</h3><p>现在给定一个多项式 $A(x)$ ,需要求出 $\ln A(x)$ .</p>
+<p>相当于 $A(x)$ 与 $\ln(x)$ 的麦克劳林级数的复合.</p>
+<p>我们知道,根据复合函数求导法则与 $\ln (x)$ 的求导法则,可以得出</p>
+<script type="math/tex; mode=display">
+\left[\ln A(x)\right]^\prime={A^\prime(x)\over A(x)}</script><p>同时,我们知道,如果一个函数的导数的积分,就是原来的函数不变,即</p>
+<script type="math/tex; mode=display">
+\int_0^x \mathrm{d}F(t)=F(x)</script><p>所以可以得到</p>
+<script type="math/tex; mode=display">
+\int_0^x {A^\prime(t)\over A(t)}\mathrm{d}t=\ln A(x)</script><p>所以可以得到多项式求 $\ln$ 的方法.先求导,再对原多项式求逆,再乘起来,再积分,就可得到 $\ln A(x)$ .</p>
+<p>需要注意一下,多项式 $A(x)$ 的常数项必须为 $1$,否则因为</p>
+<script type="math/tex; mode=display">
+\ln A(x)=\ln(a_0B(x))=\ln (a_0)+\ln( B(x))</script><p>实数域下可能存在 $\ln (a_0)$,但在模意义下不存在 $\ln(a_0)$.</p>
+<h3 id="牛顿迭代法"><a href="#牛顿迭代法" class="headerlink" title="牛顿迭代法"></a>牛顿迭代法</h3><h4 id="牛顿迭代求函数零点"><a href="#牛顿迭代求函数零点" class="headerlink" title="牛顿迭代求函数零点"></a>牛顿迭代求函数零点</h4><p>对于函数 $f(x)$ ,要求它的零点,除了用二分的方法,还可以用 <strong>牛顿迭代法</strong> 求解(又称 <strong>切线法</strong> ).</p>
+<p>假设当前已经求得一个近似值 $x_n$,现在求相对比较精确的 $x_{n+1}$.可以用切线去近似模拟.</p>
+<p>在 $x_n$ 处,函数 $f(x)$ 的切线表达式为 $y-f(x_n)=f’(x_n)(x-x_n)$,求它的零点,为</p>
+<script type="math/tex; mode=display">
+x=x_n-{f(x_n)\over f'(x_n)}</script><p>则可以令 $x_{n+1}=x_n-\frac{f(x_n)}{f’(x_n)}$,实现迭代,直到精度满足要求.</p>
+<p>至于初值,可以随便选择(对于某些函数,用牛顿迭代求解可能会出错).</p>
+<p><img src="./牛顿迭代.png" style="zoom: 67%;"></p>
+<h4 id="多项式牛顿迭代"><a href="#多项式牛顿迭代" class="headerlink" title="多项式牛顿迭代"></a>多项式牛顿迭代</h4><p>对于多项式 $G(x)$ 与 $F(x)$ ,$G(x)$ 已知,$F(x)$ 未知.现在要求满足 $G(F(x))=0$ 的多项式 $F(x)$.同样可以用<strong>牛顿迭代</strong>.</p>
+<p>首先要确定常数项.假设已经确定了 $F(x)$ 的前 $n$ 项 $F_0(x)$,则可知</p>
+<script type="math/tex; mode=display">
+G(F_0(x))\equiv 0\pmod{x^n}</script><p>对左边做泰勒展开,可得</p>
+<script type="math/tex; mode=display">
+\begin{split}
+0&=G(F(x))\\
+&=G(F_0(x))+G'(F_0(x))(F(x)-F_0(x))+{G''(F_0(x))\over 2!}(F(x)-F_0(x))+\cdots\\
+&\equiv G(F_0(x))+G'(F_0(x))(F(x)-F_0(x))\pmod{x^{2n}}\\
+\end{split}</script><p>可得</p>
+<script type="math/tex; mode=display">
+F(x)\equiv F_0(x)-{G(F_0(x))\over G'(F_0(x))}\pmod{x^{2n}}</script><p>令新的 $F_{0} =F_0(x)-{G(F_0(x))\over G’(F_0(x))}$,即可得到前 $2n$ 项.</p>
+<h3 id="多项式求exp"><a href="#多项式求exp" class="headerlink" title="多项式求exp"></a>多项式求exp</h3><p>求 $\exp(A(x))$.同 $\ln[A(x)]$的定义,$\exp[A(x)]$ 定义为 $A(x)$ 与 $\exp(x)$ 的麦克劳林级数复合.</p>
+<p>设 $F(x)=\exp(A(x))$,则可知</p>
+<script type="math/tex; mode=display">
+G(F(x))=\ln F(x)-A(x)=0</script><p>利用牛顿迭代求解 $G(F(x))=0$ 的多项式.</p>
+<script type="math/tex; mode=display">
+\begin{split}
+F(x)&\equiv F_0(x)-{G(F_0(x))\over G'(F_0(x))}\pmod{x^{2n}}\\
+&\equiv F_0(x)-{\ln F_0(x)-A(x)\over 1/F_0(x)}\pmod{x^{2n}}\\
+&\equiv F_0(x)(1-\ln F_0(x)+A(x))\pmod{x^{2n}}
+\end{split}</script><p>注意 $G’(F(x))$ 与 $[G(F(x))]’$ 的区别,前者是求 $G’(x)$ 将 $F(x)$ 代入得到,后者是求复合函数 $G(F(x))$ 的导数;以及 $A(x)$ 是一个常多项式,求导后就没有了.</p>
+<p>需要注意常数项为 $0$,否则求得常数项为 $e^k$ ,而 $e$ 在模意义下没有定义.</p>
+<p>时间复杂度为 $T(n)=T(n/2)+O(n\log n)=O(n\log n)$.常数极大.</p>
+<h3 id="多项式开根"><a href="#多项式开根" class="headerlink" title="多项式开根"></a>多项式开根</h3><p>求 $\sqrt{A(x)}$.同样利用牛顿迭代.设 $F(x)=\sqrt{A(x)}$,则有</p>
+<script type="math/tex; mode=display">
+G(F(x))=F^2(x)-A(x)=0</script><p>代入牛顿迭代的公式可得</p>
+<script type="math/tex; mode=display">
+\begin{split}
+F(x)&\equiv F_0(x)-{G(F_0(x)) \over G'(F_0(x))}\pmod{x^{2n}}\\
+&\equiv F_0(x)-{F_0^2(x)-A(x) \over2F_0(x)}\pmod{x^{2n}}\\
+&\equiv \frac{F_0(x)}{2}+\frac{A(x)}{2F_0(x)}\pmod{x^{2n}}
+\end{split}</script><p>需要注意常数项为 $\bmod p$ 意义下的二次剩余.</p>
+<p>时间复杂度 $T(n)=T(n/2)+O(n\log n)=O(n\log n)$.</p>
+<h3 id="多项式除法"><a href="#多项式除法" class="headerlink" title="多项式除法"></a>多项式除法</h3><p>给定多项式 $A(x),B(x)$ ,求多项式 $P(x),R(x)$ ,满足 $A(x)=P(x)B(x)+R(x)$ .</p>
+<p>设多项式 $\deg A(x)=n$ , $\deg B(x)=m$ $(n\ge m)$ ,则 $\deg P(x)=n-m$ , $\deg R(x)\le m-1$ .</p>
+<p>定义 $A^T(x)=x^nA({1\over x})$ .则可知 $[x^i]A^T(x)=[x^{n-i}]A(x)$ ,即 $A(x)$ 的系数倒置.</p>
+<p>则可得</p>
+<script type="math/tex; mode=display">
+\begin{split}
+A(x)&=P(x)B(x)+R(x)\\
+\Rightarrow A({1\over x})&=P({1\over x})B({1\over x})+R({1\over x})\\
+\Rightarrow x^{n}A({1\over x})&=x^{n-m}P({1\over x})x^mB({1\over x})+x^{n-m+1}x^{m-1}R({1\over x})\\
+\Rightarrow A^T(x)&=P^T(x)B^T(x)+x^{n-m+1}R^T(x)\\
+\Rightarrow A^T(x)&\equiv P^T(x)B^T(x)\pmod {x^{n-m+1}}\\
+\Rightarrow P^T(x)&\equiv A^T(x)\left(B^T(x)\right)^{-1}\pmod{x^{n-m+1}}
+\end{split}</script><p>于是直接求逆即可得到 $P^T(x)$ ,再倒置一下就可以得到 $P(x)$ . $R(x)=A(x)-P(x)B(x)$ .</p>
+<p>时间复杂度 $O(n\log n)$.</p>
+<h3 id="多项式快速幂"><a href="#多项式快速幂" class="headerlink" title="多项式快速幂"></a>多项式快速幂</h3><p>求 $A^k(x)$.</p>
+<p>利用 $A^k(x)=\exp(\ln A^k(x))=\exp (k\ln A(x))$ .要求 $A(x)$ 的常数项为 $1$ .</p>
+<p>若 $A(x)$ 的常数项不为 $1$ ,设其最低次项为 $ax^d$ ,则</p>
+<script type="math/tex; mode=display">
+A^k(x)=a^kx^{kd}\left({A(x)\over ax^d}\right)^k</script><h2 id="生成函数"><a href="#生成函数" class="headerlink" title="生成函数"></a>生成函数</h2><h3 id="序列的生成函数"><a href="#序列的生成函数" class="headerlink" title="序列的生成函数"></a>序列的生成函数</h3><p>对于一个序列 $\{a_0,a_1,\cdots\}$ ,用一个整体将其表示,可以利用形式幂级数</p>
+<script type="math/tex; mode=display">
+A(x)=\sum_{i\ge 0}a_ix^i</script><p>进行表示.这个可以称之为函数的东西就叫做原序列的<strong>生成函数</strong>(又称<strong>母函数</strong>).</p>
+<p>比如说有泰勒公式</p>
+<script type="math/tex; mode=display">
+e^x=\sum_{i\ge 0}{x^i\over i!}</script><p>对应序列 $\{1,1,{1\over 2!},\cdots,{1\over n!},\cdots\}$.</p>
+<ul>
+<li>生成函数的闭形式</li>
+</ul>
+<p>对于生成函数 $A(x)$ 中的 $x$ 只是一个占位符,并没有什么实际意义,故不需要考虑其是否收敛.所以对于一个生成函数,可以假定它收敛,并通过各种变换,将其变为一个封闭形式.</p>
+<p>比如 $\{1,1,\cdots\}$ 对应的生成函数为</p>
+<script type="math/tex; mode=display">
+\sum_{i\ge 0}x^i=1+x+x^2+\cdots</script><p>我们可以通过等比数列求和公式求得</p>
+<script type="math/tex; mode=display">
+\sum_{i\ge 0}x^i={1\over 1-x}</script><p>然而在实际中,只有当 $|x| &lt; 1$ 时才满足,但对于生成函数不需要考虑.</p>
+<p>有时也称这个封闭形式叫做原序列的生成函数.</p>
+<ul>
+<li>一些常见序列的生成函数</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{split}
+&\{1,1,1,\cdots\}\Rightarrow \sum_{i\ge 0}x^i\Rightarrow {1\over 1-x}\\
+&\{1,\alpha,{\alpha\over2!},{\alpha(\alpha-1)\over3!},\cdots,{\alpha\choose n!},\cdots\}\Rightarrow(1+x)^\alpha\\
+&\{1,-1,1,-1,1,-1,\cdots\}\Rightarrow {1\over 1+x}\\
+&\{1,2,3,\cdots\}\Rightarrow {1\over (1-x)^2}
+\end{split}</script><p>还可以通过一些变量替换与求导得出其他的生成函数.</p>
+<p>对于其他的生成函数,可以利用差分的方法求得.</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&\{1,3,5,7,\cdots\}\Rightarrow \sum_{i\ge 0}(2i+1)x^i\\
+A&=1+3x+5x^2+\cdots\\
+(1-x)A&=1+2x+2x^2+\cdots
+\end{split}</script><p>于是根据 $\sum_{i\ge 1}2x^i={2x\over 1-x}$ ,所以</p>
+<script type="math/tex; mode=display">
+\begin{split}
+(1-x)A&=1+{2x\over 1-x}\\
+A&={1\over 1-x}+{2x\over (1-x)^2}
+\end{split}</script><p>乘 $(1-x)$ 相当于做差分,乘 ${1\over 1-x}$ 相当于做求和.</p>
+<ul>
+<li>生成函数与线性递推式</li>
+</ul>
+<p>可以利用生成函数求解递推通项.</p>
+<script type="math/tex; mode=display">
+\begin{split}
+Fib(x)&={1\over 1-x-x^2}\\
+Catalan(x)&={1-\sqrt{1-4x}\over 2x}
+\end{split}</script><p>将每一项作为系数代入,再利用递推公式,进行差分,最后总能写成 $F(x)/G(x)$ 的形式.</p>
+<p>举个应用的例子,求卡特兰数的通项公式.</p>
+<p>记 $C(x)$ 为卡特兰数的生成函数.由卡特兰数的递推式</p>
+<script type="math/tex; mode=display">
+c_n=\sum_{k=0}^{n-1}c_kc_{n-1-k}</script><p>可以得到其生成函数的等式</p>
+<script type="math/tex; mode=display">
+C(x)=C(x)*C(x)*x+1</script><p>解得</p>
+<script type="math/tex; mode=display">
+C(x)=\frac{1\pm\sqrt{1-4x}}{2x}</script><p>当取正根时,$x\rightarrow 0^{+}$ 时,$C(x)\rightarrow +\infty$,显然不对,所以取负根,即</p>
+<script type="math/tex; mode=display">
+C(x)=\frac{1-\sqrt{1-4x}}{2x}=\frac{1-(1-4x)^{\frac{1}{2}}}{2x}</script><p>根据牛顿二项式定理可得</p>
+<script type="math/tex; mode=display">
+(1-4x)^{\frac{1}{2}}=\sum_{k\ge0}{\frac{1}{2}\choose k}(-1)^k 4^k x^k</script><p>所以</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+C(x)&=\frac{1-(1-4x)^{\frac{1}{2}}}{2x}\\
+&=\frac{1-\sum_{k\ge0}{\frac{1}{2}\choose k}(-1)^k4^kx^k}{2x}\\
+&=\frac{1-\left(1+\sum_{k\ge1}{\frac{1}{2}\choose k}(-4)^kx^k \right)}{2x}\\
+&=-\frac{\sum_{k\ge1}{\frac{1}{2}\choose k}(-4)^kx^k}{2x}\\
+&=-{1\over 2}\sum_{k\ge 1}{\frac{1}{2}\choose k}(-4)^kx^{k-1}\\
+&=2\sum_{k\ge 1}{\frac{1}{2}\choose k}(-4)^{k-1}x^{k-1}\\
+&=\sum_{k\ge 0}2{\frac{1}{2}\choose k+1}(-4)^kx^k
+\end{align*}</script><p>所以(对应项系数相等)</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+c_n&=2{\frac{1}{2}\choose n+1}(-4)^k\\
+\end{align*}</script><p>又由于</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+{{1\over2}\choose k}&=\frac{\prod_{i=1}^k({1\over2}-i+1)}{k!}\\
+&=\frac{\prod_{i=1}^k({3\over 2}-i)}{k!}\\
+&=\frac{1}{2k!}\prod_{i=2}^{k}\left({3\over2}-i\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\prod_{i=2}^{k}\left(i-{3\over2}\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\prod_{i=1}^{k-1}\left(i-{3\over2}+1\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\prod_{i=1}^{k-1}\left(i-{1\over2}\right)\\
+&=\frac{(-1)^{k-1}}{2k!}\cdot\frac{1}{2^{k-1}}\prod_{i=1}^{k-1}\left(2i-1\right)\\
+\end{align*}</script><p>所以</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+c_n&=\frac{2\prod_{k=1}^{n+1}({3\over 2}-i)}{(n+1)!}(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\prod_{i=1}^n(2i-1)(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\cdot\frac{(2n)!}{\prod_{i=1}^n(2i)}(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\cdot\frac{(2n)!}{2^nn!}(-4)^n\\
+&=\frac{(-1)^n}{2^n(n+1)!}\cdot\frac{(2n)!}{2^nn!}(-4)^n\\
+&=\frac{1}{n+1}\cdot\frac{(2n)!}{n!\cdot n!}\\
+&=\frac{1}{n+1}{2n\choose n}\\
+\end{align*}</script><p>得证.</p>
+<h3 id="普通型生成函数"><a href="#普通型生成函数" class="headerlink" title="普通型生成函数"></a>普通型生成函数</h3><h3 id="指数型生成函数"><a href="#指数型生成函数" class="headerlink" title="指数型生成函数"></a>指数型生成函数</h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多项式/" rel="tag"># 多项式</a>
+          
+            <a href="/tags/数学-数论/" rel="tag"># 数学/数论</a>
+          
+            <a href="/tags/生成函数/" rel="tag"># 生成函数</a>
+          
+            <a href="/tags/高等数学/" rel="tag"># 高等数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/21/做题记录/" rel="next" title="做题记录">
+                <i class="fa fa-chevron-left"></i> 做题记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="TbYangZ">
+            
+              <p class="site-author-name" itemprop="name">TbYangZ</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置知识"><span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导数与积分"><span class="nav-text">导数与积分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导数"><span class="nav-text">导数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#积分"><span class="nav-text">积分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泰勒展开与麦克劳林公式"><span class="nav-text">泰勒展开与麦克劳林公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿二项式定理"><span class="nav-text">牛顿二项式定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复数"><span class="nav-text">复数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复数的几何意义"><span class="nav-text">复数的几何意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复数的运算"><span class="nav-text">复数的运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单位根"><span class="nav-text">单位根</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阶与原根"><span class="nav-text">阶与原根</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#求原根"><span class="nav-text">求原根</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原根作为单位根"><span class="nav-text">原根作为单位根</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式系列"><span class="nav-text">多项式系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式与形式幂级数"><span class="nav-text">多项式与形式幂级数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式卷积"><span class="nav-text">多项式卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多项式乘法"><span class="nav-text">多项式乘法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速傅里叶变换FFT"><span class="nav-text">快速傅里叶变换FFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速数论变换NTT"><span class="nav-text">快速数论变换NTT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速莫比乌斯变换FMT"><span class="nav-text">快速莫比乌斯变换FMT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速沃尔什变换FWT"><span class="nav-text">快速沃尔什变换FWT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式求导与积分"><span class="nav-text">多项式求导与积分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式求逆"><span class="nav-text">多项式求逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式求ln"><span class="nav-text">多项式求ln</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿迭代法"><span class="nav-text">牛顿迭代法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#牛顿迭代求函数零点"><span class="nav-text">牛顿迭代求函数零点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多项式牛顿迭代"><span class="nav-text">多项式牛顿迭代</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式求exp"><span class="nav-text">多项式求exp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式开根"><span class="nav-text">多项式开根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式除法"><span class="nav-text">多项式除法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式快速幂"><span class="nav-text">多项式快速幂</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成函数"><span class="nav-text">生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列的生成函数"><span class="nav-text">序列的生成函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通型生成函数"><span class="nav-text">普通型生成函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指数型生成函数"><span class="nav-text">指数型生成函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TbYangZ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

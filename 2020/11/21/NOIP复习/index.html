@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本来不想放上来的，但是为了能够随时随地看，还是放上来了，顺便把其它几个半成品也一起放上来。">
+<meta name="keywords" content="NOIP复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NOIP复习">
+<meta property="og:url" content="https://TbYangZ.github.io/2020/11/21/NOIP复习/index.html">
+<meta property="og:site_name" content="TbYangZ&#39;s blog">
+<meta property="og:description" content="本来不想放上来的，但是为了能够随时随地看，还是放上来了，顺便把其它几个半成品也一起放上来。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-20T17:50:43.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NOIP复习">
+<meta name="twitter:description" content="本来不想放上来的，但是为了能够随时随地看，还是放上来了，顺便把其它几个半成品也一起放上来。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://TbYangZ.github.io/2020/11/21/NOIP复习/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>NOIP复习 | TbYangZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TbYangZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Think twice, code once.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://TbYangZ.github.io/2020/11/21/NOIP复习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TbYangZ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TbYangZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NOIP复习
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-11-21 00:34:20 / 修改时间：01:50:43" itemprop="dateCreated datePublished" datetime="2020-11-21T00:34:20+08:00">2020-11-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本来不想放上来的，但是为了能够随时随地看，还是放上来了，顺便把其它几个半成品也一起放上来。</p>
+<a id="more"></a>
+<h2 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h2><h3 id="高精度算法"><a href="#高精度算法" class="headerlink" title="高精度算法"></a>高精度算法</h3><p>用数组存储数位，模拟人工加减乘除，处理大于$2^{64}-1$的数的运算。</p>
+<p><strong>优化</strong>：压位，用数组的一个位置表示小于<code>Base</code>的数，<code>Base</code>为进制，即将原数看成<code>Base</code>进制的数存储。</p>
+<p>(pub)<a href="https://oj.bashu.com.cn/pub/search.php?q=%E9%AB%98%E7%B2%BE%E5%BA%A6" target="_blank" rel="noopener">高精度模板</a></p>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><h4 id="深度优先搜索DFS"><a href="#深度优先搜索DFS" class="headerlink" title="深度优先搜索DFS"></a>深度优先搜索DFS</h4><p><strong>本质</strong>：利用栈实现一条路一条路地搜索，栈中存储之前的所有决策。</p>
+<p>可以形象地理解为从搜索树的根节点找到所有到叶子节点的路径。</p>
+<p>代码实现时通常用递归实现。</p>
+<p><strong>剪枝</strong>：减去无用状态。可以形象理解为若当前决策搜索下去不会有更优的答案，则不搜索下去，减去搜索树上当前点的儿子，作为叶子节点返回。</p>
+<p>经典例题：<a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=1886" target="_blank" rel="noopener">生日蛋糕</a></p>
+<h4 id="广度优先搜索BFS"><a href="#广度优先搜索BFS" class="headerlink" title="广度优先搜索BFS"></a>广度优先搜索BFS</h4><p><strong>本质</strong>：利用队列实现一层一层地搜索，队列中存储之前访问到但未更新的节点。</p>
+<p>可以形象理解为在一张图上多路前进。</p>
+<p><strong>双向搜索</strong>：已知目标状态，可以从两个地方同时搜索。</p>
+<h4 id="搜索的通常优化"><a href="#搜索的通常优化" class="headerlink" title="搜索的通常优化"></a>搜索的通常优化</h4><ul>
+<li><p><strong>状态压缩</strong> 将一些比较复杂的状态用一个<code>k</code>进制数表示(通常为<code>2</code>进制)</p>
+</li>
+<li><p><strong>启发式搜索</strong> 设置估价函数，从估价函数相对较优的节点开始搜索，会更快搜索到目标节点。</p>
+<p>  在DFS中通常用迭代启发式实现，BFS中直接实现。</p>
+</li>
+<li><p><strong>记忆化搜索</strong> 对于可能会大量重复搜素到同一个节点的情况，则可以用记忆化搜索优化。对于一个已经搜索过的节点，记录它搜索出来的解，下次访问时直接调用。</p>
+</li>
+<li><p>利用其他算法减少搜索空间，比如用DP或贪心减将搜索范围减少致可接受范围。（HNOI2006 马步距离）</p>
+</li>
+<li><p><strong>折半搜索</strong> 对于 $n\in [40,50]$ 的题目，可以考虑折半搜索，对前 $n/2$ 搜索，并保存数据，用于后 $n/2$ 搜索寻找答案；也可以都搜索出来，再通过某种办法组合这两部分答案。</p>
+</li>
+</ul>
+<h3 id="贪心思想"><a href="#贪心思想" class="headerlink" title="贪心思想"></a>贪心思想</h3><p>基于当前的情况选择最优决策，从当前出发，贪心地选择。</p>
+<p>将问题分解为若干个不相交子问题，每个子问题求解最优解，再合并子问题的最优解。</p>
+<h4 id="贪心的经典模型"><a href="#贪心的经典模型" class="headerlink" title="贪心的经典模型"></a>贪心的经典模型</h4><ol>
+<li><p>部分背包问题：按照性价比排序</p>
+</li>
+<li><p>区间问题</p>
+</li>
+<li><p>顺序问题：给定两个$n$个数的数组$a_1，\cdots，a_n$，$b_1，\cdots，b_n$，重新排列$b$使得$\sum_{i=1}^na_ib_i$最小。<br>利用排序不等式：倒序和&lt;=乱序和&lt;=顺序和。负数需要特殊考虑。</p>
+</li>
+</ol>
+<h4 id="区间完全覆盖问题"><a href="#区间完全覆盖问题" class="headerlink" title="区间完全覆盖问题"></a>区间完全覆盖问题</h4><p><strong>问题</strong> 给定长度为$n$的区间，以及$m$个线段的起点与终点，用最少的线段覆盖给定的区间。</p>
+<p><strong>做法</strong> 将区间按照左端点从小到大排序，左端点相同按照右端点从小到大排序，每次选一个左端点在当前覆盖到的右端点内并且右端点要最大的线段去覆盖。</p>
+<p><strong>证明</strong> 设当前覆盖到的右端点为$r$，则选择的下一个区间的左端点一定要小于等于$r$，这样才能完整覆盖，而要线段数量最短，则一定选右端点最大的线段，这样可以覆盖到更远的距离，不会劣于选右端点小于它的线段。</p>
+<h4 id="最大不相交区间数问题"><a href="#最大不相交区间数问题" class="headerlink" title="最大不相交区间数问题"></a>最大不相交区间数问题</h4><p><strong>问题</strong> 给定若干个区间，选尽量多的区间使选取的区间不相交。</p>
+<p><strong>做法</strong> 将区间按照右端点从小到大排序，右端点相同按照左端点从小到大排序，按照顺序处理每个区间，能取就取。</p>
+<p><strong>证明</strong> 考虑两个排序后相邻的区间$[l_1，r_1]，[l_2，r_2]$，因为排序，所以有$r_1\le r_2$。有两种情况</p>
+<ul>
+<li>$l_1&gt;l_2$，此时后者包含前者，两者只能选其一，为了让后面的区间有更多的可选择的余地，显然选前者。</li>
+<li>$l_1=l_2$，此时左端点相同，显然选右端点小的更优。</li>
+<li>$l_1&lt;l_2&lt;r_1$，此时两者有交集，只能选其一，同样为了让后面有更多的可选择的余地，选前者更优。</li>
+<li>$l_2&gt;r_1$，此时无交集，都可选择。</li>
+</ul>
+<p>综上，贪心策略正确。</p>
+<p><strong>注意</strong> 区间带权不能这么做，只能用Dp+离散化+线段树优化做到$O(n\log n)$。</p>
+<h4 id="区间选点问题"><a href="#区间选点问题" class="headerlink" title="区间选点问题"></a>区间选点问题</h4><p><strong>问题</strong> 数轴上有若干个闭区间，要求选取尽量少的点，使得每个区间内都至少有一个点（不同区间内含的点可以是同一个）。</p>
+<p><strong>做法</strong> 按左端点从小到大排序，如果左端点相同，按右端点从小到大排序，从第一个区间开始，尽量往后找，维护当前已选则的点的位置，若下一个区间的左端点大于当前的点，则需新开一个点;否则若当前区间的右端点小于了已经选择的点的位置，更新点的位置为当前右端点。</p>
+<p><strong>证明</strong> </p>
+<ul>
+<li>先考虑区间包含的情况，若小区间包含于大区间，此时显然将点设在小区间内是最优的，小区间中有点，大区间中一定有，反之则不一定。</li>
+<li>而对于不包含的情况，有$r_1&lt;r_2&lt;\cdots$，此时选第一个区间的最右边的点一定是最优的。</li>
+</ul>
+<p>综上，贪心策略正确。</p>
+<h4 id="贪心证明基本思路"><a href="#贪心证明基本思路" class="headerlink" title="贪心证明基本思路"></a>贪心证明基本思路</h4><ol>
+<li><p>微扰法(邻值交换)<br>考虑相邻两个的关系，那种情况下谁放前面会更优。(NOIP2012国王游戏)<br>微扰法的另一个适用条件是排序的大小关系具有传递性。(LuoguP2123皇后游戏)</p>
+</li>
+<li><p>缩放法</p>
+</li>
+<li><p>决策包容性</p>
+</li>
+<li><p>反证法</p>
+</li>
+<li><p>数学归纳法</p>
+</li>
+</ol>
+<h4 id="贪心的常用方法"><a href="#贪心的常用方法" class="headerlink" title="贪心的常用方法"></a>贪心的常用方法</h4><ul>
+<li><p>按位贪心：对于字典序问题与位运算相关的问题，从高到底依次选最大/最小的</p>
+</li>
+<li><p>可反悔的贪心：LuoguP1484种树<br>每次选择当前决策，留下一个后悔的路(具体问题具体看)</p>
+</li>
+<li><p>树上贪心</p>
+</li>
+</ul>
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>暴力枚举。</p>
+<p>二分枚举答案（答案具有广义的单调性）。</p>
+<ul>
+<li>二分适用范围:最大值最小/最小值最大/满足某种条件的最值</li>
+</ul>
+<p>哈希优化枚举</p>
+<p>前缀和优化枚举</p>
+<ul>
+<li>给定 $n$ 个数的序列，求总和为 $S$ 的区间的个数</li>
+</ul>
+<h3 id="分治与二进制思想"><a href="#分治与二进制思想" class="headerlink" title="分治与二进制思想"></a>分治与二进制思想</h3><p>分治思想主要是分而治之，基本思路就是将问题分成若干个不相交子问题，可以通过这些子问题快速得到当前问题的答案，并且对于子问题也可以按照同样的方法处理，直到可以直接处理的数据规模。主要运用在排序、多项式乘法、快速幂与线段树等方面以及神奇的题目中。</p>
+<p>二进制的思想则在于将数进行二进制拆分，然后通过拼接得到答案。关键在拆分后的部分是否容易算出来。在倍增、快速幂等方面以及一些Dp优化中出现。</p>
+<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><p>快速排序，归并排序等</p>
+<h4 id="二分法解零点"><a href="#二分法解零点" class="headerlink" title="二分法解零点"></a>二分法解零点</h4><p>若函数 $f(x)$ 在 $[l,r]$ 上连续单调且 $f(l)f(r)&lt;0$，那么可以通过二分法找函数零点。</p>
+<p>假设 $f(l)&gt;0\And f(r)&lt;0$ ，反过来同理。令 $b=(l+r)/2$，若 $f(b)&lt;0$，则令 $r=b$，否则令 $l=b$，重复操作，直到精度满足要求。</p>
+<h4 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h4><p>求解 $x^n$，其中 $x\in \mathbb{R}\And n\in\mathbb{N}$。可以知道</p>
+<script type="math/tex; mode=display">
+x^n=\begin{cases}
+x^{n/2}x^{n/2}\quad&n\equiv 0\pmod{2}\\
+x\times x^{n/2}x^{n/2}&n\equiv 1\pmod{2}
+\end{cases}</script><p>而 $x^1=x$，所以直接处理即可。</p>
+<p>更常见的方法，则是用二进制的思想，将 $n$ 二进制拆分，设 $n=(a_ka_{k-1}\cdots a_1a_0)_2$，则</p>
+<script type="math/tex; mode=display">
+x^n=x^{a_k2^{k}+a_{k-1}2^{k-1}+\cdots +a_12^{1}+a_02^{0}}=x^{a_k2^{k}}x^{a_{k-1}2^{k-1}}\cdots x^{a_12^{1}}x^{a_02^0}</script><p>注意到 $2^{i}=2^{i-1}\times 2$ 与 $x^{a_i2^i}=a_i(x^{2^i})$，故 $x^{2^{i}}=x^{2^{i-1}}\times x$，从低到高枚举 $n$ 的二进制位，并维护一下当前的位值，与当前的 $a_i$ 相乘，并累乘到答案中。</p>
+<h4 id="ST表"><a href="#ST表" class="headerlink" title="ST表"></a>ST表</h4><p>ST表是解决区间最值问题（RMQ）或区间可重复贡献问题并且满足结合律的问题。具体来说，就是 $x$ 被计算多次最终得到的结果与只算一次等价，最大值就是一个显然的例子有</p>
+<script type="math/tex; mode=display">
+\max\{y,a,x,x,x\}=\max\{a,x,y\}</script><p>其他的如 $\min,\gcd,\mathrm{lcm},\mathrm{lca}$ 等</p>
+<p>虽然这些问题绝大部分都可以用线段树等数据结构解决，但是ST表可以做到 $O(n\log n)$ 预处理与 $O(1)$ 查询（不算操作复杂度）。唯一的缺点就是不能在线修改。</p>
+<p>以求长度为 $n$ 的序列 $\{a_n\}$ 的区间最大值为例，设 $f_{x,i}$ 表示从 $x$ 到 $\min\{x+2^i-1,n\}$ 中的最大值，$f_{x,0}=a_x$，那么显然有</p>
+<script type="math/tex; mode=display">
+f_{x,i}=\max\{f_{x,i-1},f_{x+2^{i-1},i-1} \}\quad(x+2^{i-1}\le n)</script><p>形象化的描述，这 $2^i$ 个数的最大值可以拆为前 $2^{i-1}$ 个数与后 $2^{i-1}$ 个数的和，而这两个都是子问题，并且已经求出来，故直接取最大值即可。这一步复杂度 $O(n\log n)$。</p>
+<p>若查询区间 $[l,r]$ 的最大值，令 $k=\lfloor\log_2(r-l+1)\rfloor$，那么 $k$ 是最大的，$l+2^k-1$ 不超过 $r$ 的数，则最大值为 $\max\{f_{l,k},f_{r-2^k+1,k}\}$。即使这两个算的部分有重复的地方，由于可重复贡献，也无所谓。唯一需要保证的是这两个部分包含整个 $[l,r]$ 区间，这是显然的。</p>
+<p><strong>二维ST表</strong> 设 $f_{i,j,k_1,k_2}$ 为矩阵 $(i,j)$ 到 $(i+2^{k_1}-1,j+2^{k_2}-1)$ 中的最大值（最小值等），分情况转移。求答案，如 $(x_1,y_1)$ 到 $(x_2,y_2)$ 中的最大值，令 $k_1=\log_2(x_2-x_1+1)$，$k_2=\log_2{y_2-y_1+1}$，答案为 $f_{x_1,y_1,k_1,k_2}$，$f_{x_2-2^{k_1}+1,y_1,k_1,k_2}$，$f_{x_1,y_2-2^{k_2}+1,k_1,k_2}$，$f_{x_2-2^{k_1}+1,y_2-2^{k_2}+1,k_1,k_2}$ 中的最大值。</p>
+<h2 id="动态规划Dp"><a href="#动态规划Dp" class="headerlink" title="动态规划Dp"></a>动态规划Dp</h2><p>动态规划是一种类似分治的做法，将问题划分成若干个子问题，与分治的区别就在分治一般是划分为不相交子问题并且分治可以将状态空间画成一棵树，而动态规划的状态空间则是一个DAG，更具有普遍性。或者说Dp在状态空间内进行记忆化搜索。</p>
+<h3 id="动态规划基本理论"><a href="#动态规划基本理论" class="headerlink" title="动态规划基本理论"></a>动态规划基本理论</h3><p>动态规划，或者Dp，严格来说是处理最优性问题的方法，但现在演变为一些计数类递推也被叫做Dp。不过处理者两类的方法类似，思想基本通用。</p>
+<p>Dp的具体思想就是划分子问题，所有的子问题就可以认为是一个状态。求解一个状态所需要的状态被称作阶段，即子问题。从阶段递推到当前状态的递推方程被称作状态转移方程。显然，这需要一个边界值。</p>
+<p>若一个问题可以用Dp解决，那么它必须满足两个条件：</p>
+<ul>
+<li>最优子结构</li>
+</ul>
+<p>每个状态可以通过它的最优决策（选择的转移状态）得到答案，这样称这个问题是具有最优子结构的。</p>
+<ul>
+<li>无后效性</li>
+</ul>
+<p>当一个状态被确定后，那么它将不会被之后的状态而影响。</p>
+<ul>
+<li>重叠子问题</li>
+</ul>
+<p>若没有重叠的子问题，那么Dp的方法是不比直接搜索优的，此时直接分治就可以解决。并且从空间的角度，Dp还要消耗更多的空间。</p>
+<p>比如说数字三角形问题，找一条路从顶上到底部一个位置，只能向下走，使得路上的数字加起来最大。在这个问题中，我们定义 $f_{i,j}$ 指从顶部到达第 $i$ 行的第 $j$ 个位置时，走过的最大路径，那么 $f_{i,j}$ 就是状态。而 $(i,j)$ 只能从 $(i-1,j),(i-1,j-1)$ 这两个位置转移过来，故在求解 $f_{i,j}$ 的阶段中，需要求解 $f_{i-1,j},f_{i-1,j-1}$ 这两个状态。另外，需要注意以下非法状态，如 $f_{0,i},f_{i,i+k}$ 等，这些状态是需要排除的。把这个问题的转移图画出来，可以知道这是有重叠子问题的，并且当前的选择不会因为后面的选择而更改，即无后效性的。还有，从前一两个状态转移到当前状态，若按照最优的方式选择，那么到达当前位置也一定是最优的，即具有最优子结构，可以用归纳法证明。所以数字三角形问题可以用Dp解决，其转移方程是</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j},f_{i-1,j-1} \}+a_{i,j}</script><p>而答案是 $\max_{1\le i\le n}\{f_{n,i} \}$。</p>
+<h3 id="线性Dp"><a href="#线性Dp" class="headerlink" title="线性Dp"></a>线性Dp</h3><p>这里的「线性」与线性空间的「线性」类似，不局限于单个维度的Dp。</p>
+<h4 id="LIS模型"><a href="#LIS模型" class="headerlink" title="LIS模型"></a>LIS模型</h4><p>具体问题：</p>
+<p>一个长度为 $n$ 的序列 $\{a_n \}$，求一个最长的序列 $\{b_m\}$ 的长度，使得</p>
+<script type="math/tex; mode=display">
+\forall 1\le i<m,a_{b_i}<a_{b_{i+1}}</script><p>可以设 $f_i$ 表示以 $i$ 结尾的最长上升子序列，那么有</p>
+<script type="math/tex; mode=display">
+f_i=\max\{f_j|a_j<a_i  \}+1</script><p>答案为 $\max\{f_i\}$。</p>
+<p>对于它的变形，最长不下降、最长下降、最长不上升子序列等，只需要改一下转移的条件。时间复杂度 $O(n^2)$。</p>
+<p><strong>优化</strong>：用数据结构优化转移/利用单调性。</p>
+<p>其他变形：两列数，都是从 $1\cdots n$ ，其中有一个完备匹配，即对于左边的数 $i$，有且仅有一个右边的数 $j$ 与它对应，对于右边的数同理。求一个最大的匹配集合，使得集合中任意两组匹配在原图中不相交。</p>
+<p>对右边的数，按照它的匹配数从小到大排序，然后右边数的最长上升子序列便是答案。枚举一下交叉情况与排序后上升子序列的选择可以证明。</p>
+<h4 id="LCS模型"><a href="#LCS模型" class="headerlink" title="LCS模型"></a>LCS模型</h4><p>问题描述：给定两个序列 $\{a_n\}$ 与 $\{b_m\}$，找到一个最长的序列，使得这个序列是这两个序列的子序列，求该序列的长度。</p>
+<p>可以设 $f_{i,j}$ 为第一个序列中前 $i$ 个数，第二个序列中前 $j$ 个数组成的序列的最长公共子序列产长度。那么对于当前 $f_{i,j}$，有两种情况。1.$a_i\neq b_j$，则 $f_{i,j}=\max\{f_{i-1,j},f_{i,j-1} \}$；2.$a_i=b_j$，则 $f_{i,j}=\max\{f_{i-1,j},f_{i,j-1},f_{i-1,j-1}+1 \}$。答案为 $f_{n,m}$。</p>
+<p>其本质便是在讨论 $a_i$ 与 $b_j$ 的配对关系，其变形，编辑距离问题，为它的直接应用。</p>
+<p>两个字符串 $s_1,s_2$，其中 $n=|s_1|,m=|s_2|$，插入、删除、替换其中一个字符串的字符，代价都为 $1$，求用最少的代价让两个字符串变成一样。</p>
+<p>设 $f_{i,j}$ 为 $s_1$ 的前 $i$ 个字符与 $s_2$ 的前 $j$ 个字符变成一样的最小距离。同样对于当前 $f_{i,j}$，进行讨论。1.若 $s_1[i]\not=s_2[j]$，则 $f_{i,j}=\min\{f_{i-1,j},f_{i,j-1},f_{i-1,j-1}\}+1$；2.$s_1[i]=s_2[j]$，则 $f_{i,j}=\min\{f_{i-1,j}+1,f_{i,j-1}+1,f_{i-1,j-1}\}$。</p>
+<h4 id="序列问题"><a href="#序列问题" class="headerlink" title="序列问题"></a>序列问题</h4><p><strong>最大子序列和</strong></p>
+<p>求序列 $a_i$ 的一段非空子序列，使得和最大。</p>
+<p>$f_i$ 表示前 $i$ 个数的结果，则有</p>
+<script type="math/tex; mode=display">
+f_i=\max\{f_{i-1}+a_i,a_i \}</script><p>答案为 $\max\{f_i\}$。</p>
+<p><strong>二维最大子矩阵和</strong></p>
+<p>枚举上限，枚举下限，将中间部分看成一维问题求解。也可枚举左右，同理。</p>
+<h4 id="区间Dp"><a href="#区间Dp" class="headerlink" title="区间Dp"></a>区间Dp</h4><p>当问题与 <strong>区间</strong> 有关时，可以尝试将状态表示为区间。一般设法是 $f_{i,j}$ 表示区间 $[i,j]$ 的最优值，通过枚举中间点 $k$，从 $f_{i,k},f_{k+1,j}$，或者 $f_{i,k-1},f_{k+1,j}$ 之类的状态转移，时间复杂度一般是 $O(n^3)$。</p>
+<p>另外，对于一些区间 Dp，也可以通过 <strong>相邻扩展</strong> 的思路得到转移方程，即 $f_{i,j}$ 从 $f_{i+1,j},f_{i,j-1}$ 得到。前提是转移与重复无关。一些 <strong>网络流的建边</strong> 亦可如此。</p>
+<h3 id="背包模型"><a href="#背包模型" class="headerlink" title="背包模型"></a>背包模型</h3><h4 id="0-1-背包"><a href="#0-1-背包" class="headerlink" title="0/1 背包"></a>0/1 背包</h4><p>$n$ 个物品，每个物品价值 $w_i$，体积 $v_i$，现用体积为 $V$ 的背包装物品，问装到的最大价值。</p>
+<p>如果只是设 $f_i$ 表示前 $i$ 个物品的最大价值，那么无法转移，缺少状态体积。故设 $f_{i,j}$ 前 $i$ 个物品，当前体积为 $j$ 的背包的最大价值。显然有</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j},f_{i-1,j-v_i}+w_i\}</script><p>即枚举选择当前物品与不选当前物品。时空复杂度皆为 $O(nV)$。</p>
+<p>可以知道，当前阶段的决策只与前面一个维度有关，即 $f_{i,j}$ 只与 $f_{i-1,j}$ 有关，所以可以用滚动数组优化。另一种可行的方法是倒序枚举。设 $f_i$ 为体积为 $i$ 时的最大价值，那么对于第 $i$ 个物品，有 $f_i=\max\{f_i,f_{i-v_i}+w_i \}$，因为每个物品最多选择一次，而每次的 $f_{i-v_i}$ 都是小于 $i$ 的部分，所以进行倒序更新，这样就可以在前面被更新之前用到上一次的Dp值。此时空间复杂度 $O(V)$</p>
+<h4 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h4><p>$n$ 个物品，每个物品价值 $w_i$，体积 $v_i$，每个物品可以选无数多次，现用体积为 $V$ 的背包装物品，问装到的最大价值。</p>
+<p>同0/1背包一样，设 $f_{i,j}$ 表示前 $i$ 个物品，当前背包体积为 $j$ 时的最大价值。与0/1背包不同的是，每个物品可以选择无限多次，那么只需多枚举选择物品个数</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j},f_{i-1,j-kv_i}+kw_i \}</script><p>其中满足 $j-kv_i\ge 0$。</p>
+<p>同0/1背包一样，可以用滚动数组优化空间，但不能优化时间。尝试用一维的Dp。设 $f_i$ 为体积为 $i$ 时的最大价值，那么有</p>
+<script type="math/tex; mode=display">
+f_{i}=\max\{f_{i},f_{i-kv_i}+kw_i \}</script><p>这样与0/1背包一样倒序枚举也可以，但是，$f_{i-kv_i}$ 可以即看成 $f_{i-v_i-\cdots-v_i}$，若正序枚举则前面的信息正好用到，这样方程就变为 </p>
+<script type="math/tex; mode=display">
+f_i=\max\{f_i,f_{i-v_i}+w_i \}</script><p>时间复杂度为 $O(nV)$，空间复杂度为 $O(V)$，比一开始更优秀。</p>
+<h4 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h4><p>$n$ 种物品，每种物品价值 $w_i$，体积 $v_i$，每种物品有 $n_i$ 个，现用体积为 $V$ 的背包装物品，问装到的最大价值。</p>
+<p>可以将这 $\sum n_i$ 个物品直接用0/1背包进行Dp，复杂度 $O(V\sum n_i)$。</p>
+<p><strong>二进制拆分优化</strong></p>
+<p>其本质是拆分方式导致物品数量太多，可以考虑二进制拆分的思想。</p>
+<p>如同 $1=2^0,2=2^1,4=2^2$ 可以组成 $0$ 至 $7$ 的所有整数一样，可以将 $n$ 拆成若干个数，让这些数可以组成 $0$ 至 $n$ 的任何数。设 $n$ 的二进制最高位的位值为 $2^k$，那么可以用 $2^0,2^1,\cdots,2^k,n-2^k$ 组成 $[0,n]$ 的所有整数，并且数量是 $O(\log n)$ 的。应用到多重背包中，将每个 $n_i$ 拆为如此，再做0/1背包，此时复杂度为 $O(V\sum \log n_i)$，取 $n_i$ 的平均值 $N$，则复杂度近似为 $O(NV\log N)$。 </p>
+<p><strong>单调队列优化</strong></p>
+<p>考虑原来的Dp式子</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j-kv_i}+kw_i\}\quad 0\le k\le \min\{j/v_i,n_i\}</script><p>令 $r=j\bmod v_i,d=\lfloor j/v_i\rfloor$，即 $j=dv_i+r$，此时方程可以变为</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,r+kv_i}+kw_i \}\quad k\le d</script><p>定义 $g_{x,y}=f_{i,xv_i+y},g’_{x,y}=f_{i-1,xv_{i}+y}$，则有</p>
+<script type="math/tex; mode=display">
+g_{x,y}=\max\{g'_{z,y}+(x-z)w_i\}=\max\{g'_{z,y}-zw_i+xw_i \}\quad 0\le z\le x{ \And} x-z\ge n_i</script><p>这时就可以枚举余数Dp，用单调队列优化，复杂度 $O(nV)$。</p>
+<h4 id="混合背包"><a href="#混合背包" class="headerlink" title="混合背包"></a>混合背包</h4><p>对不同物品分别背包。</p>
+<h4 id="二维费用背包"><a href="#二维费用背包" class="headerlink" title="二维费用背包"></a>二维费用背包</h4><p>扩展一维。即设 $f_{i,j,k}$ 表示前 $i$ 个物品，第一维费用 $j$，第二维费用 $k$，则</p>
+<script type="math/tex; mode=display">
+f_{i,j,k}=\max\{f_{i-1,j,k},f_{i-1,j-v_{1_{i}},k-v_{2_{i}}}+w_i \}</script><h4 id="树上背包"><a href="#树上背包" class="headerlink" title="树上背包"></a>树上背包</h4><p>对于要求选择 $k$ 个点的树上背包问题，选择好准确的上下界，可以做到 $O(nk)$。</p>
+<h3 id="单调队列优化Dp"><a href="#单调队列优化Dp" class="headerlink" title="单调队列优化Dp"></a>单调队列优化Dp</h3><p>若 Dp 方程具有如下形式</p>
+<script type="math/tex; mode=display">
+f_i=\max_{L(i)\le j\le R(i)}\{f_j+val(j)\}</script><p>并且满足 $val(j)$ 与 $i$ 无关，$L(i),R(i)$ 随着 $i$ 单调变换，此时可以用单调队列维护这个 Dp。</p>
+<p>队列里保证下标单调并且值单调，只将 $\le R(i)$ 的数加入队列。每次先将满足 $\le R(i)$ 的决策加入队尾中，并且满足队列值单调，然后将不满足当前 $i$ 的左区间限制的队头出队，因为这些在之后 $&gt;i$ 的位置也不可能用到（$L(k)\ge L(i)$），此时队头就是当前的最优决策。</p>
+<p>每个数只会入队、出队一次，时间复杂度 $O(n)$。</p>
+<h2 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h2><h3 id="二分图相关"><a href="#二分图相关" class="headerlink" title="二分图相关"></a>二分图相关</h3><h4 id="二分图判定"><a href="#二分图判定" class="headerlink" title="二分图判定"></a>二分图判定</h4><p><strong>染色法</strong> 二分图是只有偶环的图，可以对每个连通块进行黑白染色，若遇到染过色的点，且与当前点同色，则一定不是二分图。</p>
+<p><strong>并查集</strong> 可以用扩展域的方法，但是边带权更好写。先考虑不用并查集的做法。每条边依次加入，如果此时加入后成为了一个环，便检查这两个点的距离，若为偶数，此时形成了奇环，不是二分图；若为奇数，则不加入这条边，可以知道，此时不加入对之后的判断没有影响。</p>
+<p>这是暴力的做法。并查集优化找距离的过程。并查集上维护每个点到它父亲的距离的奇偶性。假设加入 $(x,y)$，若不在一个集合内，直接合并根，设根为 $fx,fy$，则 $d_{fy}=d_x \oplus d_y\oplus 1$；若在一个集合内，则原树上 $x,y$ 的距离的奇偶性为 $d_x\oplus d_y$，直接判断。</p>
+<h3 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h3><h4 id="有向图强连通分量"><a href="#有向图强连通分量" class="headerlink" title="有向图强连通分量"></a>有向图强连通分量</h4><p>用 <code>low[x]</code>，<code>dfn[x]</code> 和一个栈求得极大强连通分量。<code>dfn[x]</code> 表示 <code>x</code>  的时间戳，<code>low[x]</code> 表示 <code>x</code> 最早追溯到栈中节点的时间戳，栈中则是一路 DFS 下来的节点。</p>
+<p>显然，当 <code>dfn[x]=low[x]</code> 时，找到一个极大的强连通分量，并且栈中的点就是这个强连通分量中的点，因为 <code>low[x]</code> 通过某一种路径到达了自己，故必存在一个环，或者只有这一个点，此时这一个点也是极大的强连通分量。</p>
+<p>如何更新 <code>low[x]</code>？DFS 过程中，如果 <code>x</code> 的临点 <code>y</code> 已经访问过了，并且 <code>y</code> 在栈中，则 <code>low[x]=min(low[x],dfn[y])</code>，否则搜索 <code>y</code>，并 <code>low[x]=min(low[x],low[y])</code>。</p>
+<h4 id="无向图双连通分量"><a href="#无向图双连通分量" class="headerlink" title="无向图双连通分量"></a>无向图双连通分量</h4><p><strong>点双连通分量</strong> 是指图的一个子图，满足里面的所有点之间都至少有两条除去起点与终点外 <em>点不相交</em> 路径。显然，点双内部没有割点。</p>
+<p>割点的判断方法则是按照有向图强连通分量类似的方法，只是没有栈，<code>low[x]</code> 的转移不需要 <code>y</code> 在栈中。若 <code>x</code> 的一个没有搜索过的相邻节点 <code>y</code> 满足 <code>low[y]&gt;=dfn[x]</code> 并且 <code>x</code> 不是 DFS 树的根节点，则 <code>x</code> 是割点；若 <code>x</code> 是根节点，并且有超过一个临节点满足，则根是割点。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> son=<span class="number">0</span>;</span><br><span class="line">	dfn[x]=low[x]=++num;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=h[x];i;i=e[i].nxt)&#123;</span><br><span class="line">		<span class="keyword">int</span> y=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(i==(f^<span class="number">1</span>))<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!dfn[y])&#123;</span><br><span class="line">			Dfs(y,i);</span><br><span class="line">			low[x]=min(low[x],low[y]);</span><br><span class="line">			<span class="keyword">if</span>(low[y]&gt;=dfn[x])&#123;</span><br><span class="line">				son++;</span><br><span class="line">				<span class="keyword">if</span>(x!=rt||(x==rt&amp;&amp;son&gt;=<span class="number">2</span>))cut[x]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> low[x]=min(low[x],dfn[y]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点双连通分量的缩点通常用 <strong>广义圆方树</strong> 代替，因为原图的割点可以在多个点双中存在。</p>
+<p><strong>边双连通分量</strong> 是指图的一个子图，其中任意两点都至少有两条 <em>边不相交</em> 路径。显然边双中不存在割边。</p>
+<p>割边的求法，只需要在割点的求法上稍作修改。当前点为 <code>x</code>，它的一个没有搜索过的临界点为 <code>y</code>，判断这条边是否是割边，只需判断是否满足 <code>low[y]&gt;dfn[x]</code>，若满足，则是割边，否则不是。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	low[x]=dfn[x]=++num;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=h[x];i;i=e[i].nxt)&#123;</span><br><span class="line">		<span class="keyword">int</span> y=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(i==fa)<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(!dfn[y])&#123;</span><br><span class="line">			Tarjan(y,(i^<span class="number">1</span>));</span><br><span class="line">			low[x]=min(low[x],low[y]);</span><br><span class="line">			<span class="keyword">if</span>(low[y]&gt;dfn[x])cut[i]=cut[i^<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> low[x]=min(low[x],dfn[y]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>边双连通分量缩点，先把割边找出来，然后对每个点 DFS，不经过割边，得到的就是缩点后的 <strong>树</strong>。</p>
+<h4 id="2-SAT"><a href="#2-SAT" class="headerlink" title="2-SAT"></a>2-SAT</h4><h3 id="最小生成树MST"><a href="#最小生成树MST" class="headerlink" title="最小生成树MST"></a>最小生成树MST</h3><h4 id="求解算法"><a href="#求解算法" class="headerlink" title="求解算法"></a>求解算法</h4><p><strong>Kruskal</strong> 将边按照权值排序，从小到大枚举边，用并查集维护连通性，判断一下就可以。</p>
+<p><strong>Prim</strong> 类似 Dijkstra 的扩展方法。</p>
+<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="dsu-on-tree"><a href="#dsu-on-tree" class="headerlink" title="dsu on tree"></a>dsu on tree</h3><p>轻重链剖分，然后先处理轻儿子子树内部贡献并撤销对应的操作，再处理重儿子子树贡献并继承其贡献（即不撤销），之后将轻儿子信息暴力加入，统计答案，最后根据「上级指示」决定是否撤销本次操作。</p>
+<p>看起来都是暴力，实际上是 $o(n\log n)$。</p>
+<h3 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h3><h4 id="Splay"><a href="#Splay" class="headerlink" title="Splay"></a>Splay</h4><p>Splay 维护区间信息时要注意平移坐标并且加入哨兵 $1,n+2$，方便处理。提取区间时要找第 $k$ 小，所以还要维护 <code>siz</code>。</p>
+<h3 id="笛卡尔树"><a href="#笛卡尔树" class="headerlink" title="笛卡尔树"></a>笛卡尔树</h3><p>是一种特殊的 Treap。将当前区间最大值作为根，递归处理左右两个子树。即以下标为键值，以值为 rank，下标满足左 &gt; 中 &gt; 右，权值满足当前点权值 &gt; 两个子树的权值。</p>
+<p>构建用单调栈去构建。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>将一个字符串映射成一个数，使之能够 $O(1)$ <strong>判断相等</strong>。需要注意的是 <strong>不能比较大小</strong>。</p>
+<p>比较两个字符串的大小，可以用 Hash 二分出它们的 LCP（最长公共前缀），再比较之后的一个字符（具体应用：$O(n\log ^2 n)$ 求后缀数组）。</p>
+<p>一般可以用 <code>unsigned long long</code> 自然溢出处理。防止被卡，可以用双模数 Hash。</p>
+<h3 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h3><h4 id="border"><a href="#border" class="headerlink" title="border"></a>border</h4><p>字符串 $s$ 的一个前缀 $i$ 的 border $b_i$ 是满足</p>
+<script type="math/tex; mode=display">
+s_{1}\cdots s_{k}=s_{i-k+1}\cdots s_i</script><p>并且 $k\neq i$ 的 $k$ 构成的集合。一般取最大的 $k$ 作为 $b_i$ 的值，记为 $next_i$。</p>
+<ul>
+<li>$next_i$ 求法：不断跳。$O(n)$。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nxt[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>,j=<span class="number">0</span>;i&lt;=m;i++)&#123;</span><br><span class="line">	<span class="keyword">while</span>(j&amp;&amp;t[j+<span class="number">1</span>]!=t[i])j=nxt[j];</span><br><span class="line">	<span class="keyword">if</span>(t[j+<span class="number">1</span>]==t[i])j++;</span><br><span class="line">	nxt[i]=j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最短循环串：找出字符串 $s$ 的一个最短前缀，满足 $s$ 由这个前缀重复若干次得到。</li>
+</ul>
+<p>令 $len=n-b_i$，若 $n\bmod len=0$，则答案就是 $s_1\cdots s_{len}$，否则答案就是整个串。</p>
+<ul>
+<li>前缀出现次数：在 $i$ 处，会出现前缀 $b_i$，前缀 $b_{b_i}$，$\cdots$，所以用桶再求前缀。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> Ans[MaxN];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)Ans[nxt[i]]++;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)Ans[nxt[i]]+=Ans[i];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)Ans[i]++;</span><br></pre></td></tr></table></figure>
+<h4 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h4><p>求 $t$ 在 $s$ 中出现次数（位置，是否出现等）。</p>
+<ul>
+<li>将 $s$ 和 $t$ 拼接在一起 <code>t+&#39;#&#39;+s</code>，其中 <code>&#39;#&#39;</code> 是不在两个字符串中出现的字符，求 $next_i$，在 <code>&#39;#&#39;</code> 之后，若 $next_i=|t|$，则出现一次。</li>
+<li>直接做，类似 $next_i$ 的求法。</li>
+</ul>
+<h3 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NOIP复习/" rel="tag"># NOIP复习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/21/FFT在字符串匹配中的应用/" rel="next" title="FFT在字符串匹配中的应用">
+                <i class="fa fa-chevron-left"></i> FFT在字符串匹配中的应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/21/二分图/" rel="prev" title="二分图复习笔记">
+                二分图复习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="TbYangZ">
+            
+              <p class="site-author-name" itemprop="name">TbYangZ</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础算法"><span class="nav-text">基础算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高精度算法"><span class="nav-text">高精度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索"><span class="nav-text">搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#深度优先搜索DFS"><span class="nav-text">深度优先搜索DFS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广度优先搜索BFS"><span class="nav-text">广度优先搜索BFS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索的通常优化"><span class="nav-text">搜索的通常优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心思想"><span class="nav-text">贪心思想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心的经典模型"><span class="nav-text">贪心的经典模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区间完全覆盖问题"><span class="nav-text">区间完全覆盖问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大不相交区间数问题"><span class="nav-text">最大不相交区间数问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区间选点问题"><span class="nav-text">区间选点问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心证明基本思路"><span class="nav-text">贪心证明基本思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贪心的常用方法"><span class="nav-text">贪心的常用方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举"><span class="nav-text">枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分治与二进制思想"><span class="nav-text">分治与二进制思想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#排序算法"><span class="nav-text">排序算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分法解零点"><span class="nav-text">二分法解零点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速幂"><span class="nav-text">快速幂</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ST表"><span class="nav-text">ST表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划Dp"><span class="nav-text">动态规划Dp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划基本理论"><span class="nav-text">动态规划基本理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性Dp"><span class="nav-text">线性Dp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LIS模型"><span class="nav-text">LIS模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LCS模型"><span class="nav-text">LCS模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列问题"><span class="nav-text">序列问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区间Dp"><span class="nav-text">区间Dp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背包模型"><span class="nav-text">背包模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#0-1-背包"><span class="nav-text">0/1 背包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完全背包"><span class="nav-text">完全背包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多重背包"><span class="nav-text">多重背包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合背包"><span class="nav-text">混合背包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维费用背包"><span class="nav-text">二维费用背包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#树上背包"><span class="nav-text">树上背包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调队列优化Dp"><span class="nav-text">单调队列优化Dp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图论"><span class="nav-text">图论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分图相关"><span class="nav-text">二分图相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二分图判定"><span class="nav-text">二分图判定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图的连通性"><span class="nav-text">图的连通性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有向图强连通分量"><span class="nav-text">有向图强连通分量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无向图双连通分量"><span class="nav-text">无向图双连通分量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-SAT"><span class="nav-text">2-SAT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树MST"><span class="nav-text">最小生成树MST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#求解算法"><span class="nav-text">求解算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展"><span class="nav-text">扩展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dsu-on-tree"><span class="nav-text">dsu on tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平衡树"><span class="nav-text">平衡树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Splay"><span class="nav-text">Splay</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#笛卡尔树"><span class="nav-text">笛卡尔树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash"><span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KMP"><span class="nav-text">KMP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#border"><span class="nav-text">border</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配"><span class="nav-text">匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学"><span class="nav-text">数学</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TbYangZ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

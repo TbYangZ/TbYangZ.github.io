@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="类欧几里得算法。">
+<meta name="keywords" content="数学&#x2F;数论,类欧几里得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类欧几里得算法">
+<meta property="og:url" content="https://TbYangZ.github.io/2020/11/21/类欧几里得算法/index.html">
+<meta property="og:site_name" content="TbYangZ&#39;s blog">
+<meta property="og:description" content="类欧几里得算法。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tbyangz.github.io/2020/11/21/类欧几里得算法/ceilfunc.png">
+<meta property="og:image" content="https://tbyangz.github.io/2020/11/21/类欧几里得算法/floorfunc.png">
+<meta property="og:updated_time" content="2020-11-20T17:36:47.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="类欧几里得算法">
+<meta name="twitter:description" content="类欧几里得算法。">
+<meta name="twitter:image" content="https://tbyangz.github.io/2020/11/21/类欧几里得算法/ceilfunc.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://TbYangZ.github.io/2020/11/21/类欧几里得算法/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>类欧几里得算法 | TbYangZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TbYangZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Think twice, code once.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://TbYangZ.github.io/2020/11/21/类欧几里得算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TbYangZ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TbYangZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">类欧几里得算法
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-11-21 00:34:20 / 修改时间：01:36:47" itemprop="dateCreated datePublished" datetime="2020-11-21T00:34:20+08:00">2020-11-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>类欧几里得算法。</p>
+<a id="more"></a>
+<h3 id="取整函数的性质"><a href="#取整函数的性质" class="headerlink" title="取整函数的性质"></a>取整函数的性质</h3><p>由于类欧几里得是关于整值函数的一些东西，这里就先写关于上下取整的一些东西。</p>
+<h4 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h4><ul>
+<li>上取整函数</li>
+</ul>
+<p>定义上取整函数 $\lceil x\rceil$ 为不小于 $x$ 的最小整数。其中定义域为 $\mathbb{R}$ ，值域为 $\mathbb{Z}$。</p>
+<p>如 $\lceil1.2\rceil=2,\lceil-1.2\rceil=-1$。</p>
+<p>函数图像大概长这样：</p>
+<p><img src=".\ceilfunc.png" style="zoom: 67%;"></p>
+<p>注意:每条线段的右边取得到，左边取不到。</p>
+<ul>
+<li>下取整函数</li>
+</ul>
+<p>定义下取整函数 $\lfloor x\rfloor$ 为不大于 $x$ 的最大整数。同上取整，定义域为 $\mathbb{R}$，值域为 $\mathbb{Z}$。</p>
+<p>比如 $\lfloor\pi\rfloor=3,\lfloor -2.4\rfloor=-3$。</p>
+<p>图像大概长这个样子:</p>
+<p><img src=".\floorfunc.png" style="zoom:67%;"></p>
+<p>注意:每条线段的左边取得到，右边取不到。这个函数又被称为高斯函数，记作 $[x]$。</p>
+<h4 id="函数的性质"><a href="#函数的性质" class="headerlink" title="函数的性质"></a>函数的性质</h4><p>可以知道有不等式</p>
+<script type="math/tex; mode=display">
+\lfloor x\rfloor\le x<\lfloor x\rfloor+1\\
+x\le \lceil x\rceil < x+1</script><p>等号成立当且仅当 $x$ 为整数。</p>
+<p>在以下的情况中，这两个符号是可要可不要的(其中 $x\in \mathbb{R},n\in \mathbb{N}$)，</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&x<n\Leftrightarrow \lfloor x\rfloor <n\\
+&x>n\Leftrightarrow \lceil x\rceil>n\\
+&x\le n\Leftrightarrow \lfloor x\rfloor \le n\\
+&x\ge n\Leftrightarrow \lceil x\rceil \ge n
+\end{align*}</script><p>对于里面为有理数时，有上下取整的转化公式</p>
+<script type="math/tex; mode=display">
+\left\lfloor\frac{a}{b}\right\rfloor=\left\lceil\frac{a-b+1}{b}\right\rceil\\
+\left\lceil\frac{a}{b}\right\rceil=\left\lfloor\frac{a+b-1}{b}\right\rfloor\\</script><p>对第一个式子的简单证明：设 $a=kb+r$ ，其中 $0\le r&lt;b$ ，则</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\left\lfloor\frac{a}{b}\right\rfloor&=\left\lfloor\frac{kb+r}{b}\right\rfloor\\
+&=k+\left\lfloor \frac{r}{b}\right\rfloor\\
+&=k
+\end{align*}</script><p>而对于右边的式子</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\left\lceil \frac{a-b+1}{b} \right\rceil&=\left\lceil \frac{(k-1)b+r+1}{b} \right\rceil\\
+&=k-1+\left\lceil\frac{r+1}{b}\right\rceil\\
+&=k
+\end{align*}</script><p>故原式成立。</p>
+<p>第二个式子同理。</p>
+<h3 id="类欧几里得算法"><a href="#类欧几里得算法" class="headerlink" title="类欧几里得算法"></a>类欧几里得算法</h3><p>类欧几里得是求如下式子：</p>
+<script type="math/tex; mode=display">
+f(a,b,c,k_1,k_2,n)=\sum_{i=0}^ni^{k_1}\left\lfloor \frac{ai+b}{c} \right\rfloor^{k_2}</script><p>其中 $a,b,c,k_1,k_2,n\ge 0$ 且都为整数。</p>
+<p>这个式子太难了，取特殊值 $k_1=0,k_2=1$ 和 $k_1=k_2=1$ 和 $k_1=0,k_2=2$ 的时候，记</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&f(a,b,c,n)=\sum_{i=0}^n\left\lfloor \frac{ai+b}{c} \right\rfloor\\
+&g(a,b,c,n)=\sum_{i=0}^ni\left\lfloor \frac{ai+b}{c} \right\rfloor\\
+&h(a,b,c,n)=\sum_{i=0}^n\left\lfloor \frac{ai+b}{c} \right\rfloor^2\\
+\end{align*}</script><h4 id="f-a-b-c-n-的求法"><a href="#f-a-b-c-n-的求法" class="headerlink" title="f(a,b,c,n)的求法"></a>f(a,b,c,n)的求法</h4><p>先讨论 $a,b$ 与 $c$ 的大小(还不知道为什么要这样讨论)，若 $a,b$ 中有一个大于 $c$ ，则可以转化到小于 $c$ 的式子。</p>
+<p>可以知道 $a=c\left\lfloor\frac{a}{c}\right\rfloor+(a\bmod c),b=c\left\lfloor\frac{b}{c}\right\rfloor+(b\bmod c)$ ，带入可以得到</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+f(a,b,c,n)&=\sum_{i=0}^n\left\lfloor \cfrac{ai+b}{c} \right\rfloor\\
+&=\sum_{i=0}^n\left\lfloor \cfrac{c\left\lfloor\frac{a}{c}\right\rfloor i+(a\bmod c)i+c\left\lfloor\frac{b}{c}\right\rfloor+(b\bmod c)}{c} \right\rfloor\\
+&=\sum_{i=0}^n\left\lfloor \cfrac{a}{c} \right\rfloor i+\left\lfloor \cfrac{b}{c} \right\rfloor +\sum_{i=0}^n\left\lfloor \cfrac{(a\bmod c)i+(b\bmod c)}{c} \right\rfloor\\
+&=\left\lfloor \cfrac{a}{c} \right\rfloor \cfrac{n(n+1)}{2}+\left\lfloor \cfrac{b}{c} \right\rfloor (n+1)+f(a\bmod c,b\bmod c,c,n)
+\end{align*}</script><p>此时就让 $a,b$ 都小于 $c$ 了。(似乎是优化复杂度?)</p>
+<p>之后再求 $f(a,b,c,n)$ 其中 $a,b&lt;c$。继续推式子。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+f(a,b,c,n)&=\sum_{i=0}^n\left\lfloor\cfrac{ai+b}{c}\right\rfloor\\
+&=\sum_{i=0}^n\sum_{j=0}^{\left\lfloor\frac{ai+b}{c}\right\rfloor-1}1\\
+&=\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}\sum_{i=0}^{n}\left[\,j<\left\lfloor\cfrac{ai+b}{c}\right\rfloor\,\right]\\
+\end{align*}</script><p>注意到</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\left[\,j<\left\lfloor\cfrac{ai+b}{c}\right\rfloor\,\right]&=\left[\,j<\left\lceil\cfrac{ai+b-c+1}{c}\right\rceil\,\right]\\
+&=\left[\,j<\cfrac{ai+b-c+1}{c}\,\right]\\
+&=\left[\,i>\cfrac{cj+c-b+1}{a}\,\right]\\
+&=\left[\,i>\left\lfloor\cfrac{cj+c-b+1}{a}\right\rfloor\,\right]\\
+\end{align*}</script><p>故</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&=\sum_{j=0}^{\left\lfloor\frac{an+b}{a}\right\rfloor-1}
+\sum_{i=0}^{n}\left[\,i>\left\lfloor\cfrac{cj+c-b+1}{a}\right\rfloor\,\right]\\
+&=\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}n-\left\lfloor\cfrac{cj+c-b+1}{a}\right\rfloor\\
+&=n\left\lfloor\cfrac{an+b}{c}\right\rfloor-\sum_{i=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}\left\lfloor\cfrac{ci+c-b+1}{a}\right\rfloor\\
+&=n\left\lfloor\cfrac{an+b}{c}\right\rfloor-f\left(c,c-b-1,a,\left\lfloor\frac{an+b}{c}\right\rfloor-1\right)
+\end{align*}</script><p>这是一个递归的式子，边界为 $f(0,b,c,n)=(n+1)\times\left\lfloor\frac{b}{c}\right\rfloor$ 。注意到 $a\rightarrow c,c\rightarrow a\bmod c$ ，这很像欧几里得的过程，故复杂度为 $O(\log n)$。</p>
+<p>一些总结:遇到交换和式的时候可以先把条件式用艾弗森括号写出来，​再化简。</p>
+<p>较为简单的写法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">f</span><span class="params">(ll a，ll b，ll c，ll n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!a)<span class="keyword">return</span> (n+<span class="number">1</span>)*(b/c);</span><br><span class="line">	<span class="keyword">if</span>(a&gt;=c||b&gt;=c)</span><br><span class="line">		<span class="keyword">return</span> (f(a%c，b%c，c，n)+(n*(n+<span class="number">1</span>)/<span class="number">2</span>*(a/c))+(n+<span class="number">1</span>)*(b/c));</span><br><span class="line">	<span class="keyword">return</span> (n*((a*n+b)/c)-f(c，c-b<span class="number">-1</span>,a,(a*n+b)/c<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="g-a-b-c-n-amp-h-a-b-c-n-的求法"><a href="#g-a-b-c-n-amp-h-a-b-c-n-的求法" class="headerlink" title="g(a,b,c,n)&amp;h(a,b,c,n)的求法"></a>g(a,b,c,n)&amp;h(a,b,c,n)的求法</h4><p>先把式子拿出来</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&g(a,b,c,n)=\sum_{i=0}^ni\left\lfloor \cfrac{ai+b}{c} \right\rfloor\\
+&h(a,b,c,n)=\sum_{i=0}^n\left\lfloor \cfrac{ai+b}{c} \right\rfloor^2\\
+\end{align*}</script><p>记 $S_k(n)=\sum_{i=1}i^k$。</p>
+<p>先对 $g$ 下手。</p>
+<p>同样分类讨论 $a,b$ 与 $c$ 的大小。</p>
+<p>$a\ge c\, \mathrm{or}\,b\ge c$时。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+g(a,b,c,n)&=\sum_{i=0}^ni\left\lfloor \cfrac{ai+b}{c} \right\rfloor\\
+&=\sum_{i=0}^ni\left\lfloor \cfrac{\left(c\left\lfloor \frac{a}{c}\right\rfloor +a\bmod c\right)i+c\left\lfloor \frac{b}{c}\right\rfloor +b\bmod c}{c} \right\rfloor\\\\
+&=\sum_{i=0}^ni^2\left\lfloor \cfrac{a}{c}\right\rfloor +i\left\lfloor \cfrac{b}{c}\right\rfloor +\sum_{i=0}^ni\left\lfloor \cfrac{\left(a\bmod c\right)i+b\bmod c}{c} \right\rfloor\\
+&=S_2(n)\left\lfloor \cfrac{a}{c}\right\rfloor+S_1(n)\left\lfloor \cfrac{b}{c}\right\rfloor+g(a\bmod c,b\bmod c,c,n)
+\end{align*}</script><p>都小于 $c$ 时：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+g(a,b,c,n)&=\sum_{i=0}^ni\left\lfloor \cfrac{ai+b}{c} \right\rfloor\\
+&=\sum_{i=0}^n\sum_{j=0}^{\left\lfloor\frac{ai+b}{c}\right\rfloor-1}i\\
+&=\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}\sum_{i=0}^{n}i\left[\,j<\left\lfloor\cfrac{ai+b}{c}\right\rfloor\,\right]\\
+&=\sum_{j=0}^{\left\lfloor\frac{an+b}{a}\right\rfloor-1}
+\sum_{i=0}^{n}i\left[\,i>\left\lfloor\cfrac{cj+c-b+1}{a}\right\rfloor\,\right]\\
+\end{align*}</script><p>注意到这个东西可以拆开来，原式</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&=\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}S_1(n)-S_1\left(\left\lfloor\cfrac{cj+c-b+1}{a}\right\rfloor\right)\\
+&=S_1(n)\left\lfloor\cfrac{an+b}{c}\right\rfloor-\cfrac{1}{2}\left(
+\sum_{i=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}\left\lfloor\cfrac{ci+c-b+1}{a}\right\rfloor^2+\left\lfloor\cfrac{ci+c-b+1}{a}\right\rfloor
+\right)\\
+&=S_1(n)\left\lfloor\cfrac{an+b}{c}\right\rfloor-\cfrac{1}{2}h\left(c,c-b-1,a,\left\lfloor\cfrac{an+b}{c}\right\rfloor-1\right)-\frac{1}{2}f\left(c,c-b-1,a,\left\lfloor\frac{an+b}{c}\right\rfloor-1\right)
+\end{align*}</script><p>可以发现，推到这里，求 $g$ 不仅要用到 $f$ 还要用到 $h$。故再来推 $h$。</p>
+<p>当 $a\ge c$ 或 $b\ge c$ 时，</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+h(a,b,c,n)&=\sum_{i=0}^n\left\lfloor \cfrac{ai+b}{c} \right\rfloor^2\\
+&=\sum_{i=0}^n\left\lfloor \cfrac{\left(c\left\lfloor \frac{a}{c}\right\rfloor +a\bmod c\right)i+c\left\lfloor \frac{b}{c}\right\rfloor +b\bmod c}{c} \right\rfloor^2\\
+&=\sum_{i=0}^n\left(\left\lfloor \cfrac{a}{c}\right\rfloor +i\left\lfloor \cfrac{b}{c}\right\rfloor\right)^2 +\sum_{i=0}^n\left\lfloor \cfrac{\left(a\bmod c\right)i+b\bmod c}{c} \right\rfloor^2+\\
+&2\sum_{i=0}^n\left(\left\lfloor \cfrac{a}{c}\right\rfloor +i\left\lfloor \cfrac{b}{c}\right\rfloor\right)\left\lfloor \cfrac{\left(a\bmod c\right)i+b\bmod c}{c} \right\rfloor
+\end{align*}</script><p>前面一项是个可以求出来值的项，可以算出来，其值等于 $(n+1)\lfloor{\frac{a}{c}}\rfloor^2+S_2(n)\lfloor{\frac{b}{c}}\rfloor+2S_1(n)\lfloor{\frac{a}{c}}\rfloor\lfloor{\frac{b}{c}}\rfloor$ ，而第二项就是 $h(a\bmod c,b\bmod c,c,n)$，第三项拆开来之后是 $f$ 与 $g$ 的形式的项，所以</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+h(a,b,c,n)&=(n+1)\left\lfloor{\cfrac{a}{c}}\right\rfloor^2+S_2(n)\left\lfloor{\cfrac{b}{c}}\right\rfloor+2S_1(n)\left\lfloor{\cfrac{a}{c}}\right\rfloor\left\lfloor{\cfrac{b}{c}}\right\rfloor\\
+&+ h(a\bmod c,b\bmod c,c,n)\\
+&+2\left\lfloor{\cfrac{a}{c}}\right\rfloor f(a\bmod c,b\bmod c,c,n)+2\left\lfloor{\cfrac{b}{c}}\right\rfloor g(a\bmod c,b\bmod c,c,n)
+\end{align*}</script><p>当 $a,b&lt;c$ 时，</p>
+<p>注意到</p>
+<script type="math/tex; mode=display">
+n^2=n^2+n-n=2\frac{n(n+1)}{2}-n=-n+2\sum_{i=1}^ni</script><p>这样做就不会有比较烦人的平方了。</p>
+<p>故原式等于</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+h(a,b,c,n)&=\sum_{i=0}^n\left\lfloor \cfrac{ai+b}{c} \right\rfloor^2\\
+&=\sum_{i=0}^n\left[2\left(\sum_{j=1}^{\left\lfloor \frac{ai+b}{c} \right\rfloor}j\right)-\left\lfloor \cfrac{ai+b}{c} \right\rfloor\right]\\
+&=2\sum_{i=0}^n\sum_{j=1}^{\left\lfloor \frac{ai+b}{c} \right\rfloor}j-\sum_{i=0}^n\left\lfloor \cfrac{ai+b}{c} \right\rfloor\\
+&=2\sum_{i=0}^n\sum_{j=1}^{\left\lfloor \frac{ai+b}{c} \right\rfloor}j-f(a,b,c,n)
+\end{align*}</script><p>对于前一项，有</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\sum_{i=0}^n\sum_{j=1}^{\left\lfloor \frac{ai+b}{c} \right\rfloor}j
+&=\sum_{j=1}^{\left\lfloor \frac{an+b}{c} \right\rfloor}\sum_{i=0}^n
+j\left[
+j\le
+\left\lfloor
+\cfrac{ai+b}{c}
+\right\rfloor
+\right]\\
+&=\sum_{j=0}^{\left\lfloor \frac{an+b}{c} \right\rfloor-1}
+(j+1)
+\sum_{i=0}^n
+\left[
+j<
+\left\lfloor
+\cfrac{ai+b}{c}
+\right\rfloor
+\right]\\
+
+&=\sum_{j=0}^{\left\lfloor \frac{an+b}{c} \right\rfloor-1}
+(j+1)
+\sum_{i=0}^n
+\left[
+i>
+\left\lfloor
+\cfrac{cj+c-b+1}{a}
+\right\rfloor
+\right]\\
+&=\sum_{j=0}^{\left\lfloor \frac{an+b}{c} \right\rfloor-1}(j+1)\left(n-\left\lfloor
+\cfrac{cj+c-b+1}{a}
+\right\rfloor\right)\\
+&=n\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}j-\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}j\left\lfloor
+\cfrac{cj+c-b+1}{a}
+\right\rfloor+n\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}1-\sum_{j=0}^{\left\lfloor\frac{an+b}{c}\right\rfloor-1}\left\lfloor
+\cfrac{cj+c-b+1}{a}
+\right\rfloor\\
+\end{align*}</script><p>为了让式子好看一点，令 $m=\lfloor \frac{an+b}{c} \rfloor-1$，则原式为</p>
+<script type="math/tex; mode=display">
+nS_1(m)-g(c,c-b-1,a,m)+nS_0(m)-f(c,c-b+1,a,m)</script><p>带入原来的式子，可以得到</p>
+<script type="math/tex; mode=display">
+h(a,b,c,n)=nS_1(m)+nS_0(m)-\\g(c,c-b+1,a,m)-f(c,c-b+1,a,m)+f(a,b,c,n)</script><p>圆满完工！</p>
+<p>复杂度同 $f(a,b,c,n)$ 的复杂度，为 $O(\log n)$ 。</p>
+<p>至于实现，可以把这三个函数包装在一起，一起求就可以了。</p>
+<blockquote>
+<p>代码</p>
+</blockquote>
+<p>（还没写）</p>
+<h4 id="扩展到f-a-b-c-k1-k2-n"><a href="#扩展到f-a-b-c-k1-k2-n" class="headerlink" title="扩展到f(a,b,c,k1,k2,n)"></a>扩展到f(a,b,c,k1,k2,n)</h4><p>这是 Loj 上的模板，更加通用化。（以后再说）</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学-数论/" rel="tag"># 数学/数论</a>
+          
+            <a href="/tags/类欧几里得/" rel="tag"># 类欧几里得</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/21/基础排列组合/" rel="next" title="基础排列组合">
+                <i class="fa fa-chevron-left"></i> 基础排列组合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/21/做题记录/" rel="prev" title="做题记录">
+                做题记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="TbYangZ">
+            
+              <p class="site-author-name" itemprop="name">TbYangZ</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#取整函数的性质"><span class="nav-text">取整函数的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的定义"><span class="nav-text">函数的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的性质"><span class="nav-text">函数的性质</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类欧几里得算法"><span class="nav-text">类欧几里得算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#f-a-b-c-n-的求法"><span class="nav-text">f(a,b,c,n)的求法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#g-a-b-c-n-amp-h-a-b-c-n-的求法"><span class="nav-text">g(a,b,c,n)&amp;h(a,b,c,n)的求法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展到f-a-b-c-k1-k2-n"><span class="nav-text">扩展到f(a,b,c,k1,k2,n)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TbYangZ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>

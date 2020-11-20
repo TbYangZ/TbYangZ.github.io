@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.jpg?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.jpg?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="觉得现在也要写做题记录了，不然感觉做过的题目就白做了。 to do: 放题目链接">
+<meta name="keywords" content="日常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="做题记录">
+<meta property="og:url" content="https://TbYangZ.github.io/2020/11/21/做题记录/index.html">
+<meta property="og:site_name" content="TbYangZ&#39;s blog">
+<meta property="og:description" content="觉得现在也要写做题记录了，不然感觉做过的题目就白做了。 to do: 放题目链接">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-20T17:34:15.754Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="做题记录">
+<meta name="twitter:description" content="觉得现在也要写做题记录了，不然感觉做过的题目就白做了。 to do: 放题目链接">
+
+
+
+
+
+
+  <link rel="canonical" href="https://TbYangZ.github.io/2020/11/21/做题记录/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>做题记录 | TbYangZ's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TbYangZ's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Think twice, code once.</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://TbYangZ.github.io/2020/11/21/做题记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TbYangZ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TbYangZ's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">做题记录
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-11-21 00:34:20 / 修改时间：01:34:15" itemprop="dateCreated datePublished" datetime="2020-11-21T00:34:20+08:00">2020-11-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>觉得现在也要写做题记录了，不然感觉做过的题目就白做了。</p>
+<p>to do: 放题目链接</p>
+<a id="more"></a>
+<h2 id="2020-10-09"><a href="#2020-10-09" class="headerlink" title="2020.10.09"></a>2020.10.09</h2><h3 id="BSOJ4206"><a href="#BSOJ4206" class="headerlink" title="BSOJ4206"></a>BSOJ4206</h3><p><a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=4206" target="_blank" rel="noopener">【NOIP模拟试题】gift</a>——背包变形</p>
+<p>从小到大枚举最小不买的物品 $i$，则 $i$ 之前的所有物品都要买，然后在用背包处理$i$之后的物品</p>
+<h3 id="LuoguP2899"><a href="#LuoguP2899" class="headerlink" title="LuoguP2899"></a>LuoguP2899</h3><p><a href="https://www.luogu.com.cn/problem/P2899" target="_blank" rel="noopener">P2899 [USACO08JAN]Cell Phone Network G</a>——树形Dp或贪心</p>
+<p>设 $f[x][0/1/2]$ 分别表示 $x$ 选/ $x$ 不选，让父亲选/ $x$ 不选，让儿子选。有</p>
+<script type="math/tex; mode=display">
+f[x][0]=1+\sum_{y\in son(x)}\min\{f[y][0],f[y][1],f[y][2]\}\\
+f[x][1]=\sum_{y\in son(x)}\min\{f[y][0],f[y][2]\}</script><p>对于$f[x][2]$，需要先求出$f[x][1]$，再进行处理。有</p>
+<script type="math/tex; mode=display">
+f[x][2]=\min_{y\in son(x)}\{f[x][1]-\min\{f[y][0],f[y][2] \}+f[y][0] \}</script><p>理解：$f[x][1]$与$f[x][2]$的区别就在于是否强制选至少一个儿子，$f[x][2]$要至少选一个儿子，那就枚举选择的儿子，从$f[x][1]$减去这个儿子的贡献，再加上选择它的贡献。</p>
+<p>贪心做法：先选定一个根，对于叶子节点，选择它的父亲一定是最优的；对于一个非叶节点，如果它的儿子中有一个要求要选择父亲，那么就必须选择，如果它的儿子中有一个选了，那么当前点不选，如果它的儿子都被儿子的儿子覆盖，那么当前节点必选。</p>
+<p>与<a href="https://oj.bashu.com.cn/code/problempage.php?problem_id=2495" target="_blank" rel="noopener">BSOJ2495【HNOI2003】消防局的设立</a>类似，只不过是距离为2，贪心更好写。</p>
+<h2 id="2020-10-10"><a href="#2020-10-10" class="headerlink" title="2020.10.10"></a>2020.10.10</h2><h3 id="LuoguP3730"><a href="#LuoguP3730" class="headerlink" title="LuoguP3730"></a>LuoguP3730</h3><p><a href="https://www.luogu.com.cn/problem/P3730" target="_blank" rel="noopener">P3730 曼哈顿交易</a>——分块+莫队</p>
+<p>首先要读题，是区间内 <strong>出现次数第k小的数的出现次数</strong>，不能用主席树做！</p>
+<p>数据范围$n\le 100000$并且没有强制在线，所以可以考虑离线莫队。按照莫队的套路就可以，但需要一个数据结构维护全局第$k$小，可以用值域树状数组，但是复杂度是$O(m\sqrt{m}\log n)$，不够优秀。用值域分块，做到$O(1)$修改，$O(\sqrt{n})$查询，而只会查询$m$次，所以复杂度为$O(m\sqrt{m})$。</p>
+<h2 id="2020-10-11"><a href="#2020-10-11" class="headerlink" title="2020.10.11"></a>2020.10.11</h2><h3 id="LuoguP3694"><a href="#LuoguP3694" class="headerlink" title="LuoguP3694"></a>LuoguP3694</h3><p><a href="https://www.luogu.com.cn/problem/P3694" target="_blank" rel="noopener">P3694 邦邦的大合唱站队</a>——状压Dp</p>
+<p>定义状态 $f_{s,i}$ 表示前面由$s$集合中的乐队占满，最后一个乐队是$i$（实际上不需要定义 $i$）；再定义 $h_{i,j}$ 表示乐队 $i$ 从位置 $j$ 开始排，最终的代价。则有</p>
+<script type="math/tex; mode=display">
+f_{s\cup\{k\},k}=\min\{f_{s\cup\{k\},k},f_{s,j}+h_{k,sum_s+1} \}</script><p>$sum_s$表示$s$集合中乐队的人数个数和。</p>
+<p>然而，是可以不需要第二个状态，因为在枚举的时候实际上已经确定了一种状态。此时方程为</p>
+<script type="math/tex; mode=display">
+f_{s\cup\{k\}}=\min\{f_{s\cup\{k\}},f_{s}+h_{k,sum_s+1} \}</script><h3 id="LuoguP2261"><a href="#LuoguP2261" class="headerlink" title="LuoguP2261"></a>LuoguP2261</h3><p><a href="https://www.luogu.com.cn/problem/P2261" target="_blank" rel="noopener">P2261 [CQOI2007]余数求和</a>——整除分块</p>
+<p>式子变形：</p>
+<script type="math/tex; mode=display">
+\begin{split}
+G(n,k)&=\sum_{i=1}^nk\bmod i\\
+&=\sum_{i=1}^nk-i\left\lfloor\dfrac{k}{i}\right\rfloor\\
+&=nk-\sum_{i=1}^ni\left\lfloor\dfrac{k}{i}\right\rfloor
+\end{split}</script><p>后面用整除分块。</p>
+<h3 id="LuoguP6186"><a href="#LuoguP6186" class="headerlink" title="LuoguP6186"></a>LuoguP6186</h3><p><a href="https://www.luogu.com.cn/problem/P6186" target="_blank" rel="noopener">P6186 [NOI Online #1 提高组]冒泡排序</a>——树状数组</p>
+<p>一次冒泡排序中，若其中一个数左边没有比它更大的数，则这一次会移动它直到遇到一个比它大的数或者到末尾。记$c_i$为$i$前比$a_i$大的数的个数。一次冒泡排序后，$c^{\prime}_{i}=\max\{0,c_i-1\}$，即它左边第一个比它大的数移到右边去了，又逆序对数为$\sum c_i$，故一轮后的逆序对个数为</p>
+<script type="math/tex; mode=display">
+\sum_{c^{\prime}_i\ge 1}c^{\prime}_i=\sum_{c_i\ge 2}(c_i-1)</script><p>同理，第$k$轮候$c^{\prime}_{i}=\max\{0,c_i-k\}$，所以此时逆序对的个数为</p>
+<script type="math/tex; mode=display">
+\sum_{c^{\prime}_i\ge 1}c^{\prime}_i=\sum_{c_i\ge k+1}(c_i-k)=\sum_{c_i\ge k+1}c_i-k\sum_{c_i\ge k+1}1</script><p>前后分别用值域树状数组维护，交换时分类讨论。</p>
+<h2 id="2020-10-19"><a href="#2020-10-19" class="headerlink" title="2020.10.19"></a>2020.10.19</h2><h3 id="CF1326E"><a href="#CF1326E" class="headerlink" title="CF1326E"></a>CF1326E</h3><p>首先要观察答案，有没有什么特殊性质。这道题 <strong>观察样例</strong>，答案单调不增，猜测如此，实际的确如此。再考虑枚举答案，设当前枚举的答案为 $x$，那么若存在一个位置 $i$，它后面「大于等于 $x$ 的数的个数」大于它后面「标记数」，那么这个答案是可行的。可以通过枚举情况证明。需要注意的是，当前枚举的答案为 $x$，则 $&gt;x$ 的答案是不可行的。然后 $\exists i\rightarrow\neg\forall i$，用线段树维护「后面大于等于 $x$ 的数的个数」-「后面的标记数」的最大值，询问全局最大，修改时区间修改。</p>
+<h3 id="LuoguP3430"><a href="#LuoguP3430" class="headerlink" title="LuoguP3430"></a>LuoguP3430</h3><p>对于两列，如果有两个相同的数在同一行，那么这两列必有一个要换；若有两个相同的数在不同行，那么其中一个换了，另一个必须换。两种状态，并且是无向的，可以用并查集扩展域维护信息，然后再排个序找代价最小的集合选择。</p>
+<h2 id="2020-10-26"><a href="#2020-10-26" class="headerlink" title="2020.10.26"></a>2020.10.26</h2><h3 id="CSP-S2019D2T1"><a href="#CSP-S2019D2T1" class="headerlink" title="CSP-S2019D2T1"></a>CSP-S2019D2T1</h3><p><strong>正难则反</strong>，直接统计 $p\le \lfloor k/2\rfloor$ 的方案数不好统计，则用总共的方案数减去不合法的方案数。而不合法的方案数就只有一种，只会有一列的选取次数 $&gt;\lfloor k/2\rfloor$，那么枚举这个食材进行Dp。</p>
+<p>设当前枚举的列为 $j$，并设 $f_{i,k,p}$ 表示前 $i$ 行，选了 $k$ 个数，第 $j$ 列选了 $p$ 个数，则有方程</p>
+<script type="math/tex; mode=display">
+f_{i,k,p}=f_{i-1,k,p}+f_{i-1,k-1,p}\times (s_i-a_{i,j})+f_{i-1,k-1,p-1}\times a_{i,j}</script><p>$s_i=\sum_j a_{i,j}$。总共不合法的方案数为 $\sum_{k}\sum_{p&gt;k/2}f_{n,k,p}$。</p>
+<p>考虑优化，若 $p&gt;k/2$，则有 $2p&gt;k$，即$p&gt;k-p$，而 $k-p$ 为其他列的选取个数，故维护当前列与其他列的选取个数的差值，将后两维压缩成一维，$f_{i,k}$，则有</p>
+<script type="math/tex; mode=display">
+f_{i,k}=f_{i-1,k}+f_{i-1,k-1}\times (s_i-a_{i,j})+f_{i-1,k+1}\times s_i</script><p>注意平移下标与数据范围。</p>
+<h2 id="2020-10-28"><a href="#2020-10-28" class="headerlink" title="2020.10.28"></a>2020.10.28</h2><h3 id="LuoguP5530-LuoguP3513"><a href="#LuoguP5530-LuoguP3513" class="headerlink" title="LuoguP5530/LuoguP3513"></a>LuoguP5530/LuoguP3513</h3><p>对于神奇的式子，可以考虑 <strong>决策单调性</strong>。如此题求</p>
+<script type="math/tex; mode=display">
+p_i=\left\lceil\max_{1\le j\le n} \left\{a_j-a_i+\sqrt{|{i-j|}} \right\}\right\rceil</script><p>先考虑 $i$ 之前的。用反证法证明单调性。设 $i_1,i_2$ 与 $j_1,j_2$，并且 $i_1$ 的最优决策在 $j_1，j_1<i_1$，$i_2$ 的最优决策在 $j_2$，同时 $i_1<i_2,j_1>j_2$，则根据决策最优性，有</i_1$，$i_2$></p>
+<script type="math/tex; mode=display">
+a_{j_1}-a_{i_1}+\sqrt{i_1-j_1}>a_{j_2}-a_{i_1}+\sqrt{i_1-j_2}\\
+a_{j_2}-a_{i_2}+\sqrt{i_2-j_2}>a_{j_1}-a_{i_2}+\sqrt{i_2-j_1}</script><p>化简可得</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&\sqrt{i_1-j_1}-\sqrt{i_1-j_2}>a_{j_2}-a_{j_1}>\sqrt{i_2-j_1}-\sqrt{i_2-j_2}\\
+\Rightarrow&\sqrt{i_1-j_1}-\sqrt{i_1-j_2}>\sqrt{i_2-j_1}-\sqrt{i_2-j_2}\\
+\Rightarrow&\sqrt{i_1-j_1}+\sqrt{i_2-j_2}>\sqrt{i_2-j_1}+\sqrt{i_1-j_2}\\
+\end{split}</script><p>平方得到</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&i_1+i_2-j_1-j_2+2\sqrt{i_1-j_1}\sqrt{i_2-j_2}>i_1+i_2-j_1-j_2+2\sqrt{i_2-j_1}\sqrt{i_1-j_2}\\
+\Rightarrow&\sqrt{i_1-j_1}\sqrt{i_2-j_2}>\sqrt{i_2-j_1}\sqrt{i_1-j_2}\\
+\Rightarrow&(i_1-j_1)(i_2-j_2)>(i_2-j_1)(i_1-j_2)\\
+\Rightarrow&i_1i_2-i_1j_2-i_2j_1+j_1j_2>i_1i_2-i_2j_2-i_1j_1+j_1j_2\\
+\Rightarrow&i_1j_2+i_2j_1<i_2j_2+i_1j_1\\
+\Rightarrow&i_1(j_2-j_1)<i_2(j_2-j_1)\\
+\end{split}</script><p>然而 $j_2<j_1$，所以 $j_2-j_1<0$，故得到 $i_1>i_2$，但是假设的是 $i_1&lt;i_2$，矛盾，所以若 $i_1$ 的最优决策为 $j_1$，$i_2$ 的最优决策为 $j_2$，那么 $j_2\ge j_1$，即具有决策单调性。</j_1$，所以></p>
+<p>反过来同理，也满足决策单调性。</p>
+<p>需要注意的是，<strong>决策单调性不代表转移函数的单调性</strong>，并不能直接双指针扫描。这里由于每个 $p_i$ 独立，可以直接分治  <code>solve(l,r,L,R)</code> 找出 <code>mid</code> 在 <code>L,R</code> 中的最优决策，直接分治 <code>solve(l,mid-1,L,pos)</code>与 <code>solve(mid+1,r,pos,R)</code>。与整体二分有些相似。</p>
+<h2 id="2020-10-29"><a href="#2020-10-29" class="headerlink" title="2020.10.29"></a>2020.10.29</h2><h3 id="BSOJ4486"><a href="#BSOJ4486" class="headerlink" title="BSOJ4486"></a>BSOJ4486</h3><p>从后向前Dp，方程</p>
+<script type="math/tex; mode=display">
+f_i=\min_{i<j\le n+1}\{f_j+|a_i-(j-i-1)| \}</script><p>注意 $j$ 也可以取 $n+1$，设 $f_{n+1}=0$，意味着从 $i$ 开始的后面都让 $i$ 读完。<strong>分类讨论去绝对值</strong>：</p>
+<script type="math/tex; mode=display">
+f_i=
+\min_{i<j\le n+1}\begin{cases}
+f_j-j+a_i+i+1&\quad j\le a_i+i+1\\
+f_j+j-a_i-i-1&\quad j> a_i+i+1
+\end{cases}</script><p>注意到有 <strong>对下标的限制</strong>，并且限制没有单调性，则用考虑用线段树优化。维护两棵线段树，第一棵维护 $f_i-i$ 的最小，第二棵维护 $f_i+i$ 的最小，枚举两种情况，在对应的线段树里查找。答案为 $f_1$。复杂度 $O(n\log n)$。</p>
+<h2 id="2020-10-31"><a href="#2020-10-31" class="headerlink" title="2020.10.31"></a>2020.10.31</h2><h3 id="BSOJ5988"><a href="#BSOJ5988" class="headerlink" title="BSOJ5988"></a>BSOJ5988</h3><p>把式子写出来</p>
+<script type="math/tex; mode=display">
+\begin{split}
+Ans&=m^nE(mex)\\
+&=m^n\sum_{i=1}^{m+1}P({mex}=i)i\\
+&=m^n\sum_{i=0}^{m}P({mex}>i)\\
+\end{split}</script><p>即对每一个 $i\in [1,m]$，求前 $i$ 个数必须被选择，剩余随便选的总方案数之和。前 $i$ 个数必须被选择，对于这种 <strong>必须性问题</strong>，直接算会算重复的问题，<strong>一般需要容斥</strong>。对这道题，总方案数-一个不满足的方案数+两个不满足的方案数+……，即</p>
+<script type="math/tex; mode=display">
+\begin{split}
+Ans&=\sum_{i=0}^m\sum_{j=0}^i(-1)^j{i\choose j}(m-j)^n\\
+&=\sum_{j=0}^m(-1)^j(m-j)^n\sum_{i=j}^m{i\choose j}
+\end{split}</script><p>有 </p>
+<script type="math/tex; mode=display">
+\sum_{i=j}^m{i\choose j}={m\choose j}</script><p>通过对 $m$ 用数学归纳法可以证明。</p>
+<p>那么原始子变为</p>
+<script type="math/tex; mode=display">
+Ans=\sum_{j=0}^m(-1)^j(m-j)^n{m\choose j}</script><p>直接 $O(m\log n)$ 求。</p>
+<h3 id="BSOJ5992"><a href="#BSOJ5992" class="headerlink" title="BSOJ5992"></a>BSOJ5992</h3><p>如果拆位的话，对每位直接用线段树处理出区间内左边为 <code>0/1</code> 是到右边的值。由于有上下限，不能直接贪心，所以需要数位Dp求出答案。时空复杂度 $O(n\log m\log V)$。</p>
+<p>实际上是没必要拆位的。对每个区间处理出左边为 $(0\cdots0)_2$ 与 $(1\cdots1)_2$ 时对应右边的值。<code>pushup</code> 时需要注意一下，设 <code>s[p][0/1]</code> 是左边为全 <code>0/1</code> 时对应右边的值，则可知<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s[p][0]=(s[lson[p]][0]&amp;s[rson[p]][1])|((s[lson[p][0]]^Max)&amp;s[rson[p][0]])</span><br><span class="line">s[p][1]=(s[lson[p]][1]&amp;s[rson[p]][1])|((s[lson[p]][1]^Max)&amp;s[rson[p][0]])</span><br></pre></td></tr></table></figure></p>
+<p>两个更新是对称的。对于第一个式子，左边从 <code>0</code> 开始，<code>s[lson[p]][0]&amp;s[rson[p]][1]</code> 是取出左子树结果为 <code>1</code> 的对应右子树的值，后边是取出左子树结果为 <code>0</code> 的对应的右子树的值。第二个式子同理。</p>
+<p>剩下都是一样的。</p>
+<h2 id="2020-11-02"><a href="#2020-11-02" class="headerlink" title="2020.11.02"></a>2020.11.02</h2><h3 id="CF1444C"><a href="#CF1444C" class="headerlink" title="CF1444C"></a>CF1444C</h3><p>先把内部有奇环的集合去除掉，假设剩下所有的集合之间都能配对，再减去不合法的情况。集合内部的边先连，由于是无序对，只考虑编号大的集合向编号小的集合连边。对每个集合，枚举内部点连出去的边对应的集合将这两个集合之间的所有边都连起，然后判断二分图，之后在删除。此时需要的是快速判断的方法，并且支持可撤销。这里用可回退并查集实现，可以在线修改并得到结果。</p>
+<p>枚举集合显然不能依次枚举，枚举有边相连的集合即可。</p>
+<p>需要注意的是 <em>不能一次性加入所有与之相连的边</em>，这判断的不是两个集合之间是否是二分图，而是它之前的所有点是否是二分图。</p>
+<h2 id="2020-11-03"><a href="#2020-11-03" class="headerlink" title="2020.11.03"></a>2020.11.03</h2><h3 id="LuoguP6563"><a href="#LuoguP6563" class="headerlink" title="LuoguP6563"></a>LuoguP6563</h3><p>朴素Dp，设 $f_{i,j}$ 为知晓 $i,j$ 的最小代价，则有</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\min_{i\le k<j}\left\{\max\{f_{i,k},f_{k+1,j} \}+a_k \right\}</script><p>$O(n^3)$。对于两个数的 $\max$，可以 <strong>尝试分类讨论</strong> 寻找一些突破口。对这道题，分类讨论 $f_{i,k}$ 与 $f_{k+1,j}$ 的大小。</p>
+<p>若 $f_{i,k}\ge f_{k+1,j}$，此时 $f_{i,j}=\min\{f_{i,k}+a_k \}$，而显然有结论 $f_{i,k}\le f_{i,k+1}$，又 $a_{k}\le a_{k+1}$，故 $f_{i,k}+a_k\le f_{i,k+1},a_{k+1}$。现在需要知道什么时候 $f_{i,k}\ge f_{k+1,j}$。又有结论 $f_{k,j}\ge f_{k+1,j}$，故必定存在一个点 $p$，使得 $f_{i,p-1}&lt; f_{p,j}$ 并且 $f_{i,p}&gt;f_{p+1,j}$，因为 $f_{i,k}-f_{k+1,j}$ 单峰。现在固定 $i$，则显然对应点 $p$ 是单调的，固定 $j$ 同理。所以对于 $p$ 直接维护。</p>
+<p>若 $f_{i,k}&lt;f_{k+1,j}$，则有 $f_{i,j}=\min\{f_{k+1,j}+a_k\}$。注意到此时的方程与 $i$ 无关，故对 <strong>每个 $j$ 维护单调队列</strong>。</p>
+<p>一个 Trick 是外层枚举 $j$，内层枚举 $i$，这样少一维的空间。</p>
+<h2 id="2020-11-04"><a href="#2020-11-04" class="headerlink" title="2020.11.04"></a>2020.11.04</h2><h3 id="LuoguP3572"><a href="#LuoguP3572" class="headerlink" title="LuoguP3572"></a>LuoguP3572</h3><p>朴素 Dp：</p>
+<script type="math/tex; mode=display">
+f_i=\min_{i-k\le j<i}\{f_j+[a_j\le a_i] \}</script><p>对 $j$ 有下标限制，可以考虑单调队列与数据结构，但是数据范围太大，只能单调队列。注意到对于当前的 $i$，若队列中 $f_{q_1}&lt;f_{q_2}$，此时 $a_{q_1}$ 与 $a_{q_2}$ 的影响不大，最多也就是让两个相等而已，所以可以忽略；然而 $f_{q_1}=f_{q_2}$ 时，$a_{q_1}$ 与 $a_{q_2}$ 中越大的一个来更新，代价只会更优，不会更差，所以单调队列中要维护</p>
+<ul>
+<li>$f_{q_k}$ 单调不降</li>
+<li>$a_{q_k}$ 单调不增</li>
+</ul>
+<p>所以在将 $i$ 入队时，特判一下相等的时候。</p>
+<h3 id="CF1077F2"><a href="#CF1077F2" class="headerlink" title="CF1077F2"></a>CF1077F2</h3><p>为保证选择的方法合法，设 $f_{i,j}$ 为前 $i$ 个数，选了 $j$ 个数，并且 <strong>第 $i$ 个数必须选择</strong>，此时的最大值。有</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max_{i-k\le p<i}\{f_{p,j-1} \}+a_i</script><p>由于第 $i$ 个数结尾的前 $k$ 个数中已经选了数，那么就要保证前面以 $i-1$ 结尾的前 $k$ 个数中至少选择一个数，故枚举 $p\in[i-k,i)$。</p>
+<p>显然外层枚举 $j$ 单调队列。</p>
+<h3 id="LuoguP3523"><a href="#LuoguP3523" class="headerlink" title="LuoguP3523"></a>LuoguP3523</h3><p>最大值最小，本能反应，二分答案。</p>
+<p>设当前二分值为 $D$，则需要判断是否存在一个点集，其中的点都到所有点的距离都小于等于 $D$。进一步转换，则需要求选择到关键点距离不超过 $D$ 的点的个数的 <strong>最小值</strong>。若最小值小于 $m$ 则可以。</p>
+<p>可以套用 <strong>将军令</strong> 的做法，但是复杂度是错的。考虑 <strong>树上直接贪心</strong>，设 $f_x$ 为子树 $x$ 中距离 $x$ 的远未盖点，$g_x$ 为最近选择点。显然有</p>
+<script type="math/tex; mode=display">
+f_x=\max\{f_y+1 \}\\
+g_x=\max\{g_y+1 \}</script><p>搜索完 $x$ 的子树后，进行判断：</p>
+<ol>
+<li>$g_x&gt;D$ 并且 $x$ 为关键点，此时要将 $x$ 让父亲去判断，$f_x=\max\{f_x,0\}$</li>
+<li>$f_x+g_x\le D$ 此时可以选择，子树中不存在未盖点，故 $f_x=-\inf$</li>
+<li>$f_x=D$ 此时需要选择当前点，否则就无法将那个点选择到，此时 需要多一个选择点。</li>
+</ol>
+<p>最后再判断根节点是否需要选择，得到最终树需要的点的个数，与 $m$ 比较，不大于就可以。</p>
+<h2 id="2020-11-05"><a href="#2020-11-05" class="headerlink" title="2020.11.05"></a>2020.11.05</h2><h3 id="LuoguP4516"><a href="#LuoguP4516" class="headerlink" title="LuoguP4516"></a>LuoguP4516</h3><p>设 $f_{i,j,0/1,0/1}$ 表示 $i$ 的子树选 $j$ 个点，$i$ 的选择情况与被覆盖情况。显然有</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&f_{x,j,0,0}=\sum_{k=0}^{siz_y} f_{x,j-k,0,0}\times 
+f_{y,k,0,1}\\
+&f_{x,j,0,1}=\sum_{k=0}^{siz_y} f_{x,j-k,0,0}\times 
+f_{y,k,1,1}+f_{x,j-k,0,1}\times(f_{y,k,0,1}+f_{y,k,1,1}) \\
+&f_{x,j,1,0}=\sum_{k=0}^{siz_y} f_{x,j-k,1,0}\times (
+f_{y,k,0,0}+f_{y,k,0,1})\\
+&f_{x,j,1,1}=\sum_{k=0}^{siz_y} f_{x,j-k,1,0}\times 
+(f_{y,k,1,0}+f_{y,k,1,1})+f_{x,j-k,1,1}\times(f_{y,k,0,0}+f_{y,k,0,1}+f_{y,k,1,1}+f_{y,k,1,1} ) \\
+\end{split}</script><p>看起来时 $O(nk^2)$ 的 Dp，但实际上可以被证明为 $O(nk)$，只需要严格按照上下界。显然 $j\in [0,\min \{K,siz_x+siz_y \}]$，$k\le \min\{K,siz_y\}$，实际上，$j-k\le siz_x$，故 $k\ge \max\{0,j-siz_x\}$，此时的复杂度为 $O(nk)$。</p>
+<h2 id="2020-11-08"><a href="#2020-11-08" class="headerlink" title="2020.11.08"></a>2020.11.08</h2><h3 id="LuoguP2627"><a href="#LuoguP2627" class="headerlink" title="LuoguP2627"></a>LuoguP2627</h3><p>定义状态 $f_i$ 为第 $i$ 个牛不选择，前 $i$ 个牛的最大效率。有</p>
+<script type="math/tex; mode=display">
+f_i=\max_{i-k-1\le j<i}\{f_j+s_i-s_j-a_i \}</script><p>分离变量，维护 $f_j-s_j$ 的单调队列。答案为</p>
+<script type="math/tex; mode=display">
+\max_{n-k\le i\le n}\{f_i+s_n-s_i\}</script><p>如果状态为强制选择不方便列出方程，则 <strong>换个思路</strong>，强制不选择。</p>
+<h2 id="2020-11-09"><a href="#2020-11-09" class="headerlink" title="2020.11.09"></a>2020.11.09</h2><h3 id="LuoguP5851"><a href="#LuoguP5851" class="headerlink" title="LuoguP5851"></a>LuoguP5851</h3><p>与区间有关，并且数据范围小 $n\le 300$，可以从区间 Dp 的角度思考。设 $f_{i,j}$ 表示 $[i,j]$ 内的最大重量，则有</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max_{i\le k\le j}\{f_{i,k-1}+f_{k+1,j}+g_{i,j,k} \}</script><p>其中 $g_{i,j,k}$ 表示满足 $i\le l\le k\le r\le j$ 的最大的 $w_i$，可以通过 <strong>区间扩展</strong> 的思路求出，即</p>
+<script type="math/tex; mode=display">
+g_{i,j,k}=\max\{g_{i+1,j,k},g_{i,j-1,k}\}</script><h3 id="LuoguP2569"><a href="#LuoguP2569" class="headerlink" title="LuoguP2569"></a>LuoguP2569</h3><p>由于可以不同的天中买卖，并且有个数限制，所以舍弃贪心。将天数和持有的股票数作为状态，定义 $f_{i,j}$ 为前 $i$ 天，此时持有的股票数为 $j$ 的最大获益。<strong>考虑转移是要不重不漏！</strong>这里 $f_{i,j}$ 可以直接购买 $j$ 的股票。有 </p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j},-j\times Ap_i,f_{i-W-1,k}-(j-k)\times As_i,\\f_{i-W-1,k}+(k-j)\times Bs_i\}</script><p>后两种转移单调队列优化。</p>
+<p><strong>化式子是要仔细！！</strong></p>
+<h2 id="2020-11-10-11-11"><a href="#2020-11-10-11-11" class="headerlink" title="2020.11.10~11.11"></a>2020.11.10~11.11</h2><h3 id="BSOJ1247"><a href="#BSOJ1247" class="headerlink" title="BSOJ1247"></a>BSOJ1247</h3><p>朴素Dp，设 $f_i$ 为前 $i$ 个序列划分的最小的最大值之和，则有</p>
+<script type="math/tex; mode=display">
+f_i=\max_{j<i\And s_i-s_j\le m}\{f_j+\max\{a_{j+1},\cdots,,a_i\} \}</script><p>里面的 $\max$ 用 ST 表处理，复杂度 $O(n^2)$。</p>
+<p>对于 $j&lt;i$，$j$~$i$ 的最大值将前 $i$ 个数分成若干段，对于最大值相同的每一段，显然选择左边的会只会更优，不会更差。又因为 <strong>最大值具有单调性</strong>，可以用单调队列维护这些合法的段以及扩展到的最左端，但此时队头不一定是最优决策点，队列中的所有值都有可能成为最优决策点，朴素的方法就是扫描队列。其实可以用数据结构按照对应的转移值维护队列中元素。</p>
+<p>需要注意的是有可能满足 $s_i-s_j\le m$ 的临界点在某个段里面，需要但单独维护这个临界点，并更新答案。</p>
+<h3 id="BSOJ7013"><a href="#BSOJ7013" class="headerlink" title="BSOJ7013"></a>BSOJ7013</h3><p>推式子</p>
+<script type="math/tex; mode=display">
+\sum_{T=1}^{m}T^{n-1}\sum_{d|T}\mu(d)d\prod_{i=1}^n\left(S\left(\left\lfloor \frac{R_i}{T}\right\rfloor\right)-S\left(\left\lceil \frac{L_i}{T}\right\rceil-1\right) \right)</script><p>其中 $S(n)=1+2+\cdots +n={1\over2}n(n+1)$，$m=\min\{R_i\}$</p>
+<p>首先，将 <strong>上取整转化为下取整</strong></p>
+<script type="math/tex; mode=display">
+\left\lceil\dfrac{L_i}{T}\right\rceil-1=\left\lfloor\dfrac{L_i-1}{T}\right\rfloor</script><p>所有 $i$ 一起考虑复杂度不对，故对于 <strong>每个 $i$ 分开考虑</strong>，根据数论分块的原理，每个 $i$ 将 $1$ 到 $m$ 分为 $O(\sqrt{n})$ 块，每一块的值是一样的，故用差分的方式在这个块内乘上这个值，特殊处理 $0$。</p>
+<p>$\prod$ 前的很好处理，直接筛就行了。</p>
+<h3 id="BSOJ1379"><a href="#BSOJ1379" class="headerlink" title="BSOJ1379"></a>BSOJ1379</h3><p><strong>对与 $n\in [40,50]$ 范围的题目，可以考虑折半搜索</strong>。</p>
+<p>对于此题，直接折半搜索，将前 $n/2$ 搜索出来，并记录下来，在后 $n/2$ 搜索时直接二分求答案。</p>
+<p>也可以将第二次搜索记录下来，排序后直接双指针。</p>
+<p><strong>注意去重！！</strong></p>
+<h2 id="2020-11-12"><a href="#2020-11-12" class="headerlink" title="2020.11.12"></a>2020.11.12</h2><h3 id="BSOJ7019"><a href="#BSOJ7019" class="headerlink" title="BSOJ7019"></a>BSOJ7019</h3><p>遇到无向图中的某些问题，可以 <strong>尝试构建圆方树</strong> 处理，将图上问题转化为树上问题。</p>
+<p>对于此题，构建圆方树后，答案即为不同树之间的贡献与这个点的各个子树与父亲节点之间的相互贡献。</p>
+<p>可以用 dsu on tree 的思想处理。对每个点用一个 <code>map</code> 记录这个子树内部颜色的个数，每次继承重儿子的 <code>map</code>，将轻儿子的信息暴力合并，在合并过程中更新 <code>val[x]</code> 与 <code>Ans[x]</code>，分别为子树内部到外部的贡献与这个点的答案。</p>
+<h3 id="LuoguP3665"><a href="#LuoguP3665" class="headerlink" title="LuoguP3665"></a>LuoguP3665</h3><p>首先，要知道答案只可能为图上某一条边的权值，因为如果将相邻同色的点缩为一个点，那么缩点之后的图必定相邻不同色，即答案至少是这些边的最小值，对应到原图中就是一条相邻不同色的边。所以答案必定为相邻不同色的边权最小值。</p>
+<p>然后猜测答案在 <strong>最小生成树</strong> 上，因为考虑 Kruskal 的过程，若当前的边 $(u,v)$ 不能加入，则必定有一个环，连通 $u,v$，并且环上的边权比 $(u,v)$ 要小，若 $u,v$ 同色，则无需考虑，即 $(u,v)$ 不可能成为答案；若 $u,v$ 异色，则当前树上存在的连通 $u,v$ 的路径中必定有一条边连接异色节点，而这条边权比 $(u,v)$ 小或相等，所以 $(u,v)$ 不会更优。</p>
+<p>然后就在最小生成树上处理。转有根树后对每个点用 multiset 维护它儿子的对应颜色的权值，用线段树维护全局答案。</p>
+<h3 id="CF1178F1-F2"><a href="#CF1178F1-F2" class="headerlink" title="CF1178F1/F2"></a>CF1178F1/F2</h3><p>对于 F1，满足 $n=m$，即给出的颜色序列一定是 $n$ 的一个排列。定义 $f_{i,j}$ 为 $(i,j)$ 内染色成最终结果的方案数。设 $w$ 为 $(i,j)$ 内颜色的最小值的位置，可以知道，$w$ 将区间分为两部分，对这两部分分别处理，因为 $w$ 是不可能被重新染色。故枚举 $w$ 左边与右边分别延伸的位置，然后相乘，</p>
+<script type="math/tex; mode=display">
+f_{l,r}=\sum_{i=l}^{w-2}\sum_{j=w+1}^{r-1} f_{l,i}f_{i+1,w-1}f_{w+1,j}f_{j+1,r}</script><p>发现 $w$ 的两部分独立，可以优化为</p>
+<script type="math/tex; mode=display">
+f_{l,r}=\left(\sum_{i=l}^{w-2}f_{l,i}f_{i+1,w-1} \right)\times\left(\sum_{j=w+1}^{r-1}f_{w+1,j}f_{i+1,w-1} \right)</script><p><strong>注意一些边界条件与转移方程的细节</strong>，这个转移中方程没有放入 $i=w-1$，此时需要加入 $f_{l,w-1}$，右边同理。可以通过神奇的初值避开讨论：$f_{i+1,i}=1$。</p>
+<p>对于 F2，因为 $m&gt;n$，故不能直接套用之前的算法。考虑无解的情况，从 $0$ 开始涂色，那么每次涂色会最多产生两个断点，即两个点满足 $a_u\neq a_{u+1}$，所以将相同颜色的合成一段，若段数 $&gt;2n$ 不合法，直接输出 $0$。</p>
+<p><strong>分析题目性质</strong>，对于原来颜色序列相同的一段，若被涂色后，之后所有的涂色都不会改变这些点，所以可以将这些相邻同色的点合并。然后就可以按照上面的方法 Dp。</p>
+<p>然后要注意的是，缩点后同样的颜色可能间隔开来，当前区间内最小颜色需要满足最左端与最右端都在这个区间内，才能正确更新。不过此时会分成大于 $4$ 个区间，对于中间的区间，因为全都会覆盖，所以直接累乘即可。</p>
+<h2 id="2020-11-13"><a href="#2020-11-13" class="headerlink" title="2020.11.13"></a>2020.11.13</h2><h3 id="BSOJ7022"><a href="#BSOJ7022" class="headerlink" title="BSOJ7022"></a>BSOJ7022</h3><p>数据范围较小的题目，一般都是高维度 Dp，要 <strong>大胆设状态！</strong>一般从题目求什么开始思考，<strong>不要着急转换模型</strong>。</p>
+<p>此题求删边后剩余边的最大边权，并且满足每个连通块内存在点使得其他点到它距离不超过 $D$。树上连通块类 Dp 一般可以直接设状态然后子树Dp，<strong>需要什么设什么</strong>。</p>
+<p>先随便选择一个点为根。设 $f_{x,c}$ 为 $x$ 所在连通块内所选择的点为 $c$，此时 $x$ 的子树中删边后剩余的最大值。显然要满足 $\mathrm{dis}(x,c)\le D$。再设 $g_x$ 为 $\max_{c\in \mathrm{subtree}(x)}\{f_{x,c}\}$，即 $g_x$ 为 $x$ 子树内答案。对 $x$ 与 $c$ 的位置分类讨论。</p>
+<ul>
+<li>若 $x$ 为叶子节点，那么 $f_{x,c}$ 为 $0$。</li>
+<li>若 $x$ 不为叶子节点<ol>
+<li>若 $c$ 在 $x$ 的子树外部，则 $f_{x,c}=\sum_{y\in Son(x)}\max\{g_y,f_{y,c}+w_{x,y}\}$，即对 $y$ 所在的连通块选择与 $x$ 合并或者不合并，取最大值。</li>
+<li>若 $c$ 为 $x$，同上。</li>
+<li>若 $c$ 在 $x$ 的子树内部，设 $c$ 在 $x$ 的儿子 $y’$ 所在子树内部，则 $f_{x,c}=w_{x,y’}+f_{y’,c}+\sum_{y\in Son(x)\and y\neq y’}\max\{g_y,f_{y,c}+w_{x,y}\}$。</li>
+</ol>
+</li>
+</ul>
+<p>注意 <strong>不合法状态的筛去</strong>，如 $f_{x,c}=-\infty$ 其中 $\mathrm{dis}(x,c)&gt;D$ 等。</p>
+<h2 id="2020-11-15"><a href="#2020-11-15" class="headerlink" title="2020.11.15"></a>2020.11.15</h2><h3 id="CF1313D"><a href="#CF1313D" class="headerlink" title="CF1313D"></a>CF1313D</h3><p>看到 $k\le 8$，应该要想到状压。将每个孩子选择的区间压成一个二进制数。为了方便处理，给每个区间编号，然后进行 Dp。</p>
+<p>需要注意的是这种对应的状态的具体意义 <strong>随着 $i$ 的变化是在变化的</strong>，所以要考虑仔细。</p>
+<p>注意 <strong>每个 Dp 值的来源</strong>，<strong>仔细考虑更新顺序</strong>。</p>
+<h3 id="CF1270F"><a href="#CF1270F" class="headerlink" title="CF1270F"></a>CF1270F</h3><p>将表达式写出来，</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&s_r\equiv s_{l-1} \pmod{r-l+1}\\
+\Rightarrow&d(s_r-s_{l-1})=r-l+1
+\end{split}</script><p>令 $i=r,j=l-1$，有 $d(s_i-s_j)=i-j$，即 $ds_i-i=ds_j-j$，对 $d$ 设置一个阈值 $T$，分类讨论 $d$ 与 $T$ 的大小。</p>
+<p>若 $1\le d\le T$，直接暴力去做，枚举 $d$，对于每个 $x$ 找出 $ds_i-i=x$ 个数 $c$，此时贡献为 ${c\choose 2}$。复杂度  $O(nT)$。</p>
+<p>对于 $d&gt;T$，对比原来的式子，则可以知道区间中 $1$ 个数小于 $n/d$，所以可以枚举区间中 $1$ 的个数 $i$，枚举起点 $l$，算出终点的范围 $[r_0,r_1]$，那么只需求 $[r_0-l+1,r_1-l+1]$ 中是 $i$ 的倍数的数的个数。注意不要将两部分算重复。时间复杂度为 $O(\frac{n^2}{T})$。</p>
+<p>总时间复杂度 $O(nT+{n^2\over T})$，当 $T=\sqrt{n}$ 时最小，为 $O(n\sqrt{n})$。</p>
+<p>对这种题，<strong>先化式子</strong>，然后再想办法优化；没思路的时候 <strong>想想暴力</strong>，试着 <strong>将两种暴力合在一起</strong>，平衡规划一下。</p>
+<h2 id="2020-11-16"><a href="#2020-11-16" class="headerlink" title="2020.11.16"></a>2020.11.16</h2><h3 id="CF1186F"><a href="#CF1186F" class="headerlink" title="CF1186F"></a>CF1186F</h3><p>根据题目，需要保留不超过 $\lceil(n+m)/2\rceil$ 条边，所以就 <strong>尽可能多删边</strong>，这就是贪心的目的。由于每个点的删边后的度数 $f_i\ge \lceil d_i/2\rceil$，所以最多删去 $g_i=d_i-\lceil d_i/2 \rceil$ 条边。</p>
+<p>开始贪心。先选择 $g_i$ 最小点删边，因为 $g_i$ 大的点删掉一些点后还可能继续删，但是此时 $g_i$ 小的点所连的点可能达到上限，即不能删这条边，导致可能的删边减少。对 $i$ 删边，按照其连的点的 $g_j$ 从大到小删除，因为删大的边，它之后还可以删除其他边，而删小的边，他可能删不了其它边，导致删边减少。</p>
+<p>在没有任何思路的时候，可以 <strong>转化模型</strong>，化繁为简，有所突破。</p>
+<h3 id="LuoguP2900"><a href="#LuoguP2900" class="headerlink" title="LuoguP2900"></a>LuoguP2900</h3><p>最朴素的错误式子</p>
+<script type="math/tex; mode=display">
+f_{i}=\max_{0\le j<i}\{f_j+\max_{j<k\le i}\{a_{k}\}\times\max_{j<k\le i}\{b_k\} \}</script><p>一眼看过去没什么思路。<strong>注意读题</strong>，没有说要将土地连续划分。</p>
+<p><strong>要分析题目性质</strong>，<strong>筛选出无用信息</strong>，然后再思考优化。对于 $i$，若 $\exists j,a_j\ge a_i\And b_j\ge b_i$，则 $i$ 是无用的，因为将 $i$ 和 $j$ 分到一组，$i$ 就没有贡献。这样划分完了后，按照 $a_i$ 递增排序，则 $b_i$ 一定递减（反证法）。可以证明，在这种排序下最优策略一定是将连续的一段分成一组，考虑反证法，若 $i,j(i&lt;j)$ 划分为一组，并且 $i,j$ 被分开来，则对于 $i&lt;k&lt;j$ 的土地，放入 $i,j$ 的同一组，答案只会更优不会更差，而此时 $i,j$ 没有被分开。</p>
+<p>此时有</p>
+<script type="math/tex; mode=display">
+f_i=\max_{0\le j<i}\{f_j+a_i\times b_{j+1}\}</script><p>显然斜率优化。</p>
+<h2 id="2020-11-17"><a href="#2020-11-17" class="headerlink" title="2020.11.17"></a>2020.11.17</h2><h3 id="CF1152D"><a href="#CF1152D" class="headerlink" title="CF1152D"></a>CF1152D</h3><p>对于这种题，没思路就 <strong>尝试去构造一组通用的解</strong>，然后去求。</p>
+<p>令根节点深度为 $0$，那么让所有深度为偶数的点向父亲连边，重复的随便连边，这样得到一组匹配，并且一定是最大匹配。求法，可以定义 $f_{i,j}$ 为 $i$ 个左括号，$j$ 个右括号的合法方案数，显然右括号 $\le$ 左括号。$f_{i,j}=f_{i-1,j}+f_{i,j-1}$，$Ans=\sum_{i+j\equiv1\pmod 2}f_{i,j}$。</p>
+<h3 id="CF1149C"><a href="#CF1149C" class="headerlink" title="CF1149C"></a>CF1149C</h3><p>对于这种题（有修改有询问），可以先思考 <strong>没有修改并且方便维护的做法</strong>，然后再加上修改。</p>
+<p>对于此题，任意子串中去除匹配的括号，剩余的括号可以代表一条链，链长就是剩余字符串的长度。如果让 $(\rightarrow 1,)\rightarrow -1$，则答案就是最大的子串最大的后减前。线段树维护。</p>
+<p>需要维护区间和，左右开始的连续最大/小和，前缀/后缀的后减前的最大值，区间内后减前的最大值，区间的答案。注意一下 <code>pushup</code>。</p>
+<h3 id="CF1446C"><a href="#CF1446C" class="headerlink" title="CF1446C"></a>CF1446C</h3><p><strong>删除最少=留下最多</strong>。</p>
+<p>如果将数组排序，那么可以发现每个数连的边要么是前面一个，要么是后面一个。建个 Trie 树，可以发现，最终连通图一定是一个节点两边都存在，这个节点到根的链与其相反的方向最多留一个，所以 DFS 即可。</p>
+<h2 id="2020-11-18"><a href="#2020-11-18" class="headerlink" title="2020.11.18"></a>2020.11.18</h2><h3 id="CF1015F"><a href="#CF1015F" class="headerlink" title="CF1015F"></a>CF1015F</h3><p><strong>字符串匹配相关的题，要想到在字符串数据结构上Dp！</strong></p>
+<p>求出一个点的 $next_i$，然后求出一个点的各种转移结果，同样跳 $next_i$，记为 $c_{i,0/1}$（左括号/右括号）。定义 $f_{i,j,k}$ 表示长度为 $i$ 的串，前缀和为 $j$，并且匹配到 KMP 自动机的节点 $k$，此时的方案数。显然有</p>
+<script type="math/tex; mode=display">
+f_{i+1,j+1,c_{k,0}}+=f_{i,j,k}\\
+f_{i+1,j-1,c_{k,1}}+=f_{i,j,k}\\</script><p>为了方便，令最后一个节点的 $c_{len,0/1}=len$，这样答案就是 $f_{2n,0,len}$。</p>
+<h3 id="BSOJ7035"><a href="#BSOJ7035" class="headerlink" title="BSOJ7035"></a>BSOJ7035</h3><p>将所能够扩展的点先扩展，把边界所连的点放到对应颜色的桶里，每次 BFS 的时候将对应桶里的元素拿出来 BFS，将遇到的不同颜色的块同样处理。</p>
+<p><strong>想到边界要进一步想到外面。</strong></p>
+<h3 id="BSOJ7038"><a href="#BSOJ7038" class="headerlink" title="BSOJ7038"></a>BSOJ7038</h3><p>区间统计，要想到可以 <strong>分治</strong>。</p>
+<p>先考虑一个询问。每次分治时处理跨过当前 $[L,R]$ 中点的区间，枚举左区间的一个端点 $l$，将右区间分为三个部分：</p>
+<ol>
+<li>$mid+1$ 到 $p_1$，满足右端点在这个区间内的最大最小值都是左区间的最大最小值。</li>
+<li>$p_1+1$ 到 $p_2/p_3$，满足右端点在这个区间内的最大（最小）是左区间，最小（最大）值是对应的前缀最小（最大）值。</li>
+<li>$p_2/p_3+1$ 到 $R$，满足右端点在这个区间内的最大最小值是对应的前缀最大最小值</li>
+</ol>
+<p>显然，对于 $p_2/p_3$ 中只可能有一个大于 $p_1$。</p>
+<p>对于这三个部分，用四棵线段树分别维护，对应每个点权值为 $1$，$smax$，$smin$，$smax\times smin$，那么每次加上权值乘以当前的贡献（$lmax\times lmin$，$lmin$，$lmax$，$1$）。</p>
+<p>对于多个询问，将询问离线，拆分。注意，若 $q.l=L\And q.r=R$，则不应该继续拆分下去，否则空间复杂度错误。</p>
+<h2 id="2020-11-19"><a href="#2020-11-19" class="headerlink" title="2020.11.19"></a>2020.11.19</h2><h3 id="LuoguP5322"><a href="#LuoguP5322" class="headerlink" title="LuoguP5322"></a>LuoguP5322</h3><p>有时候不要想的太复杂。</p>
+<p>有个显然的贪心，若 $x&lt;y$ 并且放置 $x$ 个与 $y$ 个所得到的收益是一样的，那么最多会选择 $x$，而不会选择 $y$。</p>
+<p>那么定义 $f_{i,j}$ 表示前 $i$ 个城堡，总共放置 $j$ 个士兵的最大值。如果将第 $i$ 个城堡对应的每个玩家放置的士兵排序，那么就有</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j-2\times a_k-1}+k\times i\}</script><p>就是个背包 Dp。</p>
+<h3 id="CF730J"><a href="#CF730J" class="headerlink" title="CF730J"></a>CF730J</h3><p>第一问直接贪心。设结果 $m$。</p>
+<p>第二问，<strong>求转移的最少，转化为求剩余最多</strong>。将每个水杯看成一个物品，有体积 $1$，重量 $b_i$，价值 $a_i$，则为一个二维费用背包。$f_{i,j}$ 为选择 $i$ 个水杯，总容积为 $j$，此时的最大剩余量，则</p>
+<script type="math/tex; mode=display">
+f_{i,j}=\max\{f_{i-1,j-b_i}+a_i\}</script><p>注意倒序枚举。</p>
+<h3 id="BSOJ7039"><a href="#BSOJ7039" class="headerlink" title="BSOJ7039"></a>BSOJ7039</h3><p>将式子写出来</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{n}b_{p_i}\sum_{j=i+1}^{n}a_{p_j}=
+\sum_{i=1}^{n}a_{p_i}\sum_{j=1}^{i-1}b_{p_j}</script><p>用 <strong>微扰法</strong>，考虑每次将 <strong>两个连通块合并</strong>，前一个 $\sum a=a_0$，$\sum b=b_0$，后一个$\sum a=a_1$，$\sum b=b_1$，若第一个在前，则此时的贡献为</p>
+<script type="math/tex; mode=display">
+A=a_0\times w+a_1\times(w+b_0)</script><p>反之，则有</p>
+<script type="math/tex; mode=display">
+B=a_1\times w+a_0\times(w+b_1)</script><p>若第一个在前更优，则有</p>
+<script type="math/tex; mode=display">
+\begin{split}
+&A>B
+\Rightarrow&a_0\times w+a_1\times(w+b_0)>a_1\times w+a_0\times(w+b_1)\\
+\Rightarrow&a_1b_0>a_0b_1
+\end{split}</script><p>所以对于每个连通块维护 $\sum a$ 与 $\sum b$，并按照这个方法排序。每次取出最大的一个，与其父亲合并。</p>
+<p>至于为什么每次与父亲合并是对的，因为选择它必须要选择它的父亲，若没有这个限制，则直接排序，依次合并；而对于其他连通块，它在它们前面会更优，所以让它先和父亲合并。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/日常/" rel="tag"># 日常</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/21/类欧几里得算法/" rel="next" title="类欧几里得算法">
+                <i class="fa fa-chevron-left"></i> 类欧几里得算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/21/生成函数/" rel="prev" title="生成函数学习笔记">
+                生成函数学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="TbYangZ">
+            
+              <p class="site-author-name" itemprop="name">TbYangZ</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-09"><span class="nav-text">2020.10.09</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ4206"><span class="nav-text">BSOJ4206</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP2899"><span class="nav-text">LuoguP2899</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-10"><span class="nav-text">2020.10.10</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP3730"><span class="nav-text">LuoguP3730</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-11"><span class="nav-text">2020.10.11</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP3694"><span class="nav-text">LuoguP3694</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP2261"><span class="nav-text">LuoguP2261</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP6186"><span class="nav-text">LuoguP6186</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-19"><span class="nav-text">2020.10.19</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1326E"><span class="nav-text">CF1326E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP3430"><span class="nav-text">LuoguP3430</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-26"><span class="nav-text">2020.10.26</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSP-S2019D2T1"><span class="nav-text">CSP-S2019D2T1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-28"><span class="nav-text">2020.10.28</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP5530-LuoguP3513"><span class="nav-text">LuoguP5530/LuoguP3513</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-29"><span class="nav-text">2020.10.29</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ4486"><span class="nav-text">BSOJ4486</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-10-31"><span class="nav-text">2020.10.31</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ5988"><span class="nav-text">BSOJ5988</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ5992"><span class="nav-text">BSOJ5992</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-02"><span class="nav-text">2020.11.02</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1444C"><span class="nav-text">CF1444C</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-03"><span class="nav-text">2020.11.03</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP6563"><span class="nav-text">LuoguP6563</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-04"><span class="nav-text">2020.11.04</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP3572"><span class="nav-text">LuoguP3572</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1077F2"><span class="nav-text">CF1077F2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP3523"><span class="nav-text">LuoguP3523</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-05"><span class="nav-text">2020.11.05</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP4516"><span class="nav-text">LuoguP4516</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-08"><span class="nav-text">2020.11.08</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP2627"><span class="nav-text">LuoguP2627</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-09"><span class="nav-text">2020.11.09</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP5851"><span class="nav-text">LuoguP5851</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP2569"><span class="nav-text">LuoguP2569</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-10-11-11"><span class="nav-text">2020.11.10~11.11</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ1247"><span class="nav-text">BSOJ1247</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ7013"><span class="nav-text">BSOJ7013</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ1379"><span class="nav-text">BSOJ1379</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-12"><span class="nav-text">2020.11.12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ7019"><span class="nav-text">BSOJ7019</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP3665"><span class="nav-text">LuoguP3665</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1178F1-F2"><span class="nav-text">CF1178F1/F2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-13"><span class="nav-text">2020.11.13</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ7022"><span class="nav-text">BSOJ7022</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-15"><span class="nav-text">2020.11.15</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1313D"><span class="nav-text">CF1313D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1270F"><span class="nav-text">CF1270F</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-16"><span class="nav-text">2020.11.16</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1186F"><span class="nav-text">CF1186F</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP2900"><span class="nav-text">LuoguP2900</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-17"><span class="nav-text">2020.11.17</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1152D"><span class="nav-text">CF1152D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1149C"><span class="nav-text">CF1149C</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1446C"><span class="nav-text">CF1446C</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-18"><span class="nav-text">2020.11.18</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1015F"><span class="nav-text">CF1015F</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ7035"><span class="nav-text">BSOJ7035</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ7038"><span class="nav-text">BSOJ7038</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-11-19"><span class="nav-text">2020.11.19</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LuoguP5322"><span class="nav-text">LuoguP5322</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF730J"><span class="nav-text">CF730J</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BSOJ7039"><span class="nav-text">BSOJ7039</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TbYangZ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+</body>
+</html>
