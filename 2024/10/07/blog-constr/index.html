@@ -27,7 +27,7 @@
 <meta property="og:description" content="在重新创建博客的时候遇到的一些事情。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-07T15:23:07.000Z">
-<meta property="article:modified_time" content="2024-10-07T15:31:52.448Z">
+<meta property="article:modified_time" content="2024-10-07T17:45:35.382Z">
 <meta property="article:author" content="owack">
 <meta property="article:tag" content="日常">
 <meta name="twitter:card" content="summary">
@@ -118,6 +118,16 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -173,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-10-07 23:23:07 / 修改时间：23:31:52" itemprop="dateCreated datePublished" datetime="2024-10-07T23:23:07+08:00">2024-10-07</time>
+              <time title="创建时间：2024-10-07 23:23:07" itemprop="dateCreated datePublished" datetime="2024-10-07T23:23:07+08:00">2024-10-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-08 01:45:35" itemprop="dateModified" datetime="2024-10-08T01:45:35+08:00">2024-10-08</time>
+              </span>
 
           
             <div class="post-description">在重新创建博客的时候遇到的一些事情。</div>
@@ -190,12 +206,145 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在这国庆的最后一天，鉴于没什么游戏可以玩，把这个博客重新拾起。虽然之前的源文件在原来的老电脑丢了，但俗话说人要向前看，也是时候摒弃前面的东西，重新建立一下。当时创建的时候，还对
+        <h1 id="前言">前言</h1>
+<p>在这国庆的最后一天，鉴于没什么游戏可以玩，把这个博客重新拾起。虽然之前的源文件在原来的老电脑丢了，但俗话说人要向前看，也是时候摒弃前面的东西，重新建立一下。当时创建的时候，还对
 git、hexo
 这些不是很熟悉，只是跟着别人的步骤依次做下来，导致没有把源码放在一个分支上；三年过去了，这次的我可跟以前不一样了，不会再犯这个错误了。</p>
 <p>在重新建立这个博客之前，尝试过使用 wordprees
 建立博客，但是建好了后，它上面的 markdown
-插件太难用了，公式、图片等各种麻烦，还不如</p>
+插件太难用了，公式、图片等各种麻烦，远远不如 Hexo
+这个静态博客，遂放弃。</p>
+<p>这篇文章也旨在记录博客中的一些问题和解决方法，以供参考。</p>
+<h1 id="平台选择">平台选择</h1>
+<p>为了更加方便的进行环境的配置，这次我选择在 Windows 11 中的 WSL2
+下搭建这个博客，并将这个博客放在这里。之前是在 Windows
+下的，但是都知道，Windows 下环境搭建真的是很麻烦，相较于 Windows，Linux
+是真的方便，敲一行代码就可以安装好整个环境。通过知乎上的一篇文章，似乎
+WSL2 是直接将整个电脑改造成一个虚拟机，Windows 和 Linux
+都在这个虚拟机上跑。这样虽然对性能有部分损失，但是换来了优质的体验，这两个系统几乎是无缝操作的，Linux
+下文件可以直接被复制到 Windows
+下，同样，反过来也可以访问和修改。这样就即拥有了 Linux
+的优秀的命令行工具，又可以使用 Windows 下的窗口，可谓两全其美。</p>
+<p>由于只剩下了原来网站部署后的文件，一开始是想有没有什么方法可以还原它。理论上应该是可行的，Hexo
+有博客迁移功能，可以从 RSS 迁移，如果之前设置了 RSS
+的话可能会很方便，可惜没有。然后我看到可以将 html 转成
+markdown，这样的话可以尽可能的保留我之前写的文章，但是尝试了 4 篇（前 4
+篇题解）后，发现这个工作不亚于重新写一遍，故再放弃。（其实是看着之前的文章，中英文不加空格，中文之间保留英文标点等不规范的行为看不下去了）</p>
+<h1 id="环境搭建-工具下载">环境搭建 &amp; 工具下载</h1>
+<p>由于 hexo 是基于 Node.js 的，所以需要先下载 Node.js，这个在<a
+target="_blank" rel="noopener" href="https://nodejs.org/en">官网</a>下载就好了，都有说明。然后需要下载
+Hexo，同样按照<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo
+官网</a>上的方法下载即可。虽然我参考的教程改了镜像源[1]，但是似乎我不用也能够正常下载？</p>
+<p>Linux 下安装到个人目录可能更好[1]，但是我当时直接使用
+<code>sudo</code> 莽过去了(:</p>
+<p>到这里工具下载完了，但是后面还有几个东西需要下载。</p>
+<h1 id="hexo-本体">Hexo 本体</h1>
+<h2 id="初始化">初始化</h2>
+<p>新建一个文件夹，然后执行指令初始化博客文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> blog &amp;&amp; <span class="built_in">cd</span> blog</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<h2 id="主题设置">主题设置</h2>
+<p>Hexo 自带了几个主题，但是都不是很好看，打算还是沿用原来的 <a
+target="_blank" rel="noopener" href="https://theme-next.js.org/">NexT 主题</a>。</p>
+<p>官网上指出，有两种方式安装：</p>
+<ol type="1">
+<li>使用 <code>npm</code> 安装：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>直接 <code>clone</code> 本体：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>这里推荐第二种方法。第一种方法的不知道安装到哪里去了（应该是
+node_modules 文件夹里），之后配置什么不是很方便。</p>
+<p>之后打开 <code>blog/_config.yml</code> 找到 <code>theme</code>
+一栏，修改为 <code>next</code>。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<h1 id="hexo-配置">Hexo 配置</h1>
+<h2 id="数学公式">数学公式</h2>
+<p>作为一名即将退役的 ACMer / 已经退役的
+OIer，数学公式可谓是家常便饭，所以这一点对我来说非常重要。第一次装的时候公式始终渲染不起来，一气之下全部重新删了装了一边。</p>
+<p>为了能够正确的渲染公式，需要将自带的渲染器（hexo-renderer-marked）卸载掉，装上能够渲染公式的渲染器。这里有几个选择：(1)
+hexo-renderer-kramed (2) hexo-renderer-pandoc (3)
+hexo-renderer-markdown-it (4)
+hexo-renderer-markdown-it-plus；具体区别可以参考[2]。</p>
+<p>在一开始是想用
+makrdown-it-plus，因为功能更多，但是渲染出问题了被迫抛弃。pandoc
+功能要相对多一点，所以选择了使用 pandoc。</p>
+<p>这里先将原来的渲染器卸载掉，再根据<a
+target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-pandoc">官网</a>指导安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure>
+<p>之后还需要安装 <a target="_blank" rel="noopener" href="https://pandoc.org/">pandoc</a>
+这个软件（就是 Typora 转化其他格式所需的那个），Linux
+下可以直接安装（使用
+<code>apt-get</code>），但直接安装的不一定是最新版[3]，但是最新的功能的也用不到就是了（目前就我而言）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install pandoc</span><br></pre></td></tr></table></figure>
+<p>之后在 <code>blog/themes/next/_config.yml</code> 里找到
+<code>math</code>
+设置。注意这里自动生成的部分有可能不一样，可以自行阅读英文注释理解。由于
+pandoc 是使用 mathjax 的，所以只开启 mathjax 即可，mhchem
+是一个辅助写化学反应式的插件。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Formulas Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front-matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># See: https://mhchem.github.io/MathJax-mhchem/</span></span><br><span class="line">    <span class="attr">mhchem:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.</span></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span></span><br><span class="line">    <span class="attr">copy_tex:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="博客配置">博客配置</h2>
+<h3 id="图片相关">图片相关</h3>
+<p>有两种方法，第一种是在 <code>blog/</code> 下新建一个
+<code>images</code> 文件夹存放图片，这样文章中使用图片时候使用地址
+<code>/images/image.png</code>。</p>
+<p>第二种是对每个文章生成与文件同名的资源文件夹，将图片放在这里面，这样上传上去的时候文章也会被放在这个文件夹里，可以直接使用这个文件夹里的图片。在
+<code>blog/_config.yml</code> 里设置后使用 <code>hexo new</code>
+的时候会直接新建这样的文件夹[4]。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span> <span class="comment"># 启用文章资源文件夹</span></span><br></pre></td></tr></table></figure>
+<p>这两种方法各有优缺点，前者对多文章使用同一张图片节省空间，而后者图片等资源管理方便。但是这两种方法在本地都没有办法直接预览。由于本地和部署上去的地址不一样，本地是
+<code>blog/images/image.png</code>，而在云端则是
+<code>/images/image.png</code>，导致本地显示不了图片。虽然可以使用
+<code>hexo s</code> 进行调试，但还是很麻烦。</p>
+<p>只能对本地的编辑器进行修改了。如果使用的是
+Typora，可以在前置信息（Front-matter）中添加
+<code>typora-root-url:</code>，这样的话 Typora
+就会在指定位置下寻找图片内容。</p>
+<p>如果使用第二种存储图片的方法的话，可以在
+<code>blog/scaffolds/post.md</code> 里添加
+<code>typora-root-url: &#123;&#123; title &#125;&#125;</code>，这样新建的时候会自动加上，就不需要手动添加[1]。</p>
+<h3 id="博客信息">博客信息</h3>
+<p>这部分比较简单，在 <code>blog/_config.yml</code>
+里进行寻找。常见的比如博客名字、副标题、描述等。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">owack&#x27;s</span> <span class="string">blog</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;A website to record life and study&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;Think twice, code once&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">owack</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>博客的图片、个人的头像等在
+<code>blog/themes/next/_config.yml</code>，即主题的配置文件中进行修改：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon-16x16-next.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon-32x32-next.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span></span><br><span class="line">  <span class="comment"># safari_pinned_tab: /images/logo.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /images/manifest.json</span></span><br><span class="line">  <span class="comment">#ms_browserconfig: /images/browserconfig.xml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.jpg</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be dispalyed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>这些图片是存放在 <code>blog/themes/next/source/image/</code>。</p>
+<h3 id="背景图片和虚化">背景图片和虚化</h3>
+<p>首先需要在 <code>blog/themes/next/_config.yml</code>
+里将自定义格式打开。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.swig</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.swig</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.swig</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.swig</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.swig</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.swig</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.swig</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span>   <span class="comment"># 取消这一行的注释</span></span><br></pre></td></tr></table></figure>
+<p>然后在 <code>blog/source/</code> 下新建
+<code>_data/styles.styl</code>
+文件（文件夹也要新建），里面填充以下内容[5]：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 博客背景设置</span><br><span class="line">body &#123;</span><br><span class="line">    background:url(/images/bg.png);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed; // 不重复</span><br><span class="line">    background-size: cover;      // 填充</span><br><span class="line">    background-position:50% 50%;</span><br><span class="line">&#125;</span><br><span class="line">// 博客内容透明化</span><br><span class="line">// 文章内容的透明度设置</span><br><span class="line">.content-wrap &#123;</span><br><span class="line">  opacity: 0.8;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 侧边框的透明度设置</span><br><span class="line">.sidebar &#123;</span><br><span class="line">  opacity: 0.8;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 菜单栏的透明度设置</span><br><span class="line">.header-inner &#123;</span><br><span class="line">  background: rgba(255,255,255,0.8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 搜索框（local-search）的透明度设置</span><br><span class="line">.popup &#123;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码相关">代码相关</h3>
+<p>目前遇到过的困难是复制按钮和缩进。</p>
+<p>复制按钮在 <code>blog/themes/next/_config.yml</code>
+里设置。这里还可以调整高亮模式。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">normal</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span></span><br></pre></td></tr></table></figure>
+<p>默认似乎是一个 tab 等于 8 个空格，太长了，在
+<code>blog/_config.yml</code> 里设置，把 <code>tab_replace</code> 换成 4
+个空格，代码观感好很多。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;    &#x27;</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h1 id="部署到-github-page">部署到 github page</h1>
+<p>参考[6]。</p>
+<p>为了防止我之前的悲剧再度发生，这次得把源码好好存着。</p>
+<p>在源文件的文件夹下依次执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:username/username.github.io.git</span><br><span class="line">git checkout -b <span class="built_in">source</span></span><br><span class="line">git fetch origin</span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure>
+<p>之后可以再到 Github 上检查一下是否添加成功。</p>
+<hr />
+<p><strong>References</strong></p>
+<p>[1]
+http://home.ustc.edu.cn/~liujunyan/blog/hexo-next-theme-config/</p>
+<p>[2] https://bugwz.com/2019/09/17/hexo-markdown-renderer/</p>
+<p>[3]
+https://blog.csdn.net/weixin_44375591/article/details/104005570</p>
+<p>[4] https://blog.csdn.net/2301_77285173/article/details/130189857</p>
+<p>[5] https://blog.csdn.net/TomAndersen/article/details/104872852</p>
+<p>[6] https://oceanwang.top/personal-website-7/</p>
 
     </div>
 
@@ -276,6 +425,7 @@ git、hexo
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E5%8F%B0%E9%80%89%E6%8B%A9"><span class="nav-number">2.</span> <span class="nav-text">平台选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">环境搭建 &amp; 工具下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E6%9C%AC%E4%BD%93"><span class="nav-number">4.</span> <span class="nav-text">Hexo 本体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">主题设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Hexo 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">数学公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">博客配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.1.</span> <span class="nav-text">图片相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E4%BF%A1%E6%81%AF"><span class="nav-number">5.2.2.</span> <span class="nav-text">博客信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%92%8C%E8%99%9A%E5%8C%96"><span class="nav-number">5.2.3.</span> <span class="nav-text">背景图片和虚化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.4.</span> <span class="nav-text">代码相关</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-github-page"><span class="nav-number">6.</span> <span class="nav-text">部署到 github page</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
