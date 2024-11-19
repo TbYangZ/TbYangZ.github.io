@@ -26,11 +26,14 @@
 <meta property="og:site_name" content="owack&#39;s blog">
 <meta property="og:description" content="在重新创建博客的时候遇到的一些事情。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/10/07/blog-constr/image.png">
 <meta property="article:published_time" content="2024-10-07T15:23:07.000Z">
-<meta property="article:modified_time" content="2024-10-07T17:45:35.382Z">
+<meta property="article:modified_time" content="2024-11-19T14:01:43.694Z">
 <meta property="article:author" content="owack">
 <meta property="article:tag" content="日常">
+<meta property="article:tag" content="博客创建">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/10/07/blog-constr/image.png">
 
 <link rel="canonical" href="http://example.com/2024/10/07/blog-constr/">
 
@@ -118,6 +121,11 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
 
     <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
@@ -191,8 +199,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-08 01:45:35" itemprop="dateModified" datetime="2024-10-08T01:45:35+08:00">2024-10-08</time>
+                <time title="修改时间：2024-11-19 22:01:43" itemprop="dateModified" datetime="2024-11-19T22:01:43+08:00">2024-11-19</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
+                </span>
+            </span>
 
           
             <div class="post-description">在重新创建博客的时候遇到的一些事情。</div>
@@ -304,6 +321,12 @@ Typora，可以在前置信息（Front-matter）中添加
 <p>如果使用第二种存储图片的方法的话，可以在
 <code>blog/scaffolds/post.md</code> 里添加
 <code>typora-root-url: &#123;&#123; title &#125;&#125;</code>，这样新建的时候会自动加上，就不需要手动添加[1]。</p>
+<p>更新：Typora 中可以将图片复制到指定位置：</p>
+<p><img src="image.png" /></p>
+<p>可以选择复制到指定位置，然后规定指定位置为
+<code>./$&#123;filename&#125;</code>，同时选择优先使用相对位置即可，同时配合上面设置
+<code>typora-root-url</code> 这样可以直接将图片复制到文件中。</p>
+<p>如果有能力的话，也可以将图片上传至自己的服务器或者其他可以管理图片的图床等。</p>
 <h3 id="博客信息">博客信息</h3>
 <p>这部分比较简单，在 <code>blog/_config.yml</code>
 里进行寻找。常见的比如博客名字、副标题、描述等。</p>
@@ -312,6 +335,20 @@ Typora，可以在前置信息（Front-matter）中添加
 <code>blog/themes/next/_config.yml</code>，即主题的配置文件中进行修改：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon-16x16-next.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon-32x32-next.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span></span><br><span class="line">  <span class="comment"># safari_pinned_tab: /images/logo.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /images/manifest.json</span></span><br><span class="line">  <span class="comment">#ms_browserconfig: /images/browserconfig.xml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">/images/avatar.jpg</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be dispalyed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p>这些图片是存放在 <code>blog/themes/next/source/image/</code>。</p>
+<h3 id="额外页面">额外页面</h3>
+<p>如果想要添加额外的页面，如标签页、关于、分类页等，可以使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">hexo new page about</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">hexo new page tags</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">hexo new page categories</span></span><br></pre></td></tr></table></figure>
+<p>之后，hexo 会帮我们创建 <code>about</code>、<code>categories</code>
+和 <code>tags</code>
+这三个文件夹，并且里面默认有一个文件。然后我们在里面的导言区加上
+<code>type: "..."</code>，其中 <code>...</code>
+为每个文件的功能，如作为标签则填写
+tags。然后在每篇文章的导言区里就可以加入分类和标签啦。</p>
+<p>具体如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">time:</span> <span class="string">xxx</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tag1</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tag2</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">category</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">xxx</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是标签（tags）可以有多个，而分类（category）只能有一个。另外如果想要在主页侧边栏中开关，可以在
+theme 里的 <code>_config.yml</code> 里进行修改：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br></pre></td></tr></table></figure>
 <h3 id="背景图片和虚化">背景图片和虚化</h3>
 <p>首先需要在 <code>blog/themes/next/_config.yml</code>
 里将自定义格式打开。</p>
@@ -319,7 +356,7 @@ Typora，可以在前置信息（Front-matter）中添加
 <p>然后在 <code>blog/source/</code> 下新建
 <code>_data/styles.styl</code>
 文件（文件夹也要新建），里面填充以下内容[5]：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 博客背景设置</span><br><span class="line">body &#123;</span><br><span class="line">    background:url(/images/bg.png);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed; // 不重复</span><br><span class="line">    background-size: cover;      // 填充</span><br><span class="line">    background-position:50% 50%;</span><br><span class="line">&#125;</span><br><span class="line">// 博客内容透明化</span><br><span class="line">// 文章内容的透明度设置</span><br><span class="line">.content-wrap &#123;</span><br><span class="line">  opacity: 0.8;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 侧边框的透明度设置</span><br><span class="line">.sidebar &#123;</span><br><span class="line">  opacity: 0.8;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 菜单栏的透明度设置</span><br><span class="line">.header-inner &#123;</span><br><span class="line">  background: rgba(255,255,255,0.8);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 搜索框（local-search）的透明度设置</span><br><span class="line">.popup &#123;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 博客背景设置</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(/images/bg.png);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-attachment</span>:fixed; <span class="comment">// 不重复</span></span><br><span class="line">    <span class="attribute">background-size</span>: cover;      <span class="comment">// 填充</span></span><br><span class="line">    <span class="attribute">background-position</span>:<span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 博客内容透明化</span></span><br><span class="line"><span class="comment">// 文章内容的透明度设置</span></span><br><span class="line"><span class="selector-class">.content-wrap</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 侧边框的透明度设置</span></span><br><span class="line"><span class="selector-class">.sidebar</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 菜单栏的透明度设置</span></span><br><span class="line"><span class="selector-class">.header-inner</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0.8</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 搜索框（local-search）的透明度设置</span></span><br><span class="line"><span class="selector-class">.popup</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.9</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="代码相关">代码相关</h3>
 <p>目前遇到过的困难是复制按钮和缩进。</p>
 <p>复制按钮在 <code>blog/themes/next/_config.yml</code>
@@ -355,6 +392,7 @@ https://blog.csdn.net/weixin_44375591/article/details/104005570</p>
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag"># 日常</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/" rel="tag"># 博客创建</a>
           </div>
 
         
@@ -363,10 +401,13 @@ https://blog.csdn.net/weixin_44375591/article/details/104005570</p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/10/07/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
+    <a href="/2024/10/07/sol_bzoj2500/" rel="prev" title="「BZOJ2500」幸福的道路">
+      <i class="fa fa-chevron-left"></i> 「BZOJ2500」幸福的道路
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2024/11/19/genshin-mod/" rel="next" title="原神模组使用教程">
+      原神模组使用教程 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -425,7 +466,7 @@ https://blog.csdn.net/weixin_44375591/article/details/104005570</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E5%8F%B0%E9%80%89%E6%8B%A9"><span class="nav-number">2.</span> <span class="nav-text">平台选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">环境搭建 &amp; 工具下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E6%9C%AC%E4%BD%93"><span class="nav-number">4.</span> <span class="nav-text">Hexo 本体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">主题设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Hexo 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">数学公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">博客配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.1.</span> <span class="nav-text">图片相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E4%BF%A1%E6%81%AF"><span class="nav-number">5.2.2.</span> <span class="nav-text">博客信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%92%8C%E8%99%9A%E5%8C%96"><span class="nav-number">5.2.3.</span> <span class="nav-text">背景图片和虚化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.4.</span> <span class="nav-text">代码相关</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-github-page"><span class="nav-number">6.</span> <span class="nav-text">部署到 github page</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E5%8F%B0%E9%80%89%E6%8B%A9"><span class="nav-number">2.</span> <span class="nav-text">平台选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">环境搭建 &amp; 工具下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E6%9C%AC%E4%BD%93"><span class="nav-number">4.</span> <span class="nav-text">Hexo 本体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">主题设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Hexo 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">数学公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">博客配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.1.</span> <span class="nav-text">图片相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E4%BF%A1%E6%81%AF"><span class="nav-number">5.2.2.</span> <span class="nav-text">博客信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.2.3.</span> <span class="nav-text">额外页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%92%8C%E8%99%9A%E5%8C%96"><span class="nav-number">5.2.4.</span> <span class="nav-text">背景图片和虚化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.5.</span> <span class="nav-text">代码相关</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-github-page"><span class="nav-number">6.</span> <span class="nav-text">部署到 github page</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -445,18 +486,26 @@ https://blog.csdn.net/weixin_44375591/article/details/104005570</p>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">标签</span>
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/TbYangZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TbYangZ" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:zhuo_yang@stu.scu.edu.cn" title="E-Mail → mailto:zhuo_yang@stu.scu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
 
