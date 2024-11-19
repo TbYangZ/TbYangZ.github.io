@@ -3,7 +3,11 @@ title: 博客重建那些事
 date: 2024-10-07 23:23:07
 tags:
 - 日常
+- 博客创建
+categories:
+- 生活
 description: 在重新创建博客的时候遇到的一些事情。
+typora-root-url: blog-constr
 ---
 
 # 前言
@@ -134,6 +138,14 @@ post_asset_folder: true # 启用文章资源文件夹
 
 如果使用第二种存储图片的方法的话，可以在 `blog/scaffolds/post.md` 里添加 `typora-root-url: {{ title }}`，这样新建的时候会自动加上，就不需要手动添加[1]。
 
+更新：Typora 中可以将图片复制到指定位置：
+
+![](image.png)
+
+可以选择复制到指定位置，然后规定指定位置为 `./${filename}`，同时选择优先使用相对位置即可，同时配合上面设置 `typora-root-url` 这样可以直接将图片复制到文件中。
+
+如果有能力的话，也可以将图片上传至自己的服务器或者其他可以管理图片的图床等。
+
 ### 博客信息
 
 这部分比较简单，在 `blog/_config.yml` 里进行寻找。常见的比如博客名字、副标题、描述等。
@@ -172,6 +184,45 @@ avatar:
 
 这些图片是存放在 `blog/themes/next/source/image/`。
 
+### 额外页面
+
+如果想要添加额外的页面，如标签页、关于、分类页等，可以使用 
+
+```shell
+> hexo new page about
+> hexo new page tags
+> hexo new page categories
+```
+
+之后，hexo 会帮我们创建 `about`、`categories` 和 `tags` 这三个文件夹，并且里面默认有一个文件。然后我们在里面的导言区加上 `type: "..."`，其中 `...` 为每个文件的功能，如作为标签则填写 tags。然后在每篇文章的导言区里就可以加入分类和标签啦。
+
+具体如下：
+
+```yml
+title: xxx
+time: xxx
+tags:
+- tag1
+- tag2
+categories:
+- category
+description: xxx
+```
+
+需要注意的是标签（tags）可以有多个，而分类（category）只能有一个。另外如果想要在主页侧边栏中开关，可以在 theme 里的 `_config.yml` 里进行修改：
+
+```yml
+menu:
+  home: / || fa fa-home
+  about: /about/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+  #schedule: /schedule/ || fa fa-calendar
+  #sitemap: /sitemap.xml || fa fa-sitemap
+  #commonweal: /404/ || fa fa-heartbeat
+```
+
 ### 背景图片和虚化
 
 首先需要在 `blog/themes/next/_config.yml` 里将自定义格式打开。
@@ -194,7 +245,7 @@ custom_file_path:
 
 然后在 `blog/source/` 下新建 `_data/styles.styl` 文件（文件夹也要新建），里面填充以下内容[5]：
 
-```syle
+```styl
 // 博客背景设置
 body {
     background:url(/images/bg.png);

@@ -1,5 +1,10 @@
 ---
 title: 「BZOJ2500」幸福的道路
+tags:
+- 题解
+- OI
+categories:
+- 学习
 description: BZOJ2500 幸福的道路 题解
 ---
 

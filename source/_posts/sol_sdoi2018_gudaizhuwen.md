@@ -1,5 +1,10 @@
 ---
 title: 「SDOI2010」古代猪文
+tags:
+- 题解
+- OI
+categories:
+- 学习
 description: SDOI2010 古代猪文 题解
 ---
 

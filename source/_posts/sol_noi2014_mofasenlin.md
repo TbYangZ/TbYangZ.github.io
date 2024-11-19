@@ -1,5 +1,10 @@
 ---
 title: 「NOI2014」魔法森林
+tags:
+- 题解
+- OI
+categories:
+- 学习
 description: NOI2014 魔法森林 题解
 ---
 

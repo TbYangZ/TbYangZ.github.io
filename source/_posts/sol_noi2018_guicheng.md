@@ -1,5 +1,10 @@
 ---
 title: 「NOI2018」归程
+tags:
+- 题解
+- OI
+categories:
+- 学习
 description: NOI2018 归程 题解
 ---
 
