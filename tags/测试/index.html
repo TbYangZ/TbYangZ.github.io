@@ -19,21 +19,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="如何使用下载模组和一些注意事项。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="原神模组使用教程">
-<meta property="og:url" content="http://example.com/2024/11/19/genshin-mod/index.html">
+  <meta name="description" content="Think twice, code once">
+<meta property="og:type" content="website">
+<meta property="og:title" content="owack&#39;s blog">
+<meta property="og:url" content="http://example.com/tags/%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="owack&#39;s blog">
-<meta property="og:description" content="如何使用下载模组和一些注意事项。">
+<meta property="og:description" content="Think twice, code once">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-19T12:12:27.000Z">
-<meta property="article:modified_time" content="2024-11-19T13:38:20.892Z">
 <meta property="article:author" content="owack">
-<meta property="article:tag" content="日常">
-<meta property="article:tag" content="游戏">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/11/19/genshin-mod/">
+<link rel="canonical" href="http://example.com/tags/%E6%B5%8B%E8%AF%95/">
 
 
 <script id="page-configurations">
@@ -41,12 +37,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>原神模组使用教程 | owack's blog</title>
+  <title>标签: 测试 | owack's blog</title>
   
 
 
@@ -160,136 +156,51 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content tag">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/19/genshin-mod/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="owack">
-      <meta itemprop="description" content="Think twice, code once">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="owack's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          原神模组使用教程
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-11-19 20:12:27 / 修改时间：21:38:20" itemprop="dateCreated datePublished" datetime="2024-11-19T20:12:27+08:00">2024-11-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
-                </span>
-            </span>
-
-          
-            <div class="post-description">如何使用下载模组和一些注意事项。</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">测试
+          <small>标签</small>
+        </h2>
+      </div>
 
       
-        <h1 id="前言">前言</h1>
-<p>原神现版本实在是太无聊了，遂尝试去搞了搞
-mod。这里总结一下步骤和记录一下探索过程中的一些注意事项。<strong>强烈不建议</strong>
-使用官服账号尝试，如果使用该方法导致的封号行为概不负责。</p>
-<h1 id="gimi">GIMI</h1>
-<p>Genshin-Impact-Model-Importer（GIMI）是一个原神导入自定义模型的工具，通过这个工具我们可以修改原神内部的模型。具体参考<a
-target="_blank" rel="noopener" href="https://github.com/SilentNightSound/GI-Model-Importer/tree/main">项目</a>。有以下几种下载方式：</p>
-<ul>
-<li>可以在 GitHub 的 release 中下载</li>
-<li>在香蕉网（Game banana）<a
-target="_blank" rel="noopener" href="https://gamebanana.com/tools/10093">下载</a></li>
-</ul>
-<p>需要注意的是，都有两类包可以下载，对于通常的使用来说，选择 for
-playing mods 就够了，对于 mod 开发者等，可以选择 development
-包。区别在于后者有一些调试信息而前者没有。</p>
-<h1 id="模组本体下载">模组本体下载</h1>
-<p>这部分很简单，可以直接去<a
-target="_blank" rel="noopener" href="https://gamebanana.com/games/8552">香蕉网</a>下载。自行根据指引选择想要的皮肤下载。</p>
-<h1 id="模组管理器">模组管理器</h1>
-<p>由于 GIMI
-只负责加载和导入皮肤，不负责管理。如果有同一个角色的多个皮肤想要切换是比较麻烦的。这里推荐使用
-<a
-target="_blank" rel="noopener" href="https://github.com/numlinka/d3dxSkinManage">d3dxSkinManager</a>，具体的操作步骤可以根据<a
-target="_blank" rel="noopener" href="https://d3dxskinmanage.numlinka.com/">其文档</a>操作，这里不再赘述。</p>
-<h1 id="一些操作与问题">一些操作与问题</h1>
-<p>GIMI
-的加载需要在游戏运行前。另外其是热加载的，也就是说我们可以在外面使用模组管理器直接进行修改，然后在游戏内按
-F10 重新加载皮肤即可。</p>
-<p>皮肤有可能出现撕裂的情况，这种时候请你在设置里关闭角色动态高精度；这之后你可以将角色换出队伍，然后传送或者重新启动游戏，让游戏读取到修改后的模型。</p>
-<h1 id="写在后面">写在后面</h1>
-<p>仔细看了看 GIMI
-这个项目，虽然说能够写出这个项目的人很厉害，也非常感谢开发者将这个项目开放给大家可以免费用，但是在
-GitHub 的项目里，似乎并没有 GIMI
-本体的代码，这一点有点可惜，有可能是开放之后会被 DMAC。</p>
-<p>就从我不多的学识来说，这个项目可以看作一个大型的操作系统实验。估计在启动游戏时，该进程捕获了原神的进程，然后找到了渲染模型的部分，将进程中的渲染模型部分的地址空间进行修改，修改成我们指定的模组。这也就是为什么要先启动
-GIMI 再启动游戏。</p>
-<p>另外，d2dxSkinManager 所做的工作就是将 GIMI
-存放在指定的位置，给每个模型一个标签以作区分。由于 GIMI 的 Mods
-文件夹下，每个角色只能存放一个模组，所以该管理器通过在 Hash
-后的文件夹前加上 <code>disable</code> 标签，表示这个模型被禁用。</p>
-<p>最后，如果想要自己开发皮肤的话，可以在 GIMI 的项目里 Guides
-文件夹下查看，里面有详细的教程。使用的工具是 Blender，开发前请确保熟悉
-Blender。</p>
-
+    <div class="collection-year">
+      <span class="collection-header">2024</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag"># 日常</a>
-              <a href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag"># 游戏</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2024-11-27T14:52:52+08:00"
+              content="2024-11-27">
+          11-27
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/2024/11/27/hello-world/" itemprop="url">
+            <span itemprop="name">hello-world</span>
+          </a>
+      </div>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2024/10/07/blog-constr/" rel="prev" title="博客重建那些事">
-      <i class="fa fa-chevron-left"></i> 博客重建那些事
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/11/19/db-01/" rel="next" title="数据库（一）：数据库基本概念和关系模型">
-      数据库（一）：数据库基本概念和关系模型 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -342,7 +253,6 @@ Blender。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gimi"><span class="nav-number">2.</span> <span class="nav-text">GIMI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E7%BB%84%E6%9C%AC%E4%BD%93%E4%B8%8B%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">模组本体下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E7%BB%84%E7%AE%A1%E7%90%86%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">模组管理器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">一些操作与问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%90%8E%E9%9D%A2"><span class="nav-number">6.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
