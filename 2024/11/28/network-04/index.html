@@ -27,8 +27,16 @@
 <meta property="og:description" content="network-04">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/image-20241128210030494.png">
+<meta property="og:image" content="http://example.com/image-20241128212551288.png">
+<meta property="og:image" content="http://example.com/image-20241128212838859.png">
+<meta property="og:image" content="http://example.com/image-20241128213355068.png">
+<meta property="og:image" content="http://example.com/image-20241128213648225.png">
+<meta property="og:image" content="http://example.com/image-20241128214422444.png">
+<meta property="og:image" content="http://example.com/image-20241128215055591.png">
+<meta property="og:image" content="http://example.com/image-20241113155429510.png">
+<meta property="og:image" content="http://example.com/image-20241113162245327.png">
 <meta property="article:published_time" content="2024-11-28T12:39:57.000Z">
-<meta property="article:modified_time" content="2024-11-28T13:00:46.789Z">
+<meta property="article:modified_time" content="2024-11-28T14:24:23.284Z">
 <meta property="article:author" content="owack">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="计算机网络">
@@ -193,7 +201,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-11-28 20:39:57 / 修改时间：21:00:46" itemprop="dateCreated datePublished" datetime="2024-11-28T20:39:57+08:00">2024-11-28</time>
+              <time title="创建时间：2024-11-28 20:39:57 / 修改时间：22:24:23" itemprop="dateCreated datePublished" datetime="2024-11-28T20:39:57+08:00">2024-11-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,7 +226,8 @@
 
       
         <h1 id="网络层概述">网络层概述</h1>
-<p>网络层是将数据从设备到设备的一个层。在传输层中，我们探索的是起点到终点的过程，而网络层将这一过程细化成主机到路由器、路由器到路由器、路由器到主机的传输过程。</p>
+<p>网络层是将数据从设备到设备的一个层。在传输层中，我们探索的是起点到终点的过程，而网络层将这一过程细化成主机到路由器、路由器到路由器、路由器到主机的传输过程。网络层的数据包被称为
+datagram。</p>
 <p>网络层的核心功能是转发（forwarding）和路由（routing）。</p>
 <div class="definition-block">
 <div class="definition-title">
@@ -236,11 +245,116 @@ Plane 的工作。传统路由器二者合二为一，一个路由器既属于 D
 Plane，又属于 Control
 Plane，通过这种情况下通过路由算法得到路由表仅仅是局部的最优，并没有全局视角。现代的网络中将这两个功能解耦，通过一个远端服务器（Remote
 Controller）作为 Control Plane，与路由器中的局部代理（Local control
-agents，CAs）进行交互</p>
-<figure>
-<img src="/image-20241128210030494.png" alt="image-20241128210030494" />
-<figcaption aria-hidden="true">image-20241128210030494</figcaption>
-</figure>
+agents，CAs）进行交互，分配给路由器路由表。这种网络被称为软件定义网络（software
+defined network, SDN）。</p>
+<p><img src="/image-20241128210030494.png" alt="image-20241128210030494" style="zoom:50%;" /></p>
+<p>除此之外，传统路由器仅能够通过目标主机的 IP 地址进行路由，这是因为 IP
+层的数据中没有端口号、MAC 地址等信息，现代路由器可以通过来源主机的 IP
+地址，目标端口号，发送方的 MAC
+地址等信息进行路由或者一些操作（如丢弃）。</p>
+<h1 id="路由器的架构">路由器的架构</h1>
+<p>路由器的基础结构分为输入口和输出口，中间进行数据包的转发，同时有一个处理器计算路由表。</p>
+<p><img src="/image-20241128212551288.png" alt="image-20241128212551288" style="zoom:67%;" /></p>
+<h2 id="输入端口">输入端口</h2>
+<p>输入端口部分从物理层、链路层依次解包，最后得到网络层的 IP
+数据包，然后放入队列中等待转发。</p>
+<p><img src="/image-20241128212838859.png" alt="image-20241128212838859" style="zoom:50%;" /></p>
+<h2 id="转发过程">转发过程</h2>
+<p>传统路由器使用 IP 地址，通过查表得到一个数据包应该前往的端口。</p>
+<p><img src="/image-20241128213355068.png" alt="image-20241128213355068" style="zoom: 50%;" /></p>
+<p>逻辑上的转发表是一个范围，但是在路由器中，一个转发规则是一个二进制串的前缀，匹配的规则是最长前缀匹配，即找到一个能够匹配的最长的一条规则。</p>
+<p><img src="/image-20241128213648225.png" alt="image-20241128213648225" style="zoom:50%;" /></p>
+<div class="proof-block">
+<div class="proof-title">
+例如
+</div>
+<div class="proof-content">
+<p>地址 <code>11001000 00010111 00010110 10100001</code>
+能够匹配的最长的地址前缀是第一条规则，所以应该通过 0 号接口。</p>
+</div>
+</div>
+<p>三种数据在路由器中的流动方式，各有优劣。</p>
+<p><img src="/image-20241128214422444.png" alt="image-20241128214422444" style="zoom:50%;" /></p>
+<p>当数据包进入的速度比路由器转发的速度快时会导致入口阻塞，超过队列的大小后会直接丢包。还会有
+HOL 阻塞（Head-of-line blocking）问题，当队列的队首需要前往端口
+1，但是其他队列率先抢占了端口
+1，这导致它需要等，同时它后面的所有包也需要等。</p>
+<h2 id="输出端口">输出端口</h2>
+<p>输出端口同样有一个缓冲队列，将一个个包封装上链路层、物理层的信息发送。</p>
+<p><img src="/image-20241128215055591.png" alt="image-20241128215055591" style="zoom:50%;" /></p>
+<p>当缓冲队列满了后，会导致丢包。</p>
+<div class="proof-block">
+<div class="proof-title">
+总结
+</div>
+<div class="proof-content">
+两种丢包的原因：<br>
+<ul>
+<li>
+由于路由器的输入的带宽大于输出带宽，导致数据包会在路由器输出端口的缓冲队列中等待，满了之后就会丢包。
+</li>
+<li>
+数据包中有 TTL 字段，每经过一个路由器时，TTL 会减一，当 TTL 字段减到 0
+时，路由器自动把它丢弃。
+</li>
+</ul>
+</div>
+</div>
+<p>对于队列中数据，有如下的调度策略</p>
+<ul>
+<li><p>FIFO（First In First Out）：先进先出</p></li>
+<li><p>RR（Round
+Robin）：轮转调度，每次转发来源不同的包，保证了转发的公平性</p></li>
+<li><p>WFQ（Weighted Fair Queuing）：加权公平排队</p></li>
+<li><p>RED（Randomly Early
+Drop）：在队列有可能达到上限时，随机选择一些包丢弃，让发送方触发拥塞控制，降低发送方的速度</p></li>
+</ul>
+<h1 id="ip-数据包">IP 数据包</h1>
+<h2 id="包头部分">包头部分</h2>
+<p><img src="/image-20241113155429510.png" alt="img" style="zoom: 33%;" /></p>
+<ul>
+<li><code>ver</code>：IP 协议的版本号 <code>0x4</code> 或
+<code>0x6</code></li>
+<li><code>head.len</code>：包头的长度除以 4 的结果。<code>ver</code> +
+<code>head.len</code> 共 1 个字节。</li>
+<li><code>time to live</code>：最多可以经过的路由器个数，每经过一个路由器减减，到
+0 时直接被丢弃</li>
+<li><code>upper layer protocol</code>：向上传输层传递的是哪一个协议（6
+为 TCP、17 为 UDP）（demultiplexing）</li>
+<li><code>length</code>：IP 数据包的总长度（16 位）</li>
+<li><code>16-bit identifier</code>，<code>flag</code>，<code>fragment offset</code>：切片相关的字段</li>
+<li><code>check sum</code>：只针对 IP 数据包包头部分的校验和。</li>
+</ul>
+<h2 id="ip-切片">IP 切片</h2>
+<p>当来源包的大小大于出去链路的 MTU 时，路由器会将该 IP
+包拆分成若干个完整的 IP
+包发送出去，然后仅在目标位置进行重新组合。切片发生在
+<strong>路由器</strong>，组装发生在 <strong>目标</strong>。</p>
+<div class="definition-block">
+<div class="definition-title">
+MTU
+</div>
+<div class="definition-content">
+<p>Maximal Transfer
+Unit，一条链路上的能够传输的数据包（frame）的包体部分（链路层的包体）的最大长度，不同链路不一样。以太网中常见的是
+1500 bytes。链路层的包体部分实质上就是整个 IP 包。MSS
+是传输层包体的最大长度。 <span class="math display">\[
+\mathrm{MTU}=20+20+\mathrm{MSS}
+\]</span> 其中第一个 20 是网络层包的包头，第二个 20
+是传输层包的包头。</p>
+</div>
+</div>
+<p><img src="/image-20241113162245327.png" alt="image-20241113162245327" style="zoom: 33%;" /></p>
+<p>切片时将包头和包体分开，然后将包体切分，再对每个包体，给它们添加一个包头。包的包体不能超过
+<span class="math inline">\(1500 - 20 = 1480\,
+\mathrm{bytes}\)</span>，即总大小不能超过<span
+class="math inline">\(1500\,\mathrm{bytes}\)</span>。其中，需要注意的是：</p>
+<ul>
+<li>切片的 ID 号继承原包的 ID 号</li>
+<li>Frag Flag 表示后面是否还有碎片</li>
+<li>offset 表示切片的包体的第一个字节在原始包中的位置（从 0 开始的）除以
+8</li>
+</ul>
 
     </div>
 
@@ -322,7 +436,7 @@ agents，CAs）进行交互</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">网络层概述</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">网络层概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">路由器的架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">输入端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">转发过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.3.</span> <span class="nav-text">输出端口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ip-%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">IP 数据包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E5%A4%B4%E9%83%A8%E5%88%86"><span class="nav-number">3.1.</span> <span class="nav-text">包头部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ip-%E5%88%87%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">IP 切片</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
