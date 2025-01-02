@@ -16,35 +16,35 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"logicyang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="network-04">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络（四）：网络层">
-<meta property="og:url" content="http://example.com/2024/11/28/network-04/index.html">
+<meta property="og:url" content="http://logicyang.top/2024/11/28/network-04/index.html">
 <meta property="og:site_name" content="owack&#39;s blog">
 <meta property="og:description" content="network-04">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241128210030494.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241128212551288.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241128212838859.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241128213355068.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241128213648225.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241128214422444.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241128215055591.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241113155429510.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241113162245327.png">
-<meta property="og:image" content="http://example.com/2024/11/28/network-04/image-20241120143101869.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128210030494.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128212551288.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128212838859.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128213355068.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128213648225.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128214422444.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128215055591.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241113155429510.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241113162245327.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241120143101869.png">
 <meta property="article:published_time" content="2024-11-28T12:39:57.000Z">
 <meta property="article:modified_time" content="2024-12-30T14:47:48.425Z">
 <meta property="article:author" content="owack">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/11/28/network-04/image-20241128210030494.png">
+<meta name="twitter:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128210030494.png">
 
-<link rel="canonical" href="http://example.com/2024/11/28/network-04/">
+<link rel="canonical" href="http://logicyang.top/2024/11/28/network-04/">
 
 
 <script id="page-configurations">
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/28/network-04/">
+    <link itemprop="mainEntityOfPage" href="http://logicyang.top/2024/11/28/network-04/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -757,7 +757,7 @@ dst ip 和 dst port 按照转换表反过来转换成对应的内网 IP
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
