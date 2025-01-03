@@ -16,26 +16,26 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"logicyang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.logicyang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="network-01">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络（一）：基本概念">
-<meta property="og:url" content="http://logicyang.top/2024/11/28/network-01/index.html">
+<meta property="og:url" content="https://www.logicyang.top/2024/11/28/network-01/index.html">
 <meta property="og:site_name" content="owack&#39;s blog">
 <meta property="og:description" content="network-01">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://logicyang.top/2024/11/28/network-01/image.png">
+<meta property="og:image" content="https://www.logicyang.top/2024/11/28/network-01/image.png">
 <meta property="article:published_time" content="2024-11-28T12:35:27.000Z">
-<meta property="article:modified_time" content="2025-01-02T15:00:54.032Z">
+<meta property="article:modified_time" content="2025-01-03T17:28:41.936Z">
 <meta property="article:author" content="owack">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://logicyang.top/2024/11/28/network-01/image.png">
+<meta name="twitter:image" content="https://www.logicyang.top/2024/11/28/network-01/image.png">
 
-<link rel="canonical" href="http://logicyang.top/2024/11/28/network-01/">
+<link rel="canonical" href="https://www.logicyang.top/2024/11/28/network-01/">
 
 
 <script id="page-configurations">
@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://logicyang.top/2024/11/28/network-01/">
+    <link itemprop="mainEntityOfPage" href="https://www.logicyang.top/2024/11/28/network-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-02 23:00:54" itemprop="dateModified" datetime="2025-01-02T23:00:54+08:00">2025-01-02</time>
+                <time title="修改时间：2025-01-04 01:28:41" itemprop="dateModified" datetime="2025-01-04T01:28:41+08:00">2025-01-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,6 +323,95 @@ Comments）中。</p>
 session。</p>
 <p>并不是所有的设备都有这 5
 层协议，终端设备都具有，交换机仅有链路层及以下，路由器仅有网络层及以下。</p>
+<h1 id="缩写">缩写</h1>
+<ul>
+<li>DSL: Digital Subscribe Line 数字用户线路</li>
+<li>TP: Twisted Pair 双绞线</li>
+<li>LAN: Local Area Network 局域网</li>
+<li>WLAN: Wireless Local Area Network 无线局域网</li>
+<li>WAN: Wide Area Network 广域网</li>
+<li>ISP: Internet Services Provider 网络服务供应商</li>
+<li>IXP: Internet Exchange Point 互联网交换点
+<ul>
+<li>允许不同的互联网服务提供商（ISP）和其他网络提供商互相连接和交换流量</li>
+</ul></li>
+<li>DoS: Denial of Service 拒绝服务攻击</li>
+<li>DDos: Distributed Denial of Service 分布式拒绝服务攻击</li>
+<li>P2P: Peer-to-Peer 对等网络</li>
+<li>RFC: Request For Comments 请求评论</li>
+<li>SSL: Secure Socket Layer 安全套接字层</li>
+<li>URL: Uniform Resource Locator 统一资源定位符</li>
+<li>HTML: HyperText Markup Language 超文本标记语言</li>
+<li>HTTP: HyperText Transfer Protocol 超文本传输协议</li>
+<li>RTT: Round-Trip Time 往返时间</li>
+<li>SMTP: Simple Mail Transfer Protocol 简单邮件传输协议</li>
+<li>POP: Post Office Protocol 邮局协议
+<ul>
+<li>POP3: POP version 3</li>
+</ul></li>
+<li>IMAP: Internet Mail Access Protocol 互联网邮件访问协议</li>
+<li>DNS: Domain Name System 域名系统</li>
+<li>TLD: Top Level Domain 顶级域名</li>
+<li>TTL: Time To Live 生存时间</li>
+<li>RR: Resource Record 资源记录
+<ul>
+<li>DNS 中的基本数据单元，用于存储与域名相关的各种信息</li>
+</ul></li>
+<li>CDN: Content Delivery Network 内容分发网络</li>
+<li>DASH: Dynamic Adaptive Streaming over HTTP 基于 HTTP
+的动态自适应流媒体传输</li>
+<li>UDP: User Datagram Protocol</li>
+<li>RDT: Reliable Data Transfer</li>
+<li>GBN: Go-Back-N</li>
+<li>SR: Selective Repeat</li>
+<li>TCP: Transmission Control Protocol
+<ul>
+<li>提供可靠的、面向连接的通信服务，确保数据包按顺序到达并且没有丢失</li>
+</ul></li>
+<li>RTO: Retransmisson TimeOut</li>
+<li>AIMD: Additive Increase Multiplicative Decrease</li>
+<li>MSS: Max Segment Size</li>
+<li>ssthresh: slow start threshold</li>
+<li>ECN: Explicit Congestion Notification 显式拥塞通知</li>
+<li>CA: Control Agent</li>
+<li>ATM: Asynchronous Transfer Mode 异步传输模式</li>
+<li>TCAM: Ternary Content Addressable Memory</li>
+<li>HOL blocking: Head-Of-Line blocking 队头阻塞</li>
+<li>RR: Round Robin</li>
+<li>WFQ: Weighted Faie Queuing</li>
+<li>MTU: Max Transfer Unit</li>
+<li>IP: Internet Protocol</li>
+<li>CIDR: Classless InterDomain Routing</li>
+<li>DHCP: Dynamic Host Configuration Protocol</li>
+<li>ICANN: Internet Corporation for Assigned Names and Numbers</li>
+<li>NAT: Network Address Translation</li>
+<li>SDN: Software Defined Network</li>
+<li>LS: Link State</li>
+<li>DV: Distance Vector</li>
+<li>AS: Autonomous System</li>
+<li>IGP: Interior Gateway Protocol</li>
+<li>RIP: Routing Information Protocol</li>
+<li>OSPF: Open Shortest Path First</li>
+<li>IGRP: Interior Gateway Routing Protocol</li>
+<li>IS-IS: Intermediate System to Intermediate System</li>
+<li>TOS: Type of Service</li>
+<li>BGP: Border Gateway Protocol
+<ul>
+<li>eBGP</li>
+<li>iBGP</li>
+</ul></li>
+<li>ICMP: Internet Control Message Protocol</li>
+<li>SNMP: Simple Network Management Protocol</li>
+<li>MIB: Management Information Base</li>
+<li>CRC: Cyclic Redundency Check</li>
+<li>TDMA: Time Division Multiple Access</li>
+<li>FDMA: Frequency Division Multiple Access</li>
+<li>CSMA: Carrier Sense Multiple Access</li>
+<li>CSMA/CD: Carrier Sense Multiple Access Collision Detection</li>
+<li>NIC: Network Interface Card</li>
+<li>MAC</li>
+<li>ARP: Address Resolution Protocol</li>
+</ul>
 
     </div>
 
@@ -407,7 +496,7 @@ session。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">网络的组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">网络的核心部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">网络的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F"><span class="nav-number">3.1.</span> <span class="nav-text">延迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD"><span class="nav-number">3.2.</span> <span class="nav-text">带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%9E%E5%90%90%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text">吞吐量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE"><span class="nav-number">4.1.</span> <span class="nav-text">网络协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcpip-%E5%8D%8F%E8%AE%AE%E6%A0%88"><span class="nav-number">4.2.</span> <span class="nav-text">TCP&#x2F;IP 协议栈</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">网络的组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">网络的核心部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">网络的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F"><span class="nav-number">3.1.</span> <span class="nav-text">延迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD"><span class="nav-number">3.2.</span> <span class="nav-text">带宽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%9E%E5%90%90%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text">吞吐量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE"><span class="nav-number">4.1.</span> <span class="nav-text">网络协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcpip-%E5%8D%8F%E8%AE%AE%E6%A0%88"><span class="nav-number">4.2.</span> <span class="nav-text">TCP&#x2F;IP 协议栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%A9%E5%86%99"><span class="nav-number">5.</span> <span class="nav-text">缩写</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
