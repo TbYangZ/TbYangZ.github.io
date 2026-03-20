@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"logicyang.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="network-04">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络（四）：网络层">
+<meta property="og:url" content="http://logicyang.top/2024/11/28/network-04/index.html">
+<meta property="og:site_name" content="owack&#39;s blog">
+<meta property="og:description" content="network-04">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128210030494.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128212551288.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128212838859.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128213355068.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128213648225.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128214422444.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128215055591.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241113155429510.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241113162245327.png">
+<meta property="og:image" content="http://logicyang.top/2024/11/28/network-04/image-20241120143101869.png">
+<meta property="article:published_time" content="2024-11-28T12:39:57.000Z">
+<meta property="article:modified_time" content="2026-03-20T16:28:14.880Z">
+<meta property="article:author" content="owack">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://logicyang.top/2024/11/28/network-04/image-20241128210030494.png">
+
+<link rel="canonical" href="http://logicyang.top/2024/11/28/network-04/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机网络（四）：网络层 | owack's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">owack's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A website to record life and study</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://logicyang.top/2024/11/28/network-04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="owack">
+      <meta itemprop="description" content="Think twice, code once">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="owack's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络（四）：网络层
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-11-28 20:39:57" itemprop="dateCreated datePublished" datetime="2024-11-28T20:39:57+08:00">2024-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-03-21 00:28:14" itemprop="dateModified" datetime="2026-03-21T00:28:14+08:00">2026-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">network-04</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="网络层概述">网络层概述</h1>
+<p>网络层是将数据从设备到设备的一个层。在传输层中，我们探索的是起点到终点的过程，而网络层将这一过程细化成主机到路由器、路由器到路由器、路由器到主机的传输过程。网络层的数据包被称为
+datagram。</p>
+<p>网络层的核心功能是转发（forwarding）和路由（routing）。</p>
+<div class="definition-block">
+<div class="definition-title">
+一些概念
+</div>
+<div class="definition-content">
+<p><strong>转发</strong>：将输入端口的数据包移动到合适的路由器的输出端口的过程；<br>
+<strong>路由</strong>：通过路由算法得到路由表（routing
+table）的过程，即从一个包的目标 IP 得知路由器的输出端口。</p>
+</div>
+</div>
+<p>用 Data Plane 表示数据的行动一层，Control Plane
+表示控制数据行动的那一层。即转发是 Data Plane 的工作，路由是 Control
+Plane 的工作。传统路由器二者合二为一，一个路由器既属于 Data
+Plane，又属于 Control
+Plane，通过这种情况下通过路由算法得到路由表仅仅是局部的最优，并没有全局视角。现代的网络中将这两个功能解耦，通过一个远端服务器（Remote
+Controller）作为 Control Plane，与路由器中的局部代理（Local control
+agents，CAs）进行交互，分配给路由器路由表。这种网络被称为软件定义网络（software
+defined network, SDN）。</p>
+<p><img src="image-20241128210030494.png" alt="image-20241128210030494" style="zoom:50%;" /></p>
+<p>除此之外，传统路由器仅能够通过目标主机的 IP 地址进行路由，这是因为 IP
+层的数据中没有端口号、MAC 地址等信息，现代路由器可以通过来源主机的 IP
+地址，目标端口号，发送方的 MAC
+地址等信息进行路由或者一些操作（如丢弃）。</p>
+<h1 id="路由器的架构">路由器的架构</h1>
+<p>路由器的基础结构分为输入口和输出口，中间进行数据包的转发，同时有一个处理器计算路由表。</p>
+<p><img src="image-20241128212551288.png" alt="image-20241128212551288" style="zoom:67%;" /></p>
+<h2 id="输入端口">输入端口</h2>
+<p>输入端口部分从物理层、链路层依次解包，最后得到网络层的 IP
+数据包，然后放入队列中等待转发。</p>
+<p><img src="image-20241128212838859.png" alt="image-20241128212838859" style="zoom:50%;" /></p>
+<h2 id="转发过程">转发过程</h2>
+<p>传统路由器使用 IP 地址，通过查表得到一个数据包应该前往的端口。</p>
+<p><img src="image-20241128213355068.png" alt="image-20241128213355068" style="zoom: 50%;" /></p>
+<p>逻辑上的转发表是一个范围，但是在路由器中，一个转发规则是一个二进制串的前缀，匹配的规则是
+<strong>最长前缀匹配</strong>，即找到一个能够匹配的最长的一条规则。</p>
+<p><img src="image-20241128213648225.png" alt="image-20241128213648225" style="zoom:50%;" /></p>
+<div class="proof-block">
+<div class="proof-title">
+例如
+</div>
+<div class="proof-content">
+<p>地址 <code>11001000 00010111 00010110 10100001</code>
+能够匹配的最长的地址前缀是第一条规则，所以应该通过 0 号接口。</p>
+</div>
+</div>
+<p>三种数据在路由器中的流动方式，各有优劣。</p>
+<p><img src="image-20241128214422444.png" alt="image-20241128214422444" style="zoom:50%;" /></p>
+<p>当数据包进入的速度比路由器转发的速度快时会导致入口阻塞，超过队列的大小后会直接丢包。还会有
+HOL 阻塞（Head-of-line blocking）问题，当队列的队首需要前往端口
+1，但是其他队列率先抢占了端口
+1，这导致它需要等，同时它后面的所有包也需要等。</p>
+<h2 id="输出端口">输出端口</h2>
+<p>输出端口同样有一个缓冲队列，将一个个包封装上链路层、物理层的信息发送。</p>
+<p><img src="image-20241128215055591.png" alt="image-20241128215055591" style="zoom:50%;" /></p>
+<p>当缓冲队列满了后，会导致丢包。</p>
+<div class="proof-block">
+<div class="proof-title">
+总结
+</div>
+<div class="proof-content">
+两种丢包的原因：<br>
+<ul>
+<li>
+由于路由器的输入的带宽大于输出带宽，导致数据包会在路由器输出端口的缓冲队列中等待，满了之后就会丢包。
+</li>
+<li>
+数据包中有 TTL 字段，每经过一个路由器时，TTL 会减一，当 TTL 字段减到 0
+时，路由器自动把它丢弃。
+</li>
+</ul>
+</div>
+</div>
+<p>对于队列中数据，有如下的调度策略</p>
+<ul>
+<li><p>FIFO（First In First Out）：先进先出</p></li>
+<li><p>RR（Round
+Robin）：轮转调度，每次转发来源不同的包，保证了转发的公平性</p></li>
+<li><p>WFQ（Weighted Fair Queuing）：加权公平排队</p></li>
+<li><p>RED（Randomly Early
+Drop）：在队列有可能达到上限时，随机选择一些包丢弃，让发送方触发拥塞控制，降低发送方的速度</p></li>
+</ul>
+<h1 id="ip-数据包">IP 数据包</h1>
+<h2 id="数据包的内容">数据包的内容</h2>
+<p><img src="image-20241113155429510.png" alt="img" style="zoom: 33%;" /></p>
+<ul>
+<li><code>ver</code>：IP 协议的版本号 <code>0x4</code> 或
+<code>0x6</code></li>
+<li><code>head.len</code>：包头的长度除以 4 的结果。<code>ver</code> +
+<code>head.len</code> 共 1 个字节。</li>
+<li><code>time to live</code>：最多可以经过的路由器个数，每经过一个路由器减减，到
+0 时直接被丢弃</li>
+<li><code>upper layer protocol</code>：向上传输层传递的是哪一个协议（6
+为 TCP、17 为 UDP）（demultiplexing）</li>
+<li><code>length</code>：IP 数据包的总长度（16 位）</li>
+<li><code>16-bit identifier</code>，<code>flag</code>，<code>fragment offset</code>：切片相关的字段</li>
+<li><code>check sum</code>：只针对 IP 数据包包头部分的校验和。</li>
+</ul>
+<h2 id="ip-切片">IP 切片</h2>
+<p>当来源包的大小大于出去链路的 MTU 时，路由器会将该 IP
+包拆分成若干个完整的 IP
+包发送出去，然后仅在目标位置进行重新组合。切片发生在
+<strong>路由器</strong>，组装发生在 <strong>目标</strong>。</p>
+<div class="definition-block">
+<div class="definition-title">
+MTU
+</div>
+<div class="definition-content">
+<p>Maximal Transfer
+Unit，一条链路上的能够传输的数据包（frame）的包体部分（链路层的包体）的最大长度，不同链路不一样。以太网中常见的是
+1500 bytes。链路层的包体部分实质上就是整个 IP 包。MSS
+是传输层包体的最大长度。 <span class="math display">\[
+\mathrm{MTU}=20+20+\mathrm{MSS}
+\]</span> 其中第一个 20 是网络层包的包头，第二个 20
+是传输层包的包头。</p>
+</div>
+</div>
+<p><img src="image-20241113162245327.png" alt="image-20241113162245327" style="zoom: 33%;" /></p>
+<p>切片时将包头和包体分开，然后将包体切分，再对每个包体，给它们添加一个包头。包的包体不能超过
+<span class="math inline">\(1500 - 20 = 1480\,
+\mathrm{bytes}\)</span>，即总大小不能超过<span
+class="math inline">\(1500\,\mathrm{bytes}\)</span>。其中，需要注意的是：</p>
+<ul>
+<li>切片的 ID 号继承原包的 ID 号</li>
+<li>Frag Flag 表示后面是否还有碎片</li>
+<li>offset 表示切片的包体的第一个字节在原始包中的位置（从 0 开始的）除以
+8</li>
+</ul>
+<h1 id="ipv4-地址">IPv4 地址</h1>
+<p>IPv4 是一个 32
+位的无符号整数，是分配给每一个网卡（网口）的一个地址。每个网卡和路由器上的不同网口都有
+IP 地址</p>
+<h2 id="子网">子网</h2>
+<div class="definition-block">
+<div class="definition-title">
+子网
+</div>
+<div class="definition-content">
+<p>如果两个网口可以不通过路由器连接，那么这两个网口在同一个子网里。</p>
+</div>
+</div>
+<p><img src="image-20241120143101869.png" alt="image-20241120143101869" style="zoom:50%;" /></p>
+<p>上图中蓝色部分相连的部分属于一个子网，路由器的不同端口一般属于不同子网。子网的作用：</p>
+<ul>
+<li>限制广播包的传输范围：由于 ARP 请求包、DHCP
+相关的包等都需要广播，为了限制其传递，需要子网限制范围</li>
+<li>安全因素：信息不会泄露到外网（公网）</li>
+</ul>
+<p>因为有子网的存在，IP 地址被分为前缀和后缀。前缀表示了这个 IP
+属于的子网，后缀表示这个 IP 在子网中的编号。</p>
+<div class="definition-block">
+<div class="definition-title">
+IP 地址的前缀和后缀
+</div>
+<div class="definition-content">
+<p>前缀部分（subnet
+part）：表示这个网口属于哪一个子网。同一个子网的前缀必须相同。叫做网络的
+id 号（net id）<br> 后缀部分（host
+part）：表明子网内的编号，同一个子网的后缀必须不同，也叫做主机号（host
+id）</p>
+</div>
+</div>
+<p>由于不同类型的 IP 地址前后缀的划分方式不同，需要通过
+<strong>子网掩码</strong> 进行标识。例如 IP 地址
+<code>192.168.0.2/24</code> 中，<code>24</code> 即为子网掩码，表示 IP
+地址的前 <span class="math inline">\(24\)</span> 位为前缀，后 <span
+class="math inline">\(8\)</span> 位为后缀。与该地址属于同一个子网的 IP
+地址有 <code>192.168.0.0 ~ 192.168.0.255</code>。</p>
+<p>在计算机中，子网掩码是通过一个前缀部分全 <span
+class="math inline">\(1\)</span>，后缀部分全 <span
+class="math inline">\(0\)</span> 的二进制数表示，这样的情况下用 IP
+地址与其子网掩码做二进制与，就会得到子网的 id 号。通过比较两个地址的子网
+id 号可以判断是否在同一个子网中。</p>
+<div class="proof-block">
+<div class="proof-title">
+特殊的 IP 地址
+</div>
+<div class="proof-content">
+<p>
+主机位全零的 ip 地址不会给任何主机使用，而是分配给网络的 ip 地址，也叫做
+subnet ip。
+</p>
+<p>
+主机位全一的 ip 地址也不会给任何主机使用，表示广播地址，用于传输广播包。
+<ul>
+<li>
+与 <code>255.255.255.255</code> 的区别：<code>255.255.255.255</code>
+只在子网中传播
+</li>
+<li>
+广播地址除了在子网中传播，还可以从外网向该网络发送广播包
+</li>
+</ul>
+</p>
+</div>
+</div>
+<p>子网掩码的用途是识别一个包，是向内网发还是向外网发，以明确目标 MAC
+地址。</p>
+<ul>
+<li>当内网传输数据包的时候，在链路层封包的时候，发现目标 IP
+与子网掩码的与和子网 IP 相同，那么就会将链路层的 dst MAC
+地址直接写成目标的 MAC 地址（通过 ARP 缓存得知目标 MAC 地址）。</li>
+<li>当向外网传输数据包的时候，在链路层封包的时候，发现目标 IP
+与子网掩码的与和子网 IP 不同，那么就会将链路层的 dst MAC
+地址直接写成子网的网关的 MAC 地址。</li>
+</ul>
+<h2 id="子网的切分">子网的切分</h2>
+<p>现代网路中子网的切分是使用 <strong>无类别域间路由
+CIDR</strong>（Classless InterDomain
+Routing）做到按需划分，同时划分的位置不一定为 8 的整数倍。</p>
+<div class="proof-block">
+<div class="proof-title">
+例如
+</div>
+<div class="proof-content">
+<p>
+某供应商具有 IP 地址段 <code>47.0.0.0/8</code>，现其下有三个客户 A，B，C
+需要规模分别为 <span class="math inline">\(130\)</span>，<span
+class="math inline">\(90\)</span>，<span
+class="math inline">\(46\)</span> 的 IP
+地址，那么划分就按照这三个客户的规模对该地址段进行划分：
+<ul>
+<li>
+客户 A 需要 <span class="math inline">\(130\)</span> 个 IP
+地址，那么就划分 <code>47.152.0.0/24</code>（共 <span
+class="math inline">\(256\)</span> 个地址）；
+</li>
+<li>
+客户 B 需要 <span class="math inline">\(90\)</span> 个 IP
+地址，那么就划分 <code>47.152.1.0/25</code>（共 <span
+class="math inline">\(128\)</span> 个地址）；
+</li>
+<li>
+客户 C 需要 <span class="math inline">\(46\)</span> 个 IP
+地址，那么就划分 <code>47.152.1.127/26</code>（共 <span
+class="math inline">\(64\)</span> 个地址）；
+</li>
+</ul>
+这样划分可以最大化利用所有的 IP 地址。
+</p>
+<p>
+具体而言，先将需求从大到小排序，然后对于每个个数，找到不小于的最小的
+<span class="math inline">\(2^k\)</span>，然后再去分配这 <span
+class="math inline">\(2^k\)</span> 个地址。
+</p>
+</div>
+</div>
+<p>传统网络中将 IP 地址进行分类，分为 A B C D E 五类 其中 A、B、C
+类常用于普通网络。每个类别都有固定的网络部分和主机部分长度。分类规则如下：</p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 37%" />
+<col style="width: 18%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>类别</th>
+<th>IP 范围</th>
+<th>默认子网掩码</th>
+<th>网络位长度</th>
+<th>主机位长度</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>0.0.0.0 - 127.255.255.255</td>
+<td>255.0.0.0</td>
+<td>8 位</td>
+<td>24 位</td>
+<td>大型网络</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>128.0.0.0 - 191.255.255.255</td>
+<td>255.255.0.0</td>
+<td>16 位</td>
+<td>16 位</td>
+<td>中型网络</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>192.0.0.0 - 223.255.255.255</td>
+<td>255.255.255.0</td>
+<td>24 位</td>
+<td>8 位</td>
+<td>小型网络</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>224.0.0.0 - 239.255.255.255</td>
+<td>无子网掩码</td>
+<td>-</td>
+<td>-</td>
+<td>多播组</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>240.0.0.0 - 255.255.255.255</td>
+<td>保留</td>
+<td>-</td>
+<td>-</td>
+<td>实验用途</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dhcp">DHCP</h2>
+<p>一个新接入的网络需要获取一个 IP
+地址，这样才能连通网络。可以由管理员手动分配，更常见的是网络中的 DHCP
+服务器使用 DHCP 协议（Dynamic Host Configuration
+Protocol）自动分配。</p>
+<p>具体过程如下：</p>
+<ul>
+<li>由客户端广播一个包 DHCP discover 包
+<ul>
+<li>目的：用于寻找 DHCP 服务器。</li>
+<li>应用层中有 yiaddr 为：0.0.0.0，表示 your ip
+addr，预留出来，存放分配的 ip 地址；transaction id：表示包的编号。</li>
+<li>传输层协议使用的是 UDP，端口为 src port：68（客户端），dst
+port：67（服务端）。</li>
+<li>网络层：src ip 为：<code>0.0.0.0</code>，dst ip
+为：<code>255.255.255.255</code> 表示广播。</li>
+<li>链路层：src MAC 为自己的 MAC 地址，dst MAC 为
+<code>ff:ff:ff:ff:ff:ff</code> 表示广播。</li>
+</ul></li>
+<li>DHCP 服务器会向该客户端发送 DHCP offer 包
+<ul>
+<li>目的：DHCP 服务器向客户端提供 ip 地址。</li>
+<li>应用层中 yiaddr 为分配的 ip 地址；transaction id：与 discover
+包中一致，让客户端知道这是发给它的包。</li>
+<li>传输层中端口为 src port：67（服务端），dst port：68（客户端）。</li>
+<li>网络层中：src ip 为 DHCP 服务器 ip 地址；dst ip
+为：255.255.255.255，这里由于对面还不知道自己的 ip，还需要广播。</li>
+<li>这个包还包括了网络中的其他信息：子网掩码，网关 ip 等。</li>
+</ul></li>
+<li>客户端再发送 DHCP request 包
+<ul>
+<li>这个包与 DHCP discover 包类似。</li>
+<li>目的：在网络中由多个 DHCP 服务器时，会收到多个 DHCP discover
+包，告诉各个 DHCP 服务器是否被接受了。</li>
+<li>应用层中 yiaddr 为客户端拟接受的 ip 地址，</li>
+</ul></li>
+<li>DHCP 服务器发送 DHCP ACK 包
+<ul>
+<li>仍然是广播包</li>
+<li>目的：告诉客户端收到了，可以使用这个 ip 地址。如果收到的 ACK 包中的
+yiaddr 与分配出去的 IP 地址不同，那么就会回收刚刚打算分配出去的 IP
+地址。</li>
+</ul></li>
+</ul>
+<p>国际上分配 IP 地址的机构为 <strong>ICANN</strong>（Internet
+Corporation for Assigned Name and Number）。</p>
+<h2 id="nat-地址转换">NAT 地址转换</h2>
+<p>NAT（Newwork Address
+Translation）技术是用于进行网络地址转化。实际上是为了节省 IPv4
+地址的使用。一个网络可能仅有路由器一个公网 IP，即只有这一个 IP
+能够在公网中传递数据，而其他设备分配的是内网 IP。</p>
+<p>一般来说，<code>10.a.b.c</code>
+类型，<code>172.16 ~ 172.31</code>，<code>192.168</code> 开头，这些 IP
+地址属于内网 IP（实验 IP）。</p>
+<p>NAT 一般是在路由器上的。一个可以进行 NAT 的路由器，会将发出去的包中的
+src ip 与 src port 进行替换，src ip 为该路由器的公网
+IP，同时在路由器中会维护一个转换表，用于记录每一条转换记录。同时，如果从外部来的一个包，路由器也会将
+dst ip 和 dst port 按照转换表反过来转换成对应的内网 IP
+和对应的端口号。</p>
+<p>经过转换后，若干个内网中的设备仅通过一个公网 IP
+就可以连到网络，大大节省了公网中的 IP 数量。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/11/28/network-01/" rel="prev" title="计算机网络（一）：基本概念">
+      <i class="fa fa-chevron-left"></i> 计算机网络（一）：基本概念
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/12/19/math-circle/" rel="next" title="圆内随机弦的概率分布">
+      圆内随机弦的概率分布 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">网络层概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">路由器的架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">输入端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">转发过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.3.</span> <span class="nav-text">输出端口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ip-%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">IP 数据包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">3.1.</span> <span class="nav-text">数据包的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ip-%E5%88%87%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">IP 切片</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ipv4-%E5%9C%B0%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">IPv4 地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%BD%91"><span class="nav-number">4.1.</span> <span class="nav-text">子网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%BD%91%E7%9A%84%E5%88%87%E5%88%86"><span class="nav-number">4.2.</span> <span class="nav-text">子网的切分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dhcp"><span class="nav-number">4.3.</span> <span class="nav-text">DHCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nat-%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.4.</span> <span class="nav-text">NAT 地址转换</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="owack"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">owack</p>
+  <div class="site-description" itemprop="description">Think twice, code once</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/TbYangZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;TbYangZ" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhuo_yang@stu.scu.edu.cn" title="E-Mail → mailto:zhuo_yang@stu.scu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">渝ICP备2024048078号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">owack</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
