@@ -1,0 +1,148 @@
+---
+title: 二维码工具
+layout: page
+---
+
+<!-- 选项卡 -->
+<div class="tabs">
+  <button class="tab active" data-tab="decode">解析二维码</button>
+  <button class="tab" data-tab="encode">生成二维码</button>
+</div>
+
+<!-- 内容区域 -->
+<div class="tab-content">
+
+  <!-- ===== 解析 ===== -->
+  <div class="panel active" id="decode">
+
+    <label class="upload-btn">
+      选择图片
+      <input type="file" id="fileInput" accept="image/*">
+    </label>
+
+    <div class="hint">或 Ctrl + V 粘贴截图</div>
+
+    <div class="canvas-box">
+      <canvas id="canvas"></canvas>
+      <div class="placeholder">等待图片输入</div>
+    </div>
+
+    <div class="result-box" id="result">暂无结果</div>
+  </div>
+
+  <!-- ===== 生成 ===== -->
+  <div class="panel" id="encode">
+
+    <textarea id="qrText" placeholder="输入文本或链接"></textarea>
+
+    <button id="generateBtn">生成二维码</button>
+
+    <div id="qrcode"></div>
+  </div>
+
+</div>
+
+<!-- 库 -->
+<script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ===== 选项卡切换 ===== */
+  const tabs = document.querySelectorAll(".tab");
+  const panels = document.querySelectorAll(".panel");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+  });
+
+  /* ===== 解析 ===== */
+  const fileInput = document.getElementById('fileInput');
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const result = document.getElementById('result');
+  const placeholder = document.querySelector('.placeholder');
+
+  function decodeImage(img) {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0);
+
+    placeholder.style.display = "none";
+
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+    if (code) {
+      result.innerHTML = formatResult(code.data);
+    } else {
+      result.innerText = "未检测到二维码";
+    }
+  }
+
+  fileInput.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const img = new Image();
+    const reader = new FileReader();
+
+    reader.onload = e => img.src = e.target.result;
+    img.onload = () => decodeImage(img);
+
+    reader.readAsDataURL(file);
+  });
+
+  document.addEventListener('paste', function (event) {
+    const items = event.clipboardData.items;
+
+    for (let item of items) {
+      if (item.type.indexOf('image') !== -1) {
+        const blob = item.getAsFile();
+        const img = new Image();
+        const url = URL.createObjectURL(blob);
+
+        img.onload = function () {
+          decodeImage(img);
+          URL.revokeObjectURL(url);
+        };
+
+        img.src = url;
+      }
+    }
+  });
+
+  function formatResult(text) {
+    if (text.startsWith("http")) {
+      return `<a href="${text}" target="_blank">${text}</a>`;
+    }
+    return `${text}`;
+  }
+
+  /* ===== 生成 ===== */
+  const qrText = document.getElementById("qrText");
+  const generateBtn = document.getElementById("generateBtn");
+  const qrContainer = document.getElementById("qrcode");
+
+  generateBtn.addEventListener("click", () => {
+    const text = qrText.value.trim();
+    if (!text) return;
+
+    qrContainer.innerHTML = "";
+
+    new QRCode(qrContainer, {
+      text: text,
+      width: 200,
+      height: 200
+    });
+  });
+
+});
+</script>

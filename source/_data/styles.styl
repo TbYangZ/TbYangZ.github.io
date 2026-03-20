@@ -9,17 +9,17 @@ body {
 }
 
 .content-wrap {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 //侧边框的透明度设置
 .sidebar {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 //菜单栏的透明度设置
 .header-inner {
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 //搜索框（local-search）的透明度设置
@@ -130,4 +130,247 @@ body {
     margin-top: 5px;
     color: #333; /* 通用文本颜色 */
     line-height: 1.5; /* 提高内容的可读性 */
+}
+
+/* ===== 布局 ===== */
+.tool-container {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.tool-left, .tool-right {
+  flex: 1;
+}
+
+/* ===== 按钮（重点优化） ===== */
+.upload-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #ff7eb3;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-btn:hover {
+  background: #ff5c9a;
+}
+
+/* 隐藏原 input */
+.upload-btn input {
+  display: none;
+}
+
+/* 提示 */
+.hint {
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* ===== 图片区域 ===== */
+.canvas-box {
+  margin-top: 15px;
+  height: 300px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 占位文字 */
+.placeholder {
+  position: absolute;
+  color: #aaa;
+}
+
+/* ===== 结果区域 ===== */
+.result-box {
+  margin-top: 15px;
+  min-height: 150px;
+  padding: 15px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  background: var(--card-bg-color);
+  word-break: break-all;
+}
+
+/* 链接美化 */
+.result-box a {
+  color: #4fc3f7;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .tool-container {
+    flex-direction: column;
+  }
+}
+
+/* 输入框 */
+textarea {
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+/* 按钮 */
+#generateBtn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #4fc3f7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#generateBtn:hover {
+  background: #29b6f6;
+}
+
+/* 二维码区域 */
+#qrcode {
+  margin-top: 15px;
+}
+
+/* ===== 选项卡 ===== */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 8px 16px;
+  background: #eee;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.tab.active {
+  background: #4fc3f7;
+  color: white;
+}
+
+/* ===== 内容区 ===== */
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* ===== 输入框 ===== */
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* ===== 按钮 ===== */
+#generateBtn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #4fc3f7;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== 生成二维码区域 ===== */
+#qrcode {
+  margin-top: 20px;
+}
+
+/* ===== 工具首页布局 ===== */
+.tool-home {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* ===== 卡片 ===== */
+.tool-card {
+  padding: 25px;
+  border-radius: 16px;
+  background: var(--card-bg-color);
+  box-shadow: var(--card-box-shadow);
+  text-align: center;
+  transition: 0.3s;
+}
+
+/* hover 动效 */
+.tool-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* 图标 */
+.tool-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* 标题 */
+.tool-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* 描述 */
+.tool-desc {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+/* 按钮 */
+.tool-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #4fc3f7;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.tool-btn:hover {
+  background: #29b6f6;
+}
+
+/* 禁用卡片 */
+.tool-card.disabled {
+  opacity: 0.6;
+}
+
+.tool-card.disabled:hover {
+  transform: none;
+  box-shadow: var(--card-box-shadow);
+}
+
+.tool-btn.disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }

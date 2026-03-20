@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: owack's blog
+title: Yang's blog
 subtitle: 'A website to record life and study'
 description: 'Think twice, code once'
 keywords:
-author: owack
+author: Yang
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://logicyang.top
+url: http://blog.logicyang.top
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

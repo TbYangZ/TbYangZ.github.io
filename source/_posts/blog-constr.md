@@ -152,11 +152,11 @@ post_asset_folder: true # 启用文章资源文件夹
 
 ```yml
 # Site
-title: owack's blog
+title: Yang's blog
 subtitle: 'A website to record life and study'
 description: 'Think twice, code once'
 keywords:
-author: owack
+author: Yang
 language: zh-CN
 timezone: ''
 ```
